@@ -56,6 +56,11 @@ public class CardManager : MonoBehaviour
     [SimpleButton]
     public void AlignCard()
     {
+        if (transform.childCount == 0)
+        {
+            return;
+        }
+
         float tempZ = (transform.childCount / 2);
         float totalWidth = (transform.childCount - 1) * cardSpacing;
         float startX = transform.position.x - (totalWidth / 2);
@@ -96,7 +101,7 @@ public class CardManager : MonoBehaviour
     [SimpleButton]
     public void AddNewCard()
     {
-        if (transform.childCount >= 5)
+        if (transform.childCount >= 3)
             return;
 
         int count = transform.childCount / 2;

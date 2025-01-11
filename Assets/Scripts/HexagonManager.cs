@@ -37,6 +37,8 @@ public class HexagonManager : MonoBehaviour
 
         if (!Gamemanager.instance.isLeft)
             t.rotation = Quaternion.Euler(0, 180, 0);
+
+        MessageBox.instance.ShowMessage("New Building", "New Building is placed!", "OK");
     }
     #endregion
 }
