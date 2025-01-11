@@ -150,15 +150,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: da01eb4f22d2d8a44a0bfef71c016550, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: da01eb4f22d2d8a44a0bfef71c016550, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: da01eb4f22d2d8a44a0bfef71c016550, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: da01eb4f22d2d8a44a0bfef71c016550, type: 3}
       propertyPath: m_LocalPosition.x
@@ -238,6 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f21496ab329118408d6231040bb3148, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLeft: 0
   hexRenderer: {fileID: 4676753371733212650}
   buildPoint: {fileID: 5386691376589344010}
   selectedColor: {r: 1, g: 0.43867922, b: 0.43867922, a: 0.5019608}

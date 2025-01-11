@@ -4,7 +4,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 
-[CustomEditor(typeof(MonoBehaviour), true)]
+[CustomEditor(typeof(MonoBehaviour), true), CanEditMultipleObjects]
 public class SimpleButtonEditor : Editor
 {
     #region FUNCTIONS

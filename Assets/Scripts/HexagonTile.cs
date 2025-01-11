@@ -5,6 +5,7 @@ using UnityEngine;
 public class HexagonTile : MonoBehaviour
 {
     #region VARIABLES
+    public bool isLeft;
     [SerializeField] private MeshRenderer hexRenderer;
     public Transform buildPoint;
 

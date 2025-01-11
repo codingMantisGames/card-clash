@@ -52,7 +52,7 @@ public class PrefabSpawnerWindow : EditorWindow
 
         prefab = (GameObject)EditorGUILayout.ObjectField("Parent Object", prefab, typeof(GameObject), true);
 
-
+        GUILayout.Label("Child Count is " + Selection.activeTransform.childCount, EditorStyles.label);
     }
     #endregion
 }

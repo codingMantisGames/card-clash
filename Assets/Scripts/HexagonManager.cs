@@ -25,7 +25,8 @@ public class HexagonManager : MonoBehaviour
     {
         foreach (var item in hexagonTiles)
         {
-            item.ToggleHexagon(flag);
+            if (item.isLeft == Gamemanager.instance.isLeft)
+                item.ToggleHexagon(flag);
         }
     }
     public void SpawnBuilding(GameObject gm)
@@ -33,6 +34,9 @@ public class HexagonManager : MonoBehaviour
         HexagonTile tile = activeHexagon.GetComponent<HexagonTile>();
         Transform t = Instantiate(gm, tile.buildPoint).transform;
         t.localScale = Vector3.one * 1.6f;
+
+        if (!Gamemanager.instance.isLeft)
+            t.rotation = Quaternion.Euler(0, 180, 0);
     }
     #endregion
 }
