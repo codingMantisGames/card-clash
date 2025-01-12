@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: DefaultCompany
   productName: br
-  defaultCursor: {fileID: 0}
+  defaultCursor: {fileID: 2800000, guid: 661e9e39dad5fdd4ea3eadac1933591c, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
@@ -82,7 +82,7 @@ PlayerSettings:
   androidApplicationEntry: 2
   defaultIsNativeResolution: 1
   macRetinaSupport: 1
-  runInBackground: 0
+  runInBackground: 1
   muteOtherAudioSources: 0
   Prepare IOS For Recording: 0
   Force IOS Speakers When Recording: 0
@@ -817,23 +817,23 @@ PlayerSettings:
   webGLCloseOnQuit: 0
   webWasm2023: 0
   scriptingDefineSymbols:
-    Android: DOTWEEN
-    EmbeddedLinux: DOTWEEN
-    GameCoreScarlett: DOTWEEN
-    GameCoreXboxOne: DOTWEEN
-    LinuxHeadlessSimulation: DOTWEEN
-    Nintendo Switch: DOTWEEN
-    PS4: DOTWEEN
-    PS5: DOTWEEN
-    QNX: DOTWEEN
-    ReservedCFE: DOTWEEN
-    Standalone: DOTWEEN
-    VisionOS: DOTWEEN
-    WebGL: DOTWEEN
-    Windows Store Apps: DOTWEEN
-    XboxOne: DOTWEEN
-    iPhone: DOTWEEN
-    tvOS: DOTWEEN
+    Android: DOTWEEN;FUSION_LOGLEVEL_NONE
+    EmbeddedLinux: DOTWEEN;FUSION_LOGLEVEL_NONE
+    GameCoreScarlett: DOTWEEN;FUSION_LOGLEVEL_NONE
+    GameCoreXboxOne: DOTWEEN;FUSION_LOGLEVEL_NONE
+    LinuxHeadlessSimulation: DOTWEEN;FUSION_LOGLEVEL_NONE
+    Nintendo Switch: DOTWEEN;FUSION_LOGLEVEL_NONE
+    PS4: DOTWEEN;FUSION_LOGLEVEL_NONE
+    PS5: DOTWEEN;FUSION_LOGLEVEL_NONE
+    QNX: DOTWEEN;FUSION_LOGLEVEL_NONE
+    ReservedCFE: DOTWEEN;FUSION_LOGLEVEL_NONE
+    Standalone: DOTWEEN;FUSION_WEAVER;FUSION2;FUSION_LOGLEVEL_NONE
+    VisionOS: DOTWEEN;FUSION_LOGLEVEL_NONE
+    WebGL: DOTWEEN;FUSION_LOGLEVEL_NONE;FUSION_WEAVER;FUSION2
+    Windows Store Apps: DOTWEEN;FUSION_LOGLEVEL_NONE
+    XboxOne: DOTWEEN;FUSION_LOGLEVEL_NONE
+    iPhone: DOTWEEN;FUSION_LOGLEVEL_NONE
+    tvOS: DOTWEEN;FUSION_LOGLEVEL_NONE
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
@@ -859,7 +859,7 @@ PlayerSettings:
     tvOS: 1
   incrementalIl2cppBuild: {}
   suppressCommonWarnings: 1
-  allowUnsafeCode: 0
+  allowUnsafeCode: 1
   useDeterministicCompilation: 1
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 1
