@@ -32,7 +32,7 @@ public class Card : MonoBehaviour
         topRenderer = topCard.GetComponent<SpriteRenderer>();
         bottomRenderer = bottomCard.GetComponent<SpriteRenderer>();
 
-        cardType = CardType.BUIDLING;
+        //cardType = CardType.BUIDLING;
         cardID = topCardID;
     }
     void Start()
@@ -163,5 +163,5 @@ public class Card : MonoBehaviour
 }
 public enum CardType
 {
-    ADDON, BUIDLING
+    ADDON, BUIDLING, CHARACTER
 }

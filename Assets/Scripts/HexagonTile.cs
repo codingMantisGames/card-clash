@@ -6,6 +6,8 @@ public class HexagonTile : MonoBehaviour
 {
     #region VARIABLES
     public bool isLeft;
+    public bool isNoBuildZone;
+    public bool isPlayerZone;
     [SerializeField] private MeshRenderer hexRenderer;
     public Transform buildPoint;
 

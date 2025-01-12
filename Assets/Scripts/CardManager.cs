@@ -79,11 +79,15 @@ public class CardManager : MonoBehaviour
     {
         if (card.cardType == CardType.BUIDLING)
             hexagonManager.ToggleHexagon(true);
+        else if (card.cardType == CardType.CHARACTER)
+            hexagonManager.ToggleHexagonForCharacter(true);
     }
     public void DragEnd(Card card, bool isHit)
     {
         if (card.cardType == CardType.BUIDLING)
             hexagonManager.ToggleHexagon(false);
+        else if (card.cardType == CardType.CHARACTER)
+            hexagonManager.ToggleHexagonForCharacter(false);
 
         if (isHit)
         {

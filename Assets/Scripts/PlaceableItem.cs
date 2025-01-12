@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Building : MonoBehaviour
+public class PlaceableItem : MonoBehaviour
 {
     #region VARIABLES
     [SerializeField] private List<MeshRenderer> meshRenderers;

@@ -7,7 +7,7 @@ public class CardData : ScriptableObject
 {
     #region VARIABLES
     public string cardID;
-    public GameObject prefab;
+    public GameObject prefab; 
 
     [Space(20)]
     public Sprite topRedCard;

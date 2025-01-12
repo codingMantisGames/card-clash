@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5616c4f3decebf84597b248a74d0ed98, type: 3}
+  m_Name: TempCardData 1
+  m_EditorClassIdentifier: 
+  cardID: 234s
+  prefab: {fileID: 4481299082730190297, guid: 0c3b09151e259ab42896d8e71c797879, type: 3}
+  topRedCard: {fileID: 0}
+  topBlueCard: {fileID: 0}
+  bottomRedCard: {fileID: 0}
+  bottomBlueCard: {fileID: 0}

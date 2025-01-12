@@ -25,7 +25,16 @@ public class HexagonManager : MonoBehaviour
     {
         foreach (var item in hexagonTiles)
         {
-            if (item.isLeft == Gamemanager.instance.isLeft)
+            if (item.isLeft == Gamemanager.instance.isLeft && !item.isNoBuildZone && item.buildPoint.childCount == 0)
+                item.ToggleHexagon(flag);
+        }
+    }
+    public void ToggleHexagonForCharacter(bool flag = true)
+    {
+        Debug.LogWarning("this is called!");
+        foreach (var item in hexagonTiles)
+        {
+            if (item.isLeft == Gamemanager.instance.isLeft && item.isNoBuildZone && item.buildPoint.childCount == 0)
                 item.ToggleHexagon(flag);
         }
     }
