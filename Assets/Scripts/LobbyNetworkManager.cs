@@ -12,9 +12,11 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
 {
 
     #region VARIABLES
+    [SerializeField] private LobbyUI lobbyUI;
     private NetworkRunner _runner;
     public static LobbyNetworkManager instance;
     [SerializeField] private TMP_InputField roomName;
+    private string nameOfRoom;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -38,9 +40,29 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     #endregion
 
     #region FUNCTIONS
+    public void JoinRandomGame()
+    {
+        nameOfRoom = roomName.text;
+
+        lobbyUI.ShowMessagePanel("Joining Random Room.");
+
+        StartGame(GameMode.AutoHostOrClient);
+    }
     public void CreateRoom()
     {
+        nameOfRoom = roomName.text;
+
+        lobbyUI.ShowMessagePanel("Creating Custom Room.");
+
         StartGame(GameMode.Host);
+    }
+    public void JoinRoom()
+    {
+        nameOfRoom = roomName.text;
+
+        lobbyUI.ShowMessagePanel("Joining Custom Room.");
+
+        StartGame(GameMode.Client);
     }
     async void StartGame(GameMode mode)
     {
@@ -57,15 +79,24 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
         var result = await _runner.StartGame(new StartGameArgs()
         {
             GameMode = mode,
-            SessionName = "TestRoom",
+            SessionName = nameOfRoom,
             Scene = scene,
-            SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
+            SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>(),
+            PlayerCount = 2
         });
 
         if (result.Ok)
+        {
             Debug.Log("Connected");
+            lobbyUI.ShowMessagePanel("Joined Room! \n Waiting for Second player.");
+        }
         else
+        {
             Debug.Log(result.ShutdownReason);
+            lobbyUI.ShowMessagePanel("Error! \n " + result.ErrorMessage);
+
+            lobbyUI.ShowBackButton();
+        }
     }
 
 

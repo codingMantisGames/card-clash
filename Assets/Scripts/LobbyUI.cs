@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
+using UnityEngine.UI;
 
 public class LobbyUI : MonoBehaviour
 {
@@ -10,7 +12,9 @@ public class LobbyUI : MonoBehaviour
     [SerializeField] private GameObject logoPanel;
     [SerializeField] private CanvasGroup mainOptionPanel;
     [SerializeField] private CanvasGroup customGamePanel;
-    [SerializeField] private CanvasGroup randomRoomPanel;
+    [SerializeField] private CanvasGroup messagePanel;
+    [SerializeField] private TMP_Text message;
+    [SerializeField] private GameObject messagePanelBackButton;
     [Header("Properties")]
     [SerializeField] private float uiEaseTime;
     [SerializeField] private float uiEaseTime2;
@@ -50,16 +54,6 @@ public class LobbyUI : MonoBehaviour
     #endregion
 
     #region FUNCTIONS
-    public void ShowRandomGamePanel()
-    {
-        currentPanel = UIPanels.RANDOM_GAME_SEARCH;
-        randomRoomPanel.gameObject.SetActive(true);
-        mainOptionPanel.DOFade(0, uiEaseTime).SetEase(ease).OnComplete(() =>
-        {
-            randomRoomPanel.DOFade(1, uiEaseTime).SetEase(ease);
-            mainOptionPanel.gameObject.SetActive(false);
-        });
-    }
     public void ShowCustomGame()
     {
         currentPanel = UIPanels.CUSTOM_GAME;
@@ -79,17 +73,52 @@ public class LobbyUI : MonoBehaviour
             {
                 customGamePanel.gameObject.SetActive(false);
                 mainOptionPanel.DOFade(1, uiEaseTime2).SetEase(ease);
+
+                currentPanel = UIPanels.MAIN_OPTIONS;
             });
         }
-        else if (currentPanel == UIPanels.RANDOM_GAME_SEARCH)
+        else if(currentPanel == UIPanels.MESSAGE_PANEL)
         {
-            mainOptionPanel.gameObject.SetActive(true);
-            randomRoomPanel.DOFade(0, uiEaseTime2).SetEase(ease).OnComplete(() =>
+            customGamePanel.gameObject.SetActive(true);
+            messagePanel.DOFade(0, uiEaseTime2).SetEase(ease).OnComplete(() =>
             {
-                mainOptionPanel.DOFade(1, uiEaseTime2).SetEase(ease);
-                randomRoomPanel.gameObject.SetActive(false);
+                customGamePanel.DOFade(1, uiEaseTime2).SetEase(ease);
+                messagePanel.gameObject.SetActive(false);
+
+                currentPanel = UIPanels.CUSTOM_GAME;
             });
         }
+    }
+    public void ShowMessagePanel(string m)
+    {
+        message.text = m;
+
+        if (currentPanel == UIPanels.CUSTOM_GAME)
+        {
+            messagePanel.gameObject.SetActive(true);
+            customGamePanel.DOFade(0, uiEaseTime2).SetEase(ease).OnComplete(() =>
+            {
+                customGamePanel.gameObject.SetActive(false);
+                messagePanel.DOFade(1, uiEaseTime2).SetEase(ease);
+
+                currentPanel = UIPanels.MESSAGE_PANEL;
+            });
+        }
+        else if(currentPanel == UIPanels.MAIN_OPTIONS)
+        {
+            messagePanel.gameObject.SetActive(true);
+            mainOptionPanel.DOFade(0, uiEaseTime2).SetEase(ease).OnComplete(() =>
+            {
+                mainOptionPanel.gameObject.SetActive(false);
+                messagePanel.DOFade(1, uiEaseTime2).SetEase(ease);
+
+                currentPanel = UIPanels.MESSAGE_PANEL;
+            });
+        }
+    }
+    public void ShowBackButton()
+    {
+        messagePanelBackButton.SetActive(true);
     }
     public void HowToPlay()
     {
@@ -99,5 +128,5 @@ public class LobbyUI : MonoBehaviour
 }
 public enum UIPanels
 {
-    LOGO, MAIN_OPTIONS, CUSTOM_GAME, RANDOM_GAME_SEARCH, LOBBY
+    LOGO, MAIN_OPTIONS, CUSTOM_GAME, RANDOM_GAME_SEARCH, LOBBY,MESSAGE_PANEL
 }
