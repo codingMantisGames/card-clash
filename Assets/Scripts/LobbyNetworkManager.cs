@@ -8,12 +8,11 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class LobbyNetworkManager : MonoBehaviour,INetworkRunnerCallbacks
+public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
 {
 
     #region VARIABLES
-    private NetworkRunner _networkRunner;
-    public FusionBootstrap _fusionBootstrap;
+    private NetworkRunner _runner;
     public static LobbyNetworkManager instance;
     [SerializeField] private TMP_InputField roomName;
     #endregion
@@ -33,112 +32,139 @@ public class LobbyNetworkManager : MonoBehaviour,INetworkRunnerCallbacks
     }
     void Update()
     {
+        if (_runner != null && _runner.IsConnectedToServer)
+            Debug.Log("Connected!");
     }
     #endregion
 
     #region FUNCTIONS
     public void CreateRoom()
     {
-        _fusionBootstrap.DefaultRoomName = roomName.text;
-        _fusionBootstrap.StartHost();
+        StartGame(GameMode.Host);
+    }
+    async void StartGame(GameMode mode)
+    {
+        _runner = gameObject.AddComponent<NetworkRunner>();
+        _runner.ProvideInput = true;
+
+        var scene = SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex);
+        var sceneInfo = new NetworkSceneInfo();
+        if (scene.IsValid)
+        {
+            sceneInfo.AddSceneRef(scene, LoadSceneMode.Additive);
+        }
+
+        var result = await _runner.StartGame(new StartGameArgs()
+        {
+            GameMode = mode,
+            SessionName = "TestRoom",
+            Scene = scene,
+            SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
+        });
+
+        if (result.Ok)
+            Debug.Log("Connected");
+        else
+            Debug.Log(result.ShutdownReason);
     }
 
+
+    #endregion
+
+    #region CALLBACKS
     public void OnObjectExitAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player)
     {
-        Debug.Log("Connected " + runner.IsConnectedToServer);
+        // throw new NotImplementedException();
     }
 
     public void OnObjectEnterAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player)
     {
-        Debug.Log("Connected " + runner.IsConnectedToServer);
+        //throw new NotImplementedException();
     }
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
-        Debug.Log("Connected " + runner.IsConnectedToServer);
+        // throw new NotImplementedException();
     }
 
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
     {
-        Debug.Log("Connected " + runner.IsConnectedToServer);
+        // throw new NotImplementedException();
     }
 
     public void OnShutdown(NetworkRunner runner, ShutdownReason shutdownReason)
     {
-        Debug.Log("Connected " + runner.IsConnectedToServer);
+        // throw new NotImplementedException();
     }
 
     public void OnDisconnectedFromServer(NetworkRunner runner, NetDisconnectReason reason)
     {
-        Debug.Log("Connected " + runner.IsConnectedToServer);
+        //throw new NotImplementedException();
     }
 
     public void OnConnectRequest(NetworkRunner runner, NetworkRunnerCallbackArgs.ConnectRequest request, byte[] token)
     {
-        Debug.Log("Connected " + runner.IsConnectedToServer);
+        //throw new NotImplementedException();
     }
 
     public void OnConnectFailed(NetworkRunner runner, NetAddress remoteAddress, NetConnectFailedReason reason)
     {
-        Debug.Log("Connected " + runner.IsConnectedToServer);
+        //throw new NotImplementedException();
     }
 
     public void OnUserSimulationMessage(NetworkRunner runner, SimulationMessagePtr message)
     {
-        Debug.Log("Connected " + runner.IsConnectedToServer);
+        //throw new NotImplementedException();
     }
 
     public void OnReliableDataReceived(NetworkRunner runner, PlayerRef player, ReliableKey key, ArraySegment<byte> data)
     {
-        Debug.Log("Connected " + runner.IsConnectedToServer);
+        //throw new NotImplementedException();
     }
 
     public void OnReliableDataProgress(NetworkRunner runner, PlayerRef player, ReliableKey key, float progress)
     {
-        Debug.Log("Connected " + runner.IsConnectedToServer);
+        // throw new NotImplementedException();
     }
 
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
-        Debug.Log("Connected " + runner.IsConnectedToServer);
+        //throw new NotImplementedException();
     }
 
     public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input)
     {
-        Debug.Log("Connected " + runner.IsConnectedToServer);
+        //throw new NotImplementedException();
     }
 
     public void OnConnectedToServer(NetworkRunner runner)
     {
-        Debug.Log("Connected " + runner.IsConnectedToServer);
+        // Debug.Log("Connected");
     }
 
     public void OnSessionListUpdated(NetworkRunner runner, List<SessionInfo> sessionList)
     {
-        Debug.Log("Connected " + runner.IsConnectedToServer);
+        // throw new NotImplementedException();
     }
 
     public void OnCustomAuthenticationResponse(NetworkRunner runner, Dictionary<string, object> data)
     {
-        Debug.Log("Connected " + runner.IsConnectedToServer);
+        //throw new NotImplementedException();
     }
 
     public void OnHostMigration(NetworkRunner runner, HostMigrationToken hostMigrationToken)
     {
-        Debug.Log("Connected " + runner.IsConnectedToServer);
+        // throw new NotImplementedException();
     }
 
     public void OnSceneLoadDone(NetworkRunner runner)
     {
-        Debug.Log("Connected " + runner.IsConnectedToServer);
+        // throw new NotImplementedException();
     }
 
     public void OnSceneLoadStart(NetworkRunner runner)
     {
-        Debug.Log("Connected " + runner.IsConnectedToServer);
+        //  throw new NotImplementedException();
     }
-    #endregion
-
-    #region CALLBACKS
     #endregion
 }
