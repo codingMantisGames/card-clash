@@ -229,8 +229,9 @@ MonoBehaviour:
   meshRenderers: []
   redMat: {fileID: 2100000, guid: 3f561083fa42c644ebf20da19d0fc018, type: 2}
   blueMat: {fileID: 2100000, guid: decc268bacac0d74b99734a14e0290da, type: 2}
-  outline: {fileID: 0}
+  outline: {fileID: 66556957373014299}
   isMainBuilding: 0
+  _isLeft: 0
 --- !u!65 &4201115983298181027
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -266,9 +267,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 903225135
   ObjectInterest: 1
-  Flags: 262145
+  Flags: 786433
   NestedObjects: []
   NetworkedBehaviours:
+  - {fileID: 3066233325045337603}
   - {fileID: 7267039969938867615}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &7267039969938867615
@@ -484,6 +486,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rogue
       objectReference: {fileID: 0}
+    - target: {fileID: 5183037860120146378, guid: 135308b51a38d6b4b87920e96f452385, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5379671184806846442, guid: 135308b51a38d6b4b87920e96f452385, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -563,6 +569,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4751308623351394377, guid: 135308b51a38d6b4b87920e96f452385, type: 3}
       insertIndex: -1
       addedObject: {fileID: 370285647342909147}
+    - targetCorrespondingSourceObject: {fileID: 4751308623351394377, guid: 135308b51a38d6b4b87920e96f452385, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 66556957373014299}
   m_SourcePrefab: {fileID: 100100000, guid: 135308b51a38d6b4b87920e96f452385, type: 3}
 --- !u!4 &451230628799935742 stripped
 Transform:
@@ -596,3 +605,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &66556957373014299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939219811120262724}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 4.03
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

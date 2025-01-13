@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fusion;
 
-public class PlaceableItem : MonoBehaviour
+public class PlaceableItem : NetworkBehaviour
 {
     #region VARIABLES
     [SerializeField] private List<MeshRenderer> meshRenderers;
@@ -11,15 +12,14 @@ public class PlaceableItem : MonoBehaviour
 
     [SerializeField, Space(20)] private Outline outline;
     [SerializeField] private bool isMainBuilding = false;
-    private bool isLeft;
+    [Networked] public bool isLeft { set; get; }
     bool isSelected;
     #endregion
 
     #region UNITY FUNCTIONS
     void Start()
     {
-        if (!isMainBuilding)
-            SetBuilding(Gamemanager.instance.isLeft);
+
     }
     void Update()
     {
@@ -39,6 +39,11 @@ public class PlaceableItem : MonoBehaviour
             else
                 item.material = blueMat;
         }
+    }
+    private void OnMouseDown()
+    {
+        if (Gamemanager.instance.isLeft == isLeft && Gamemanager.instance.currentRoundStage != RoundStage.USING_CARDS)
+            outline.enabled = !outline.enabled;
     }
     #endregion
 }

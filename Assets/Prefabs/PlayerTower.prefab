@@ -55,6 +55,7 @@ MonoBehaviour:
   blueMat: {fileID: 2100000, guid: decc268bacac0d74b99734a14e0290da, type: 2}
   outline: {fileID: 0}
   isMainBuilding: 1
+  _isLeft: 0
 --- !u!65 &3109869589860969009
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -93,6 +94,7 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
+  - {fileID: 3415752552328933077}
   - {fileID: 8142994884749779760}
   - {fileID: -1789207361431441102}
   ForceRemoteRenderTimeframe: 0

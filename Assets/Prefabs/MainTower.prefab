@@ -53,6 +53,7 @@ MonoBehaviour:
   blueMat: {fileID: 2100000, guid: decc268bacac0d74b99734a14e0290da, type: 2}
   outline: {fileID: 0}
   isMainBuilding: 0
+  _isLeft: 0
 --- !u!65 &2087415391233486275
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -90,7 +91,8 @@ MonoBehaviour:
   ObjectInterest: 1
   Flags: 262145
   NestedObjects: []
-  NetworkedBehaviours: []
+  NetworkedBehaviours:
+  - {fileID: 6081985676479222910}
   ForceRemoteRenderTimeframe: 0
 --- !u!1001 &2491352253091111012
 PrefabInstance:

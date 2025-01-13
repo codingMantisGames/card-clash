@@ -56,7 +56,7 @@ public class HexagonManager : NetworkBehaviour
     {
         int index = System.Array.IndexOf(hexagonTiles, activeHexagon.GetComponent<HexagonTile>());
         HexagonManager.activeHexagon = null;
-        RPC_SpawnItem(id, index);
+        RPC_SpawnItem(id, index, Gamemanager.instance.isLeft);
     }
     public void SetRotationNow()
     {
@@ -77,7 +77,7 @@ public class HexagonManager : NetworkBehaviour
         }
     }
     [Rpc(RpcSources.All, RpcTargets.All, HostMode = RpcHostMode.SourceIsHostPlayer)]
-    public void RPC_SpawnItem(string id, int index)
+    public void RPC_SpawnItem(string id, int index, bool isLeft)
     {
         if (Runner.IsServer)
         {
@@ -91,13 +91,14 @@ public class HexagonManager : NetworkBehaviour
             }
 
             HexagonTile tile = hexagonTiles[index];
-            //Transform t = Instantiate(gm, tile.buildPoint).transform;
             Transform t = Runner.Spawn(gm, tile.buildPoint.position, tile.buildPoint.rotation).transform;
             t.localScale = Vector3.one * 1.6f;
             tile.isUsed = true;
 
-            /* if (!Gamemanager.instance.isLeft)
-                 t.rotation = Quaternion.Euler(0, 180, 0);*/
+            if (t.TryGetComponent<PlaceableItem>(out PlaceableItem placeableItem))
+            {
+                placeableItem.isLeft = isLeft;
+            }
         }
     }
     #endregion
