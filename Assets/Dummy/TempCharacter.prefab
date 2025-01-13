@@ -231,7 +231,10 @@ MonoBehaviour:
   blueMat: {fileID: 2100000, guid: decc268bacac0d74b99734a14e0290da, type: 2}
   outline: {fileID: 66556957373014299}
   isMainBuilding: 0
+  movementType: 0
   _isLeft: 0
+  _tileIndex: 0
+  animController: {fileID: 370285647342909147}
 --- !u!65 &4201115983298181027
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -288,7 +291,7 @@ MonoBehaviour:
   _stateAuthorityChangeErrorCorrectionDelta: 0.15
   SyncScale: 1
   SyncParent: 1
-  _autoAOIOverride: 1
+  _autoAOIOverride: 0
   DisableSharedModeInterpolation: 0
 --- !u!1 &5783947870204285385
 GameObject:
@@ -528,19 +531,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5385138196213164787, guid: 135308b51a38d6b4b87920e96f452385, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7072192
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5385138196213164787, guid: 135308b51a38d6b4b87920e96f452385, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5385138196213164787, guid: 135308b51a38d6b4b87920e96f452385, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7069945
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5385138196213164787, guid: 135308b51a38d6b4b87920e96f452385, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5385138196213164787, guid: 135308b51a38d6b4b87920e96f452385, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -548,7 +551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5385138196213164787, guid: 135308b51a38d6b4b87920e96f452385, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 89.982
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 5385138196213164787, guid: 135308b51a38d6b4b87920e96f452385, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -593,7 +596,7 @@ Animator:
   m_GameObject: {fileID: 939219811120262724}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 546aee78431e5a14088956650663d912, type: 2}
+  m_Controller: {fileID: 9100000, guid: 78ed21e3ea2a0c74cb723284128bf7eb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -619,7 +622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 0
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 4.03
+  outlineWidth: 1.6
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []

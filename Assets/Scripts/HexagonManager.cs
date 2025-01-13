@@ -9,6 +9,7 @@ public class HexagonManager : NetworkBehaviour
     public static HexagonManager instance;
     private HexagonTile[] hexagonTiles;
     public static Transform activeHexagon;
+    private bool isHexMoveOn = false;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -91,15 +92,54 @@ public class HexagonManager : NetworkBehaviour
             }
 
             HexagonTile tile = hexagonTiles[index];
-            Transform t = Runner.Spawn(gm, tile.buildPoint.position, tile.buildPoint.rotation).transform;
+            NetworkObject n = Runner.Spawn(gm, tile.buildPoint.position, tile.buildPoint.rotation);
+
+            Transform t = n.transform;
             t.localScale = Vector3.one * 1.6f;
             tile.isUsed = true;
 
             if (t.TryGetComponent<PlaceableItem>(out PlaceableItem placeableItem))
             {
-                placeableItem.isLeft = isLeft;
+                placeableItem.SetBuilding(isLeft);
+                placeableItem.tileIndex = index;
             }
         }
+    }
+
+    public void ShowMovableTiles(int index, MovementType movementType)
+    {
+        HexagonTile tile = hexagonTiles[index];
+
+        if (isHexMoveOn)
+            HideAllHex();
+
+        CursorChanger.instance.SetMoveCursor();
+
+        if (movementType == MovementType.ADJACENT)
+        {
+            foreach (var item in tile.adjacentTiles)
+            {
+                if (!item.isNoBuildZone || item.isUsed)
+                    item.ToggleHexagon(true);
+            }
+        }
+
+        isHexMoveOn = true;
+    }
+    public void HideAllHex()
+    {
+        foreach (var item in hexagonTiles)
+        {
+            item.ToggleHexagon(false);
+        }
+
+        CursorChanger.instance.SetNormalCursor();
+
+        isHexMoveOn = false;
+    }
+    public int GetIndex(HexagonTile tile)
+    {
+        return System.Array.IndexOf(hexagonTiles, tile);
     }
     #endregion
 }

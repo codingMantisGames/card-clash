@@ -51,18 +51,18 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
 
         if (_runner == null)
         {
-            if (GUI.Button(new Rect(0, 0, 200, 40), "Host"))
+            if (GUI.Button(new Rect(0, 200, 200, 40), "Host"))
             {
                 StartGame(GameMode.Host);
             }
-            if (GUI.Button(new Rect(0, 40, 200, 40), "Join"))
+            if (GUI.Button(new Rect(0, 250, 200, 40), "Join"))
             {
                 StartGame(GameMode.Client);
             }
         }
         else
         {
-            if (_runner.IsServer && !isGameStarted && GUI.Button(new Rect(0, 0, 200, 40), "Start Game"))
+            if (_runner.IsServer && !isGameStarted && GUI.Button(new Rect(0, 200, 200, 40), "Start Game"))
             {
                 StartGame();
             }

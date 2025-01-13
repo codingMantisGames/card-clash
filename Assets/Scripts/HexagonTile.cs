@@ -12,6 +12,7 @@ public class HexagonTile : NetworkBehaviour
     public bool isPlayerZone;
     [SerializeField] private MeshRenderer hexRenderer;
     public Transform buildPoint;
+    public List<HexagonTile> adjacentTiles;
 
 
     [Header("Properties")]
@@ -21,6 +22,8 @@ public class HexagonTile : NetworkBehaviour
 
     [Header("Networked Properties")]
     [Networked] public bool isUsed { get; set; }
+
+    public float radius;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -72,5 +75,32 @@ public class HexagonTile : NetworkBehaviour
         itemPlaced = item;
         isUsed = true;
     }
+    private void OnMouseDown()
+    {
+        if (Gamemanager.instance.currentRoundStage == RoundStage.USING_CARDS || !isBuildMode)
+            return;
+        HexagonManager.instance.HideAllHex();
+        Gamemanager.instance.MoveCuurentItem(buildPoint.position, HexagonManager.instance.GetIndex(this));
+
+        Gamemanager.instance.OnItemSelected?.Invoke();
+    }
+    /*[ContextMenu("Get it")]
+    public void GetAllAdjacent()
+    {
+        Collider[] colls = Physics.OverlapSphere(transform.position, radius);
+
+        adjacentTiles = new List<HexagonTile>();
+        foreach (var item in colls)
+        {
+            if (item.TryGetComponent<HexagonTile>(out HexagonTile hex) && hex != this)
+            {
+                adjacentTiles.Add(hex);
+            }
+        }
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, radius);
+    }*/
     #endregion
 }
