@@ -15,6 +15,7 @@ public class LobbyUI : MonoBehaviour
     [SerializeField] private CanvasGroup messagePanel;
     [SerializeField] private TMP_Text message;
     [SerializeField] private GameObject messagePanelBackButton;
+
     [Header("Properties")]
     [SerializeField] private float uiEaseTime;
     [SerializeField] private float uiEaseTime2;
@@ -77,7 +78,7 @@ public class LobbyUI : MonoBehaviour
                 currentPanel = UIPanels.MAIN_OPTIONS;
             });
         }
-        else if(currentPanel == UIPanels.MESSAGE_PANEL)
+        else if (currentPanel == UIPanels.MESSAGE_PANEL)
         {
             customGamePanel.gameObject.SetActive(true);
             messagePanel.DOFade(0, uiEaseTime2).SetEase(ease).OnComplete(() =>
@@ -104,7 +105,7 @@ public class LobbyUI : MonoBehaviour
                 currentPanel = UIPanels.MESSAGE_PANEL;
             });
         }
-        else if(currentPanel == UIPanels.MAIN_OPTIONS)
+        else if (currentPanel == UIPanels.MAIN_OPTIONS)
         {
             messagePanel.gameObject.SetActive(true);
             mainOptionPanel.DOFade(0, uiEaseTime2).SetEase(ease).OnComplete(() =>
@@ -128,5 +129,5 @@ public class LobbyUI : MonoBehaviour
 }
 public enum UIPanels
 {
-    LOGO, MAIN_OPTIONS, CUSTOM_GAME, RANDOM_GAME_SEARCH, LOBBY,MESSAGE_PANEL
+    LOGO, MAIN_OPTIONS, CUSTOM_GAME, RANDOM_GAME_SEARCH, LOBBY, MESSAGE_PANEL
 }

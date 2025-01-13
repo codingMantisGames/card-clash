@@ -17,6 +17,14 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     public static LobbyNetworkManager instance;
     [SerializeField] private TMP_InputField roomName;
     private string nameOfRoom;
+    public PlayerRef currentPlayer;
+
+    [SerializeField, Space(20)] private Transform playerOnePosition;
+    [SerializeField] private Transform playerTwoPosition;
+
+    [SerializeField] private GameObject mainPrefab;
+
+    [Networked] public bool isGameStarted { get; set; }
     #endregion
 
     #region UNITY FUNCTIONS
@@ -34,12 +42,33 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     }
     void Update()
     {
-        if (_runner != null && _runner.IsConnectedToServer)
-            Debug.Log("Connected!");
     }
     #endregion
 
-    #region FUNCTIONS
+    #region LOBBY
+    private void OnGUI()
+    {
+
+        if (_runner == null)
+        {
+            if (GUI.Button(new Rect(0, 0, 200, 40), "Host"))
+            {
+                StartGame(GameMode.Host);
+            }
+            if (GUI.Button(new Rect(0, 40, 200, 40), "Join"))
+            {
+                StartGame(GameMode.Client);
+            }
+        }
+        else
+        {
+            if (_runner.IsServer && !isGameStarted && GUI.Button(new Rect(0, 0, 200, 40), "Start Game"))
+            {
+                StartGame();
+            }
+        }
+    }
+
     public void JoinRandomGame()
     {
         nameOfRoom = roomName.text;
@@ -50,7 +79,8 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     }
     public void CreateRoom()
     {
-        nameOfRoom = roomName.text;
+        //nameOfRoom = roomName.text;
+        nameOfRoom = "Nehal";
 
         lobbyUI.ShowMessagePanel("Creating Custom Room.");
 
@@ -58,11 +88,12 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     }
     public void JoinRoom()
     {
-        nameOfRoom = roomName.text;
+        //nameOfRoom = roomName.text;
+        nameOfRoom = "Nehal";
 
         lobbyUI.ShowMessagePanel("Joining Custom Room.");
 
-        StartGame(GameMode.Client);
+        StartGame(GameMode.Host);
     }
     async void StartGame(GameMode mode)
     {
@@ -88,14 +119,18 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
         if (result.Ok)
         {
             Debug.Log("Connected");
-            lobbyUI.ShowMessagePanel("Joined Room! \n Waiting for Second player.");
+            if (lobbyUI)
+                lobbyUI.ShowMessagePanel("Joined Room! \n Waiting for Second player.");
         }
         else
         {
             Debug.Log(result.ShutdownReason);
-            lobbyUI.ShowMessagePanel("Error! \n " + result.ErrorMessage);
+            if (lobbyUI)
+            {
+                lobbyUI.ShowMessagePanel("Error! \n " + result.ErrorMessage);
+                lobbyUI.ShowBackButton();
+            }
 
-            lobbyUI.ShowBackButton();
         }
     }
 
@@ -196,6 +231,47 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     public void OnSceneLoadStart(NetworkRunner runner)
     {
         //  throw new NotImplementedException();
+    }
+    #endregion
+
+    #region IN GAME
+    [SimpleButton]
+    public void StartGame()
+    {
+        if (_runner.IsServer)
+        {
+            isGameStarted = true;
+
+            int i = 0;
+            foreach (var item in _runner.ActivePlayers)
+            {
+                Transform p = i == 0 ? playerOnePosition : playerTwoPosition;
+                GameObject gm = _runner.Spawn(mainPrefab, p.position, Quaternion.Euler(0, 0, 0), item).gameObject;
+
+                if (gm.TryGetComponent<PlayerTower>(out PlayerTower playerTower))
+                {
+                    if (i == 0)
+                        playerTower.isRedPlayer = true;
+
+                    if (p.parent.gameObject.TryGetComponent<HexagonTile>(out HexagonTile tile))
+                    {
+                        tile.PlaceItem(gm);
+                    }
+
+                    playerTower.life = 7;
+
+                    gm.transform.parent = HexagonManager.instance.transform;
+                }
+                i++;
+            }
+
+            Invoke("ChangeRotation", 1f);
+            
+        }
+    }
+    void ChangeRotation()
+    {
+        HexagonManager.instance.SetRotationNow();
     }
     #endregion
 }

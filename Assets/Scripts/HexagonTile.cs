@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fusion;
 
-public class HexagonTile : MonoBehaviour
+public class HexagonTile : NetworkBehaviour
 {
     #region VARIABLES
+    public GameObject itemPlaced;
     public bool isLeft;
     public bool isNoBuildZone;
     public bool isPlayerZone;
@@ -16,9 +18,15 @@ public class HexagonTile : MonoBehaviour
     [SerializeField] private Color selectedColor;
     [SerializeField] private Color normalColor;
     private bool isBuildMode;
+
+    [Header("Networked Properties")]
+    [Networked] public bool isUsed { get; set; }
     #endregion
 
     #region UNITY FUNCTIONS
+    private void Awake()
+    {
+    }
     void Start()
     {
 
@@ -58,6 +66,11 @@ public class HexagonTile : MonoBehaviour
         isBuildMode = flag;
         hexRenderer.material.color = normalColor;
         hexRenderer.gameObject.SetActive(flag);
+    }
+    public void PlaceItem(GameObject item)
+    {
+        itemPlaced = item;
+        isUsed = true;
     }
     #endregion
 }

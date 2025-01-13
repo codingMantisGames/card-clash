@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1645089204742342625}
-  - component: {fileID: 6393301271362413292}
   - component: {fileID: 6081985676479222910}
   - component: {fileID: 2087415391233486275}
+  - component: {fileID: 8630055275499885723}
   m_Layer: 7
   m_Name: MainTower
   m_TagString: Untagged
@@ -35,24 +35,6 @@ Transform:
   - {fileID: 2673368866232469391}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6393301271362413292
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513522588428955393}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 4.39
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!114 &6081985676479222910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,7 +51,7 @@ MonoBehaviour:
   - {fileID: 3842302814697028832}
   redMat: {fileID: 2100000, guid: 3f561083fa42c644ebf20da19d0fc018, type: 2}
   blueMat: {fileID: 2100000, guid: decc268bacac0d74b99734a14e0290da, type: 2}
-  outline: {fileID: 6393301271362413292}
+  outline: {fileID: 0}
   isMainBuilding: 0
 --- !u!65 &2087415391233486275
 BoxCollider:
@@ -92,6 +74,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.4548641, y: 1.6611989, z: 1.4950433}
   m_Center: {x: -3.2206406e-21, y: 0.817942, z: -4.6343934e-14}
+--- !u!114 &8630055275499885723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513522588428955393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 2445163542
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours: []
+  ForceRemoteRenderTimeframe: 0
 --- !u!1001 &2491352253091111012
 PrefabInstance:
   m_ObjectHideFlags: 0

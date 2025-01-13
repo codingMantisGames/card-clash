@@ -6,7 +6,6 @@ using DG.Tweening;
 public class CardManager : MonoBehaviour
 {
     #region VARIABLES
-    [SerializeField] private List<CardData> cardDatas;
     [SerializeField] private HexagonManager hexagonManager;
     public Camera dragCamera;
     [Header("Properties")]
@@ -93,14 +92,10 @@ public class CardManager : MonoBehaviour
         {
             Invoke("AlignCard", 0.1f);
 
-            foreach (var item in cardDatas)
-            {
-                if (item.cardID == card.cardID)
-                    hexagonManager.SpawnBuilding(item.prefab);
-            }
+            hexagonManager.SpawnBuilding(card.cardID);
         }
 
-        HexagonManager.activeHexagon = null;
+       // HexagonManager.activeHexagon = null;
     }
     [SimpleButton]
     public void AddNewCard()
