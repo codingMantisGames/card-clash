@@ -21,13 +21,21 @@ public class PlaceableItem : NetworkBehaviour
     Vector3 targetPos;
     bool canMove;
     [SerializeField] private Animator animController;
+    [SerializeField] private Transform textHolder;
+    [HideInInspector] public int moveCount;
     #endregion
 
     #region UNITY FUNCTIONS
-    void Start()
+    IEnumerator Start()
     {
         targetPos = transform.position;
 
+        yield return new WaitForEndOfFrame();
+        if (!Gamemanager.instance.isLeft && textHolder)
+        {
+            textHolder.transform.localRotation = Quaternion.Euler(0, 180, 0);
+        }
+        ResetRound();
     }
     void Update()
     {
@@ -36,6 +44,10 @@ public class PlaceableItem : NetworkBehaviour
     #endregion
 
     #region FUNCTIONS
+    public void ResetRound()
+    {
+        moveCount = 1;
+    }
     public void SetBuilding(bool flag = false)
     {
         isLeft = flag;
@@ -47,11 +59,14 @@ public class PlaceableItem : NetworkBehaviour
             else
                 item.material = blueMat;
         }
-
-        if (Gamemanager.instance.isLeft == isLeft)
-        {
-            Gamemanager.instance.OnItemSelected += HideOutline;
-        }
+    }
+    private void OnEnable()
+    {
+        Gamemanager.instance.OnItemSelected += HideOutline;
+    }
+    public void SetInitialRotation()
+    {
+        RPC_SetRotation(Quaternion.Euler(0, 270, 0));
     }
     private void OnDestroy()
     {
@@ -59,6 +74,12 @@ public class PlaceableItem : NetworkBehaviour
     }
     private void OnMouseDown()
     {
+        if (moveCount == 0)
+        {
+            Debug.LogWarning("Cant Move!.How this as some message");
+            return;
+        }
+
         if (Gamemanager.instance.isLeft == isLeft && Gamemanager.instance.currentRoundStage != RoundStage.USING_CARDS && !isHighlighted)
         {
             Gamemanager.instance.OnItemSelected?.Invoke();
@@ -73,6 +94,7 @@ public class PlaceableItem : NetworkBehaviour
             isHighlighted = true;
 
             Gamemanager.instance.currentItemToMove = this;
+            CursorChanger.instance.SetMoveCursor();
         }
         else if (isHighlighted)
         {
@@ -88,21 +110,23 @@ public class PlaceableItem : NetworkBehaviour
     }
     public void HideOutline()
     {
-        outline.enabled = false;
+        if (outline)
+            outline.enabled = false;
         isHighlighted = false;
 
-        CursorChanger.instance.SetMoveCursor();
+        CursorChanger.instance.SetNormalCursor();
 
         Gamemanager.instance.currentItemToMove = null;
     }
-    public void MoveToPosition(Vector3 pos, int index)
+    public void MoveToPosition(Vector3[] pos, int index, bool isLeft, int cIndex)
     {
-        RPC_MoveTo(pos, index);
+        RPC_MoveTo(pos, index, isLeft, cIndex);
     }
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-    public void RPC_MoveTo(Vector3 pos, int i)
+    public void RPC_MoveTo(Vector3[] pos, int i, bool isLeft, int cIndex)
     {
-        Vector3 direction = pos - transform.position;
+        moveCount--;
+        /*Vector3 direction = pos - transform.position;
 
         Quaternion targetRot = Quaternion.LookRotation(direction);
         //targetPos = pos;
@@ -114,13 +138,48 @@ public class PlaceableItem : NetworkBehaviour
             RPC_StartAnimation("move", false, Quaternion.Euler(0, 90, 0));
         });
         canMove = true;
-        tileIndex = i;
+        tileIndex = i;*/
+        Sequence sequence = DOTween.Sequence();
+
+        for (int j = 1; j < pos.Length; j++)
+        {
+            Vector3 direction = pos[j] - transform.position;
+
+            Quaternion targetRot = Quaternion.LookRotation(direction);
+
+            sequence.Append(
+           DOTween.To(() => targetPos, x => targetPos = x, pos[j], 1f).OnStart(() =>
+            {
+                ///RPC_StartAnimation("move", true);
+                RPC_SetRotation(targetRot);
+            }));
+        }
+        RPC_StartAnimation("move", true);
+        sequence.OnComplete(() =>
+        {
+            canMove = false;
+            RPC_StartAnimation("move", false);
+            RPC_SetRotation(Quaternion.Euler(0, isLeft ? 90 : 270, 0));
+            tileIndex = i;
+
+            HexagonTile tile = HexagonManager.instance.GetHexagon(i);
+            tile.isUsed = true;
+            tile = HexagonManager.instance.GetHexagon(cIndex);
+            tile.isUsed = false;
+        });
+
+        sequence.Play();
+        canMove = true;
     }
     [Rpc(RpcSources.All, RpcTargets.All)]
-    public void RPC_StartAnimation(string anim, bool flag, Quaternion rot)
+    public void RPC_StartAnimation(string anim, bool flag)
     {
-        transform.GetChild(0).rotation = rot;
         animController.SetBool(anim, flag);
+    }
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void RPC_SetRotation(Quaternion rot)
+    {
+        transform.GetChild(0).localRotation = rot;
     }
     public override void Render()
     {

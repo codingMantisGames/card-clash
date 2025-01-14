@@ -5,7 +5,7 @@ using System;
 using DG.Tweening;
 using Fusion;
 
-public class Gamemanager : MonoBehaviour
+public class Gamemanager : NetworkBehaviour
 {
     #region VARIABLES
     public List<CardData> cardDatas;
@@ -76,11 +76,16 @@ public class Gamemanager : MonoBehaviour
 
         Gamemanager.instance.OnItemSelected?.Invoke();
     }
-    public void MoveCuurentItem(Vector3 pos, int index)
+
+    public void MoveCuurentItem(HexagonTile target, int index)
     {
         if (currentItemToMove == null)
             return;
-        currentItemToMove.MoveToPosition(pos, index);
+        HexagonTile currentTile = HexagonManager.instance.GetHexagon(currentItemToMove.tileIndex);
+        
+        List<Vector3> locations = AStarPathFinding.FindPath(currentTile, target);
+
+        currentItemToMove.MoveToPosition(locations.ToArray(), index, isLeft, currentItemToMove.tileIndex);
     }
     #endregion
 }

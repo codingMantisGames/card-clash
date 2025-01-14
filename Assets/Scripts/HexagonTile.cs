@@ -24,6 +24,7 @@ public class HexagonTile : NetworkBehaviour
     [Networked] public bool isUsed { get; set; }
 
     public float radius;
+    public int index;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -32,7 +33,7 @@ public class HexagonTile : NetworkBehaviour
     }
     void Start()
     {
-
+        index = HexagonManager.instance.GetIndex(this);
     }
     void Update()
     {
@@ -80,7 +81,7 @@ public class HexagonTile : NetworkBehaviour
         if (Gamemanager.instance.currentRoundStage == RoundStage.USING_CARDS || !isBuildMode)
             return;
         HexagonManager.instance.HideAllHex();
-        Gamemanager.instance.MoveCuurentItem(buildPoint.position, HexagonManager.instance.GetIndex(this));
+        Gamemanager.instance.MoveCuurentItem(this, HexagonManager.instance.GetIndex(this));
 
         Gamemanager.instance.OnItemSelected?.Invoke();
     }
@@ -102,5 +103,10 @@ public class HexagonTile : NetworkBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, radius);
     }*/
+    [ContextMenu("Show Hex")]
+    public void ShowHex()
+    {
+        ToggleHexagon(true);
+    }
     #endregion
 }

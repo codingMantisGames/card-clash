@@ -16,10 +16,10 @@ public class HexagonManager : NetworkBehaviour
     private void Awake()
     {
         instance = this;
+        hexagonTiles = GetComponentsInChildren<HexagonTile>();
     }
     void Start()
     {
-        hexagonTiles = GetComponentsInChildren<HexagonTile>();
 
         Vector3 cumulativePosition = Vector3.zero;
 
@@ -92,7 +92,7 @@ public class HexagonManager : NetworkBehaviour
             }
 
             HexagonTile tile = hexagonTiles[index];
-            NetworkObject n = Runner.Spawn(gm, tile.buildPoint.position, tile.buildPoint.rotation);
+            NetworkObject n = Runner.Spawn(gm, tile.buildPoint.position, tile.buildPoint.localRotation);
 
             Transform t = n.transform;
             t.localScale = Vector3.one * 1.6f;
@@ -102,6 +102,9 @@ public class HexagonManager : NetworkBehaviour
             {
                 placeableItem.SetBuilding(isLeft);
                 placeableItem.tileIndex = index;
+
+                if (!isLeft)
+                    placeableItem.SetInitialRotation();
             }
         }
     }
@@ -119,7 +122,7 @@ public class HexagonManager : NetworkBehaviour
         {
             foreach (var item in tile.adjacentTiles)
             {
-                if (!item.isNoBuildZone || item.isUsed)
+                if (!item.isNoBuildZone && !item.isUsed)
                     item.ToggleHexagon(true);
             }
         }
@@ -140,6 +143,10 @@ public class HexagonManager : NetworkBehaviour
     public int GetIndex(HexagonTile tile)
     {
         return System.Array.IndexOf(hexagonTiles, tile);
+    }
+    public HexagonTile GetHexagon(int index)
+    {
+        return hexagonTiles[index];
     }
     #endregion
 }
