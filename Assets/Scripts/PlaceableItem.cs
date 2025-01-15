@@ -8,6 +8,7 @@ public class PlaceableItem : NetworkBehaviour
 {
     #region VARIABLES
     [SerializeField] private List<MeshRenderer> meshRenderers;
+    [SerializeField] private List<SkinnedMeshRenderer> skinnedMeshRenderers;
     [SerializeField] private Material redMat;
     [SerializeField] private Material blueMat;
 
@@ -53,6 +54,13 @@ public class PlaceableItem : NetworkBehaviour
         isLeft = flag;
 
         foreach (var item in meshRenderers)
+        {
+            if (flag)
+                item.material = redMat;
+            else
+                item.material = blueMat;
+        }
+        foreach (var item in skinnedMeshRenderers)
         {
             if (flag)
                 item.material = redMat;

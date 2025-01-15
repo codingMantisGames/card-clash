@@ -10,12 +10,8 @@ public class CardData : ScriptableObject
     public GameObject prefab; 
 
     [Space(20)]
-    public Sprite topRedCard;
-    public Sprite topBlueCard;
-
-    [Space(20)]
-    public Sprite bottomRedCard;
-    public Sprite bottomBlueCard;
+    public Sprite red;
+    public Sprite blue;
     #endregion
 
     #region FUNCTIONS
