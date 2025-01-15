@@ -7,7 +7,6 @@ using DG.Tweening;
 public class PlaceableItem : NetworkBehaviour
 {
     #region VARIABLES
-    [SerializeField] private List<MeshRenderer> meshRenderers;
     [SerializeField] private List<SkinnedMeshRenderer> skinnedMeshRenderers;
     [SerializeField] private Material redMat;
     [SerializeField] private Material blueMat;
@@ -24,6 +23,7 @@ public class PlaceableItem : NetworkBehaviour
     [SerializeField] private Animator animController;
     [SerializeField] private Transform textHolder;
     [HideInInspector] public int moveCount;
+    public GameObject itemToDisable;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -53,13 +53,6 @@ public class PlaceableItem : NetworkBehaviour
     {
         isLeft = flag;
 
-        foreach (var item in meshRenderers)
-        {
-            if (flag)
-                item.material = redMat;
-            else
-                item.material = blueMat;
-        }
         foreach (var item in skinnedMeshRenderers)
         {
             if (flag)
@@ -92,10 +85,6 @@ public class PlaceableItem : NetworkBehaviour
         {
             Gamemanager.instance.OnItemSelected?.Invoke();
 
-            if (isLeft)
-                outline.OutlineColor = Color.red;
-            else
-                outline.OutlineColor = Color.blue;
             outline.enabled = true;
             HexagonManager.instance.ShowMovableTiles(tileIndex, movementType);
 
