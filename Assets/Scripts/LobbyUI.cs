@@ -15,13 +15,12 @@ public class LobbyUI : MonoBehaviour
     [SerializeField] private CanvasGroup messagePanel;
     [SerializeField] private TMP_Text message;
     [SerializeField] private GameObject messagePanelBackButton;
+    [SerializeField] private UIPanelAnimation howToPlayPanel;
 
     [Header("Properties")]
     [SerializeField] private float uiEaseTime;
     [SerializeField] private float uiEaseTime2;
     [SerializeField] private Ease ease;
-
-    [SerializeField, Space(20)] private string howToPlayURL;
 
     [SerializeField, Space(20)] private RectTransform mainLogo;
     #endregion
@@ -89,6 +88,16 @@ public class LobbyUI : MonoBehaviour
                 currentPanel = UIPanels.CUSTOM_GAME;
             });
         }
+        else if (currentPanel == UIPanels.HOW_TO_PLAY)
+        {
+            mainOptionPanel.DOFade(1, uiEaseTime2).SetEase(ease).OnComplete(() =>
+            {
+                mainOptionPanel.gameObject.SetActive(true);
+                howToPlayPanel.gameObject.SetActive(false);
+                currentPanel = UIPanels.MAIN_OPTIONS;
+            });
+            howToPlayPanel.Close();
+        }
     }
     public void ShowMessagePanel(string m)
     {
@@ -123,11 +132,17 @@ public class LobbyUI : MonoBehaviour
     }
     public void HowToPlay()
     {
-        Application.OpenURL(howToPlayURL);
+        currentPanel = UIPanels.HOW_TO_PLAY;
+        mainOptionPanel.DOFade(0, uiEaseTime2).SetEase(ease).OnComplete(() =>
+        {
+            mainOptionPanel.gameObject.SetActive(false);
+            howToPlayPanel.gameObject.SetActive(true);
+            howToPlayPanel.Open();
+        });
     }
     #endregion
 }
 public enum UIPanels
 {
-    LOGO, MAIN_OPTIONS, CUSTOM_GAME, RANDOM_GAME_SEARCH, LOBBY, MESSAGE_PANEL
+    LOGO, MAIN_OPTIONS, CUSTOM_GAME, RANDOM_GAME_SEARCH, LOBBY, MESSAGE_PANEL, HOW_TO_PLAY
 }

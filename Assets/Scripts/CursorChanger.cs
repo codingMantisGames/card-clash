@@ -9,6 +9,7 @@ public class CursorChanger : MonoBehaviour
     public Texture2D normalCursor;
     public Texture2D moveCursor; 
     public Texture2D attackCursor;
+    public Texture2D attackCursor_Focused;
     public Vector2 hotSpot = Vector2.zero;
     #endregion
 
@@ -39,6 +40,10 @@ public class CursorChanger : MonoBehaviour
     public void SetAttackCursor()
     {
         Cursor.SetCursor(attackCursor, hotSpot, CursorMode.Auto);
+    }
+    public void SetAttackCursorFocued()
+    {
+        Cursor.SetCursor(attackCursor_Focused, hotSpot, CursorMode.Auto);
     }
     #endregion
 }

@@ -53,7 +53,7 @@ public class Gamemanager : NetworkBehaviour
         }
         if (GUI.Button(new Rect(420, 0, 200, 40), "Attack Mode"))
         {
-            currentRoundStage = RoundStage.ATTACK;
+            SwitchToAttackMode();
         }
     }
     public void SetTargetCamera(float rot)
@@ -70,6 +70,15 @@ public class Gamemanager : NetworkBehaviour
     public void SwitchToMoveMode()
     {
         currentRoundStage = RoundStage.MOVE_ITEM;
+
+        drawCardsButton.DOAnchorPos3DY(-150, cardAppearTime).SetEase(cardAppearEase);
+        uiCamera.DOMoveY(4, cardAppearTime).SetEase(cardAppearEase);
+
+        Gamemanager.instance.OnItemSelected?.Invoke();
+    }
+    public void SwitchToAttackMode()
+    {
+        currentRoundStage = RoundStage.ATTACK;
 
         drawCardsButton.DOAnchorPos3DY(-150, cardAppearTime).SetEase(cardAppearEase);
         uiCamera.DOMoveY(4, cardAppearTime).SetEase(cardAppearEase);

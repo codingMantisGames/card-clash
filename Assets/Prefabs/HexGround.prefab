@@ -204,6 +204,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HexGround
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: da01eb4f22d2d8a44a0bfef71c016550, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -238,13 +242,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f21496ab329118408d6231040bb3148, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemPlaced: {fileID: 0}
   isLeft: 0
   isNoBuildZone: 0
   isPlayerZone: 0
   hexRenderer: {fileID: 4676753371733212650}
   buildPoint: {fileID: 5386691376589344010}
+  adjacentTiles: []
   selectedColor: {r: 1, g: 0.43867922, b: 0.43867922, a: 0.5019608}
   normalColor: {r: 1, g: 1, b: 1, a: 0.29803923}
+  isBuildMode: 0
+  _isUsed: 0
+  radius: 0
+  index: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!135 &4467649397726259077
 SphereCollider:
   m_ObjectHideFlags: 0

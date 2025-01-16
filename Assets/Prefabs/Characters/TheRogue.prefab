@@ -269,13 +269,23 @@ MonoBehaviour:
   blueMat: {fileID: 2100000, guid: decc268bacac0d74b99734a14e0290da, type: 2}
   outline: {fileID: 2536066491268874153}
   isMainBuilding: 0
-  movementType: 0
+  m_MovementRange: 1
+  m_AttackRange: 2
+  hexagonLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
   _isLeft: 0
   _tileIndex: 0
   animController: {fileID: 4077456186559200360}
   textHolder: {fileID: 9015393438981640601}
   moveCount: 0
   itemToDisable: {fileID: 780574575874029001}
+  line: {fileID: 3194649039516306002, guid: f69300ace23fb7c46a481d7dddb8fce4, type: 3}
+  lines: []
+  checkLineOfSite: 1
 --- !u!65 &4201115983298181027
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -295,8 +305,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5983596, y: 0.9322799, z: 0.65061545}
-  m_Center: {x: 0, y: 0.45348254, z: 6.1646787e-15}
+  m_Size: {x: 0.18643212, y: 0.25978708, z: 0.18062153}
+  m_Center: {x: 0, y: 0.11723589, z: 0}
 --- !u!114 &-573709016634747483
 MonoBehaviour:
   m_ObjectHideFlags: 0

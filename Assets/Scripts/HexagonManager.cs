@@ -9,7 +9,7 @@ public class HexagonManager : NetworkBehaviour
     public static HexagonManager instance;
     private HexagonTile[] hexagonTiles;
     public static Transform activeHexagon;
-    private bool isHexMoveOn = false;
+    [HideInInspector] public bool isHexMoveOn = false;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -108,27 +108,22 @@ public class HexagonManager : NetworkBehaviour
             }
         }
     }
-
-    public void ShowMovableTiles(int index, MovementType movementType)
+    public void CallOnMouseDown(int index)
     {
-        HexagonTile tile = hexagonTiles[index];
-
-        if (isHexMoveOn)
-            HideAllHex();
-
-        CursorChanger.instance.SetMoveCursor();
-
-        if (movementType == MovementType.ADJACENT)
-        {
-            foreach (var item in tile.adjacentTiles)
-            {
-                if (!item.isNoBuildZone && !item.isUsed)
-                    item.ToggleHexagon(true);
-            }
-        }
-
-        isHexMoveOn = true;
+        if (hexagonTiles[index].isBuildMode)
+            hexagonTiles[index].AttackThisTile();
     }
+
+    public void SelectHexagon(HexagonTile tile)
+    {
+        if (!tile.isNoBuildZone && !tile.isUsed)
+            tile.ToggleHexagon(true);
+    }
+    public void SelectHexagonAll(HexagonTile tile)
+    {
+        tile.ToggleHexagon(true);
+    }
+
     public void HideAllHex()
     {
         foreach (var item in hexagonTiles)

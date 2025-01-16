@@ -18,13 +18,16 @@ public class HexagonTile : NetworkBehaviour
     [Header("Properties")]
     [SerializeField] private Color selectedColor;
     [SerializeField] private Color normalColor;
-    private bool isBuildMode;
+    [HideInInspector] public bool isBuildMode;
 
     [Header("Networked Properties")]
     [Networked] public bool isUsed { get; set; }
+    public bool canAttack;
 
     public float radius;
     public int index;
+    private Collider[] playerColliders;
+    [SerializeField] private LayerMask playerLayer;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -34,6 +37,8 @@ public class HexagonTile : NetworkBehaviour
     void Start()
     {
         index = HexagonManager.instance.GetIndex(this);
+
+        canAttack = false;
     }
     void Update()
     {
@@ -43,16 +48,34 @@ public class HexagonTile : NetworkBehaviour
     {
         if (isBuildMode)
         {
-            HexagonManager.activeHexagon = transform;
-            HighlightHexagon(true);
+            if (Gamemanager.instance.currentRoundStage == RoundStage.ATTACK && isUsed && canAttack)
+            {
+                HexagonManager.activeHexagon = transform;
+                //HighlightHexagon(true);
+                CursorChanger.instance.SetAttackCursorFocued();
+            }
+            else if (Gamemanager.instance.currentRoundStage != RoundStage.ATTACK)
+            {
+                HexagonManager.activeHexagon = transform;
+                HighlightHexagon(true);
+            }
         }
     }
     private void OnMouseExit()
     {
         if (isBuildMode)
         {
-            HexagonManager.activeHexagon = null;
-            HighlightHexagon(false);
+            if (Gamemanager.instance.currentRoundStage == RoundStage.ATTACK && isUsed && canAttack)
+            {
+                HexagonManager.activeHexagon = null;
+                //HighlightHexagon(false);
+                CursorChanger.instance.SetAttackCursor();
+            }
+            else if (Gamemanager.instance.currentRoundStage != RoundStage.ATTACK)
+            {
+                HexagonManager.activeHexagon = null;
+                HighlightHexagon(false);
+            }
         }
     }
     #endregion
@@ -70,6 +93,9 @@ public class HexagonTile : NetworkBehaviour
         isBuildMode = flag;
         hexRenderer.material.color = normalColor;
         hexRenderer.gameObject.SetActive(flag);
+
+        if (!flag)
+            canAttack = false;
     }
     public void PlaceItem(GameObject item)
     {
@@ -78,12 +104,54 @@ public class HexagonTile : NetworkBehaviour
     }
     private void OnMouseDown()
     {
-        if (Gamemanager.instance.currentRoundStage == RoundStage.USING_CARDS || !isBuildMode)
-            return;
-        HexagonManager.instance.HideAllHex();
-        Gamemanager.instance.MoveCuurentItem(this, HexagonManager.instance.GetIndex(this));
+        if (Gamemanager.instance.currentRoundStage != RoundStage.USING_CARDS)
+        {
+            playerColliders = new Collider[1];
+            int k = Physics.OverlapSphereNonAlloc(transform.position, 0.2f, playerColliders, playerLayer);
+            if (k != 0)
+            {
+                if (playerColliders[0].gameObject.TryGetComponent<PlaceableItem>(out PlaceableItem item))
+                {
+                    item.OnMouseDownFun();
+                }
 
-        Gamemanager.instance.OnItemSelected?.Invoke();
+            }
+        }
+
+        if (Gamemanager.instance.currentRoundStage == RoundStage.MOVE_ITEM && isBuildMode)
+        {
+            HexagonManager.instance.HideAllHex();
+            Gamemanager.instance.MoveCuurentItem(this, HexagonManager.instance.GetIndex(this));
+
+            Gamemanager.instance.OnItemSelected?.Invoke();
+        }
+        else if (Gamemanager.instance.currentRoundStage == RoundStage.ATTACK && isBuildMode)
+        {
+            if (isUsed && canAttack)
+            {
+                AttackThisTile();
+            }
+        }
+
+    }
+    public PlaceableItem GetPlayer()
+    {
+        playerColliders = new Collider[1];
+        int k = Physics.OverlapSphereNonAlloc(transform.position, 0.2f, playerColliders, playerLayer);
+        if (k != 0)
+        {
+            if (playerColliders[0].gameObject.TryGetComponent<PlaceableItem>(out PlaceableItem item))
+            {
+                return item;
+            }
+
+        }
+
+        return null;
+    }
+    public void AttackThisTile()
+    {
+        Gamemanager.instance.currentItemToMove.Attack(this);
     }
     /*[ContextMenu("Get it")]
     public void GetAllAdjacent()
