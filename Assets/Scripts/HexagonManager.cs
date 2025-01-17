@@ -67,7 +67,21 @@ public class HexagonManager : NetworkBehaviour
             if (item.isUsed)
             {
                 PlaceableItem player = item.GetPlayer();
-                if (player.isLeft == Gamemanager.instance.isLeft)
+                if (player != null && player.isLeft == Gamemanager.instance.isLeft)
+                {
+                    item.ToggleHexagon(flag);
+                }
+            }
+        }
+    }
+    public void ToogleForIceCards(bool flag = true)
+    {
+        foreach (var item in hexagonTiles)
+        {
+            if (item.isUsed)
+            {
+                PlaceableItem player = item.GetPlayer();
+                if (player != null && player.isLeft != Gamemanager.instance.isLeft && !player.isFreezed)
                 {
                     item.ToggleHexagon(flag);
                 }
@@ -135,6 +149,9 @@ public class HexagonManager : NetworkBehaviour
 
             if (t.transform.tag == "Heal")
                 tile.GetPlayer().Heal();
+
+            if (t.transform.tag == "Ice")
+                tile.GetPlayer().Freeze();
         }
     }
     public void CallOnMouseDown(int index)

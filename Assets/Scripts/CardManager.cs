@@ -84,6 +84,8 @@ public class CardManager : MonoBehaviour
             hexagonManager.ToogleHexagonForCards(true);
         else if (card.cardType == CardType.HEAL)
             hexagonManager.ToogleForHealCards(true);
+        else if (card.cardType == CardType.ICE)
+            hexagonManager.ToogleForIceCards(true);
 
     }
     public void DragEnd(Card card, bool isHit)
@@ -96,6 +98,8 @@ public class CardManager : MonoBehaviour
             hexagonManager.ToogleHexagonForCards(false);
         else if (card.cardType == CardType.HEAL)
             hexagonManager.ToogleForHealCards(false);
+        else if (card.cardType == CardType.ICE)
+            hexagonManager.ToogleForIceCards(false);
 
         if (isHit)
         {
@@ -104,7 +108,7 @@ public class CardManager : MonoBehaviour
             hexagonManager.SpawnBuilding(card.cardID);
         }
 
-       // HexagonManager.activeHexagon = null;
+         //HexagonManager.activeHexagon = null;
     }
     [SimpleButton]
     public void AddNewCard()

@@ -48,8 +48,11 @@ public class PlaceableItem : NetworkBehaviour
     [SerializeField] private int realAttackValue;
     [Networked] public int life { set; get; }
     [Networked] public int attackValue { set; get; }
+    [Networked] public bool isFreezed { set; get; }
+    [Networked] public int freezedCounter { set; get; }
     [SerializeField] private TMP_Text lifeLabel;
     [SerializeField] private TMP_Text attackValueLabel;
+    [SerializeField] private Material freezeMaterial;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -62,22 +65,32 @@ public class PlaceableItem : NetworkBehaviour
         {
             textHolder.transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
-        ResetRound();
-
+        moveCount = 1;
         lines = new List<GameObject>();
         dropableCards = new List<DropableCard>();
+
+        Gamemanager.instance.ResetRound += ResetRound;
 
     }
     void Update()
     {
 
     }
+
     #endregion
 
     #region FUNCTIONS
     public void ResetRound()
     {
-        moveCount = 5;
+        moveCount = 1;
+        if (freezedCounter != 0)
+        {
+            isFreezed = false;
+
+            RPC_UnFreezePlayer();
+            RPC_SetMaterial(isLeft);
+        }
+        freezedCounter++;
     }
     public void SetBuilding(bool flag = false)
     {
@@ -104,6 +117,29 @@ public class PlaceableItem : NetworkBehaviour
                 item.material = blueMat;
         }
     }
+    public void Freeze()
+    {
+        isFreezed = true;
+        freezedCounter = 0;
+
+        RPC_FreezePlayer();
+    }
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void RPC_FreezePlayer()
+    {
+        foreach (var item in skinnedMeshRenderers)
+        {
+            item.material = freezeMaterial;
+        }
+        if (animController)
+            animController.enabled = false;
+    }
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void RPC_UnFreezePlayer()
+    {
+        if (animController)
+            animController.enabled = true;
+    }
     public void Heal()
     {
         RPC_ChangeLife(10);
@@ -129,12 +165,19 @@ public class PlaceableItem : NetworkBehaviour
     private void OnDestroy()
     {
         Gamemanager.instance.OnItemSelected -= HideOutline;
+        Gamemanager.instance.ResetRound -= ResetRound;
     }
     public void OnMouseDownFun()
     {
-        if (moveCount == 0)
+        if (Gamemanager.instance.isLeft == isLeft && moveCount == 0)
         {
             Debug.LogWarning("Cant Move!.How this as some message");
+            return;
+        }
+
+        if (Gamemanager.instance.isLeft == isLeft && isFreezed)
+        {
+            Debug.LogWarning("freezed");
             return;
         }
         /*if (Gamemanager.instance.isLeft != isLeft && Gamemanager.instance.currentRoundStage == RoundStage.ATTACK)
@@ -301,6 +344,8 @@ public class PlaceableItem : NetworkBehaviour
                 RPC_StartAnimation("move", false);
                 RPC_SetRotation(Quaternion.Euler(0, isLeft ? 90 : 270, 0));
                 canMove = false;
+
+                HexagonManager.activeHexagon = null;
             }).OnStart(() =>
             {
                 RPC_StartAnimation("move", true);
@@ -387,6 +432,8 @@ public class PlaceableItem : NetworkBehaviour
             tile.isUsed = false;
 
             CheckForPowerCards();
+
+            HexagonManager.activeHexagon = null;
         }).OnStart(() =>
         {
             RemoveAllCards();

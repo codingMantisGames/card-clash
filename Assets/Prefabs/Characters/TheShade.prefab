@@ -298,8 +298,10 @@ MonoBehaviour:
   realAttackValue: 1
   _life: 0
   _attackValue: 0
+  _isFreezed: 0
   lifeLabel: {fileID: 5197037867031989423}
   attackValueLabel: {fileID: 277951108985348100}
+  freezeMaterial: {fileID: 2100000, guid: d1ed82023a50bec44ac4b5d94ff544c3, type: 2}
 --- !u!65 &4201115983298181027
 BoxCollider:
   m_ObjectHideFlags: 0

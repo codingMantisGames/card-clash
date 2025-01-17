@@ -298,8 +298,10 @@ MonoBehaviour:
   realAttackValue: 2
   _life: 0
   _attackValue: 0
+  _isFreezed: 0
   lifeLabel: {fileID: 5197037867031989423}
   attackValueLabel: {fileID: 277951108985348100}
+  freezeMaterial: {fileID: 2100000, guid: d1ed82023a50bec44ac4b5d94ff544c3, type: 2}
 --- !u!65 &4201115983298181027
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -594,6 +596,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7933122972773080146, guid: 49b285a33cb87a9428a590ff04f7c69b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: decc268bacac0d74b99734a14e0290da, type: 2}
     - target: {fileID: -3606650129264159978, guid: 49b285a33cb87a9428a590ff04f7c69b, type: 3}
       propertyPath: m_IsActive
       value: 0

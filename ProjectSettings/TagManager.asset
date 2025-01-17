@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Item
   - Heal
+  - Ice
   layers:
   - Default
   - TransparentFX

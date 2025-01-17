@@ -173,6 +173,9 @@ public class Card : MonoBehaviour
             case "CC":
                 cardType = CardType.CHARACTER;
                 break;
+            case "IC":
+                cardType = CardType.ICE;
+                break;
         }
     }
 
@@ -180,5 +183,5 @@ public class Card : MonoBehaviour
 }
 public enum CardType
 {
-    ADDON, BUIDLING, CHARACTER, HEAL
+    ADDON, BUIDLING, CHARACTER, HEAL, ICE
 }

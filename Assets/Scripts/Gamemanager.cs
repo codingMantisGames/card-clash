@@ -24,6 +24,7 @@ public class Gamemanager : NetworkBehaviour
     [SerializeField] private Ease cardAppearEase;
     [HideInInspector] public PlaceableItem currentItemToMove;
     public Action CheckPlayerPosition;
+    public Action ResetRound;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -55,6 +56,17 @@ public class Gamemanager : NetworkBehaviour
         if (GUI.Button(new Rect(420, 0, 200, 40), "Attack Mode"))
         {
             SwitchToAttackMode();
+        }
+        try
+        {
+            if (Runner.IsServer && GUI.Button(new Rect(640, 0, 200, 40), "ResetRound"))
+            {
+                ResetRound.Invoke();
+            }
+        }
+        catch
+        {
+            Debug.LogWarning("issue");
         }
     }
     public void SetTargetCamera(float rot)
@@ -92,7 +104,7 @@ public class Gamemanager : NetworkBehaviour
         if (currentItemToMove == null)
             return;
         HexagonTile currentTile = HexagonManager.instance.GetHexagon(currentItemToMove.tileIndex);
-        
+
         List<Vector3> locations = AStarPathFinding.FindPath(currentTile, target);
 
         currentItemToMove.MoveToPosition(locations.ToArray(), index, isLeft, currentItemToMove.tileIndex);
