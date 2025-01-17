@@ -7654,6 +7654,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HexGround
       objectReference: {fileID: 0}
+    - target: {fileID: 3869173700027451039, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6
@@ -11303,7 +11307,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -12.400024, y: -9}
+  m_AnchoredPosition: {x: -12.399902, y: -9}
   m_SizeDelta: {x: 134.3873, y: 25.8269}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &989341726
@@ -17849,6 +17853,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HexGround
       objectReference: {fileID: 0}
+    - target: {fileID: 3869173700027451039, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -24094,7 +24102,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Round 3: Attack
 
-    
+
 
 '
   m_isRightToLeft: 0

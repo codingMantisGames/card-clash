@@ -64,7 +64,7 @@ public class PlaceableItem : NetworkBehaviour
     #region FUNCTIONS
     public void ResetRound()
     {
-        moveCount = 1;
+        moveCount = 5;
     }
     public void SetBuilding(bool flag = false)
     {
