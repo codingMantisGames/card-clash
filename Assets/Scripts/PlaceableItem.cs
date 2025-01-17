@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
 using DG.Tweening;
+using TMPro;
 
 public class PlaceableItem : NetworkBehaviour
 {
@@ -39,6 +40,16 @@ public class PlaceableItem : NetworkBehaviour
     [SerializeField] private float timeBtwTiletoTileMovement = 1;
     private int currentAttackIndex;
     Vector3 startPoint;
+    [SerializeField, Space(20)] private Collider[] cardColliders;
+    [SerializeField] private LayerMask cardLayer;
+    private List<DropableCard> dropableCards;
+    private ChangeDetector _changeDetector;
+    [SerializeField] private int totalLife;
+    [SerializeField] private int realAttackValue;
+    [Networked] public int life { set; get; }
+    [Networked] public int attackValue { set; get; }
+    [SerializeField] private TMP_Text lifeLabel;
+    [SerializeField] private TMP_Text attackValueLabel;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -54,6 +65,8 @@ public class PlaceableItem : NetworkBehaviour
         ResetRound();
 
         lines = new List<GameObject>();
+        dropableCards = new List<DropableCard>();
+
     }
     void Update()
     {
@@ -70,6 +83,19 @@ public class PlaceableItem : NetworkBehaviour
     {
         isLeft = flag;
 
+        RPC_SetMaterial(flag);
+
+        Invoke("CheckForPowerCards", 0.1f);
+
+        if (Gamemanager.instance.isLeft == isLeft)
+            Gamemanager.instance.CheckPlayerPosition += CheckForCards;
+
+        life = totalLife;
+        attackValue = realAttackValue;
+    }
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void RPC_SetMaterial(bool flag)
+    {
         foreach (var item in skinnedMeshRenderers)
         {
             if (flag)
@@ -78,6 +104,20 @@ public class PlaceableItem : NetworkBehaviour
                 item.material = blueMat;
         }
     }
+    public void Heal()
+    {
+        RPC_ChangeLife(10);
+    }
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_ChangeLife(int val)
+    {
+        life = val;
+    }
+    public override void Spawned()
+    {
+        _changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
+    }
+
     private void OnEnable()
     {
         Gamemanager.instance.OnItemSelected += HideOutline;
@@ -345,6 +385,11 @@ public class PlaceableItem : NetworkBehaviour
             tile.isUsed = true;
             tile = HexagonManager.instance.GetHexagon(cIndex);
             tile.isUsed = false;
+
+            CheckForPowerCards();
+        }).OnStart(() =>
+        {
+            RemoveAllCards();
         });
 
         sequence.Play();
@@ -372,6 +417,48 @@ public class PlaceableItem : NetworkBehaviour
         {
             transform.position = targetPos;
         }
+
+        foreach (var change in _changeDetector.DetectChanges(this))
+        {
+            switch (change)
+            {
+                case nameof(life):
+                    lifeLabel.text = life.ToString();
+                    break;
+                case nameof(attackValue):
+                    attackValueLabel.text = attackValue.ToString();
+                    break;
+            }
+        }
+    }
+    public void CheckForCards()
+    {
+        Invoke("CheckForPowerCards", 0.1f);
+    }
+    public void CheckForPowerCards()
+    {
+        cardColliders = new Collider[6];
+        int num = Physics.OverlapSphereNonAlloc(transform.position, 2f, cardColliders, cardLayer);
+        for (int i = 0; i < num; i++)
+        {
+            if (cardColliders[i].TryGetComponent<DropableCard>(out DropableCard card) && card.isLeft)
+            {
+                dropableCards.Add(card);
+
+                card.AddItem(transform);
+            }
+        }
+    }
+    public void RemoveAllCards()
+    {
+        foreach (var item in dropableCards)
+        {
+            item.HideItem(transform);
+        }
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, 2f);
     }
     #endregion
 }

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5616c4f3decebf84597b248a74d0ed98, type: 3}
-  m_Name: PowerBoost
+  m_Name: Heal
   m_EditorClassIdentifier: 
-  cardID: PC31
-  prefab: {fileID: 1545705112769050797, guid: c12c6c8902afd6f4396c012960d036dc, type: 3}
-  red: {fileID: 21300000, guid: dc102f0c1c1228e4997ff5f6ae7878a8, type: 3}
-  blue: {fileID: 21300000, guid: dc102f0c1c1228e4997ff5f6ae7878a8, type: 3}
+  cardID: HHHH
+  prefab: {fileID: 1541751224539999555, guid: c963939f98b1bd9468971fdaedb10a9a, type: 3}
+  red: {fileID: 21300000, guid: 91602d0c42c003d4f91045934923f3de, type: 3}
+  blue: {fileID: 21300000, guid: 91602d0c42c003d4f91045934923f3de, type: 3}

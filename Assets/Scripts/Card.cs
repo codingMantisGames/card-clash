@@ -32,8 +32,8 @@ public class Card : MonoBehaviour
         topRenderer = topCard.GetComponent<SpriteRenderer>();
         bottomRenderer = bottomCard.GetComponent<SpriteRenderer>();
 
-        //cardType = CardType.BUIDLING;
         cardID = topCardID;
+        SetCardType();
     }
     void Start()
     {
@@ -92,18 +92,17 @@ public class Card : MonoBehaviour
 
             if (transform.localRotation.eulerAngles.y == 0)
             {
-                cardType = CardType.BUIDLING;
                 bottomCard.SetActive(false);
 
                 cardID = topCardID;
             }
             else
             {
-                cardType = CardType.ADDON;
                 topCard.SetActive(false);
 
                 cardID = bottomCardID;
             }
+            SetCardType();
         });
     }
 
@@ -159,9 +158,27 @@ public class Card : MonoBehaviour
     {
         return HexagonManager.activeHexagon == null ? false : true;
     }
+    public void SetCardType()
+    {
+        string firstTwoLetters = cardID.Substring(0, 2);
+
+        switch (firstTwoLetters)
+        {
+            case "PC":
+                cardType = CardType.ADDON;
+                break;
+            case "HH":
+                cardType = CardType.HEAL;
+                break;
+            case "CC":
+                cardType = CardType.CHARACTER;
+                break;
+        }
+    }
+
     #endregion
 }
 public enum CardType
 {
-    ADDON, BUIDLING, CHARACTER
+    ADDON, BUIDLING, CHARACTER, HEAL
 }

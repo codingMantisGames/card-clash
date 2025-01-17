@@ -23,6 +23,7 @@ public class Gamemanager : NetworkBehaviour
     [SerializeField] private float cardAppearTime = 2;
     [SerializeField] private Ease cardAppearEase;
     [HideInInspector] public PlaceableItem currentItemToMove;
+    public Action CheckPlayerPosition;
     #endregion
 
     #region UNITY FUNCTIONS

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5616c4f3decebf84597b248a74d0ed98, type: 3}
-  m_Name: RangeSurge
+  m_Name: Range Surge
   m_EditorClassIdentifier: 
   cardID: PC32
   prefab: {fileID: 1545705112769050797, guid: a06811718b9494e41bd48ab986d61261, type: 3}

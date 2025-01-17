@@ -8,6 +8,7 @@ public class HexagonTile : NetworkBehaviour
     #region VARIABLES
     public GameObject itemPlaced;
     public bool isLeft;
+    public bool isCardNeutral = false;
     public bool isNoBuildZone;
     public bool isPlayerZone;
     [SerializeField] private MeshRenderer hexRenderer;

@@ -80,6 +80,11 @@ public class CardManager : MonoBehaviour
             hexagonManager.ToggleHexagon(true);
         else if (card.cardType == CardType.CHARACTER)
             hexagonManager.ToggleHexagonForCharacter(true);
+        else if (card.cardType == CardType.ADDON)
+            hexagonManager.ToogleHexagonForCards(true);
+        else if (card.cardType == CardType.HEAL)
+            hexagonManager.ToogleForHealCards(true);
+
     }
     public void DragEnd(Card card, bool isHit)
     {
@@ -87,6 +92,10 @@ public class CardManager : MonoBehaviour
             hexagonManager.ToggleHexagon(false);
         else if (card.cardType == CardType.CHARACTER)
             hexagonManager.ToggleHexagonForCharacter(false);
+        else if (card.cardType == CardType.ADDON)
+            hexagonManager.ToogleHexagonForCards(false);
+        else if (card.cardType == CardType.HEAL)
+            hexagonManager.ToogleForHealCards(false);
 
         if (isHit)
         {

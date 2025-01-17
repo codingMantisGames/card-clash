@@ -290,6 +290,16 @@ MonoBehaviour:
   attackStoppingDistance: 0.6
   goBackDelay: 1
   timeBtwTiletoTileMovement: 1
+  cardColliders: []
+  cardLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  totalLife: 3
+  realAttackValue: 1
+  _life: 0
+  _attackValue: 0
+  lifeLabel: {fileID: 5197037867031989423}
+  attackValueLabel: {fileID: 277951108985348100}
 --- !u!65 &4201115983298181027
 BoxCollider:
   m_ObjectHideFlags: 0

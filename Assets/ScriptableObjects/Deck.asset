@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd5166aba7e70a7458cb140fb5af2097, type: 3}
+  m_Name: Deck
+  m_EditorClassIdentifier: 
+  cardInfos:
+  - name: Mage X Range Surge
+    topCard: {fileID: 11400000, guid: 10e1ef3c7f996a14e80b84537d68d5de, type: 2}
+    bottomCard: {fileID: 11400000, guid: 4c6224499fcd553478499f4148cbc25d, type: 2}
+  - name: Kinght X Strike Flow
+    topCard: {fileID: 11400000, guid: 5b6bfdf53ef788b4aaf4920e0d1e38f6, type: 2}
+    bottomCard: {fileID: 11400000, guid: 5325f42f6370ef0478b21f5c2521d69c, type: 2}
+  - name: Rogue X Power Boost
+    topCard: {fileID: 11400000, guid: e9c9d8b8b7276a9429429eb6da59fd79, type: 2}
+    bottomCard: {fileID: 11400000, guid: a964ec952802ebc49b3559e3be9de248, type: 2}
+  - name: Shade X Range Surge
+    topCard: {fileID: 11400000, guid: 7150cfe10c239dd4bb2cb9d025d0139f, type: 2}
+    bottomCard: {fileID: 11400000, guid: 4c6224499fcd553478499f4148cbc25d, type: 2}
+  - name: Barbarian X Power Boost
+    topCard: {fileID: 11400000, guid: 939b65f805a82c34f801a146ecbf3c0f, type: 2}
+    bottomCard: {fileID: 11400000, guid: a964ec952802ebc49b3559e3be9de248, type: 2}
+  - name: Rogue X Strike Flow
+    topCard: {fileID: 11400000, guid: e9c9d8b8b7276a9429429eb6da59fd79, type: 2}
+    bottomCard: {fileID: 11400000, guid: 5325f42f6370ef0478b21f5c2521d69c, type: 2}
+  - name: Barbarian X Range Surge
+    topCard: {fileID: 11400000, guid: 939b65f805a82c34f801a146ecbf3c0f, type: 2}
+    bottomCard: {fileID: 11400000, guid: 4c6224499fcd553478499f4148cbc25d, type: 2}
+  - name: Shade X Strike Flow
+    topCard: {fileID: 11400000, guid: 7150cfe10c239dd4bb2cb9d025d0139f, type: 2}
+    bottomCard: {fileID: 11400000, guid: 5325f42f6370ef0478b21f5c2521d69c, type: 2}
+  - name: Rogue X Range Surge
+    topCard: {fileID: 11400000, guid: e9c9d8b8b7276a9429429eb6da59fd79, type: 2}
+    bottomCard: {fileID: 11400000, guid: 4c6224499fcd553478499f4148cbc25d, type: 2}
+  - name: Shade X Power Boost
+    topCard: {fileID: 11400000, guid: 7150cfe10c239dd4bb2cb9d025d0139f, type: 2}
+    bottomCard: {fileID: 11400000, guid: a964ec952802ebc49b3559e3be9de248, type: 2}
+  - name: Barbarian X Strike Flow
+    topCard: {fileID: 11400000, guid: 939b65f805a82c34f801a146ecbf3c0f, type: 2}
+    bottomCard: {fileID: 11400000, guid: 5325f42f6370ef0478b21f5c2521d69c, type: 2}
+  - name: Shade X Strike Flow
+    topCard: {fileID: 11400000, guid: 7150cfe10c239dd4bb2cb9d025d0139f, type: 2}
+    bottomCard: {fileID: 11400000, guid: 5325f42f6370ef0478b21f5c2521d69c, type: 2}
+  - name: Shade X Range Surge
+    topCard: {fileID: 11400000, guid: 7150cfe10c239dd4bb2cb9d025d0139f, type: 2}
+    bottomCard: {fileID: 11400000, guid: 4c6224499fcd553478499f4148cbc25d, type: 2}
+  - name: Barbarian X Power Boost
+    topCard: {fileID: 11400000, guid: 939b65f805a82c34f801a146ecbf3c0f, type: 2}
+    bottomCard: {fileID: 11400000, guid: a964ec952802ebc49b3559e3be9de248, type: 2}
+  - name: Rogue X Power Boost
+    topCard: {fileID: 11400000, guid: e9c9d8b8b7276a9429429eb6da59fd79, type: 2}
+    bottomCard: {fileID: 11400000, guid: a964ec952802ebc49b3559e3be9de248, type: 2}
+  - name: Kinght X Strike Flow
+    topCard: {fileID: 11400000, guid: 5b6bfdf53ef788b4aaf4920e0d1e38f6, type: 2}
+    bottomCard: {fileID: 11400000, guid: 5325f42f6370ef0478b21f5c2521d69c, type: 2}
+  - name: Shade X Power Boost
+    topCard: {fileID: 11400000, guid: 7150cfe10c239dd4bb2cb9d025d0139f, type: 2}
+    bottomCard: {fileID: 11400000, guid: a964ec952802ebc49b3559e3be9de248, type: 2}
+  - name: Rogue X Range Surge
+    topCard: {fileID: 11400000, guid: e9c9d8b8b7276a9429429eb6da59fd79, type: 2}
+    bottomCard: {fileID: 11400000, guid: 4c6224499fcd553478499f4148cbc25d, type: 2}
+  - name: Mage X Strike Flow
+    topCard: {fileID: 11400000, guid: 10e1ef3c7f996a14e80b84537d68d5de, type: 2}
+    bottomCard: {fileID: 11400000, guid: 5325f42f6370ef0478b21f5c2521d69c, type: 2}
+  - name: Mage X Strike Flow
+    topCard: {fileID: 11400000, guid: 10e1ef3c7f996a14e80b84537d68d5de, type: 2}
+    bottomCard: {fileID: 11400000, guid: 5325f42f6370ef0478b21f5c2521d69c, type: 2}

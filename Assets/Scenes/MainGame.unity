@@ -132,6 +132,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -232,6 +236,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -451,6 +459,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -543,6 +555,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -1169,6 +1185,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -1199,6 +1219,10 @@ PrefabInstance:
     - target: {fileID: 3869173700027451039, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_Name
       value: HexGround
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869173700027451039, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1275,6 +1299,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -1305,6 +1333,10 @@ PrefabInstance:
     - target: {fileID: 3869173700027451039, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_Name
       value: HexGround
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869173700027451039, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1479,6 +1511,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -1509,6 +1545,10 @@ PrefabInstance:
     - target: {fileID: 3869173700027451039, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_Name
       value: HexGround
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869173700027451039, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1583,6 +1623,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -2355,6 +2399,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -2559,6 +2607,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -2692,6 +2744,10 @@ PrefabInstance:
     - target: {fileID: 3869173700027451039, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_Name
       value: 'HexGround [ Left Tower]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869173700027451039, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3801,6 +3857,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -3965,6 +4025,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -4065,6 +4129,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -4350,6 +4418,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -4380,6 +4452,10 @@ PrefabInstance:
     - target: {fileID: 3869173700027451039, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_Name
       value: HexGround
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100769168535813086, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4456,6 +4532,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -4486,6 +4566,10 @@ PrefabInstance:
     - target: {fileID: 3869173700027451039, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_Name
       value: HexGround
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869173700027451039, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4560,6 +4644,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -4980,6 +5068,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -5298,6 +5390,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4c6224499fcd553478499f4148cbc25d, type: 2}
   - {fileID: 11400000, guid: e9c9d8b8b7276a9429429eb6da59fd79, type: 2}
   - {fileID: 11400000, guid: 7150cfe10c239dd4bb2cb9d025d0139f, type: 2}
+  - {fileID: 11400000, guid: ce28d234d3ab6114a854c231f091b235, type: 2}
   isLeft: 1
   currentRoundStage: 0
   cameraHolder: {fileID: 1372339222}
@@ -5385,6 +5478,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -5847,6 +5944,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -6124,6 +6225,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -6154,6 +6259,10 @@ PrefabInstance:
     - target: {fileID: 3869173700027451039, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_Name
       value: HexGround
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100769168535813086, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6520,6 +6629,127 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f2ada6d0fd99f349a6a39bf03ae8a92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hexagonTiles:
+  - {fileID: 2093163516}
+  - {fileID: 1518174622}
+  - {fileID: 1202344050}
+  - {fileID: 1201736609}
+  - {fileID: 1694653827}
+  - {fileID: 1615542809}
+  - {fileID: 2049862653}
+  - {fileID: 2139374845}
+  - {fileID: 752382556}
+  - {fileID: 1907248269}
+  - {fileID: 1688979176}
+  - {fileID: 636070466}
+  - {fileID: 1135840271}
+  - {fileID: 2050992905}
+  - {fileID: 1656592970}
+  - {fileID: 1673498623}
+  - {fileID: 1838271000}
+  - {fileID: 2078123363}
+  - {fileID: 1333791083}
+  - {fileID: 1709533687}
+  - {fileID: 1400162075}
+  - {fileID: 2049788054}
+  - {fileID: 1193280015}
+  - {fileID: 1351631618}
+  - {fileID: 1841910133}
+  - {fileID: 1268856075}
+  - {fileID: 1752817050}
+  - {fileID: 2000409676}
+  - {fileID: 959543222}
+  - {fileID: 1110282873}
+  - {fileID: 1886134541}
+  - {fileID: 1327209082}
+  - {fileID: 993188831}
+  - {fileID: 1201014096}
+  - {fileID: 1953597791}
+  - {fileID: 1397490579}
+  - {fileID: 309476699}
+  - {fileID: 1399635862}
+  - {fileID: 2103978247}
+  - {fileID: 831429206}
+  - {fileID: 2121669291}
+  - {fileID: 1790041746}
+  - {fileID: 1645594604}
+  - {fileID: 1043187004}
+  - {fileID: 1546607039}
+  - {fileID: 1907266436}
+  - {fileID: 2108253158}
+  - {fileID: 1996411935}
+  - {fileID: 1791544617}
+  - {fileID: 1258105839}
+  - {fileID: 782559034}
+  - {fileID: 1800266367}
+  - {fileID: 1629411201}
+  - {fileID: 250156563}
+  - {fileID: 1924165039}
+  - {fileID: 1994287930}
+  - {fileID: 301724370}
+  - {fileID: 1469300763}
+  - {fileID: 855908209}
+  - {fileID: 2136203458}
+  - {fileID: 1231350023}
+  - {fileID: 1889361156}
+  - {fileID: 1394305485}
+  - {fileID: 614631084}
+  - {fileID: 1014333278}
+  - {fileID: 2108942692}
+  - {fileID: 1471271798}
+  - {fileID: 1406201389}
+  - {fileID: 1249119547}
+  - {fileID: 2082012992}
+  - {fileID: 2064319583}
+  - {fileID: 269990707}
+  - {fileID: 2043026314}
+  - {fileID: 1323239297}
+  - {fileID: 1799439279}
+  - {fileID: 1411230077}
+  - {fileID: 862632650}
+  - {fileID: 1502081422}
+  - {fileID: 796236989}
+  - {fileID: 1105497840}
+  - {fileID: 1056608174}
+  - {fileID: 298137753}
+  - {fileID: 1625898265}
+  - {fileID: 725936411}
+  - {fileID: 1809299196}
+  - {fileID: 2065393642}
+  - {fileID: 2142712007}
+  - {fileID: 1704400944}
+  - {fileID: 1825239350}
+  - {fileID: 1901274700}
+  - {fileID: 723385676}
+  - {fileID: 1001639532}
+  - {fileID: 2050215467}
+  - {fileID: 2003249745}
+  - {fileID: 1391807542}
+  - {fileID: 1500710476}
+  - {fileID: 512689187}
+  - {fileID: 1901886625}
+  - {fileID: 1949895200}
+  - {fileID: 1613460027}
+  - {fileID: 1654445356}
+  - {fileID: 1133742017}
+  - {fileID: 1738337527}
+  - {fileID: 1906479008}
+  - {fileID: 980996576}
+  - {fileID: 1996666697}
+  - {fileID: 1941016692}
+  - {fileID: 1011550936}
+  - {fileID: 1548178233}
+  - {fileID: 1118094456}
+  - {fileID: 1576759388}
+  - {fileID: 817757953}
+  - {fileID: 1043903373}
+  - {fileID: 1067390549}
+  - {fileID: 1578611446}
+  - {fileID: 1662394533}
+  - {fileID: 2051537978}
+  - {fileID: 1068389200}
+  - {fileID: 2028518020}
+  - {fileID: 458910803}
   isHexMoveOn: 0
 --- !u!114 &566912335
 MonoBehaviour:
@@ -7148,6 +7378,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -7319,6 +7553,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -7517,6 +7755,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -7621,6 +7863,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -7770,6 +8016,10 @@ PrefabInstance:
     - target: {fileID: 3869173700027451039, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_Name
       value: 'HexGround [ Right Tower]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869173700027451039, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9114,6 +9364,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -9574,6 +9828,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -9903,6 +10161,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -10352,6 +10614,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -10468,6 +10734,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -10643,6 +10913,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -11069,6 +11343,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -11538,6 +11816,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -12056,6 +12338,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -12148,6 +12434,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -12781,6 +13071,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -12811,6 +13105,10 @@ PrefabInstance:
     - target: {fileID: 3869173700027451039, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_Name
       value: HexGround
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869173700027451039, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13234,6 +13532,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -14027,6 +14329,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -14252,6 +14558,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -14851,6 +15161,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -14881,6 +15195,10 @@ PrefabInstance:
     - target: {fileID: 3869173700027451039, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_Name
       value: HexGround
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869173700027451039, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15536,6 +15854,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -16627,6 +16949,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -16727,6 +17053,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -16842,6 +17172,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -16953,6 +17287,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -17459,6 +17797,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -17559,6 +17901,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -17774,7 +18120,11 @@ PrefabInstance:
     - target: {fileID: 1447737767143651629, guid: 821462286121c0e4a952ca80c9c344e0, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: dc102f0c1c1228e4997ff5f6ae7878a8, type: 3}
+      objectReference: {fileID: 21300000, guid: 91602d0c42c003d4f91045934923f3de, type: 3}
+    - target: {fileID: 1447737767143651629, guid: 821462286121c0e4a952ca80c9c344e0, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1873955051343594242, guid: 821462286121c0e4a952ca80c9c344e0, type: 3}
       propertyPath: cardType
       value: 2
@@ -17785,7 +18135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1873955051343594242, guid: 821462286121c0e4a952ca80c9c344e0, type: 3}
       propertyPath: bottomCardID
-      value: CC51
+      value: HHHH
       objectReference: {fileID: 0}
     - target: {fileID: 4403980712656420924, guid: 821462286121c0e4a952ca80c9c344e0, type: 3}
       propertyPath: m_Sprite
@@ -17820,6 +18170,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -18218,6 +18572,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -18804,6 +19162,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -19470,6 +19832,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -20182,6 +20548,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -20212,6 +20582,10 @@ PrefabInstance:
     - target: {fileID: 3869173700027451039, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_Name
       value: HexGround
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869173700027451039, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20308,6 +20682,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -20532,6 +20910,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -20720,6 +21102,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -21965,6 +22351,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -22108,7 +22498,7 @@ PrefabInstance:
     - target: {fileID: 1447737767143651629, guid: 821462286121c0e4a952ca80c9c344e0, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: dcc31731581264f4c8d79eeccb4ab58b, type: 3}
+      objectReference: {fileID: 21300000, guid: f5fba112591f53d49a76ef02300afa4e, type: 3}
     - target: {fileID: 1873955051343594242, guid: 821462286121c0e4a952ca80c9c344e0, type: 3}
       propertyPath: cardType
       value: 2
@@ -22119,7 +22509,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1873955051343594242, guid: 821462286121c0e4a952ca80c9c344e0, type: 3}
       propertyPath: bottomCardID
-      value: CC51
+      value: PC31
       objectReference: {fileID: 0}
     - target: {fileID: 4403980712656420924, guid: 821462286121c0e4a952ca80c9c344e0, type: 3}
       propertyPath: m_Sprite
@@ -22429,6 +22819,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -22611,6 +23005,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -23450,6 +23848,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -24818,6 +25220,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -25750,6 +26156,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -26651,6 +27061,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -26990,6 +27404,10 @@ PrefabInstance:
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -27283,6 +27701,10 @@ PrefabInstance:
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: adjacentTiles.Array.size
@@ -27869,9 +28291,13 @@ PrefabInstance:
     - target: {fileID: 1447737767143651629, guid: 821462286121c0e4a952ca80c9c344e0, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: ab9e6858043a7cf48afd1723d856b8e6, type: 3}
+      objectReference: {fileID: 21300000, guid: f5fba112591f53d49a76ef02300afa4e, type: 3}
     - target: {fileID: 1447737767143651629, guid: 821462286121c0e4a952ca80c9c344e0, type: 3}
       propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447737767143651629, guid: 821462286121c0e4a952ca80c9c344e0, type: 3}
+      propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1873955051343594242, guid: 821462286121c0e4a952ca80c9c344e0, type: 3}
@@ -27884,7 +28310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1873955051343594242, guid: 821462286121c0e4a952ca80c9c344e0, type: 3}
       propertyPath: bottomCardID
-      value: CC52
+      value: PC31
       objectReference: {fileID: 0}
     - target: {fileID: 4403980712656420924, guid: 821462286121c0e4a952ca80c9c344e0, type: 3}
       propertyPath: m_Sprite

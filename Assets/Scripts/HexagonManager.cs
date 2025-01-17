@@ -7,7 +7,7 @@ public class HexagonManager : NetworkBehaviour
 {
     #region VARIABLES
     public static HexagonManager instance;
-    private HexagonTile[] hexagonTiles;
+    public HexagonTile[] hexagonTiles;
     public static Transform activeHexagon;
     [HideInInspector] public bool isHexMoveOn = false;
     #endregion
@@ -16,7 +16,6 @@ public class HexagonManager : NetworkBehaviour
     private void Awake()
     {
         instance = this;
-        hexagonTiles = GetComponentsInChildren<HexagonTile>();
     }
     void Start()
     {
@@ -51,6 +50,28 @@ public class HexagonManager : NetworkBehaviour
         {
             if (!item.isUsed && item.isLeft == Gamemanager.instance.isLeft && item.isNoBuildZone && item.buildPoint.childCount == 0)
                 item.ToggleHexagon(flag);
+        }
+    }
+    public void ToogleHexagonForCards(bool flag = true)
+    {
+        foreach (var item in hexagonTiles)
+        {
+            if (!item.isUsed && ((item.isLeft == Gamemanager.instance.isLeft) || (item.isCardNeutral)) && !item.isNoBuildZone)
+                item.ToggleHexagon(flag);
+        }
+    }
+    public void ToogleForHealCards(bool flag = true)
+    {
+        foreach (var item in hexagonTiles)
+        {
+            if (item.isUsed)
+            {
+                PlaceableItem player = item.GetPlayer();
+                if (player.isLeft == Gamemanager.instance.isLeft)
+                {
+                    item.ToggleHexagon(flag);
+                }
+            }
         }
     }
     public void SpawnBuilding(string id)
@@ -95,7 +116,7 @@ public class HexagonManager : NetworkBehaviour
             NetworkObject n = Runner.Spawn(gm, tile.buildPoint.position, tile.buildPoint.localRotation);
 
             Transform t = n.transform;
-            t.localScale = Vector3.one * 1.6f;
+            t.localScale = Vector3.one * gm.transform.localScale.z;
             tile.isUsed = true;
 
             if (t.TryGetComponent<PlaceableItem>(out PlaceableItem placeableItem))
@@ -106,6 +127,14 @@ public class HexagonManager : NetworkBehaviour
                 if (!isLeft)
                     placeableItem.SetInitialRotation();
             }
+
+            if (t.TryGetComponent<DropableCard>(out DropableCard dropableCard))
+            {
+                dropableCard.SetCard(isLeft);
+            }
+
+            if (t.transform.tag == "Heal")
+                tile.GetPlayer().Heal();
         }
     }
     public void CallOnMouseDown(int index)
