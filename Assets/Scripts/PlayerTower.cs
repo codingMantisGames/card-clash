@@ -13,7 +13,7 @@ public class PlayerTower : NetworkBehaviour
     [SerializeField] private Material blueMaterial;
     [SerializeField] private TMP_Text lifeLabel;
     [Header("Networked Properties")]
-    [Networked] public bool isRedPlayer { get; set; }
+    [Networked] public bool isLeft { get; set; }
     [Networked] public int life { get; set; }
     #endregion
 
@@ -24,6 +24,7 @@ public class PlayerTower : NetworkBehaviour
         {
             RPC_SetMaterial();
         }
+        life = 7;
     }
     void Update()
     {
@@ -38,7 +39,7 @@ public class PlayerTower : NetworkBehaviour
     [Rpc(RpcSources.InputAuthority, RpcTargets.All, HostMode = RpcHostMode.SourceIsHostPlayer)]
     public void RPC_SetMaterial()
     {
-        if (isRedPlayer)
+        if (isLeft)
             meshRenderer.material = redMaterial;
         else
             meshRenderer.material = blueMaterial;
@@ -67,6 +68,21 @@ public class PlayerTower : NetworkBehaviour
                     lifeLabel.text = life.ToString();
                     break;
             }
+        }
+    }
+    public void Damage(int damage)
+    {
+        RPC_Damage(damage);
+    }
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_Damage(int damage)
+    {
+        life -= damage;
+
+        if (life <= 0)
+        {
+            //game over text
+            Debug.Log("game Over");
         }
     }
     #endregion

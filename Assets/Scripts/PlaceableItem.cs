@@ -53,6 +53,13 @@ public class PlaceableItem : NetworkBehaviour
     [SerializeField] private TMP_Text lifeLabel;
     [SerializeField] private TMP_Text attackValueLabel;
     [SerializeField] private Material freezeMaterial;
+
+    [SerializeField, Space(20)] private GameObject projectile;
+    [SerializeField] private float projectileSpeed;
+    [SerializeField] private Ease projecileMovementEase;
+    [SerializeField] private Transform projectileSpawnPoint;
+    [SerializeField] private GameObject ghost_red;
+    [SerializeField] private GameObject ghost_blue;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -244,6 +251,25 @@ public class PlaceableItem : NetworkBehaviour
                                     }
                                 }
                             }
+                            else if (playerColliders[0].gameObject.TryGetComponent<PlayerTower>(out PlayerTower tower))
+                            {
+                                if (Gamemanager.instance.isLeft != tower.isLeft)
+                                {
+                                    if ((!checkLineOfSite) || (checkLineOfSite && HasLineOfSight(transform.position, tower.transform)))
+                                    {
+                                        tile.canAttack = true;
+                                        tile.HighlightHexagon(true);
+
+                                        GameObject gm = Instantiate(line, transform);
+                                        lines.Add(gm);
+
+                                        if (gm.TryGetComponent<Line>(out Line l))
+                                        {
+                                            l.SetPosition(transform.position, playerColliders[0].transform.position);
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -361,15 +387,62 @@ public class PlaceableItem : NetworkBehaviour
         }
         else
         {
+            HexagonManager.instance.HideAllHex();
+            HideOutline();
 
+            HexagonTile tile = HexagonManager.instance.GetHexagon(currentAttackIndex);
+
+            Vector3 direction = tile.buildPoint.position - transform.position;
+            Quaternion targetRot = Quaternion.LookRotation(direction);
+            RPC_SetRotation(targetRot);
+
+            Invoke("AttackAnimation", 0.5f);
         }
 
+    }
+    void AttackAnimation()
+    {
+        RPC_StartTriggerAnimation("attack");
+    }
+    public void OnAttack()
+    {
+
+        GameObject gm = Instantiate(projectile, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
+
+        HexagonTile tile = HexagonManager.instance.GetHexagon(currentAttackIndex);
+        Vector3 pos = tile.buildPoint.position;
+
+        pos.y = gm.transform.position.y;
+
+        if (isLeft)
+            gm.transform.GetChild(2).gameObject.SetActive(true);
+        else
+            gm.transform.GetChild(1).gameObject.SetActive(true);
+
+        float dis = Vector3.Distance(pos, gm.transform.position);
+        float time = dis / projectileSpeed;
+
+        gm.transform.DOMove(pos, time).SetEase(projecileMovementEase).OnComplete(() =>
+        {
+            Destroy(gm);
+
+            if (Runner.IsServer)
+                RPC_SetRotation(Quaternion.Euler(0, isLeft ? 90 : 270, 0));
+
+            DealDamageToEnemy();
+        });
     }
     public void DealDamageToEnemy()
     {
         PlaceableItem item = HexagonManager.instance.GetHexagon(currentAttackIndex).GetPlayer();
         if (item)
-            item.Damage(20);
+            item.Damage(attackValue);
+        else
+        {
+            PlayerTower playerTower = HexagonManager.instance.GetHexagon(currentAttackIndex).GetTower();
+            if (playerTower)
+                playerTower.Damage(attackValue);
+        }
     }
     public void Damage(int damage)
     {
@@ -378,7 +451,21 @@ public class PlaceableItem : NetworkBehaviour
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void RPC_Damage(int damage)
     {
-        Debug.Log("Damage " + damage + " ||" + gameObject.name);
+        life -= damage;
+
+        RPC_StartTriggerAnimation("hit");
+
+        if (life <= 0)
+        {
+            textHolder.gameObject.SetActive(false);
+            RPC_SpawnGhost();
+            Runner.Despawn(Object);
+        }
+    }
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void RPC_SpawnGhost()
+    {
+        Instantiate(isLeft ? ghost_red : ghost_blue, transform.position, Quaternion.identity);
     }
 
     public Vector3 GetStoppingPoint(Vector3 targetPoint)

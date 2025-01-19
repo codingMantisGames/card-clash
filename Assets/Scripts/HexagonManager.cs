@@ -162,7 +162,7 @@ public class HexagonManager : NetworkBehaviour
 
     public void SelectHexagon(HexagonTile tile)
     {
-        if (!tile.isNoBuildZone && !tile.isUsed)
+        if (!tile.isUsed)
             tile.ToggleHexagon(true);
     }
     public void SelectHexagonAll(HexagonTile tile)

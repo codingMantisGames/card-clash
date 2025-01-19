@@ -47,13 +47,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd1854aeac9a9d143b5e0a27c6bf113f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderers:
-  - {fileID: 3842302814697028832}
+  skinnedMeshRenderers: []
   redMat: {fileID: 2100000, guid: 3f561083fa42c644ebf20da19d0fc018, type: 2}
   blueMat: {fileID: 2100000, guid: decc268bacac0d74b99734a14e0290da, type: 2}
   outline: {fileID: 0}
   isMainBuilding: 0
+  m_MovementRange: 1
+  m_AttackRange: 1
+  hexagonLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
   _isLeft: 0
+  _tileIndex: 0
+  animController: {fileID: 0}
+  textHolder: {fileID: 0}
+  moveCount: 0
+  itemToDisable: {fileID: 0}
+  line: {fileID: 0}
+  lines: []
+  checkLineOfSite: 1
+  isNearByAttack: 0
+  attackStoppingDistance: 0
+  goBackDelay: 0
+  timeBtwTiletoTileMovement: 1
+  cardColliders: []
+  cardLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  totalLife: 7
+  realAttackValue: 0
+  _life: 0
+  _attackValue: 0
+  _isFreezed: 0
+  _freezedCounter: 0
+  lifeLabel: {fileID: 0}
+  attackValueLabel: {fileID: 0}
+  freezeMaterial: {fileID: 0}
+  projectile: {fileID: 0}
+  projectileSpeed: 0
+  projecileMovementEase: 0
+  projectileSpawnPoint: {fileID: 0}
 --- !u!65 &2087415391233486275
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -154,10 +190,5 @@ PrefabInstance:
 --- !u!4 &2673368866232469391 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 48866a2c1f8343f48b43c2367965a891, type: 3}
-  m_PrefabInstance: {fileID: 2491352253091111012}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &3842302814697028832 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 48866a2c1f8343f48b43c2367965a891, type: 3}
   m_PrefabInstance: {fileID: 2491352253091111012}
   m_PrefabAsset: {fileID: 0}

@@ -251,7 +251,7 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
                 if (gm.TryGetComponent<PlayerTower>(out PlayerTower playerTower))
                 {
                     if (i == 0)
-                        playerTower.isRedPlayer = true;
+                        playerTower.isLeft = true;
 
                     if (p.parent.gameObject.TryGetComponent<HexagonTile>(out HexagonTile tile))
                     {

@@ -150,6 +150,21 @@ public class HexagonTile : NetworkBehaviour
 
         return null;
     }
+    public PlayerTower GetTower()
+    {
+        playerColliders = new Collider[1];
+        int k = Physics.OverlapSphereNonAlloc(transform.position, 0.2f, playerColliders, playerLayer);
+        if (k != 0)
+        {
+            if (playerColliders[0].gameObject.TryGetComponent<PlayerTower>(out PlayerTower tower))
+            {
+                return tower;
+            }
+
+        }
+
+        return null;
+    }
     public void AttackThisTile()
     {
         Gamemanager.instance.currentItemToMove.Attack(this);

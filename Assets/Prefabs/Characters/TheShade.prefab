@@ -299,9 +299,16 @@ MonoBehaviour:
   _life: 0
   _attackValue: 0
   _isFreezed: 0
+  _freezedCounter: 0
   lifeLabel: {fileID: 5197037867031989423}
   attackValueLabel: {fileID: 277951108985348100}
   freezeMaterial: {fileID: 2100000, guid: d1ed82023a50bec44ac4b5d94ff544c3, type: 2}
+  projectile: {fileID: 0}
+  projectileSpeed: 0
+  projecileMovementEase: 0
+  projectileSpawnPoint: {fileID: 0}
+  ghost_red: {fileID: 100004, guid: aa2bdca99bc601340a216282d774a978, type: 3}
+  ghost_blue: {fileID: 100004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
 --- !u!65 &4201115983298181027
 BoxCollider:
   m_ObjectHideFlags: 0
