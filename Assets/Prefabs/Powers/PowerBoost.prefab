@@ -5030,6 +5030,7 @@ MonoBehaviour:
   - {fileID: 203740734744294759}
   textHolder: {fileID: 5355554469333476557}
   _isLeft: 0
+  dropCardType: 1
 --- !u!65 &4666098295454670675
 BoxCollider:
   m_ObjectHideFlags: 0

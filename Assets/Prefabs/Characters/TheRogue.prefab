@@ -307,7 +307,7 @@ MonoBehaviour:
     m_Bits: 256
   playerLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 640
   _isLeft: 0
   _tileIndex: 0
   animController: {fileID: 4077456186559200360}
@@ -644,7 +644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49b285a33cb87a9428a590ff04f7c69b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49b285a33cb87a9428a590ff04f7c69b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1158,6 +1158,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 49b285a33cb87a9428a590ff04f7c69b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8686741465978891858}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 49b285a33cb87a9428a590ff04f7c69b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6998453655381333328}
   m_SourcePrefab: {fileID: 100100000, guid: 49b285a33cb87a9428a590ff04f7c69b, type: 3}
 --- !u!1 &780574575874029001 stripped
 GameObject:
@@ -1246,6 +1249,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6998453655381333328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3435239202804789044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f0646386a2076a43b3e3cfc40ef07da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropTime: 0.2
+  dropEase: 32
+  scaleTime: 0.1
+  scaleEase: 1
 --- !u!137 &3641970343620342219 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7933122972773080146, guid: 49b285a33cb87a9428a590ff04f7c69b, type: 3}

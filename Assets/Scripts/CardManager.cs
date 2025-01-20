@@ -6,6 +6,9 @@ using DG.Tweening;
 public class CardManager : MonoBehaviour
 {
     #region VARIABLES
+    [SerializeField] private Deck deck;
+    public List<CardInfo> cards;
+    public List<CardInfo> discardDeck;
     [SerializeField] private HexagonManager hexagonManager;
     public Camera dragCamera;
     [Header("Properties")]
@@ -27,12 +30,22 @@ public class CardManager : MonoBehaviour
 
     public LayerMask itemLayer;
     public GameObject card;
+
+    [SerializeField, Space(20)] private int startCardCount = 2;
+    [SerializeField] private int cardDrawLimitPerRound = 1;
+    private int cardCounter;
     #endregion
 
     #region UNITY FUNCTIONS
     void Start()
     {
-        AlignCard();
+        cardCounter = startCardCount;
+        for (int i = 0; i < startCardCount; i++)
+        {
+            AddNewCard();
+        }
+
+        cardCounter = 1;
     }
     void Update()
     {
@@ -52,6 +65,18 @@ public class CardManager : MonoBehaviour
     #endregion
 
     #region FUNCTIONS
+    private void OnEnable()
+    {
+        Gamemanager.instance.ResetRound += ResetData;
+    }
+    private void OnDisable()
+    {
+        Gamemanager.instance.ResetRound -= ResetData;
+    }
+    public void ResetData()
+    {
+        cardCounter = cardDrawLimitPerRound;
+    }
     [SimpleButton]
     public void AlignCard()
     {
@@ -108,13 +133,21 @@ public class CardManager : MonoBehaviour
             hexagonManager.SpawnBuilding(card.cardID);
         }
 
-         //HexagonManager.activeHexagon = null;
+        //HexagonManager.activeHexagon = null;
     }
     [SimpleButton]
     public void AddNewCard()
     {
+        if (cardCounter <= 0)
+            return;
+
+        if (cards.Count == 0)
+            ShuffleDeck();
+
         if (transform.childCount >= 3)
             return;
+
+        cardCounter--;
 
         int count = transform.childCount / 2;
 
@@ -125,7 +158,43 @@ public class CardManager : MonoBehaviour
 
         Transform temp = Instantiate(card, pos, Quaternion.identity, transform).transform;
 
+        if (temp.gameObject.TryGetComponent<Card>(out Card c))
+        {
+            CardInfo data = cards[0];
+            cards.Remove(data);
+
+            discardDeck.Add(data);
+
+            c.SetCard(data);
+        }
+
         AlignCard();
+    }
+    public void ShuffleDeck()
+    {
+        cards = new List<CardInfo>();
+
+        if (discardDeck.Count == 0)
+        {
+            foreach (var item in deck.cardInfos)
+            {
+                cards.Add(item);
+            }
+        }
+        else
+        {
+            foreach (var item in discardDeck)
+            {
+                cards.Add(item);
+            }
+        }
+        for (int i = cards.Count - 1; i > 0; i--)
+        {
+            int randomIndex = Random.Range(0, i + 1);
+            CardInfo temp = cards[i];
+            cards[i] = cards[randomIndex];
+            cards[randomIndex] = temp;
+        }
     }
     #endregion
 }

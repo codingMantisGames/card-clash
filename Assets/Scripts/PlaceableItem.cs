@@ -16,6 +16,9 @@ public class PlaceableItem : NetworkBehaviour
     [SerializeField] private bool isMainBuilding = false;
     private float[] range = new float[] { 1.8f, 3.7f, 5.4f };
     [SerializeField, Range(1, 3)] private int m_MovementRange = 1;
+    private bool isRangeCardUsed = false;
+    private bool isStrikeCardUsed = false;
+    private bool canAttackMore = false;
     [SerializeField, Range(1, 3)] private int m_AttackRange = 1;
     [SerializeField] private LayerMask hexagonLayer;
     [SerializeField] private LayerMask playerLayer;
@@ -90,14 +93,21 @@ public class PlaceableItem : NetworkBehaviour
     public void ResetRound()
     {
         moveCount = 1;
-        if (freezedCounter != 0)
-        {
-            isFreezed = false;
 
-            RPC_UnFreezePlayer();
-            RPC_SetMaterial(isLeft);
+        if (isStrikeCardUsed)
+            canAttackMore = true;
+
+        if (isFreezed)
+        {
+            if (freezedCounter != 0)
+            {
+                isFreezed = false;
+
+                RPC_UnFreezePlayer();
+                RPC_SetMaterial(isLeft);
+            }
+            freezedCounter++;
         }
-        freezedCounter++;
     }
     public void SetBuilding(bool flag = false)
     {
@@ -176,7 +186,7 @@ public class PlaceableItem : NetworkBehaviour
     }
     public void OnMouseDownFun()
     {
-        if (Gamemanager.instance.isLeft == isLeft && moveCount == 0)
+        if ((Gamemanager.instance.isLeft == isLeft && moveCount == 0))
         {
             Debug.LogWarning("Cant Move!.How this as some message");
             return;
@@ -208,10 +218,14 @@ public class PlaceableItem : NetworkBehaviour
             else if (Gamemanager.instance.currentRoundStage == RoundStage.ATTACK)
                 CursorChanger.instance.SetAttackCursor();
 
-            colliders = new Collider[20];
+            colliders = new Collider[50];
             int r = 0;
             if (Gamemanager.instance.currentRoundStage == RoundStage.MOVE_ITEM)
+            {
                 r = m_MovementRange - 1;
+                if (isRangeCardUsed)
+                    r = 2;
+            }
             else
                 r = m_AttackRange - 1;
 
@@ -229,6 +243,7 @@ public class PlaceableItem : NetworkBehaviour
                     {
                         playerColliders = new Collider[1];
                         int k = Physics.OverlapSphereNonAlloc(tile.buildPoint.position, 0.5f, playerColliders, playerLayer);
+
 
                         if (k != 0)
                         {
@@ -256,6 +271,25 @@ public class PlaceableItem : NetworkBehaviour
                                 if (Gamemanager.instance.isLeft != tower.isLeft)
                                 {
                                     if ((!checkLineOfSite) || (checkLineOfSite && HasLineOfSight(transform.position, tower.transform)))
+                                    {
+                                        tile.canAttack = true;
+                                        tile.HighlightHexagon(true);
+
+                                        GameObject gm = Instantiate(line, transform);
+                                        lines.Add(gm);
+
+                                        if (gm.TryGetComponent<Line>(out Line l))
+                                        {
+                                            l.SetPosition(transform.position, playerColliders[0].transform.position);
+                                        }
+                                    }
+                                }
+                            }
+                            else if (playerColliders[0].gameObject.TryGetComponent<DropableCard>(out DropableCard card))
+                            {
+                                if (Gamemanager.instance.isLeft != card.isLeft)
+                                {
+                                    if ((!checkLineOfSite) || (checkLineOfSite && HasLineOfSight(transform.position, card.transform)))
                                     {
                                         tile.canAttack = true;
                                         tile.HighlightHexagon(true);
@@ -343,7 +377,12 @@ public class PlaceableItem : NetworkBehaviour
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void RPC_Attack(int hexIndex)
     {
-        moveCount--;
+        if (!canAttackMore)
+            moveCount--;
+        else
+        {
+            canAttackMore = false;
+        }
         currentAttackIndex = hexIndex;
 
         if (isNearByAttack)
@@ -360,6 +399,7 @@ public class PlaceableItem : NetworkBehaviour
             {
                 canMove = true;
                 RPC_StartAnimation("move", true);
+                textHolder.gameObject.SetActive(false);
                 Vector3 direction = pos - transform.position;
                 Quaternion targetRot = Quaternion.LookRotation(direction);
                 RPC_SetRotation(targetRot);
@@ -372,6 +412,8 @@ public class PlaceableItem : NetworkBehaviour
                 canMove = false;
 
                 HexagonManager.activeHexagon = null;
+                textHolder.gameObject.SetActive(true);
+
             }).OnStart(() =>
             {
                 RPC_StartAnimation("move", true);
@@ -442,6 +484,12 @@ public class PlaceableItem : NetworkBehaviour
             PlayerTower playerTower = HexagonManager.instance.GetHexagon(currentAttackIndex).GetTower();
             if (playerTower)
                 playerTower.Damage(attackValue);
+            else
+            {
+                DropableCard card = HexagonManager.instance.GetHexagon(currentAttackIndex).GetCard();
+                if (card)
+                    card.Damage();
+            }
         }
     }
     public void Damage(int damage)
@@ -461,6 +509,8 @@ public class PlaceableItem : NetworkBehaviour
             RPC_SpawnGhost();
             Runner.Despawn(Object);
         }
+
+        CameraShake.instance.ShakeCamera(1, 0.5f);
     }
     [Rpc(RpcSources.All, RpcTargets.All)]
     public void RPC_SpawnGhost()
@@ -508,6 +558,7 @@ public class PlaceableItem : NetworkBehaviour
         RPC_StartAnimation("move", true);
         sequence.OnComplete(() =>
         {
+            textHolder.gameObject.SetActive(true);
             canMove = false;
             RPC_StartAnimation("move", false);
             RPC_SetRotation(Quaternion.Euler(0, isLeft ? 90 : 270, 0));
@@ -523,6 +574,7 @@ public class PlaceableItem : NetworkBehaviour
             HexagonManager.activeHexagon = null;
         }).OnStart(() =>
         {
+            textHolder.gameObject.SetActive(false);
             RemoveAllCards();
         });
 
@@ -573,6 +625,7 @@ public class PlaceableItem : NetworkBehaviour
     {
         cardColliders = new Collider[6];
         int num = Physics.OverlapSphereNonAlloc(transform.position, 2f, cardColliders, cardLayer);
+        int totalAttackValue = realAttackValue;
         for (int i = 0; i < num; i++)
         {
             if (cardColliders[i].TryGetComponent<DropableCard>(out DropableCard card) && card.isLeft)
@@ -580,19 +633,38 @@ public class PlaceableItem : NetworkBehaviour
                 dropableCards.Add(card);
 
                 card.AddItem(transform);
+
+                if (card.dropCardType == DropCardType.POWER_BOOST)
+                {
+                    totalAttackValue++;
+                }
+                else if (card.dropCardType == DropCardType.RANGE_SURGE)
+                {
+                    isRangeCardUsed = true;
+                }
+                else if (card.dropCardType == DropCardType.STRIKE_FLOW)
+                {
+                    isStrikeCardUsed = true;
+                    canAttackMore = true;
+                }
             }
         }
+        attackValue = totalAttackValue;
     }
     public void RemoveAllCards()
     {
         foreach (var item in dropableCards)
         {
             item.HideItem(transform);
+            attackValue = realAttackValue;
+            isRangeCardUsed = false;
+            isStrikeCardUsed = false;
+            canAttackMore = false;
         }
     }
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, 2f);
+        Gizmos.DrawWireSphere(transform.position, 5.4f);
     }
     #endregion
 }

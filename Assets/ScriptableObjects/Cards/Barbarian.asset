@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5616c4f3decebf84597b248a74d0ed98, type: 3}
-  m_Name: Kinght
+  m_Name: Barbarian
   m_EditorClassIdentifier: 
-  cardID: CC53
-  prefab: {fileID: 4481299082730190297, guid: 0c3b09151e259ab42896d8e71c797879, type: 3}
-  red: {fileID: 21300000, guid: aafc3a9e052321f4cbffe6ce7f353c23, type: 3}
-  blue: {fileID: 21300000, guid: 438ee9882003ce148a00ffb98ac8a50f, type: 3}
+  cardID: CC54
+  prefab: {fileID: 4481299082730190297, guid: a201141614f45fa4d988c8ff503feb0c, type: 3}
+  red: {fileID: 21300000, guid: b286c9254ac046449bc866e610cf5a95, type: 3}
+  blue: {fileID: 21300000, guid: 0569a181d0b8ed74e8e7df3148cbb001, type: 3}

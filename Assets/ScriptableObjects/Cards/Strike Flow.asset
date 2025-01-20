@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5616c4f3decebf84597b248a74d0ed98, type: 3}
-  m_Name: Range Surge
+  m_Name: Strike Flow
   m_EditorClassIdentifier: 
-  cardID: PC32
-  prefab: {fileID: 1545705112769050797, guid: a06811718b9494e41bd48ab986d61261, type: 3}
-  red: {fileID: 21300000, guid: ab9e6858043a7cf48afd1723d856b8e6, type: 3}
-  blue: {fileID: 21300000, guid: ab9e6858043a7cf48afd1723d856b8e6, type: 3}
+  cardID: PC33
+  prefab: {fileID: 1545705112769050797, guid: c12c6c8902afd6f4396c012960d036dc, type: 3}
+  red: {fileID: 21300000, guid: dcc31731581264f4c8d79eeccb4ab58b, type: 3}
+  blue: {fileID: 21300000, guid: dcc31731581264f4c8d79eeccb4ab58b, type: 3}

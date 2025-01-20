@@ -32,8 +32,8 @@ public class Card : MonoBehaviour
         topRenderer = topCard.GetComponent<SpriteRenderer>();
         bottomRenderer = bottomCard.GetComponent<SpriteRenderer>();
 
-        cardID = topCardID;
-        SetCardType();
+        //cardID = topCardID;
+        //SetCardType();
     }
     void Start()
     {
@@ -178,7 +178,18 @@ public class Card : MonoBehaviour
                 break;
         }
     }
+    public void SetCard(CardInfo card)
+    {
+        topCardID = card.topCard.cardID;
+        bottomCardID = card.bottomCard.cardID;
 
+        cardID = topCardID;
+
+        SetCardType();
+
+        topRenderer.sprite = Gamemanager.instance.isLeft ? card.topCard.red : card.topCard.blue;
+        bottomRenderer.sprite = card.bottomCard.blue;
+    }
     #endregion
 }
 public enum CardType

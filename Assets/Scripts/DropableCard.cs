@@ -13,6 +13,7 @@ public class DropableCard : NetworkBehaviour
     [SerializeField, Space(20)] private Transform[] adjacentHexagons;
     [SerializeField] private Transform textHolder;
     [Networked] public bool isLeft { set; get; }
+    public DropCardType dropCardType;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -77,6 +78,18 @@ public class DropableCard : NetworkBehaviour
     {
         adjacentHexagons[i].gameObject.SetActive(flag);
     }
-
+    public void Damage()
+    {
+        RPC_Damage();
+    }
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_Damage()
+    {
+        Runner.Despawn(Object);
+    }
     #endregion
+}
+public enum DropCardType
+{
+    POWER_BOOST, RANGE_SURGE, STRIKE_FLOW
 }

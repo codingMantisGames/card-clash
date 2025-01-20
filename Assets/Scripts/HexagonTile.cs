@@ -165,6 +165,21 @@ public class HexagonTile : NetworkBehaviour
 
         return null;
     }
+    public DropableCard GetCard()
+    {
+        playerColliders = new Collider[1];
+        int k = Physics.OverlapSphereNonAlloc(transform.position, 0.2f, playerColliders, playerLayer);
+        if (k != 0)
+        {
+            if (playerColliders[0].gameObject.TryGetComponent<DropableCard>(out DropableCard card))
+            {
+                return card;
+            }
+
+        }
+
+        return null;
+    }
     public void AttackThisTile()
     {
         Gamemanager.instance.currentItemToMove.Attack(this);
