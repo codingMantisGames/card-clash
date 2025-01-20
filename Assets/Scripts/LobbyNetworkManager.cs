@@ -79,8 +79,9 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     }
     public void CreateRoom()
     {
-        //nameOfRoom = roomName.text;
-        nameOfRoom = "Nehal";
+        nameOfRoom = roomName.text;
+        if (nameOfRoom == "")
+            nameOfRoom = "Nehal";
 
         lobbyUI.ShowMessagePanel("Creating Custom Room.");
 
@@ -88,8 +89,9 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     }
     public void JoinRoom()
     {
-        //nameOfRoom = roomName.text;
-        nameOfRoom = "Nehal";
+        nameOfRoom = roomName.text;
+        if (nameOfRoom == "")
+            nameOfRoom = "Nehal";
 
         lobbyUI.ShowMessagePanel("Joining Custom Room.");
 
@@ -151,6 +153,8 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
         // throw new NotImplementedException();
+        if (runner.SessionInfo.PlayerCount == 2)
+            StartGame();
     }
 
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
@@ -264,10 +268,13 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
                 }
                 i++;
             }
+            Gamemanager.instance.StartGame();
 
             Invoke("ChangeRotation", 1f);
-            
+
         }
+
+        LobbyUI.instance.GameStart();
     }
     void ChangeRotation()
     {

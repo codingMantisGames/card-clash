@@ -111,6 +111,9 @@ public class HexagonTile : NetworkBehaviour
     }
     private void OnMouseDown()
     {
+        if (!Gamemanager.instance.isPlayerTurn)
+            return;
+
         if (Gamemanager.instance.currentRoundStage != RoundStage.USING_CARDS)
         {
             playerColliders = new Collider[1];
@@ -190,7 +193,7 @@ public class HexagonTile : NetworkBehaviour
     {
         Gamemanager.instance.currentItemToMove.Attack(this);
     }
-    /*[ContextMenu("Get it")]
+    [ContextMenu("Get it")]
     public void GetAllAdjacent()
     {
         Collider[] colls = Physics.OverlapSphere(transform.position, radius);
@@ -204,14 +207,29 @@ public class HexagonTile : NetworkBehaviour
             }
         }
     }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(transform.position, radius);
-    }*/
     [ContextMenu("Show Hex")]
     public void ShowHex()
     {
         ToggleHexagon(true);
+    }
+    private void OnDrawGizmosSelected()
+    {
+        if (isNoBuildZone)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(buildPoint.position, 0.3f);
+        }
+        if(isCardNeutral)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(buildPoint.position, 0.5f);
+        }
+
+        if(isLeft)
+        {
+            Gizmos.color = Color.black;
+            Gizmos.DrawSphere(buildPoint.position, 0.1f);
+        }
     }
     #endregion
 }

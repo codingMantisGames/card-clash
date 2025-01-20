@@ -20,14 +20,14 @@ public class HexagonManager : NetworkBehaviour
     void Start()
     {
 
-        Vector3 cumulativePosition = Vector3.zero;
+       // Vector3 cumulativePosition = Vector3.zero;
 
-        foreach (HexagonTile child in hexagonTiles)
-        {
-            cumulativePosition += child.transform.position;
-        }
+        //foreach (HexagonTile child in hexagonTiles)
+        //{
+           // cumulativePosition += child.transform.position;
+        //}
 
-        transform.position = cumulativePosition / hexagonTiles.Length;
+       // transform.position = cumulativePosition / hexagonTiles.Length;
     }
     void Update()
     {
@@ -148,7 +148,9 @@ public class HexagonManager : NetworkBehaviour
             }
 
             if (t.transform.tag == "Heal")
+            {
                 tile.GetPlayer().Heal();
+            }
 
             if (t.transform.tag == "Ice")
                 tile.GetPlayer().Freeze();

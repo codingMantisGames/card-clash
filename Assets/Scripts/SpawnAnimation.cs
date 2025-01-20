@@ -19,7 +19,10 @@ public class SpawnAnimation : MonoBehaviour
         {
             float y = transform.localScale.y;
 
-            CameraShake.instance.ShakeCamera(0.2f, 0.5f);
+            CameraShake.instance.ShakeCamera(0.5f, 0.5f);
+
+            if (gameObject.TryGetComponent<AudioSource>(out AudioSource audioSource))
+                audioSource.Play();
 
             transform.DOScaleY(transform.localScale.y - 0.1f, scaleTime).SetEase(scaleEase).OnComplete(() =>
             {

@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class LobbyUI : MonoBehaviour
 {
     #region VARIABLES
+    public static LobbyUI instance;
     [SerializeField] private UIPanels currentPanel;
     [SerializeField] private GameObject logoPanel;
     [SerializeField] private CanvasGroup mainOptionPanel;
@@ -16,16 +17,21 @@ public class LobbyUI : MonoBehaviour
     [SerializeField] private TMP_Text message;
     [SerializeField] private GameObject messagePanelBackButton;
     [SerializeField] private UIPanelAnimation howToPlayPanel;
+    [SerializeField, Space(20)] private RectTransform mainLogo;
+    [SerializeField] private GameObject blurPanel;
 
     [Header("Properties")]
     [SerializeField] private float uiEaseTime;
     [SerializeField] private float uiEaseTime2;
     [SerializeField] private Ease ease;
 
-    [SerializeField, Space(20)] private RectTransform mainLogo;
     #endregion
 
     #region UNITY FUNCTIONS
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
     }
@@ -38,8 +44,8 @@ public class LobbyUI : MonoBehaviour
                 currentPanel = UIPanels.MAIN_OPTIONS;
                 logoPanel.SetActive(false);
 
-                mainLogo.DOScale(0.5f, uiEaseTime).SetEase(ease);
-                mainLogo.DOAnchorPos3DY(200, uiEaseTime).SetEase(ease).OnComplete(() =>
+                mainLogo.DOScale(0.7f, uiEaseTime).SetEase(ease);
+                mainLogo.DOAnchorPos3DY(165, uiEaseTime).SetEase(ease).OnComplete(() =>
                 {
                     mainOptionPanel.gameObject.SetActive(true);
                     mainOptionPanel.DOFade(1, uiEaseTime).SetEase(ease);
@@ -54,6 +60,22 @@ public class LobbyUI : MonoBehaviour
     #endregion
 
     #region FUNCTIONS
+    public void GameStart()
+    {
+        mainLogo.GetComponent<Image>().DOFade(0, 0.3f).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            mainLogo.gameObject.SetActive(false);
+        });
+        blurPanel.GetComponent<Image>().DOFade(0, 0.3f).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            blurPanel.SetActive(false);
+        });
+        
+        messagePanel.DOFade(0, 0.25f).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            messagePanel.gameObject.SetActive(false);
+        });
+    }
     public void ShowCustomGame()
     {
         currentPanel = UIPanels.CUSTOM_GAME;

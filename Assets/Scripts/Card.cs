@@ -20,6 +20,7 @@ public class Card : MonoBehaviour
     [HideInInspector] public string cardID;
     [SerializeField] private string topCardID;
     [SerializeField] private string bottomCardID;
+    [SerializeField] private AudioSource cardFlipAudio;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -78,6 +79,9 @@ public class Card : MonoBehaviour
     {
         if (isRotating || cardManager.isDraging)
             return;
+
+        if (cardFlipAudio)
+            cardFlipAudio.Play();
 
         topCard.SetActive(true);
         bottomCard.SetActive(true);

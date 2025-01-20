@@ -17,13 +17,13 @@ public class PrefabSpawnerWindow : EditorWindow
     private void OnEnable()
     {
         // Subscribe to the SceneView drawing callback
-        SceneView.duringSceneGui += OnSceneGUI;
+       // SceneView.duringSceneGui += OnSceneGUI;
     }
 
     private void OnDisable()
     {
         // Unsubscribe to prevent errors when the window is closed
-        SceneView.duringSceneGui -= OnSceneGUI;
+        //SceneView.duringSceneGui -= OnSceneGUI;
     }
 
     private void OnSceneGUI(SceneView sceneView)
@@ -52,7 +52,21 @@ public class PrefabSpawnerWindow : EditorWindow
 
         prefab = (GameObject)EditorGUILayout.ObjectField("Parent Object", prefab, typeof(GameObject), true);
 
+
+        if (Selection.gameObjects.Length == 0)
+            return;
+
         GUILayout.Label("Child Count is " + Selection.activeTransform.childCount, EditorStyles.label);
+
+        Vector3 centre = Vector3.zero;
+        foreach (var item in Selection.gameObjects)
+        {
+            centre += item.transform.position;
+        }
+        centre /= Selection.gameObjects.Length;
+
+        GUILayout.Label("Center Point" + centre, EditorStyles.label);
+
     }
     #endregion
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using DG.Tweening;
 using Fusion;
+using TMPro;
 
 public class Gamemanager : NetworkBehaviour
 {
@@ -25,6 +26,12 @@ public class Gamemanager : NetworkBehaviour
     [HideInInspector] public PlaceableItem currentItemToMove;
     public Action CheckPlayerPosition;
     public Action ResetRound;
+    [SerializeField] private TMP_Text yourTurnLabel;
+    [SerializeField] private TMP_Text roundMessageLabel;
+    [SerializeField] private GameObject nextRoundButton;
+    [SerializeField] private GameObject endTurnButton;
+    [Networked] public int ID { set; get; }
+    public bool isPlayerTurn;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -108,6 +115,83 @@ public class Gamemanager : NetworkBehaviour
         List<Vector3> locations = AStarPathFinding.FindPath(currentTile, target);
 
         currentItemToMove.MoveToPosition(locations.ToArray(), index, isLeft, currentItemToMove.tileIndex);
+    }
+    public void StartGame()
+    {
+        RPC_SetPlayerTurn(1);
+        ID = 1;
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void RPC_SetPlayerTurn(int id)
+    {
+        if (Runner.LocalPlayer.PlayerId == id)
+        {
+            ShowMessage("Your Turn");
+
+            SwitchToCardMode();
+
+            nextRoundButton.SetActive(true);
+            endTurnButton.SetActive(false);
+
+            isPlayerTurn = true;
+            roundMessageLabel.text = "Round 1";
+        }
+        else
+        {
+            nextRoundButton.SetActive(false);
+            endTurnButton.SetActive(false);
+
+            isPlayerTurn = false;
+            roundMessageLabel.text = "";
+        }
+    }
+    public void ShowMessage(string message)
+    {
+        yourTurnLabel.text = message;
+        yourTurnLabel.DOFade(1, 0.5f).SetDelay(0.1f).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            yourTurnLabel.DOFade(0, 0.4f).SetDelay(1).SetEase(Ease.Linear);
+        });
+    }
+    [SimpleButton]
+    public void EndTurn()
+    {
+        RPC_ChangeTurn();
+        HexagonManager.instance.HideAllHex();
+        ResetRound.Invoke();
+    }
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void RPC_ChangeTurn()
+    {
+        if (Runner.IsServer)
+        {
+            ID++;
+            if (ID > Runner.SessionInfo.PlayerCount)
+            {
+                ID = 1;
+                RPC_SetPlayerTurn(ID);
+            }
+        }
+    }
+    public void NextRound()
+    {
+        HexagonManager.instance.HideAllHex();
+
+        ResetRound.Invoke();
+
+        if (currentRoundStage == RoundStage.USING_CARDS)
+        {
+            SwitchToMoveMode();
+            roundMessageLabel.text = "Round 2";
+        }
+        else if (currentRoundStage == RoundStage.MOVE_ITEM)
+        {
+            SwitchToAttackMode();
+            endTurnButton.SetActive(true);
+            nextRoundButton.SetActive(false);
+            roundMessageLabel.text = "Round 3";
+        }
     }
     #endregion
 }

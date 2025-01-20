@@ -64,6 +64,8 @@ public class PlaceableItem : NetworkBehaviour
     [SerializeField] private Transform projectileSpawnPoint;
     [SerializeField] private GameObject ghost_red;
     [SerializeField] private GameObject ghost_blue;
+    private AudioSource runAudio;
+    public AudioSource projectileHitAudio;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -81,6 +83,8 @@ public class PlaceableItem : NetworkBehaviour
         dropableCards = new List<DropableCard>();
 
         Gamemanager.instance.ResetRound += ResetRound;
+
+        runAudio = GetComponent<AudioSource>();
 
     }
     void Update()
@@ -109,6 +113,9 @@ public class PlaceableItem : NetworkBehaviour
             }
             freezedCounter++;
         }
+
+        outline.enabled = false;
+        isHighlighted = false;
     }
     public void SetBuilding(bool flag = false)
     {
@@ -483,6 +490,9 @@ public class PlaceableItem : NetworkBehaviour
             if (Runner.IsServer)
                 RPC_SetRotation(Quaternion.Euler(0, isLeft ? 90 : 270, 0));
 
+            if (projectileHitAudio)
+                projectileHitAudio.Play();
+
             DealDamageToEnemy();
         });
     }
@@ -601,6 +611,11 @@ public class PlaceableItem : NetworkBehaviour
     public void RPC_StartAnimation(string anim, bool flag)
     {
         animController.SetBool(anim, flag);
+
+        if (anim == "move" && flag)
+            runAudio.Play();
+        else if (anim == "move" && !flag)
+            runAudio.Pause();
     }
     [Rpc(RpcSources.All, RpcTargets.All)]
     public void RPC_StartTriggerAnimation(string anim)
