@@ -20116,6 +20116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   normalCursor: {fileID: 2800000, guid: 661e9e39dad5fdd4ea3eadac1933591c, type: 3}
+  normalCursor_dropCard: {fileID: 2800000, guid: 3f78a1c8568448f4d84fa4b8d0d05d00, type: 3}
   moveCursor: {fileID: 2800000, guid: 9f67fcd0e5797f44daf34ed5988234a5, type: 3}
   attackCursor: {fileID: 2800000, guid: 78bacf3f42256e3438d91a4f1744ebb8, type: 3}
   attackCursor_Focused: {fileID: 2800000, guid: a133b0e436c27354aaae633891e3c20d, type: 3}

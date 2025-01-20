@@ -9,6 +9,7 @@ public class PlaceableItem : NetworkBehaviour
 {
     #region VARIABLES
     [SerializeField] private List<SkinnedMeshRenderer> skinnedMeshRenderers;
+    [SerializeField] private List<MeshRenderer> meshRenderers;
     [SerializeField] private Material redMat;
     [SerializeField] private Material blueMat;
 
@@ -133,6 +134,13 @@ public class PlaceableItem : NetworkBehaviour
             else
                 item.material = blueMat;
         }
+        foreach (var item in meshRenderers)
+        {
+            if (flag)
+                item.material = redMat;
+            else
+                item.material = blueMat;
+        }
     }
     public void Freeze()
     {
@@ -148,6 +156,10 @@ public class PlaceableItem : NetworkBehaviour
         {
             item.material = freezeMaterial;
         }
+        foreach (var item in meshRenderers)
+        {
+            item.material = freezeMaterial;
+        }
         if (animController)
             animController.enabled = false;
     }
@@ -159,7 +171,7 @@ public class PlaceableItem : NetworkBehaviour
     }
     public void Heal()
     {
-        RPC_ChangeLife(10);
+        RPC_ChangeLife(totalLife);
     }
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void RPC_ChangeLife(int val)
@@ -507,6 +519,9 @@ public class PlaceableItem : NetworkBehaviour
         {
             textHolder.gameObject.SetActive(false);
             RPC_SpawnGhost();
+
+            HexagonManager.instance.FreeHexSpace(tileIndex);
+
             Runner.Despawn(Object);
         }
 

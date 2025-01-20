@@ -169,6 +169,10 @@ public class HexagonManager : NetworkBehaviour
     {
         tile.ToggleHexagon(true);
     }
+    public void FreeHexSpace(int index)
+    {
+        GetHexagon(index).isUsed = false;
+    }
 
     public void HideAllHex()
     {

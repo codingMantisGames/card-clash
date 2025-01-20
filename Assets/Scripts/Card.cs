@@ -117,7 +117,7 @@ public class Card : MonoBehaviour
 
         Color color = Color.white;
 
-        color.a = 0.2f;
+        color.a = 0.1f;
         topRenderer.color = color;
         bottomRenderer.color = color;
 
@@ -146,6 +146,7 @@ public class Card : MonoBehaviour
             Destroy(gameObject);
         }
         cardManager.DragEnd(this, flag);
+        CursorChanger.instance.SetNormalCursor();
     }
     public void Drag()
     {

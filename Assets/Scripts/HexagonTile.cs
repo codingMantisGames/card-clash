@@ -45,6 +45,7 @@ public class HexagonTile : NetworkBehaviour
     {
 
     }
+
     private void OnMouseEnter()
     {
         if (isBuildMode)
@@ -59,6 +60,9 @@ public class HexagonTile : NetworkBehaviour
             {
                 HexagonManager.activeHexagon = transform;
                 HighlightHexagon(true);
+
+                if (Gamemanager.instance.currentRoundStage == RoundStage.USING_CARDS)
+                    CursorChanger.instance.SetDropCursor();
             }
         }
     }
@@ -76,6 +80,8 @@ public class HexagonTile : NetworkBehaviour
             {
                 HexagonManager.activeHexagon = null;
                 HighlightHexagon(false);
+
+                CursorChanger.instance.SetNormalCursor();
             }
         }
     }

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Strike Flow
   m_EditorClassIdentifier: 
   cardID: PC33
-  prefab: {fileID: 1545705112769050797, guid: c12c6c8902afd6f4396c012960d036dc, type: 3}
+  prefab: {fileID: 1545705112769050797, guid: 809c6dbc1ecdf6a4caedecb8be469ad5, type: 3}
   red: {fileID: 21300000, guid: dcc31731581264f4c8d79eeccb4ab58b, type: 3}
   blue: {fileID: 21300000, guid: dcc31731581264f4c8d79eeccb4ab58b, type: 3}

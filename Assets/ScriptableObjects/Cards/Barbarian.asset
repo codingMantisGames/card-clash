@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Barbarian
   m_EditorClassIdentifier: 
   cardID: CC54
-  prefab: {fileID: 4481299082730190297, guid: a201141614f45fa4d988c8ff503feb0c, type: 3}
+  prefab: {fileID: 4481299082730190297, guid: fadfa5873f15983489cf158e76e767a3, type: 3}
   red: {fileID: 21300000, guid: b286c9254ac046449bc866e610cf5a95, type: 3}
   blue: {fileID: 21300000, guid: 0569a181d0b8ed74e8e7df3148cbb001, type: 3}
