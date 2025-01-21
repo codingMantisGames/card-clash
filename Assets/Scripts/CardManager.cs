@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
+using TMPro;
 
 public class CardManager : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class CardManager : MonoBehaviour
     public List<CardInfo> discardDeck;
     [SerializeField] private HexagonManager hexagonManager;
     public Camera dragCamera;
+    [SerializeField] private Button drawCardButton;
+    private TMP_Text buttonTxt;
     [Header("Properties")]
     public Ease cardZoomEase;
     public float cardZoomTime;
@@ -39,16 +43,21 @@ public class CardManager : MonoBehaviour
     #region UNITY FUNCTIONS
     void Start()
     {
+        buttonTxt = drawCardButton.GetComponentInChildren<TMP_Text>();
+
+
         cardCounter = startCardCount;
         for (int i = 0; i < startCardCount; i++)
         {
             AddNewCard();
         }
 
-        cardCounter = 1;
+        cardCounter = cardDrawLimitPerRound;
+        drawCardButton.interactable = true;
+        buttonTxt.text = "DRAW CARDS (" + cardDrawLimitPerRound + ")";
     }
     void Update()
-    {
+    {/*
         if (isDraging)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -60,7 +69,7 @@ public class CardManager : MonoBehaviour
             {
 
             }
-        }
+        }*/
     }
     #endregion
 
@@ -76,6 +85,8 @@ public class CardManager : MonoBehaviour
     public void ResetData()
     {
         cardCounter = cardDrawLimitPerRound;
+        drawCardButton.interactable = true;
+        buttonTxt.text = "DRAW CARDS (" + cardCounter + ")";
     }
     [SimpleButton]
     public void AlignCard()
@@ -98,6 +109,13 @@ public class CardManager : MonoBehaviour
 
             transform.GetChild(i).DOMove(position, cardAlignTime).SetEase(cardAlignEase);
         }
+
+        if (cardCounter <= 0 || transform.childCount >= 3)
+            drawCardButton.interactable = false;
+        else
+            drawCardButton.interactable = true;
+
+        buttonTxt.text = "DRAW CARDS (" + cardCounter + ")";
     }
     public void DragStart(Card card)
     {
@@ -151,10 +169,10 @@ public class CardManager : MonoBehaviour
 
         int count = transform.childCount / 2;
 
-        Vector3 pos = transform.position + new Vector3(0, 1.5f, 1);
+        Vector3 pos = transform.position + new Vector3(0, Gamemanager.instance.currentRoundStage == RoundStage.WAITING ? 0 : 1.5f, 0);
 
         if (transform.childCount != 0)
-            pos = transform.GetChild(count).position + new Vector3(0, 1.5f, 1);
+            pos = transform.GetChild(count).position + new Vector3(0, Gamemanager.instance.currentRoundStage == RoundStage.WAITING ? 0 : 1.5f, 0);
 
         Transform temp = Instantiate(card, pos, Quaternion.identity, transform).transform;
 

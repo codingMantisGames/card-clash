@@ -42,6 +42,11 @@ public class Gamemanager : NetworkBehaviour
     [SerializeField] private TMP_Text noMovesPending;
     private Tween fadeTween;
 
+    [SerializeField, Space(20)] private GameObject drawAndDeployHelp;
+    [SerializeField] private GameObject movementHelp;
+    [SerializeField] private GameObject attackHelp;
+    [SerializeField] private Button helpButton;
+
     Button _nextRoundButton;
     Button _endTurnButton;
     #endregion
@@ -53,8 +58,6 @@ public class Gamemanager : NetworkBehaviour
     }
     void Start()
     {
-        currentRoundStage = RoundStage.USING_CARDS;
-
         _nextRoundButton = nextRoundButton.GetComponent<Button>();
         _endTurnButton = endTurnButton.GetComponent<Button>();
 
@@ -135,6 +138,8 @@ public class Gamemanager : NetworkBehaviour
     }
     public void StartGame()
     {
+        currentRoundStage = RoundStage.USING_CARDS;
+
         RPC_SetPlayerTurn(1);
         ID = 1;
     }
@@ -153,6 +158,9 @@ public class Gamemanager : NetworkBehaviour
 
             isPlayerTurn = true;
             roundMessageLabel.text = "</b>Round 1</b>\nDraw & Deploy";
+
+            CheckShowHelpCondition();
+            helpButton.gameObject.SetActive(true);
         }
         else
         {
@@ -161,6 +169,7 @@ public class Gamemanager : NetworkBehaviour
 
             isPlayerTurn = false;
             roundMessageLabel.text = "";
+            helpButton.gameObject.SetActive(false);
         }
     }
     public void ShowMessage(string message)
@@ -177,6 +186,10 @@ public class Gamemanager : NetworkBehaviour
         RPC_ChangeTurn();
         HexagonManager.instance.HideAllHex();
         ResetRound.Invoke();
+
+        drawAndDeployHelp.SetActive(false);
+        movementHelp.SetActive(false);
+        attackHelp.SetActive(false);
     }
     [Rpc(RpcSources.All, RpcTargets.All)]
     public void RPC_ChangeTurn()
@@ -193,6 +206,11 @@ public class Gamemanager : NetworkBehaviour
     }
     public void NextRound()
     {
+        drawAndDeployHelp.SetActive(false);
+        movementHelp.SetActive(false);
+        attackHelp.SetActive(false);
+
+
         HexagonManager.instance.HideAllHex();
 
         ResetRound.Invoke();
@@ -209,6 +227,8 @@ public class Gamemanager : NetworkBehaviour
             nextRoundButton.SetActive(false);
             roundMessageLabel.text = "<b>Round 3</b>\nAttack";
         }
+
+        CheckShowHelpCondition();
     }
     public void GameWin(bool flag)
     {
@@ -234,6 +254,7 @@ public class Gamemanager : NetworkBehaviour
     {
         _endTurnButton.interactable = true;
         _nextRoundButton.interactable = true;
+        helpButton.interactable = true;
 
         canInteract = true;
     }
@@ -241,7 +262,7 @@ public class Gamemanager : NetworkBehaviour
     {
         _endTurnButton.interactable = false;
         _nextRoundButton.interactable = false;
-
+        helpButton.interactable = false;
 
         canInteract = false;
     }
@@ -287,6 +308,60 @@ public class Gamemanager : NetworkBehaviour
          {
              noMovesPending.gameObject.SetActive(false);
          });
+    }
+    public void ShowHelp()
+    {
+        helpButton.gameObject.SetActive(false);
+
+        if (currentRoundStage == RoundStage.USING_CARDS)
+        {
+            drawAndDeployHelp.SetActive(true);
+        }
+        else if (currentRoundStage == RoundStage.MOVE_ITEM)
+        {
+            movementHelp.SetActive(true);
+        }
+        else if (currentRoundStage == RoundStage.ATTACK)
+        {
+            attackHelp.SetActive(true);
+        }
+    }
+    void CheckShowHelpCondition()
+    {
+        if (currentRoundStage == RoundStage.USING_CARDS && PlayerPrefs.GetInt("round1") == 0)
+        {
+            ShowHelp();
+        }
+        else if (currentRoundStage == RoundStage.MOVE_ITEM && PlayerPrefs.GetInt("round2") == 0)
+        {
+            ShowHelp();
+        }
+        else if (currentRoundStage == RoundStage.ATTACK && PlayerPrefs.GetInt("round3") == 0)
+        {
+            ShowHelp();
+        }
+    }
+    public void HideHelp(bool flag)
+    {
+        helpButton.gameObject.SetActive(true);
+
+
+        if (!flag)
+            return;
+
+        if (currentRoundStage == RoundStage.USING_CARDS)
+        {
+            PlayerPrefs.SetInt("round1", 1);
+        }
+        else if (currentRoundStage == RoundStage.MOVE_ITEM)
+        {
+            PlayerPrefs.SetInt("round2", 1);
+        }
+        else if (currentRoundStage == RoundStage.ATTACK)
+        {
+            PlayerPrefs.SetInt("round3", 1);
+        }
+        PlayerPrefs.Save();
     }
     #endregion
 }

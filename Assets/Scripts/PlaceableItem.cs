@@ -600,7 +600,7 @@ public class PlaceableItem : NetworkBehaviour
 
         for (int j = 1; j < pos.Length; j++)
         {
-            Vector3 direction = pos[j] - transform.position;
+            Vector3 direction = pos[j] - pos[j - 1];
 
             Quaternion targetRot = Quaternion.LookRotation(direction);
 

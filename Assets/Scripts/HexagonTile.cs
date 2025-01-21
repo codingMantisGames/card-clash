@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
+using UnityEngine.EventSystems;
 
 public class HexagonTile : NetworkBehaviour
 {
@@ -48,6 +49,9 @@ public class HexagonTile : NetworkBehaviour
 
     private void OnMouseEnter()
     {
+        if (IsMouseOverUI())
+            return;
+
         if (isBuildMode)
         {
             if (Gamemanager.instance.currentRoundStage == RoundStage.ATTACK && isUsed && canAttack)
@@ -68,6 +72,9 @@ public class HexagonTile : NetworkBehaviour
     }
     private void OnMouseExit()
     {
+        if (IsMouseOverUI())
+            return;
+
         if (isBuildMode)
         {
             if (Gamemanager.instance.currentRoundStage == RoundStage.ATTACK && isUsed && canAttack)
@@ -111,6 +118,9 @@ public class HexagonTile : NetworkBehaviour
     }
     private void OnMouseDown()
     {
+        if (IsMouseOverUI())
+            return;
+
         if (!Gamemanager.instance.isPlayerTurn || !Gamemanager.instance.canInteract)
             return;
 
@@ -230,6 +240,10 @@ public class HexagonTile : NetworkBehaviour
             Gizmos.color = Color.black;
             Gizmos.DrawSphere(buildPoint.position, 0.1f);
         }
+    }
+    public bool IsMouseOverUI()
+    {
+        return EventSystem.current.IsPointerOverGameObject();
     }
     #endregion
 }
