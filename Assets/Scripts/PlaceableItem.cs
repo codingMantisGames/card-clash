@@ -127,8 +127,7 @@ public class PlaceableItem : NetworkBehaviour
 
         Invoke("CheckForPowerCards", 0.1f);
 
-        if (Gamemanager.instance.isLeft == isLeft)
-            Gamemanager.instance.CheckPlayerPosition += CheckForCards;
+        Gamemanager.instance.CheckPlayerPosition += CheckForCards;
 
         life = totalLife;
         attackValue = realAttackValue;
@@ -204,6 +203,15 @@ public class PlaceableItem : NetworkBehaviour
     {
         Gamemanager.instance.OnItemSelected -= HideOutline;
         Gamemanager.instance.ResetRound -= ResetRound;
+
+        try
+        {
+            Gamemanager.instance.CheckPlayerPosition -= CheckForCards;
+        }
+        catch
+        {
+            Debug.LogWarning("Not Added!");
+        }
     }
     public void OnMouseDownFun()
     {
@@ -491,6 +499,7 @@ public class PlaceableItem : NetworkBehaviour
         }
 
     }
+
     void AttackAnimation()
     {
         RPC_StartTriggerAnimation("attack");

@@ -190,18 +190,19 @@ public class Gamemanager : NetworkBehaviour
         drawAndDeployHelp.SetActive(false);
         movementHelp.SetActive(false);
         attackHelp.SetActive(false);
+        endTurnButton.SetActive(false);
     }
     [Rpc(RpcSources.All, RpcTargets.All)]
     public void RPC_ChangeTurn()
     {
         if (Runner.IsServer)
         {
-            ID++;
+            ID += 1;
             if (ID > Runner.SessionInfo.PlayerCount)
             {
                 ID = 1;
-                RPC_SetPlayerTurn(ID);
             }
+            RPC_SetPlayerTurn(ID);
         }
     }
     public void NextRound()
