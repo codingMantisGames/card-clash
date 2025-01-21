@@ -8,13 +8,14 @@ public class PlayerTower : NetworkBehaviour
 {
     #region VARIABLES
     private ChangeDetector _changeDetector;
-    [SerializeField] private Renderer meshRenderer;
+    [SerializeField] private List<Renderer> meshRenderers;
     [SerializeField] private Material redMaterial;
     [SerializeField] private Material blueMaterial;
     [SerializeField] private TMP_Text lifeLabel;
     [Header("Networked Properties")]
     [Networked] public bool isLeft { get; set; }
     [Networked] public int life { get; set; }
+    [SerializeField] private GameObject brokenBuilding;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -39,10 +40,13 @@ public class PlayerTower : NetworkBehaviour
     [Rpc(RpcSources.InputAuthority, RpcTargets.All, HostMode = RpcHostMode.SourceIsHostPlayer)]
     public void RPC_SetMaterial()
     {
-        if (isLeft)
-            meshRenderer.material = redMaterial;
-        else
-            meshRenderer.material = blueMaterial;
+        foreach (var item in meshRenderers)
+        {
+            if (isLeft)
+                item.material = redMaterial;
+            else
+                item.material = blueMaterial;
+        }
 
         if (Runner.IsServer)
         {
@@ -81,9 +85,16 @@ public class PlayerTower : NetworkBehaviour
 
         if (life <= 0)
         {
-            //game over text
-            Debug.Log("game Over");
+            RPC_ShowBrokenBuilding();
+
+            Gamemanager.instance.GameWin(!isLeft);
         }
+    }
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void RPC_ShowBrokenBuilding()
+    {
+        brokenBuilding.SetActive(true);
+        transform.GetChild(0).gameObject.SetActive(false);
     }
     #endregion
 }

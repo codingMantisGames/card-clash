@@ -8,6 +8,7 @@ using TMPro;
 public class PlaceableItem : NetworkBehaviour
 {
     #region VARIABLES
+    [SerializeField] private string nameOfCharacter;
     [SerializeField] private List<SkinnedMeshRenderer> skinnedMeshRenderers;
     [SerializeField] private List<MeshRenderer> meshRenderers;
     [SerializeField] private Material redMat;
@@ -116,6 +117,7 @@ public class PlaceableItem : NetworkBehaviour
 
         outline.enabled = false;
         isHighlighted = false;
+        Gamemanager.instance.HideCharacterDetails();
     }
     public void SetBuilding(bool flag = false)
     {
@@ -205,21 +207,25 @@ public class PlaceableItem : NetworkBehaviour
     }
     public void OnMouseDownFun()
     {
+        if (!Gamemanager.instance.isPlayerTurn || !Gamemanager.instance.canInteract)
+            return;
+
         if ((Gamemanager.instance.isLeft == isLeft && moveCount == 0))
         {
-            Debug.LogWarning("Cant Move!.How this as some message");
+            Gamemanager.instance.ShowNoMovesPending(transform.position, "No Moves Remaining");
             return;
         }
 
         if (Gamemanager.instance.isLeft == isLeft && isFreezed)
         {
-            Debug.LogWarning("freezed");
+            Gamemanager.instance.ShowNoMovesPending(transform.position, "Character Frozen");
             return;
         }
         /*if (Gamemanager.instance.isLeft != isLeft && Gamemanager.instance.currentRoundStage == RoundStage.ATTACK)
         {
             HexagonManager.instance.CallOnMouseDown(tileIndex);
         }*/
+
 
 
         if (Gamemanager.instance.isLeft == isLeft && Gamemanager.instance.currentRoundStage != RoundStage.USING_CARDS && !isHighlighted)
@@ -335,6 +341,24 @@ public class PlaceableItem : NetworkBehaviour
 
             Gamemanager.instance.currentItemToMove = this;
             // CursorChanger.instance.SetMoveCursor();
+
+            #region CHARACTER DETAILS
+            int attackRange = 0;
+            attackRange = m_MovementRange;
+            if (isRangeCardUsed)
+                attackRange = 3;
+            string chance = "1";
+            if (isFreezed)
+                chance = "Freezed";
+            if (isStrikeCardUsed)
+            {
+                if (canAttackMore)
+                    chance = "2";
+                else
+                    chance = "1";
+            }
+            Gamemanager.instance.ShowCharacterDetails(nameOfCharacter, attackRange.ToString(), m_AttackRange.ToString(), life.ToString(), attackValue.ToString(), chance);
+            #endregion
         }
         else if (isHighlighted)
         {
@@ -352,6 +376,8 @@ public class PlaceableItem : NetworkBehaviour
                 Destroy(item);
             }
             lines = new List<GameObject>();
+
+            Gamemanager.instance.HideCharacterDetails();
         }
     }
     public bool HasLineOfSight(Vector3 pointA, Transform target)
@@ -380,7 +406,7 @@ public class PlaceableItem : NetworkBehaviour
         isHighlighted = false;
 
         CursorChanger.instance.SetNormalCursor();
-
+        Gamemanager.instance.HideCharacterDetails();
         Gamemanager.instance.currentItemToMove = null;
 
         foreach (var item in lines)
@@ -433,8 +459,12 @@ public class PlaceableItem : NetworkBehaviour
                 HexagonManager.activeHexagon = null;
                 textHolder.gameObject.SetActive(true);
 
+                Gamemanager.instance.EnableButtons();
+
             }).OnStart(() =>
             {
+                Gamemanager.instance.DisableButtons();
+
                 RPC_StartAnimation("move", true);
 
                 Vector3 direction = startPoint - transform.position;
@@ -597,8 +627,10 @@ public class PlaceableItem : NetworkBehaviour
             CheckForPowerCards();
 
             HexagonManager.activeHexagon = null;
+            Gamemanager.instance.EnableButtons();
         }).OnStart(() =>
         {
+            Gamemanager.instance.DisableButtons();
             textHolder.gameObject.SetActive(false);
             RemoveAllCards();
         });

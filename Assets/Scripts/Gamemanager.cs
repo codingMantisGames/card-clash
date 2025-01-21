@@ -5,6 +5,7 @@ using System;
 using DG.Tweening;
 using Fusion;
 using TMPro;
+using UnityEngine.UI;
 
 public class Gamemanager : NetworkBehaviour
 {
@@ -32,6 +33,17 @@ public class Gamemanager : NetworkBehaviour
     [SerializeField] private GameObject endTurnButton;
     [Networked] public int ID { set; get; }
     public bool isPlayerTurn;
+    [SerializeField, Space(20)] private CanvasGroup gameWinPanel;
+    [SerializeField] private CanvasGroup gameLosePanel;
+    [SerializeField] private UIPanelAnimation connectionIssuePanel;
+    [SerializeField] private GameObject inGamePanel;
+    [HideInInspector] public bool canInteract = false;
+    [SerializeField] private TMP_Text characterInfo;
+    [SerializeField] private TMP_Text noMovesPending;
+    private Tween fadeTween;
+
+    Button _nextRoundButton;
+    Button _endTurnButton;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -42,6 +54,11 @@ public class Gamemanager : NetworkBehaviour
     void Start()
     {
         currentRoundStage = RoundStage.USING_CARDS;
+
+        _nextRoundButton = nextRoundButton.GetComponent<Button>();
+        _endTurnButton = endTurnButton.GetComponent<Button>();
+
+        canInteract = true;
     }
     void Update()
     {
@@ -135,7 +152,7 @@ public class Gamemanager : NetworkBehaviour
             endTurnButton.SetActive(false);
 
             isPlayerTurn = true;
-            roundMessageLabel.text = "Round 1";
+            roundMessageLabel.text = "</b>Round 1</b>\nDraw & Deploy";
         }
         else
         {
@@ -183,15 +200,93 @@ public class Gamemanager : NetworkBehaviour
         if (currentRoundStage == RoundStage.USING_CARDS)
         {
             SwitchToMoveMode();
-            roundMessageLabel.text = "Round 2";
+            roundMessageLabel.text = "<b>Round 2</b>\nMovement";
         }
         else if (currentRoundStage == RoundStage.MOVE_ITEM)
         {
             SwitchToAttackMode();
             endTurnButton.SetActive(true);
             nextRoundButton.SetActive(false);
-            roundMessageLabel.text = "Round 3";
+            roundMessageLabel.text = "<b>Round 3</b>\nAttack";
         }
+    }
+    public void GameWin(bool flag)
+    {
+        RPC_GameWin(flag);
+    }
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void RPC_GameWin(bool flag)
+    {
+        inGamePanel.SetActive(false);
+
+        if (isLeft == flag)
+        {
+            gameWinPanel.gameObject.SetActive(true);
+            gameWinPanel.DOFade(1, 0.5f).SetEase(Ease.Linear);
+        }
+        else
+        {
+            gameLosePanel.gameObject.SetActive(true);
+            gameLosePanel.DOFade(1, 0.5f).SetEase(Ease.Linear);
+        }
+    }
+    public void EnableButtons()
+    {
+        _endTurnButton.interactable = true;
+        _nextRoundButton.interactable = true;
+
+        canInteract = true;
+    }
+    public void DisableButtons()
+    {
+        _endTurnButton.interactable = false;
+        _nextRoundButton.interactable = false;
+
+
+        canInteract = false;
+    }
+    public void ShowCharacterDetails(string name, string movementRange, string attackRange, string health, string attackValue, string chancePending)
+    {
+        string str = "<b>Character Details</b>";
+
+        str += "\nName : " + name;
+        str += "\nHealth : " + health;
+        str += "\nMovement Range : " + movementRange;
+        str += "\nAttack Range : " + attackRange;
+        str += "\nAttack Value : " + attackValue;
+
+        if (currentRoundStage == RoundStage.MOVE_ITEM)
+            str += "\nMovements Remainig : " + chancePending;
+        else if (currentRoundStage == RoundStage.ATTACK)
+            str += "\nAttacks Remainig : " + chancePending;
+
+        characterInfo.text = str;
+    }
+    public void HideCharacterDetails()
+    {
+        characterInfo.text = "";
+    }
+    public void ShowNoMovesPending(Vector3 pos, string txt)
+    {
+        if (fadeTween != null && fadeTween.IsActive())
+        {
+            fadeTween.Kill();
+        }
+
+        noMovesPending.text = txt;
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint(pos);
+        noMovesPending.transform.position = screenPosition;
+
+        noMovesPending.gameObject.SetActive(true);
+
+        Color c = noMovesPending.color;
+        c.a = 1;
+        noMovesPending.color = c;
+
+        fadeTween = noMovesPending.DOFade(0, 0.5f).SetDelay(1).OnComplete(() =>
+         {
+             noMovesPending.gameObject.SetActive(false);
+         });
     }
     #endregion
 }

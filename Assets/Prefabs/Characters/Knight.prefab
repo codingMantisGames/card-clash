@@ -260,6 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd1854aeac9a9d143b5e0a27c6bf113f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameOfCharacter: Knight
   skinnedMeshRenderers:
   - {fileID: 8910755822524596729}
   - {fileID: 2614543718976994937}
@@ -274,8 +275,8 @@ MonoBehaviour:
   blueMat: {fileID: 2100000, guid: decc268bacac0d74b99734a14e0290da, type: 2}
   outline: {fileID: 3464694072199761110}
   isMainBuilding: 0
-  m_MovementRange: 2
-  m_AttackRange: 3
+  m_MovementRange: 3
+  m_AttackRange: 1
   hexagonLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -292,15 +293,15 @@ MonoBehaviour:
   lines: []
   checkLineOfSite: 1
   isNearByAttack: 1
-  attackStoppingDistance: 0
-  goBackDelay: 0
+  attackStoppingDistance: 0.8
+  goBackDelay: 1
   timeBtwTiletoTileMovement: 1
   cardColliders: []
   cardLayer:
     serializedVersion: 2
     m_Bits: 512
-  totalLife: 4
-  realAttackValue: 3
+  totalLife: 7
+  realAttackValue: 4
   _life: 0
   _attackValue: 0
   _isFreezed: 0
@@ -314,6 +315,7 @@ MonoBehaviour:
   projectileSpawnPoint: {fileID: 0}
   ghost_red: {fileID: 100004, guid: aa2bdca99bc601340a216282d774a978, type: 3}
   ghost_blue: {fileID: 100004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
+  projectileHitAudio: {fileID: 0}
 --- !u!65 &4201115983298181027
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -653,6 +655,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8308027589137236875}
     m_Modifications:
+    - target: {fileID: 6871534571536712046, guid: a79fb81841b5d1c44b70e2669621d0bf, type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6871534571536712046, guid: a79fb81841b5d1c44b70e2669621d0bf, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: d8e3dc8f024e2f94c93d30a99c68208b, type: 3}
+    - target: {fileID: 6871534571536712046, guid: a79fb81841b5d1c44b70e2669621d0bf, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d8e3dc8f024e2f94c93d30a99c68208b, type: 3}
     - target: {fileID: 7118309658658842891, guid: a79fb81841b5d1c44b70e2669621d0bf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -291,6 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd1854aeac9a9d143b5e0a27c6bf113f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameOfCharacter: Rogue
   skinnedMeshRenderers:
   - {fileID: 5794253615624359172}
   - {fileID: 4060439351623841693}
@@ -321,7 +322,7 @@ MonoBehaviour:
   lines: []
   checkLineOfSite: 1
   isNearByAttack: 0
-  attackStoppingDistance: 0
+  attackStoppingDistance: 0.8
   goBackDelay: 0
   timeBtwTiletoTileMovement: 1
   cardColliders: []
@@ -329,7 +330,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   totalLife: 4
-  realAttackValue: 3
+  realAttackValue: 2
   _life: 0
   _attackValue: 0
   _isFreezed: 0

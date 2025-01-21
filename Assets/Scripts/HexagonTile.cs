@@ -111,7 +111,7 @@ public class HexagonTile : NetworkBehaviour
     }
     private void OnMouseDown()
     {
-        if (!Gamemanager.instance.isPlayerTurn)
+        if (!Gamemanager.instance.isPlayerTurn || !Gamemanager.instance.canInteract)
             return;
 
         if (Gamemanager.instance.currentRoundStage != RoundStage.USING_CARDS)
@@ -219,13 +219,13 @@ public class HexagonTile : NetworkBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(buildPoint.position, 0.3f);
         }
-        if(isCardNeutral)
+        if (isCardNeutral)
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(buildPoint.position, 0.5f);
         }
 
-        if(isLeft)
+        if (isLeft)
         {
             Gizmos.color = Color.black;
             Gizmos.DrawSphere(buildPoint.position, 0.1f);
