@@ -13,7 +13,7 @@ public class ShowDamage : MonoBehaviour
     [SerializeField] private float easeTime;
     [SerializeField] private float displayTime;
     [SerializeField] private Ease ease;
-    Camera mainCam;
+    Transform mainCam;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -23,10 +23,14 @@ public class ShowDamage : MonoBehaviour
     }
     void Start()
     {
-        mainCam = Camera.main;
+        mainCam = Camera.main.transform;
     }
     void Update()
     {
+        if (child.gameObject.activeInHierarchy)
+        {
+            child.transform.LookAt(child.transform.position + mainCam.transform.rotation * Vector3.forward, mainCam.transform.rotation * Vector3.up);
+        }
     }
     #endregion
 
@@ -50,7 +54,7 @@ public class ShowDamage : MonoBehaviour
 
         child.gameObject.SetActive(true);
         label.DOFade(0, easeTime).SetDelay(displayTime).SetEase(ease);
-        child.DOLocalMoveX(4.5f, easeTime).SetEase(ease).OnComplete(() =>
+        child.DOLocalMoveY(4.5f, easeTime).SetEase(ease).OnComplete(() =>
         {
             child.gameObject.SetActive(false);
         });

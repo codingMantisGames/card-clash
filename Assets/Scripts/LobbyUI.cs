@@ -160,6 +160,17 @@ public class LobbyUI : MonoBehaviour
             });
             howToPlayPanel.Close();
         }
+        else if(currentPanel == UIPanels.MESSAGE_PANEL)
+        {
+            currentPanel = UIPanels.CUSTOM_GAME;
+            customGamePanel.gameObject.SetActive(true);
+            messagePanel.DOFade(0, uiEaseTime2).SetEase(ease).OnComplete(() =>
+            {
+                customGamePanel.DOFade(1, uiEaseTime2).SetEase(ease);
+                messagePanel.gameObject.SetActive(false);
+            });
+            Gamemanager.instance.Disconnect();
+        }
     }
     public void ShowMessagePanel(string m)
     {

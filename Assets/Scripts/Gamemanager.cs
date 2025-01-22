@@ -36,7 +36,7 @@ public class Gamemanager : NetworkBehaviour
     public bool isPlayerTurn;
     [SerializeField, Space(20)] private CanvasGroup gameWinPanel;
     [SerializeField] private CanvasGroup gameLosePanel;
-    [SerializeField] private UIPanelAnimation connectionIssuePanel;
+    [SerializeField] private CanvasGroup connectionIssuePanel;
     [SerializeField] private GameObject inGamePanel;
     [HideInInspector] public bool canInteract = false;
     [SerializeField] private TMP_Text characterInfo;
@@ -67,7 +67,7 @@ public class Gamemanager : NetworkBehaviour
         _endTurnButton = endTurnButton.GetComponent<Button>();
 
         canInteract = true;
-
+        isGameOver = true;
     }
     void Update()
     {
@@ -76,6 +76,10 @@ public class Gamemanager : NetworkBehaviour
     #endregion
 
     #region FUNCTIONS
+    public void Disconnect()
+    {
+        Runner.Shutdown();
+    }
     public void ExitSession()
     {
         Runner.Shutdown();
@@ -86,8 +90,8 @@ public class Gamemanager : NetworkBehaviour
         gameLosePanel.alpha = 0;
         gameWinPanel.alpha = 0;
 
-        if(connectionIssuePanel.isOpen)
-            connectionIssuePanel.Close();
+        connectionIssuePanel.alpha = 0;
+        connectionIssuePanel.interactable = false;
 
         //Instantiate(networkManger, null).gameObject.SetActive(true);
     }
@@ -101,10 +105,13 @@ public class Gamemanager : NetworkBehaviour
         canInteract = false;
         inGamePanel.SetActive(false);
         connectionIssuePanel.gameObject.SetActive(true);
-        connectionIssuePanel.Open();
-
+        connectionIssuePanel.DOFade(1, 0.5f).SetDelay(0.1f).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            connectionIssuePanel.interactable = true;
+        });
         LobbyUI.instance.PlayerExit();
     }
+
     private void OnGUI()
     {
         if (GUI.Button(new Rect(0, 0, 200, 40), "Card Mode"))

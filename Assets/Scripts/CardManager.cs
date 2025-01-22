@@ -40,6 +40,7 @@ public class CardManager : MonoBehaviour
     [SerializeField] private int cardDrawLimitPerRound = 1;
     private int cardCounter;
     private bool isStarted = false;
+    [SerializeField] private GameObject drawMoreCardLabel;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -99,13 +100,38 @@ public class CardManager : MonoBehaviour
         cardCounter = cardDrawLimitPerRound;
         drawCardButton.interactable = true;
         buttonTxt.text = "DRAW CARDS (" + cardCounter + ")";
+
+        Invoke("SetNoCardsText", 1);
+    }
+    void SetNoCardsText()
+    {
+        if (transform.childCount == 0)
+        {
+            if (cardCounter > 0)
+                drawMoreCardLabel.SetActive(true);
+            else
+                drawMoreCardLabel.SetActive(false);
+            return;
+        }
+        else
+        {
+            drawMoreCardLabel.SetActive(false);
+        }
     }
     [SimpleButton]
     public void AlignCard()
     {
         if (transform.childCount == 0)
         {
+            if (cardCounter > 0)
+                drawMoreCardLabel.SetActive(true);
+            else
+                drawMoreCardLabel.SetActive(false);
             return;
+        }
+        else
+        {
+            drawMoreCardLabel.SetActive(false);
         }
 
         float tempZ = (transform.childCount / 2);
