@@ -8,6 +8,7 @@ using TMPro;
 public class CardManager : MonoBehaviour
 {
     #region VARIABLES
+    public static CardManager instance;
     [SerializeField] private Deck deck;
     public List<CardInfo> cards;
     public List<CardInfo> discardDeck;
@@ -38,23 +39,17 @@ public class CardManager : MonoBehaviour
     [SerializeField, Space(20)] private int startCardCount = 2;
     [SerializeField] private int cardDrawLimitPerRound = 1;
     private int cardCounter;
+    private bool isStarted = false;
     #endregion
 
     #region UNITY FUNCTIONS
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         buttonTxt = drawCardButton.GetComponentInChildren<TMP_Text>();
-
-
-        cardCounter = startCardCount;
-        for (int i = 0; i < startCardCount; i++)
-        {
-            AddNewCard();
-        }
-
-        cardCounter = cardDrawLimitPerRound;
-        drawCardButton.interactable = true;
-        buttonTxt.text = "DRAW CARDS (" + cardDrawLimitPerRound + ")";
     }
     void Update()
     {/*
@@ -74,6 +69,23 @@ public class CardManager : MonoBehaviour
     #endregion
 
     #region FUNCTIONS
+    public void StartGame()
+    {
+        if (isStarted)
+            return;
+
+        isStarted = true;
+
+        cardCounter = startCardCount;
+        for (int i = 0; i < startCardCount; i++)
+        {
+            AddNewCard();
+        }
+
+        cardCounter = cardDrawLimitPerRound;
+        drawCardButton.interactable = true;
+        buttonTxt.text = "DRAW CARDS (" + cardDrawLimitPerRound + ")";
+    }
     private void OnEnable()
     {
         Gamemanager.instance.ResetRound += ResetData;

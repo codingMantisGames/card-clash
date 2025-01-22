@@ -32,7 +32,7 @@ public class PlaceableItem : NetworkBehaviour
     bool canMove;
     [SerializeField] private Animator animController;
     [SerializeField] private Transform textHolder;
-    [HideInInspector] public int moveCount;
+    [Networked] public int moveCount { set; get; }
     public GameObject itemToDisable;
     private Collider[] colliders;
     private Collider[] playerColliders;
@@ -43,7 +43,7 @@ public class PlaceableItem : NetworkBehaviour
     [SerializeField] private float attackStoppingDistance;
     [SerializeField] private float goBackDelay;
     [SerializeField] private float timeBtwTiletoTileMovement = 1;
-    private int currentAttackIndex;
+    [Networked] public int currentAttackIndex { set; get; }
     Vector3 startPoint;
     [SerializeField, Space(20)] private Collider[] cardColliders;
     [SerializeField] private LayerMask cardLayer;
@@ -84,9 +84,9 @@ public class PlaceableItem : NetworkBehaviour
         dropableCards = new List<DropableCard>();
 
         Gamemanager.instance.ResetRound += ResetRound;
+        Gamemanager.instance.ChnageTurn += ChangeTurn;
 
         runAudio = GetComponent<AudioSource>();
-
     }
     void Update()
     {
@@ -96,28 +96,33 @@ public class PlaceableItem : NetworkBehaviour
     #endregion
 
     #region FUNCTIONS
+    public void ChangeTurn()
+    {
+        if (isFreezed)
+        {
+            isFreezed = false;
+
+            RPC_UnFreezePlayer();
+            RPC_SetMaterial(isLeft);
+
+            freezedCounter++;
+        }
+    }
     public void ResetRound()
     {
-        moveCount = 1;
+        RPC_ResetMoveCounter();
 
         if (isStrikeCardUsed)
             canAttackMore = true;
 
-        if (isFreezed)
-        {
-            if (freezedCounter != 0)
-            {
-                isFreezed = false;
-
-                RPC_UnFreezePlayer();
-                RPC_SetMaterial(isLeft);
-            }
-            freezedCounter++;
-        }
-
         outline.enabled = false;
         isHighlighted = false;
         Gamemanager.instance.HideCharacterDetails();
+    }
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_ResetMoveCounter()
+    {
+        moveCount = 1;
     }
     public void SetBuilding(bool flag = false)
     {
@@ -135,6 +140,7 @@ public class PlaceableItem : NetworkBehaviour
     [Rpc(RpcSources.All, RpcTargets.All)]
     public void RPC_SetMaterial(bool flag)
     {
+        Debug.Log("asa " + gameObject.name);
         foreach (var item in skinnedMeshRenderers)
         {
             if (flag)
@@ -189,6 +195,9 @@ public class PlaceableItem : NetworkBehaviour
     public override void Spawned()
     {
         _changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
+
+        lifeLabel.text = life.ToString();
+        attackValueLabel.text = attackValue.ToString();
     }
 
     private void OnEnable()
@@ -203,6 +212,7 @@ public class PlaceableItem : NetworkBehaviour
     {
         Gamemanager.instance.OnItemSelected -= HideOutline;
         Gamemanager.instance.ResetRound -= ResetRound;
+        Gamemanager.instance.ChnageTurn -= ChangeTurn;
 
         try
         {
@@ -452,7 +462,8 @@ public class PlaceableItem : NetworkBehaviour
             {
                 canMove = true;
                 RPC_StartAnimation("move", true);
-                textHolder.gameObject.SetActive(false);
+                //textHolder.gameObject.SetActive(false);
+                RPC_HideText(false);
                 Vector3 direction = pos - transform.position;
                 Quaternion targetRot = Quaternion.LookRotation(direction);
                 RPC_SetRotation(targetRot);
@@ -465,7 +476,8 @@ public class PlaceableItem : NetworkBehaviour
                 canMove = false;
 
                 HexagonManager.activeHexagon = null;
-                textHolder.gameObject.SetActive(true);
+                //textHolder.gameObject.SetActive(true);
+                RPC_HideText(true);
 
                 Gamemanager.instance.EnableButtons();
 
@@ -481,13 +493,17 @@ public class PlaceableItem : NetworkBehaviour
             }));
 
             sequence.Play();
-            HexagonManager.instance.HideAllHex();
-            HideOutline();
+            //this is remove to fix bugs
+            //HexagonManager.instance.HideAllHex();
+            //HideOutline(); 
+            RPC_HideOutline();
         }
         else
         {
-            HexagonManager.instance.HideAllHex();
-            HideOutline();
+            //this is remove to fix bugs
+            //HexagonManager.instance.HideAllHex();
+            //HideOutline();
+            RPC_HideOutline();
 
             HexagonTile tile = HexagonManager.instance.GetHexagon(currentAttackIndex);
 
@@ -499,14 +515,23 @@ public class PlaceableItem : NetworkBehaviour
         }
 
     }
-
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void RPC_HideOutline()
+    {
+        HexagonManager.instance.HideAllHex();
+        HideOutline();
+    }
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void RPC_HideText(bool flag)
+    {
+        textHolder.gameObject.SetActive(flag);
+    }
     void AttackAnimation()
     {
         RPC_StartTriggerAnimation("attack");
     }
     public void OnAttack()
     {
-
         GameObject gm = Instantiate(projectile, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
 
         HexagonTile tile = HexagonManager.instance.GetHexagon(currentAttackIndex);
@@ -538,18 +563,36 @@ public class PlaceableItem : NetworkBehaviour
     public void DealDamageToEnemy()
     {
         PlaceableItem item = HexagonManager.instance.GetHexagon(currentAttackIndex).GetPlayer();
-        if (item)
+        if (item && Runner.IsServer)
+        {
             item.Damage(attackValue);
+            ShowDamage.instance.ShowDamageValue(attackValue, item.transform.position);
+        }
+        else if (item)
+        {
+            ShowDamage.instance.ShowDamageValue(attackValue, item.transform.position);
+        }
         else
         {
             PlayerTower playerTower = HexagonManager.instance.GetHexagon(currentAttackIndex).GetTower();
-            if (playerTower)
-                playerTower.Damage(attackValue);
-            else
+            if (playerTower && Runner.IsServer)
             {
-                DropableCard card = HexagonManager.instance.GetHexagon(currentAttackIndex).GetCard();
-                if (card)
-                    card.Damage();
+                playerTower.Damage(attackValue);
+                ShowDamage.instance.ShowDamageValue(attackValue, playerTower.transform.position);
+            }
+            else if (playerTower)
+            {
+                ShowDamage.instance.ShowDamageValue(attackValue, playerTower.transform.position);
+            }
+            DropableCard card = HexagonManager.instance.GetHexagon(currentAttackIndex).GetCard();
+            if (card && Runner.IsServer)
+            {
+                card.Damage();
+                ShowDamage.instance.ShowDamageValue(attackValue, card.transform.position);
+            }
+            else if (card)
+            {
+                ShowDamage.instance.ShowDamageValue(attackValue, card.transform.position);
             }
         }
     }
@@ -566,10 +609,9 @@ public class PlaceableItem : NetworkBehaviour
 
         if (life <= 0)
         {
-            textHolder.gameObject.SetActive(false);
-            RPC_SpawnGhost();
-
-            HexagonManager.instance.FreeHexSpace(tileIndex);
+            //textHolder.gameObject.SetActive(false);
+            RPC_HideText(false);
+            // RPC_SpawnGhost();
 
             Runner.Despawn(Object);
         }
@@ -622,7 +664,8 @@ public class PlaceableItem : NetworkBehaviour
         RPC_StartAnimation("move", true);
         sequence.OnComplete(() =>
         {
-            textHolder.gameObject.SetActive(true);
+            //textHolder.gameObject.SetActive(true);
+            RPC_HideText(true);
             canMove = false;
             RPC_StartAnimation("move", false);
             RPC_SetRotation(Quaternion.Euler(0, isLeft ? 90 : 270, 0));
@@ -640,7 +683,8 @@ public class PlaceableItem : NetworkBehaviour
         }).OnStart(() =>
         {
             Gamemanager.instance.DisableButtons();
-            textHolder.gameObject.SetActive(false);
+            //textHolder.gameObject.SetActive(false);
+            RPC_HideText(false);
             RemoveAllCards();
         });
 
@@ -699,7 +743,7 @@ public class PlaceableItem : NetworkBehaviour
         int totalAttackValue = realAttackValue;
         for (int i = 0; i < num; i++)
         {
-            if (cardColliders[i].TryGetComponent<DropableCard>(out DropableCard card) && card.isLeft)
+            if (cardColliders[i].TryGetComponent<DropableCard>(out DropableCard card) && card.isLeft == isLeft)
             {
                 dropableCards.Add(card);
 
@@ -732,6 +776,12 @@ public class PlaceableItem : NetworkBehaviour
             isStrikeCardUsed = false;
             canAttackMore = false;
         }
+    }
+    public override void Despawned(NetworkRunner runner, bool hasState)
+    {
+        HexagonManager.instance.FreeHexSpace(tileIndex);
+
+        Instantiate(isLeft ? ghost_red : ghost_blue, transform.position, Quaternion.identity);
     }
     private void OnDrawGizmos()
     {

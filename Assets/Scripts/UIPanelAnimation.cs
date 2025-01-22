@@ -18,6 +18,8 @@ public class UIPanelAnimation : MonoBehaviour
     [SerializeField] private float fadeTime;
 
     [SerializeField] Vector2 size;
+    private bool isWorking;
+    public bool isOpen;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -31,6 +33,12 @@ public class UIPanelAnimation : MonoBehaviour
     [SimpleButton]
     public void Open()
     {
+        if (isWorking)
+            return;
+
+        isWorking = true;
+        isOpen = true;
+
         Vector2 newSize = Vector2.one * 50;
         newSize.x = size.x;
         img.DOFade(0.9f, openTime / 2).SetEase(openEase);
@@ -38,7 +46,10 @@ public class UIPanelAnimation : MonoBehaviour
         {
             rect.DOSizeDelta(size, openTime).SetEase(openEase).OnComplete(() =>
             {
-                canvasGroup.DOFade(1, fadeTime).SetEase(fadeEase);
+                canvasGroup.DOFade(1, fadeTime).SetEase(fadeEase).OnComplete(() =>
+                {
+                    isWorking = false;
+                });
             });
         });
     }
@@ -52,7 +63,10 @@ public class UIPanelAnimation : MonoBehaviour
             rect.DOSizeDelta(newSize, openTime).SetEase(openEase).OnComplete(() =>
             {
                 img.DOFade(0, openTime / 2).SetDelay(openTime / 2).SetEase(openEase);
-                rect.DOSizeDelta(Vector2.one * 50, openTime).SetEase(openEase);
+                rect.DOSizeDelta(Vector2.one * 50, openTime).SetEase(openEase).OnComplete(() =>
+                {
+                    isOpen = false;
+                });
             });
         });
     }

@@ -39,6 +39,7 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     }
     void Start()
     {
+        roomName.text = "NewRoom" + UnityEngine.Random.Range(0, 100);
     }
     void Update()
     {
@@ -48,7 +49,6 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     #region LOBBY
     private void OnGUI()
     {
-
         if (_runner == null)
         {
             if (GUI.Button(new Rect(0, 200, 200, 40), "Host"))
@@ -81,7 +81,7 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     {
         nameOfRoom = roomName.text;
         if (nameOfRoom == "")
-            nameOfRoom = "Nehal";
+            nameOfRoom = "NewRoom" + UnityEngine.Random.Range(0, 100);
 
         lobbyUI.ShowMessagePanel("Creating Custom Room.");
 
@@ -91,7 +91,10 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     {
         nameOfRoom = roomName.text;
         if (nameOfRoom == "")
-            nameOfRoom = "Nehal";
+        {
+            JoinRandomGame();
+            return;
+        }
 
         lobbyUI.ShowMessagePanel("Joining Custom Room.");
 
@@ -99,7 +102,8 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     }
     async void StartGame(GameMode mode)
     {
-        _runner = gameObject.AddComponent<NetworkRunner>();
+        if (_runner == null)
+            _runner = gameObject.AddComponent<NetworkRunner>();
         _runner.ProvideInput = true;
 
         var scene = SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex);
@@ -122,7 +126,7 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
         {
             Debug.Log("Connected");
             if (lobbyUI)
-                lobbyUI.ShowMessagePanel("Joined Room! \n Waiting for Second player.");
+                lobbyUI.ShowMessagePanel("Joined Room! \n Waiting for Second player.\n Room Name : " + _runner.SessionInfo.Name);
         }
         else
         {
@@ -160,16 +164,21 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
     {
         // throw new NotImplementedException();
+        if (!Gamemanager.instance.isGameOver)
+            Gamemanager.instance.PlayerExit();
     }
 
     public void OnShutdown(NetworkRunner runner, ShutdownReason shutdownReason)
     {
         // throw new NotImplementedException();
+        if (!Gamemanager.instance.isGameOver)
+            Gamemanager.instance.PlayerExit();
     }
 
     public void OnDisconnectedFromServer(NetworkRunner runner, NetDisconnectReason reason)
     {
         //throw new NotImplementedException();
+        //Gamemanager.instance.PlayerExit();
     }
 
     public void OnConnectRequest(NetworkRunner runner, NetworkRunnerCallbackArgs.ConnectRequest request, byte[] token)

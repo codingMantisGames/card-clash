@@ -20,14 +20,14 @@ public class HexagonManager : NetworkBehaviour
     void Start()
     {
 
-       // Vector3 cumulativePosition = Vector3.zero;
+        // Vector3 cumulativePosition = Vector3.zero;
 
         //foreach (HexagonTile child in hexagonTiles)
         //{
-           // cumulativePosition += child.transform.position;
+        // cumulativePosition += child.transform.position;
         //}
 
-       // transform.position = cumulativePosition / hexagonTiles.Length;
+        // transform.position = cumulativePosition / hexagonTiles.Length;
     }
     void Update()
     {
@@ -145,6 +145,7 @@ public class HexagonManager : NetworkBehaviour
             if (t.TryGetComponent<DropableCard>(out DropableCard dropableCard))
             {
                 dropableCard.SetCard(isLeft);
+                dropableCard.tileIndex = index;
             }
 
             if (t.transform.tag == "Heal")
@@ -173,7 +174,14 @@ public class HexagonManager : NetworkBehaviour
     }
     public void FreeHexSpace(int index)
     {
-        GetHexagon(index).isUsed = false;
+        try
+        {
+            GetHexagon(index).isUsed = false;
+        }
+        catch
+        {
+            Debug.Log("Some issue here bro!");
+        }
     }
 
     public void HideAllHex()
@@ -182,7 +190,7 @@ public class HexagonManager : NetworkBehaviour
         {
             item.ToggleHexagon(false);
         }
-
+        activeHexagon = null;//this is the new change
         CursorChanger.instance.SetNormalCursor();
 
         isHexMoveOn = false;

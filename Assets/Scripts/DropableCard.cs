@@ -14,6 +14,7 @@ public class DropableCard : NetworkBehaviour
     [SerializeField] private Transform textHolder;
     [Networked] public bool isLeft { set; get; }
     public DropCardType dropCardType;
+    [Networked] public int tileIndex { set; get; }
     #endregion
 
     #region UNITY FUNCTIONS
@@ -86,6 +87,11 @@ public class DropableCard : NetworkBehaviour
     public void RPC_Damage()
     {
         Runner.Despawn(Object);
+    }
+    public override void Despawned(NetworkRunner runner, bool hasState)
+    {
+        Gamemanager.instance.CheckPlayerPosition?.Invoke();
+        HexagonManager.instance.FreeHexSpace(tileIndex);
     }
     #endregion
 }

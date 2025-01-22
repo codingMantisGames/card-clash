@@ -57,10 +57,14 @@ public class PlayerTower : NetworkBehaviour
         {
             Gamemanager.instance.isLeft = false;
         }
+
+        CardManager.instance.StartGame();
     }
     public override void Spawned()
     {
         _changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
+
+        lifeLabel.text = life.ToString();
     }
     public override void Render()
     {

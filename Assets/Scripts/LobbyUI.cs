@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LobbyUI : MonoBehaviour
 {
@@ -60,6 +61,45 @@ public class LobbyUI : MonoBehaviour
     #endregion
 
     #region FUNCTIONS
+    public void PlayerExit()
+    {
+        mainLogo.gameObject.SetActive(false);
+        blurPanel.SetActive(false);
+    }
+    public void ResetAll()
+    {
+        logoPanel.SetActive(true);
+        mainLogo.gameObject.SetActive(true);
+        currentPanel = UIPanels.LOGO;
+
+        mainLogo.anchoredPosition = new Vector3(0, 85, 0);
+
+        mainOptionPanel.alpha = 0;
+        blurPanel.SetActive(true);
+
+        Image img = blurPanel.GetComponent<Image>();
+        Color c = img.color;
+        c.a = 0.9f;
+        img.color = c;
+
+        img = mainLogo.GetComponent<Image>();
+        c = img.color;
+        c.a = 0.9f;
+        img.color = c;
+
+        mainOptionPanel.alpha = 0;
+        mainOptionPanel.gameObject.SetActive(false);
+
+        customGamePanel.alpha = 0;
+        customGamePanel.gameObject.SetActive(false);
+
+        messagePanel.alpha = 0;
+        messagePanel.gameObject.SetActive(false);
+
+        mainLogo.localScale = Vector3.one;
+
+        SceneManager.LoadSceneAsync(0);
+    }
     public void GameStart()
     {
         mainLogo.GetComponent<Image>().DOFade(0, 0.3f).SetEase(Ease.Linear).OnComplete(() =>
@@ -70,7 +110,7 @@ public class LobbyUI : MonoBehaviour
         {
             blurPanel.SetActive(false);
         });
-        
+
         messagePanel.DOFade(0, 0.25f).SetEase(Ease.Linear).OnComplete(() =>
         {
             messagePanel.gameObject.SetActive(false);

@@ -201,6 +201,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: da01eb4f22d2d8a44a0bfef71c016550, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: da01eb4f22d2d8a44a0bfef71c016550, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 3f561083fa42c644ebf20da19d0fc018, type: 2}
@@ -263,7 +267,7 @@ MonoBehaviour:
   index: 0
   playerLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 640
 --- !u!135 &4467649397726259077
 SphereCollider:
   m_ObjectHideFlags: 0

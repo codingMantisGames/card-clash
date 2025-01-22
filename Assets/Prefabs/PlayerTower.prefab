@@ -92,7 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stateAuthorityChangeErrorCorrectionDelta: 0.15
   SyncScale: 1
-  SyncParent: 1
+  SyncParent: 0
   _autoAOIOverride: 0
   DisableSharedModeInterpolation: 0
 --- !u!114 &-1789207361431441102

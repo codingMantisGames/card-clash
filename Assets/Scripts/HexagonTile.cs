@@ -88,7 +88,8 @@ public class HexagonTile : NetworkBehaviour
                 HexagonManager.activeHexagon = null;
                 HighlightHexagon(false);
 
-                CursorChanger.instance.SetNormalCursor();
+                if (Gamemanager.instance.currentRoundStage == RoundStage.USING_CARDS)
+                    CursorChanger.instance.SetNormalCursor();
             }
         }
     }

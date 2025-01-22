@@ -27,6 +27,7 @@ public class Gamemanager : NetworkBehaviour
     [HideInInspector] public PlaceableItem currentItemToMove;
     public Action CheckPlayerPosition;
     public Action ResetRound;
+    public Action ChnageTurn;
     [SerializeField] private TMP_Text yourTurnLabel;
     [SerializeField] private TMP_Text roundMessageLabel;
     [SerializeField] private GameObject nextRoundButton;
@@ -49,12 +50,16 @@ public class Gamemanager : NetworkBehaviour
 
     Button _nextRoundButton;
     Button _endTurnButton;
+    public bool isGameOver = false;
+    [SerializeField] private GameObject networkManger;
     #endregion
 
     #region UNITY FUNCTIONS
     private void Awake()
     {
         instance = this;
+
+        Instantiate(networkManger, null).gameObject.SetActive(true);
     }
     void Start()
     {
@@ -62,6 +67,7 @@ public class Gamemanager : NetworkBehaviour
         _endTurnButton = endTurnButton.GetComponent<Button>();
 
         canInteract = true;
+
     }
     void Update()
     {
@@ -70,6 +76,35 @@ public class Gamemanager : NetworkBehaviour
     #endregion
 
     #region FUNCTIONS
+    public void ExitSession()
+    {
+        Runner.Shutdown();
+
+        LobbyUI.instance.ResetAll();
+        gameLosePanel.interactable = false;
+        gameWinPanel.interactable = false;
+        gameLosePanel.alpha = 0;
+        gameWinPanel.alpha = 0;
+
+        if(connectionIssuePanel.isOpen)
+            connectionIssuePanel.Close();
+
+        //Instantiate(networkManger, null).gameObject.SetActive(true);
+    }
+    public void PlayerExit()
+    {
+        Vector3 pos = uiCamera.position;
+        pos.y = 4;
+        uiCamera.position = pos;
+        currentRoundStage = RoundStage.WAITING;
+        isPlayerTurn = false;
+        canInteract = false;
+        inGamePanel.SetActive(false);
+        connectionIssuePanel.gameObject.SetActive(true);
+        connectionIssuePanel.Open();
+
+        LobbyUI.instance.PlayerExit();
+    }
     private void OnGUI()
     {
         if (GUI.Button(new Rect(0, 0, 200, 40), "Card Mode"))
@@ -142,11 +177,15 @@ public class Gamemanager : NetworkBehaviour
 
         RPC_SetPlayerTurn(1);
         ID = 1;
+
+        isGameOver = false;
     }
 
     [Rpc(RpcSources.All, RpcTargets.All)]
     public void RPC_SetPlayerTurn(int id)
     {
+        isGameOver = false;
+
         if (Runner.LocalPlayer.PlayerId == id)
         {
             ShowMessage("Your Turn");
@@ -161,6 +200,8 @@ public class Gamemanager : NetworkBehaviour
 
             CheckShowHelpCondition();
             helpButton.gameObject.SetActive(true);
+
+            ChnageTurn?.Invoke();
         }
         else
         {
@@ -168,7 +209,7 @@ public class Gamemanager : NetworkBehaviour
             endTurnButton.SetActive(false);
 
             isPlayerTurn = false;
-            roundMessageLabel.text = "";
+            roundMessageLabel.text = "Enemys Turn";
             helpButton.gameObject.SetActive(false);
         }
     }
@@ -214,7 +255,7 @@ public class Gamemanager : NetworkBehaviour
 
         HexagonManager.instance.HideAllHex();
 
-        ResetRound.Invoke();
+        ResetRound?.Invoke();
 
         if (currentRoundStage == RoundStage.USING_CARDS)
         {
@@ -239,17 +280,23 @@ public class Gamemanager : NetworkBehaviour
     public void RPC_GameWin(bool flag)
     {
         inGamePanel.SetActive(false);
+        isGameOver = true;
 
         if (isLeft == flag)
         {
+            gameWinPanel.interactable = true;
             gameWinPanel.gameObject.SetActive(true);
             gameWinPanel.DOFade(1, 0.5f).SetEase(Ease.Linear);
         }
         else
         {
+            gameLosePanel.interactable = true;
             gameLosePanel.gameObject.SetActive(true);
             gameLosePanel.DOFade(1, 0.5f).SetEase(Ease.Linear);
         }
+
+        /* if (Runner.IsServer)
+             Runner.Shutdown();*/
     }
     public void EnableButtons()
     {
