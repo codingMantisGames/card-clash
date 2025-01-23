@@ -18,9 +18,9 @@ public class PlaceableItem : NetworkBehaviour
     [SerializeField] private bool isMainBuilding = false;
     private float[] range = new float[] { 1.8f, 3.7f, 5.4f };
     [SerializeField, Range(1, 3)] private int m_MovementRange = 1;
-    private bool isRangeCardUsed = false;
-    private bool isStrikeCardUsed = false;
-    private bool canAttackMore = false;
+    [Networked] public bool isRangeCardUsed { set; get; }
+    [Networked] public bool isStrikeCardUsed { set; get; }
+    [Networked] public bool canAttackMore { set; get; }
     [SerializeField, Range(1, 3)] private int m_AttackRange = 1;
     [SerializeField] private LayerMask hexagonLayer;
     [SerializeField] private LayerMask playerLayer;
@@ -47,7 +47,7 @@ public class PlaceableItem : NetworkBehaviour
     Vector3 startPoint;
     [SerializeField, Space(20)] private Collider[] cardColliders;
     [SerializeField] private LayerMask cardLayer;
-    private List<DropableCard> dropableCards;
+    public List<DropableCard> dropableCards;
     private ChangeDetector _changeDetector;
     [SerializeField] private int totalLife;
     [SerializeField] private int realAttackValue;
@@ -100,10 +100,13 @@ public class PlaceableItem : NetworkBehaviour
     {
         if (isFreezed)
         {
-            isFreezed = false;
+            if (freezedCounter > 1)
+            {
+                isFreezed = false;
 
-            RPC_UnFreezePlayer();
-            RPC_SetMaterial(isLeft);
+                RPC_UnFreezePlayer();
+                RPC_SetMaterial(isLeft);
+            }
 
             freezedCounter++;
         }
@@ -140,7 +143,6 @@ public class PlaceableItem : NetworkBehaviour
     [Rpc(RpcSources.All, RpcTargets.All)]
     public void RPC_SetMaterial(bool flag)
     {
-        Debug.Log("asa " + gameObject.name);
         foreach (var item in skinnedMeshRenderers)
         {
             if (flag)
@@ -598,7 +600,9 @@ public class PlaceableItem : NetworkBehaviour
     }
     public void Damage(int damage)
     {
+        RPC_ShakeCamera();
         RPC_Damage(damage);
+
     }
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void RPC_Damage(int damage)
@@ -615,7 +619,10 @@ public class PlaceableItem : NetworkBehaviour
 
             Runner.Despawn(Object);
         }
-
+    }
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void RPC_ShakeCamera()
+    {
         CameraShake.instance.ShakeCamera(1, 0.5f);
     }
     [Rpc(RpcSources.All, RpcTargets.All)]
@@ -676,7 +683,8 @@ public class PlaceableItem : NetworkBehaviour
             tile = HexagonManager.instance.GetHexagon(cIndex);
             tile.isUsed = false;
 
-            CheckForPowerCards();
+            //CheckForPowerCards();
+            Gamemanager.instance.CheckPlayerPosition?.Invoke();
 
             HexagonManager.activeHexagon = null;
             Gamemanager.instance.EnableButtons();
@@ -732,6 +740,7 @@ public class PlaceableItem : NetworkBehaviour
             }
         }
     }
+
     public void CheckForCards()
     {
         Invoke("CheckForPowerCards", 0.1f);
@@ -739,6 +748,7 @@ public class PlaceableItem : NetworkBehaviour
     public void CheckForPowerCards()
     {
         cardColliders = new Collider[6];
+        dropableCards = new List<DropableCard>();
         int num = Physics.OverlapSphereNonAlloc(transform.position, 2f, cardColliders, cardLayer);
         int totalAttackValue = realAttackValue;
         for (int i = 0; i < num; i++)
@@ -780,6 +790,8 @@ public class PlaceableItem : NetworkBehaviour
     public override void Despawned(NetworkRunner runner, bool hasState)
     {
         HexagonManager.instance.FreeHexSpace(tileIndex);
+
+        RemoveAllCards();
 
         Instantiate(isLeft ? ghost_red : ghost_blue, transform.position, Quaternion.identity);
     }

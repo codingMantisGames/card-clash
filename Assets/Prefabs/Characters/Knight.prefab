@@ -275,7 +275,7 @@ MonoBehaviour:
   blueMat: {fileID: 2100000, guid: decc268bacac0d74b99734a14e0290da, type: 2}
   outline: {fileID: 3464694072199761110}
   isMainBuilding: 0
-  m_MovementRange: 3
+  m_MovementRange: 2
   m_AttackRange: 1
   hexagonLayer:
     serializedVersion: 2
@@ -287,7 +287,7 @@ MonoBehaviour:
   _tileIndex: 0
   animController: {fileID: 8548202118306744458}
   textHolder: {fileID: 9015393438981640601}
-  moveCount: 0
+  _moveCount: 0
   itemToDisable: {fileID: 0}
   line: {fileID: 3194649039516306002, guid: f69300ace23fb7c46a481d7dddb8fce4, type: 3}
   lines: []
@@ -296,6 +296,7 @@ MonoBehaviour:
   attackStoppingDistance: 0.8
   goBackDelay: 1
   timeBtwTiletoTileMovement: 1
+  _currentAttackIndex: 0
   cardColliders: []
   cardLayer:
     serializedVersion: 2

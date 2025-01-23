@@ -98,7 +98,10 @@ public class CardManager : MonoBehaviour
     public void ResetData()
     {
         cardCounter = cardDrawLimitPerRound;
-        drawCardButton.interactable = true;
+        if (transform.childCount < 3)
+            drawCardButton.interactable = true;
+        else
+            drawCardButton.interactable = false;
         buttonTxt.text = "DRAW CARDS (" + cardCounter + ")";
 
         Invoke("SetNoCardsText", 1);

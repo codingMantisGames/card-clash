@@ -80,6 +80,7 @@ public class PlayerTower : NetworkBehaviour
     }
     public void Damage(int damage)
     {
+        RPC_ShakeCamera();
         RPC_Damage(damage);
     }
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
@@ -93,6 +94,11 @@ public class PlayerTower : NetworkBehaviour
 
             Gamemanager.instance.GameWin(!isLeft);
         }
+    }
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void RPC_ShakeCamera()
+    {
+        CameraShake.instance.ShakeCamera(1, 0.5f);
     }
     [Rpc(RpcSources.All, RpcTargets.All)]
     public void RPC_ShowBrokenBuilding()

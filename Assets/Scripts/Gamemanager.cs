@@ -114,7 +114,7 @@ public class Gamemanager : NetworkBehaviour
 
     private void OnGUI()
     {
-        if (GUI.Button(new Rect(0, 0, 200, 40), "Card Mode"))
+       /* if (GUI.Button(new Rect(0, 0, 200, 40), "Card Mode"))
         {
             SwitchToCardMode();
         }
@@ -136,7 +136,7 @@ public class Gamemanager : NetworkBehaviour
         catch
         {
             Debug.LogWarning("issue");
-        }
+        }*/
     }
     public void SetTargetCamera(float rot)
     {
@@ -208,7 +208,7 @@ public class Gamemanager : NetworkBehaviour
             CheckShowHelpCondition();
             helpButton.gameObject.SetActive(true);
 
-            ChnageTurn?.Invoke();
+            
         }
         else
         {
@@ -219,6 +219,8 @@ public class Gamemanager : NetworkBehaviour
             roundMessageLabel.text = "Enemys Turn";
             helpButton.gameObject.SetActive(false);
         }
+
+        ChnageTurn?.Invoke();
     }
     public void ShowMessage(string message)
     {
