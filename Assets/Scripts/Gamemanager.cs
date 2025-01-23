@@ -51,15 +51,12 @@ public class Gamemanager : NetworkBehaviour
     Button _nextRoundButton;
     Button _endTurnButton;
     public bool isGameOver = false;
-    [SerializeField] private GameObject networkManger;
     #endregion
 
     #region UNITY FUNCTIONS
     private void Awake()
     {
         instance = this;
-
-        Instantiate(networkManger, null).gameObject.SetActive(true);
     }
     void Start()
     {
@@ -82,7 +79,14 @@ public class Gamemanager : NetworkBehaviour
     }
     public void ExitSession()
     {
-        Runner.Shutdown();
+        try
+        {
+            Runner.Shutdown();
+        }
+        catch
+        {
+            Debug.Log("No Runner");
+        }
 
         LobbyUI.instance.ResetAll();
         gameLosePanel.interactable = false;
@@ -114,29 +118,29 @@ public class Gamemanager : NetworkBehaviour
 
     private void OnGUI()
     {
-       /* if (GUI.Button(new Rect(0, 0, 200, 40), "Card Mode"))
-        {
-            SwitchToCardMode();
-        }
-        if (GUI.Button(new Rect(210, 0, 200, 40), "Move Mode"))
-        {
-            SwitchToMoveMode();
-        }
-        if (GUI.Button(new Rect(420, 0, 200, 40), "Attack Mode"))
-        {
-            SwitchToAttackMode();
-        }
-        try
-        {
-            if (Runner.IsServer && GUI.Button(new Rect(640, 0, 200, 40), "ResetRound"))
-            {
-                ResetRound.Invoke();
-            }
-        }
-        catch
-        {
-            Debug.LogWarning("issue");
-        }*/
+        /* if (GUI.Button(new Rect(0, 0, 200, 40), "Card Mode"))
+         {
+             SwitchToCardMode();
+         }
+         if (GUI.Button(new Rect(210, 0, 200, 40), "Move Mode"))
+         {
+             SwitchToMoveMode();
+         }
+         if (GUI.Button(new Rect(420, 0, 200, 40), "Attack Mode"))
+         {
+             SwitchToAttackMode();
+         }
+         try
+         {
+             if (Runner.IsServer && GUI.Button(new Rect(640, 0, 200, 40), "ResetRound"))
+             {
+                 ResetRound.Invoke();
+             }
+         }
+         catch
+         {
+             Debug.LogWarning("issue");
+         }*/
     }
     public void SetTargetCamera(float rot)
     {
@@ -208,7 +212,7 @@ public class Gamemanager : NetworkBehaviour
             CheckShowHelpCondition();
             helpButton.gameObject.SetActive(true);
 
-            
+
         }
         else
         {

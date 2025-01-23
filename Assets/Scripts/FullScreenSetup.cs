@@ -9,7 +9,7 @@ public class FullScreenSetup : MonoBehaviour
     #region VARIABLES
     private Button button;
     private TMP_Text txt;
-    private Resolution originalResolution;
+    public Resolution originalResolution;
     private bool isFullscreen = false;
     #endregion
 
@@ -18,16 +18,17 @@ public class FullScreenSetup : MonoBehaviour
     {
         originalResolution = new Resolution
         {
-            width = Screen.width,
-            height = Screen.height
+            width = 1280,
+            height = 720
         };
 
         button = GetComponent<Button>();
         txt = button.GetComponentInChildren<TMP_Text>();
 
         button.onClick.AddListener(ToggleFullScreen);
-
         txt.text = Screen.fullScreen ? "Windowed" : "Fullscreen";
+
+        isFullscreen = Screen.fullScreen;
     }
     void Update()
     {

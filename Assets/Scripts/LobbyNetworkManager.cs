@@ -47,13 +47,13 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     #endregion
 
     #region LOBBY
-    private void OnGUI()
+   /* private void OnGUI()
     {
         if (_runner == null)
         {
             if (GUI.Button(new Rect(0, 200, 200, 40), "Host"))
             {
-                StartGame(GameMode.Host);
+                StartGame(GameMode.AutoHostOrClient);
             }
             if (GUI.Button(new Rect(0, 250, 200, 40), "Join"))
             {
@@ -67,11 +67,11 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
                 StartGame();
             }
         }
-    }
+    }*/
 
     public void JoinRandomGame()
     {
-        nameOfRoom = roomName.text;
+        nameOfRoom = "NewRoom" + UnityEngine.Random.Range(0, 100);
 
         lobbyUI.ShowMessagePanel("Joining Random Room.");
 
@@ -98,12 +98,11 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
 
         lobbyUI.ShowMessagePanel("Joining Custom Room.");
 
-        StartGame(GameMode.Host);
+        StartGame(GameMode.Client);
     }
     async void StartGame(GameMode mode)
     {
-        if (_runner == null)
-            _runner = gameObject.AddComponent<NetworkRunner>();
+        _runner = gameObject.AddComponent<NetworkRunner>();
         _runner.ProvideInput = true;
 
         var scene = SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex);
