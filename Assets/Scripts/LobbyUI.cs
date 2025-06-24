@@ -61,6 +61,13 @@ public class LobbyUI : MonoBehaviour
     #endregion
 
     #region FUNCTIONS
+    public void HideUIForBotGame()
+    {
+        mainOptionPanel.DOFade(0, uiEaseTime2).SetEase(ease).OnComplete(() =>
+        {
+            
+        });
+    }
     public void PlayerExit()
     {
         mainLogo.gameObject.SetActive(false);
@@ -160,7 +167,7 @@ public class LobbyUI : MonoBehaviour
             });
             howToPlayPanel.Close();
         }
-        else if(currentPanel == UIPanels.MESSAGE_PANEL)
+        else if (currentPanel == UIPanels.MESSAGE_PANEL)
         {
             currentPanel = UIPanels.CUSTOM_GAME;
             customGamePanel.gameObject.SetActive(true);

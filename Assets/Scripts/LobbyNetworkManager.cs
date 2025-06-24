@@ -25,6 +25,7 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     [SerializeField] private GameObject mainPrefab;
 
     [Networked] public bool isGameStarted { get; set; }
+    public Action<bool> SwitchMode;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -47,27 +48,27 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     #endregion
 
     #region LOBBY
-   /* private void OnGUI()
-    {
-        if (_runner == null)
-        {
-            if (GUI.Button(new Rect(0, 200, 200, 40), "Host"))
-            {
-                StartGame(GameMode.AutoHostOrClient);
-            }
-            if (GUI.Button(new Rect(0, 250, 200, 40), "Join"))
-            {
-                StartGame(GameMode.Client);
-            }
-        }
-        else
-        {
-            if (_runner.IsServer && !isGameStarted && GUI.Button(new Rect(0, 200, 200, 40), "Start Game"))
-            {
-                StartGame();
-            }
-        }
-    }*/
+    /* private void OnGUI()
+     {
+         if (_runner == null)
+         {
+             if (GUI.Button(new Rect(0, 200, 200, 40), "Host"))
+             {
+                 StartGame(GameMode.AutoHostOrClient);
+             }
+             if (GUI.Button(new Rect(0, 250, 200, 40), "Join"))
+             {
+                 StartGame(GameMode.Client);
+             }
+         }
+         else
+         {
+             if (_runner.IsServer && !isGameStarted && GUI.Button(new Rect(0, 200, 200, 40), "Start Game"))
+             {
+                 StartGame();
+             }
+         }
+     }*/
 
     public void JoinRandomGame()
     {
@@ -248,6 +249,17 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
 
     #region IN GAME
     [SimpleButton]
+    public void SwitchToOnlineMode()
+    {
+        SwitchMode.Invoke(false);
+    }
+    [SimpleButton]
+    public void SwitchToOfflineMode()
+    {
+        SwitchMode.Invoke(true);
+    }
+
+    [SimpleButton]
     public void StartGame()
     {
         if (_runner.IsServer)
@@ -277,6 +289,9 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
                 i++;
             }
             Gamemanager.instance.StartGame();
+
+            BotGameManager.instance.isBotGamePlay = false;
+            SwitchToOnlineMode();
 
             Invoke("ChangeRotation", 1f);
 

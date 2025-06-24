@@ -41,6 +41,11 @@ public class HexagonTile : NetworkBehaviour
         index = HexagonManager.instance.GetIndex(this);
 
         canAttack = false;
+        LobbyNetworkManager.instance.SwitchMode += HandleOnModeSwitch;
+    }
+    private void OnDestroy()
+    {
+        LobbyNetworkManager.instance.SwitchMode -= HandleOnModeSwitch;
     }
     void Update()
     {
@@ -96,6 +101,11 @@ public class HexagonTile : NetworkBehaviour
     #endregion
 
     #region FUNCTIONS
+    private void HandleOnModeSwitch(bool isBot)
+    {
+        if (isBot) this.enabled = false;
+        else this.enabled = true;
+    }
     public void HighlightHexagon(bool flag = true)
     {
         if (flag)

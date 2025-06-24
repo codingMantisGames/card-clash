@@ -211,6 +211,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -597,6 +605,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -920,6 +940,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -1021,6 +1045,10 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -1621,6 +1649,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -1734,6 +1770,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -4086,6 +4130,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -4203,6 +4255,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -4513,6 +4573,10 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -5040,6 +5104,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -5149,6 +5221,10 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -6561,6 +6637,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -7439,6 +7523,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -8235,6 +8331,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -9271,6 +9375,10 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -10873,6 +10981,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -10989,6 +11105,18 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -11171,6 +11299,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -11280,6 +11420,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -11668,6 +11816,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -11851,6 +12007,18 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isLeft
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -12039,6 +12207,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -12355,6 +12531,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isLeft
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -13037,6 +13221,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -13983,6 +14175,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -14837,6 +15037,10 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -15985,6 +16189,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -16331,6 +16543,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isLeft
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -16436,6 +16660,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -16778,6 +17010,7 @@ MonoBehaviour:
   cards: []
   discardDeck: []
   hexagonManager: {fileID: 566912334}
+  offlineHexgonManager: {fileID: 0}
   dragCamera: {fileID: 1377275498}
   drawCardButton: {fileID: 751108232}
   cardZoomEase: 18
@@ -16896,6 +17129,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -17566,6 +17807,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -17728,6 +17973,7 @@ GameObject:
   - component: {fileID: 566912333}
   - component: {fileID: 566912334}
   - component: {fileID: 566912335}
+  - component: {fileID: 566912336}
   m_Layer: 0
   m_Name: 'HexGround [HexagonManager]'
   m_TagString: Untagged
@@ -18017,6 +18263,20 @@ MonoBehaviour:
   - {fileID: 817757953}
   - {fileID: 1162381722}
   ForceRemoteRenderTimeframe: 0
+--- !u!114 &566912336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566912332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b37fbaea4138964295bce0299596a32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hexagonTiles: []
+  isHexMoveOn: 0
 --- !u!1001 &568385153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18104,6 +18364,18 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -18225,6 +18497,10 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -19094,6 +19370,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -19619,6 +19903,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -19716,6 +20012,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -20085,6 +20389,18 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -20476,6 +20792,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -20601,6 +20929,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -20725,6 +21057,18 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23100,6 +23444,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -23337,6 +23693,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -23993,6 +24357,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -24547,6 +24915,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -24644,6 +25016,10 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -25043,6 +25419,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -25222,6 +25610,18 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -25498,6 +25898,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -25945,6 +26353,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -26054,6 +26470,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -26165,6 +26589,18 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -27717,6 +28153,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -28189,6 +28629,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -28431,6 +28879,18 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -29039,6 +29499,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -29379,6 +29847,18 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -29940,6 +30420,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -30199,6 +30683,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -30304,6 +30796,18 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -31768,6 +32272,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -31953,6 +32465,18 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -32331,6 +32855,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -33024,6 +33556,10 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -33868,6 +34404,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -33910,7 +34454,7 @@ GameObject:
   - component: {fileID: 1162986000}
   - component: {fileID: 1162986002}
   m_Layer: 5
-  m_Name: JoinRandomButton
+  m_Name: Join Bot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34018,9 +34562,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2009787436}
-        m_TargetAssemblyTypeName: LobbyNetworkManager, Assembly-CSharp
-        m_MethodName: JoinRandomGame
+      - m_Target: {fileID: 1260772471}
+        m_TargetAssemblyTypeName: BotGameManager, Assembly-CSharp
+        m_MethodName: StartBotGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -34250,6 +34794,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -35590,6 +36142,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isLeft
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -35857,6 +36421,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -36102,6 +36674,18 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isLeft
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -37114,6 +37698,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f21496ab329118408d6231040bb3148, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1260772469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1260772470}
+  - component: {fileID: 1260772471}
+  m_Layer: 0
+  m_Name: BOT GAME MANAGER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1260772470
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260772469}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0069236755, y: 0.0038945675, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1260772471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260772469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0962149b899b1544886454e1123a271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yourTurnLabel: {fileID: 1758771716}
+  drawCardsButton: {fileID: 751108231}
+  cardAppearTime: 0.2
+  cardAppearEase: 19
+  uiCamera: {fileID: 1377275499}
+  nextRoundButton: {fileID: 1163347011}
+  endTurnButton: {fileID: 896706525}
+  roundMessageLabel: {fileID: 1523868032}
+  drawAndDeployHelp: {fileID: 1206799237}
+  movementHelp: {fileID: 1895458016}
+  attackHelp: {fileID: 197395277}
+  helpButton: {fileID: 318996186}
+  currentRoundStage: 0
+  offlineTower: {fileID: 2009016812172416, guid: 5d2af198962cfa04a8815648a9ee2366, type: 3}
+  playerTowerSpawnPosition: {fileID: 15149339}
+  botTowerSpawnPosition: {fileID: 895708092}
+  isBotGamePlay: 0
 --- !u!1001 &1262867904
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37418,6 +38063,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -37817,6 +38470,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -37923,6 +38584,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -38024,6 +38693,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -38615,6 +39292,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -39199,6 +39888,10 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -40635,6 +41328,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -40757,6 +41454,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -40862,6 +41571,18 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -41111,6 +41832,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -41306,6 +42039,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -41606,6 +42347,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -42539,6 +43288,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isLeft
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -42792,6 +43549,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -42905,6 +43674,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -43571,6 +44348,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -43680,6 +44469,18 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -43802,6 +44603,18 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -45390,6 +46203,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isLeft
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -46911,6 +47736,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -47019,6 +47852,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -47286,6 +48127,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -47395,6 +48248,18 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -47634,6 +48499,10 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -48739,6 +49608,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -49143,6 +50020,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -49594,6 +50479,10 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -50082,6 +50971,18 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isLeft
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -50728,6 +51629,10 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -51719,6 +52624,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -53619,6 +54532,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -54558,6 +55475,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -55303,6 +56224,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -55810,6 +56743,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -56530,6 +57471,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -57036,6 +57985,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -57619,6 +58576,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -59737,6 +60702,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -59850,6 +60819,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -59971,6 +60948,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isNoBuildZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -60112,7 +61097,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Join Random
+  m_text: Single Player (Bot)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -60139,8 +61124,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45.9
-  m_fontSizeBase: 45.9
+  m_fontSize: 37
+  m_fontSizeBase: 37
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -60563,6 +61548,18 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -62629,6 +63626,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -62748,6 +63749,14 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -64769,6 +65778,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isLeft
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -65159,6 +66180,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -65420,6 +66445,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
       value: 131073
@@ -65536,6 +66565,18 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -65869,6 +66910,18 @@ PrefabInstance:
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isLeft
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isBotZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isCardNeutral
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6108089475125150413, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: Flags
@@ -66489,3 +67542,4 @@ SceneRoots:
   - {fileID: 1911141104}
   - {fileID: 2013241657}
   - {fileID: 1224588911}
+  - {fileID: 1260772470}

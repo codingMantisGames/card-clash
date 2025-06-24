@@ -28,6 +28,11 @@ public class HexagonManager : NetworkBehaviour
         //}
 
         // transform.position = cumulativePosition / hexagonTiles.Length;
+        LobbyNetworkManager.instance.SwitchMode += HandleOnModeSwitch;
+    }
+    private void OnDestroy()
+    {
+        LobbyNetworkManager.instance.SwitchMode += HandleOnModeSwitch;
     }
     void Update()
     {
@@ -36,6 +41,11 @@ public class HexagonManager : NetworkBehaviour
     #endregion
 
     #region FUNCTIONS
+    private void HandleOnModeSwitch(bool isBot)
+    {
+        if (isBot) this.enabled = false;
+        else this.enabled = true;
+    }
     public void ToggleHexagon(bool flag = true)
     {
         foreach (var item in hexagonTiles)

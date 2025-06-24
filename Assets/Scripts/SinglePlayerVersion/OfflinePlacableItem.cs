@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Fusion;
 using DG.Tweening;
 using TMPro;
 
-public class PlaceableItem : NetworkBehaviour
+public class OfflinePlacableItem : MonoBehaviour
 {
     #region VARIABLES
     [SerializeField] private string nameOfCharacter;
@@ -18,21 +17,21 @@ public class PlaceableItem : NetworkBehaviour
     [SerializeField] private bool isMainBuilding = false;
     private float[] range = new float[] { 1.8f, 3.7f, 5.4f };
     [SerializeField, Range(1, 3)] private int m_MovementRange = 1;
-    [Networked] public bool isRangeCardUsed { set; get; }
-    [Networked] public bool isStrikeCardUsed { set; get; }
-    [Networked] public bool canAttackMore { set; get; }
+    public bool isRangeCardUsed;
+    public bool isStrikeCardUsed;
+    public bool canAttackMore;
     [SerializeField, Range(1, 3)] private int m_AttackRange = 1;
     [SerializeField] private LayerMask hexagonLayer;
     [SerializeField] private LayerMask playerLayer;
-    [Networked] public bool isLeft { set; get; }
-    [Networked] public int tileIndex { set; get; }
+    public bool isBot;
+    public int tileIndex;
     bool isSelected;
     bool isHighlighted;
     Vector3 targetPos;
     bool canMove;
     [SerializeField] private Animator animController;
     [SerializeField] private Transform textHolder;
-    [Networked] public int moveCount { set; get; }
+    public int moveCount;
     public GameObject itemToDisable;
     private Collider[] colliders;
     private Collider[] playerColliders;
@@ -43,18 +42,18 @@ public class PlaceableItem : NetworkBehaviour
     [SerializeField] private float attackStoppingDistance;
     [SerializeField] private float goBackDelay;
     [SerializeField] private float timeBtwTiletoTileMovement = 1;
-    [Networked] public int currentAttackIndex { set; get; }
+    public int currentAttackIndex;
     Vector3 startPoint;
     [SerializeField, Space(20)] private Collider[] cardColliders;
     [SerializeField] private LayerMask cardLayer;
     public List<DropableCard> dropableCards;
-    private ChangeDetector _changeDetector;
+    //private ChangeDetector _changeDetector;
     [SerializeField] private int totalLife;
     [SerializeField] private int realAttackValue;
-    [Networked] public int life { set; get; }
-    [Networked] public int attackValue { set; get; }
-    [Networked] public bool isFreezed { set; get; }
-    [Networked] public int freezedCounter { set; get; }
+    public int life;
+    public int attackValue;
+    public bool isFreezed;
+    public int freezedCounter;
     [SerializeField] private TMP_Text lifeLabel;
     [SerializeField] private TMP_Text attackValueLabel;
     [SerializeField] private Material freezeMaterial;
@@ -83,8 +82,8 @@ public class PlaceableItem : NetworkBehaviour
         lines = new List<GameObject>();
         dropableCards = new List<DropableCard>();
 
-        Gamemanager.instance.ResetRound += ResetRound;
-        Gamemanager.instance.ChnageTurn += ChangeTurn;
+        BotGameManager.instance.ResetRound += ResetRound;
+        BotGameManager.instance.ChangeTurn += ChangeTurn;
 
         runAudio = GetComponent<AudioSource>();
     }
@@ -104,8 +103,8 @@ public class PlaceableItem : NetworkBehaviour
             {
                 isFreezed = false;
 
-                RPC_UnFreezePlayer();
-                RPC_SetMaterial(isLeft);
+                //RPC_UnFreezePlayer();
+                //RPC_SetMaterial(isBot);
             }
 
             freezedCounter++;
@@ -113,7 +112,7 @@ public class PlaceableItem : NetworkBehaviour
     }
     public void ResetRound()
     {
-        RPC_ResetMoveCounter();
+       // RPC_ResetMoveCounter();
 
         if (isStrikeCardUsed)
             canAttackMore = true;
@@ -122,11 +121,11 @@ public class PlaceableItem : NetworkBehaviour
         isHighlighted = false;
         Gamemanager.instance.HideCharacterDetails();
     }
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    /*[Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void RPC_ResetMoveCounter()
     {
         moveCount = 1;
-    }
+    }*/
     public void SetBuilding(bool flag = false)
     {
         isLeft = flag;
@@ -579,7 +578,7 @@ public class PlaceableItem : NetworkBehaviour
         }
         else
         {
-            PlayerTower playerTower = HexagonManager.instance.GetHexagon(currentAttackIndex).GetTower();
+            PlayerTower playerTower = OfflineHexagon.instance.GetHexagon(currentAttackIndex).GetTower();
             if (playerTower && Runner.IsServer)
             {
                 playerTower.Damage(attackValue);

@@ -13,6 +13,7 @@ public class CardManager : MonoBehaviour
     public List<CardInfo> cards;
     public List<CardInfo> discardDeck;
     [SerializeField] private HexagonManager hexagonManager;
+    [SerializeField] private OfflineHexagon offlineHexgonManager;
     public Camera dragCamera;
     [SerializeField] private Button drawCardButton;
     private TMP_Text buttonTxt;
@@ -90,10 +91,12 @@ public class CardManager : MonoBehaviour
     private void OnEnable()
     {
         Gamemanager.instance.ResetRound += ResetData;
+        BotGameManager.instance.ResetRound += ResetData;
     }
     private void OnDisable()
     {
         Gamemanager.instance.ResetRound -= ResetData;
+        BotGameManager.instance.ResetRound -= ResetData;
     }
     public void ResetData()
     {
@@ -160,17 +163,23 @@ public class CardManager : MonoBehaviour
     }
     public void DragStart(Card card)
     {
-        if (card.cardType == CardType.BUIDLING)
-            hexagonManager.ToggleHexagon(true);
-        else if (card.cardType == CardType.CHARACTER)
-            hexagonManager.ToggleHexagonForCharacter(true);
-        else if (card.cardType == CardType.ADDON)
-            hexagonManager.ToogleHexagonForCards(true);
-        else if (card.cardType == CardType.HEAL)
-            hexagonManager.ToogleForHealCards(true);
-        else if (card.cardType == CardType.ICE)
-            hexagonManager.ToogleForIceCards(true);
+        if (!BotGameManager.instance.isBotGamePlay)
+        {
+            if (card.cardType == CardType.BUIDLING)
+                hexagonManager.ToggleHexagon(true);
+            else if (card.cardType == CardType.CHARACTER)
+                hexagonManager.ToggleHexagonForCharacter(true);
+            else if (card.cardType == CardType.ADDON)
+                hexagonManager.ToogleHexagonForCards(true);
+            else if (card.cardType == CardType.HEAL)
+                hexagonManager.ToogleForHealCards(true);
+            else if (card.cardType == CardType.ICE)
+                hexagonManager.ToogleForIceCards(true);
+        }
+        else
+        {
 
+        }
     }
     public void DragEnd(Card card, bool isHit)
     {
@@ -210,10 +219,14 @@ public class CardManager : MonoBehaviour
 
         int count = transform.childCount / 2;
 
-        Vector3 pos = transform.position + new Vector3(0, Gamemanager.instance.currentRoundStage == RoundStage.WAITING ? 0 : 1.5f, 0);
+        float y = Gamemanager.instance.currentRoundStage == RoundStage.WAITING ? 0 : 1.5f;
+        if (BotGameManager.instance.isBotGamePlay)
+            y = BotGameManager.instance.currentRoundStage == RoundStage.WAITING ? 0 : 1.5f;
+
+        Vector3 pos = transform.position + new Vector3(0, y, 0);
 
         if (transform.childCount != 0)
-            pos = transform.GetChild(count).position + new Vector3(0, Gamemanager.instance.currentRoundStage == RoundStage.WAITING ? 0 : 1.5f, 0);
+            pos = transform.GetChild(count).position + new Vector3(0, y, 0);
 
         Transform temp = Instantiate(card, pos, Quaternion.identity, transform).transform;
 
