@@ -32,7 +32,7 @@ public class OfflineHexagon : MonoBehaviour
     #region UNITY FUNCTIONS
     void Start()
     {
-        //index = HexagonManager.instance.GetIndex(this);
+        index = OfflineHexagonManager.instance.GetIndex(this);
 
         canAttack = false;
 
@@ -49,7 +49,7 @@ public class OfflineHexagon : MonoBehaviour
     }
     private void OnMouseEnter()
     {
-        if (IsMouseOverUI())
+        if (IsMouseOverUI() || !BotGameManager.instance.isBotGamePlay)
             return;
 
         if (isBuildMode)
@@ -72,7 +72,7 @@ public class OfflineHexagon : MonoBehaviour
     }
     private void OnMouseExit()
     {
-        if (IsMouseOverUI())
+        if (IsMouseOverUI() || !BotGameManager.instance.isBotGamePlay)
             return;
 
         if (isBuildMode)
@@ -95,10 +95,11 @@ public class OfflineHexagon : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        if (IsMouseOverUI())
+        if (IsMouseOverUI() || !BotGameManager.instance.isBotGamePlay)
             return;
 
-        if (!BotGameManager.instance.isPlayerTurn || !BotGameManager.instance.canInteract)
+
+        if (BotGameManager.instance.isBotsTurn || !BotGameManager.instance.canInteract)
             return;
 
         if (BotGameManager.instance.currentRoundStage != RoundStage.USING_CARDS)
@@ -107,7 +108,7 @@ public class OfflineHexagon : MonoBehaviour
             int k = Physics.OverlapSphereNonAlloc(transform.position, 0.2f, playerColliders, playerLayer);
             if (k != 0)
             {
-                if (playerColliders[0].gameObject.TryGetComponent<PlaceableItem>(out PlaceableItem item))
+                if (playerColliders[0].gameObject.TryGetComponent<OfflinePlacableItem>(out OfflinePlacableItem item))
                 {
                     item.OnMouseDownFun();
                 }
@@ -134,6 +135,7 @@ public class OfflineHexagon : MonoBehaviour
     #endregion
 
     #region FUNCTIONS
+    [ContextMenu("Get it")]
     public void GetAllAdjacent()
     {
         Collider[] colls = Physics.OverlapSphere(transform.position, radius);
@@ -153,7 +155,7 @@ public class OfflineHexagon : MonoBehaviour
     }
     public void AttackThisTile()
     {
-       // BotGameManager.instance.currentItemToMove.Attack(this);
+        BotGameManager.instance.currentItemToMove.Attack(this);
     }
     public void HighlightHexagon(bool flag = true)
     {
@@ -191,7 +193,6 @@ public class OfflineHexagon : MonoBehaviour
             {
                 return tower;
             }
-
         }
 
         return null;
@@ -213,13 +214,13 @@ public class OfflineHexagon : MonoBehaviour
         return null;
     }
 
-    public DropableCard GetCard()
+    public OfflineDropableCards GetCard()
     {
         playerColliders = new Collider[1];
         int k = Physics.OverlapSphereNonAlloc(transform.position, 0.2f, playerColliders, playerLayer);
         if (k != 0)
         {
-            if (playerColliders[0].gameObject.TryGetComponent<DropableCard>(out DropableCard card))
+            if (playerColliders[0].gameObject.TryGetComponent<OfflineDropableCards>(out OfflineDropableCards card))
             {
                 return card;
             }

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5616c4f3decebf84597b248a74d0ed98, type: 3}
-  m_Name: Kinght
+  m_Name: Strike Flow
   m_EditorClassIdentifier: 
-  cardID: CC53
-  prefab: {fileID: 4481299082730190297, guid: feb167883c8c3334aa28f88103c8810f, type: 3}
-  red: {fileID: 21300000, guid: aafc3a9e052321f4cbffe6ce7f353c23, type: 3}
-  blue: {fileID: 21300000, guid: 438ee9882003ce148a00ffb98ac8a50f, type: 3}
+  cardID: PC33
+  prefab: {fileID: 1545705112769050797, guid: c9c423b9a0eef9a40a0f21ea000375c1, type: 3}
+  red: {fileID: 21300000, guid: dcc31731581264f4c8d79eeccb4ab58b, type: 3}
+  blue: {fileID: 21300000, guid: dcc31731581264f4c8d79eeccb4ab58b, type: 3}

@@ -74,7 +74,7 @@ public class OfflinePlacableItem : MonoBehaviour
         targetPos = transform.position;
 
         yield return new WaitForEndOfFrame();
-        if (!Gamemanager.instance.isLeft && textHolder)
+        if (isBot && textHolder)
         {
             textHolder.transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
@@ -86,10 +86,17 @@ public class OfflinePlacableItem : MonoBehaviour
         BotGameManager.instance.ChangeTurn += ChangeTurn;
 
         runAudio = GetComponent<AudioSource>();
+
+        Spawned();
     }
     void Update()
     {
+        if (canMove)
+        {
+            transform.position = targetPos;
+        }
 
+        attackValueLabel.text = attackValue.ToString();
     }
 
     #endregion
@@ -112,49 +119,48 @@ public class OfflinePlacableItem : MonoBehaviour
     }
     public void ResetRound()
     {
-       // RPC_ResetMoveCounter();
+        ResetMoveCounter();
 
         if (isStrikeCardUsed)
             canAttackMore = true;
 
         outline.enabled = false;
         isHighlighted = false;
-        Gamemanager.instance.HideCharacterDetails();
+        BotGameManager.instance.HideCharacterDetails();
     }
-    /*[Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-    public void RPC_ResetMoveCounter()
+    public void ResetMoveCounter()
     {
         moveCount = 1;
-    }*/
+    }
     public void SetBuilding(bool flag = false)
     {
-        isLeft = flag;
+        isBot = flag;
 
-        RPC_SetMaterial(flag);
+        SetMaterial(isBot);
 
         Invoke("CheckForPowerCards", 0.1f);
 
-        Gamemanager.instance.CheckPlayerPosition += CheckForCards;
+        BotGameManager.instance.CheckPlayerPosition += CheckForCards;
 
         life = totalLife;
         attackValue = realAttackValue;
     }
-    [Rpc(RpcSources.All, RpcTargets.All)]
-    public void RPC_SetMaterial(bool flag)
+    //[Rpc(RpcSources.All, RpcTargets.All)]
+    public void SetMaterial(bool isBot)
     {
         foreach (var item in skinnedMeshRenderers)
         {
-            if (flag)
-                item.material = redMat;
-            else
+            if (isBot)
                 item.material = blueMat;
+            else
+                item.material = redMat;
         }
         foreach (var item in meshRenderers)
         {
-            if (flag)
-                item.material = redMat;
-            else
+            if (isBot)
                 item.material = blueMat;
+            else
+                item.material = redMat;
         }
     }
     public void Freeze()
@@ -162,10 +168,10 @@ public class OfflinePlacableItem : MonoBehaviour
         isFreezed = true;
         freezedCounter = 0;
 
-        RPC_FreezePlayer();
+        FreezePlayer();
     }
-    [Rpc(RpcSources.All, RpcTargets.All)]
-    public void RPC_FreezePlayer()
+    // [Rpc(RpcSources.All, RpcTargets.All)]
+    public void FreezePlayer()
     {
         foreach (var item in skinnedMeshRenderers)
         {
@@ -178,7 +184,7 @@ public class OfflinePlacableItem : MonoBehaviour
         if (animController)
             animController.enabled = false;
     }
-    [Rpc(RpcSources.All, RpcTargets.All)]
+    //[Rpc(RpcSources.All, RpcTargets.All)]
     public void RPC_UnFreezePlayer()
     {
         if (animController)
@@ -188,14 +194,14 @@ public class OfflinePlacableItem : MonoBehaviour
     {
         RPC_ChangeLife(totalLife);
     }
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    //[Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void RPC_ChangeLife(int val)
     {
         life = val;
     }
-    public override void Spawned()
+    public void Spawned()
     {
-        _changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
+        //_changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
 
         lifeLabel.text = life.ToString();
         attackValueLabel.text = attackValue.ToString();
@@ -203,24 +209,22 @@ public class OfflinePlacableItem : MonoBehaviour
 
     private void OnEnable()
     {
-        Gamemanager.instance.OnItemSelected += HideOutline;
+        BotGameManager.instance.OnItemSelected += HideOutline;
     }
     public void SetInitialRotation()
     {
-        RPC_SetRotation(Quaternion.Euler(0, 270, 0));
+        SetRotation(Quaternion.Euler(0, 270, 0));
     }
     private void OnDestroy()
     {
-        Gamemanager.instance.OnItemSelected -= HideOutline;
-        Gamemanager.instance.ResetRound -= ResetRound;
-        Gamemanager.instance.ChnageTurn -= ChangeTurn;
+        BotGameManager.instance.OnItemSelected -= HideOutline;
 
         BotGameManager.instance.ResetRound -= ResetRound;
         BotGameManager.instance.ChangeTurn -= ChangeTurn;
 
         try
         {
-            Gamemanager.instance.CheckPlayerPosition -= CheckForCards;
+            BotGameManager.instance.CheckPlayerPosition -= CheckForCards;
         }
         catch
         {
@@ -229,45 +233,45 @@ public class OfflinePlacableItem : MonoBehaviour
     }
     public void OnMouseDownFun()
     {
-        if (!Gamemanager.instance.isPlayerTurn || !Gamemanager.instance.canInteract)
+        if (BotGameManager.instance.isBotsTurn/* || !BotGameManager.instance.canInteract*/)
             return;
 
-        if ((Gamemanager.instance.isLeft == isLeft && moveCount == 0))
+
+        if ((BotGameManager.instance.isBotsTurn == isBot && moveCount == 0))
         {
-            Gamemanager.instance.ShowNoMovesPending(transform.position, "No Moves Remaining");
+            BotGameManager.instance.ShowNoMovesPending(transform.position, "No Moves Remaining");
             return;
         }
 
-        if (Gamemanager.instance.isLeft == isLeft && isFreezed)
+        if (BotGameManager.instance.isBotsTurn == isBot && isFreezed)
         {
-            Gamemanager.instance.ShowNoMovesPending(transform.position, "Character Frozen");
+            BotGameManager.instance.ShowNoMovesPending(transform.position, "Character Frozen");
             return;
         }
-        /*if (Gamemanager.instance.isLeft != isLeft && Gamemanager.instance.currentRoundStage == RoundStage.ATTACK)
+        /*if (BotGameManager.instance.isLeft != isLeft && BotGameManager.instance.currentRoundStage == RoundStage.ATTACK)
         {
             HexagonManager.instance.CallOnMouseDown(tileIndex);
         }*/
 
 
-
-        if (Gamemanager.instance.isLeft == isLeft && Gamemanager.instance.currentRoundStage != RoundStage.USING_CARDS && !isHighlighted)
+        if (BotGameManager.instance.isBotsTurn == isBot && BotGameManager.instance.currentRoundStage != RoundStage.USING_CARDS && !isHighlighted)
         {
-            Gamemanager.instance.OnItemSelected?.Invoke();
+            BotGameManager.instance.OnItemSelected?.Invoke();
 
             outline.enabled = true;
             //HexagonManager.instance.ShowMovableTiles(tileIndex, movementType);
             //this is place i want to change logic 
-            if (HexagonManager.instance.isHexMoveOn)
-                HexagonManager.instance.HideAllHex();
+            if (OfflineHexagonManager.instance.isHexMoveOn)
+                OfflineHexagonManager.instance.HideAllHex();
 
-            if (Gamemanager.instance.currentRoundStage == RoundStage.MOVE_ITEM)
+            if (BotGameManager.instance.currentRoundStage == RoundStage.MOVE_ITEM)
                 CursorChanger.instance.SetMoveCursor();
-            else if (Gamemanager.instance.currentRoundStage == RoundStage.ATTACK)
+            else if (BotGameManager.instance.currentRoundStage == RoundStage.ATTACK)
                 CursorChanger.instance.SetAttackCursor();
 
             colliders = new Collider[50];
             int r = 0;
-            if (Gamemanager.instance.currentRoundStage == RoundStage.MOVE_ITEM)
+            if (BotGameManager.instance.currentRoundStage == RoundStage.MOVE_ITEM)
             {
                 r = m_MovementRange - 1;
                 if (isRangeCardUsed)
@@ -279,14 +283,14 @@ public class OfflinePlacableItem : MonoBehaviour
             int num = Physics.OverlapSphereNonAlloc(transform.position, range[r], colliders, hexagonLayer);
             for (int i = 0; i < num; i++)
             {
-                if (colliders[i].gameObject.TryGetComponent<HexagonTile>(out HexagonTile tile))
+                if (colliders[i].gameObject.TryGetComponent<OfflineHexagon>(out OfflineHexagon tile))
                 {
-                    if (Gamemanager.instance.currentRoundStage == RoundStage.MOVE_ITEM)
-                        HexagonManager.instance.SelectHexagon(tile);
+                    if (BotGameManager.instance.currentRoundStage == RoundStage.MOVE_ITEM)
+                        OfflineHexagonManager.instance.SelectHexagon(tile);
                     else
-                        HexagonManager.instance.SelectHexagonAll(tile);
+                        OfflineHexagonManager.instance.SelectHexagonAll(tile);
 
-                    if (tile.isUsed && Gamemanager.instance.currentRoundStage == RoundStage.ATTACK)
+                    if (tile.isUsed && BotGameManager.instance.currentRoundStage == RoundStage.ATTACK)
                     {
                         playerColliders = new Collider[1];
                         int k = Physics.OverlapSphereNonAlloc(tile.buildPoint.position, 0.5f, playerColliders, playerLayer);
@@ -294,9 +298,9 @@ public class OfflinePlacableItem : MonoBehaviour
 
                         if (k != 0)
                         {
-                            if (playerColliders[0].gameObject.TryGetComponent<PlaceableItem>(out PlaceableItem item))
+                            if (playerColliders[0].gameObject.TryGetComponent<OfflinePlacableItem>(out OfflinePlacableItem item))
                             {
-                                if (Gamemanager.instance.isLeft != item.isLeft)
+                                if (BotGameManager.instance.isBotsTurn != item.isBot)
                                 {
                                     if ((!checkLineOfSite) || (checkLineOfSite && HasLineOfSight(transform.position, item.transform)))
                                     {
@@ -313,9 +317,9 @@ public class OfflinePlacableItem : MonoBehaviour
                                     }
                                 }
                             }
-                            else if (playerColliders[0].gameObject.TryGetComponent<PlayerTower>(out PlayerTower tower))
+                            else if (playerColliders[0].gameObject.TryGetComponent<OfflinePlayerTower>(out OfflinePlayerTower tower))
                             {
-                                if (Gamemanager.instance.isLeft != tower.isLeft)
+                                if (BotGameManager.instance.isBotsTurn != tower.isBot)
                                 {
                                     if ((!checkLineOfSite) || (checkLineOfSite && HasLineOfSight(transform.position, tower.transform)))
                                     {
@@ -332,9 +336,9 @@ public class OfflinePlacableItem : MonoBehaviour
                                     }
                                 }
                             }
-                            else if (playerColliders[0].gameObject.TryGetComponent<DropableCard>(out DropableCard card))
+                            else if (playerColliders[0].gameObject.TryGetComponent<OfflineDropableCards>(out OfflineDropableCards card))
                             {
-                                if (Gamemanager.instance.isLeft != card.isLeft)
+                                if (BotGameManager.instance.isBotsTurn != card.isBot)
                                 {
                                     if ((!checkLineOfSite) || (checkLineOfSite && HasLineOfSight(transform.position, card.transform)))
                                     {
@@ -357,11 +361,11 @@ public class OfflinePlacableItem : MonoBehaviour
             }
 
             if (num != 0)
-                HexagonManager.instance.isHexMoveOn = true;
+                OfflineHexagonManager.instance.isHexMoveOn = true;
 
             isHighlighted = true;
 
-            Gamemanager.instance.currentItemToMove = this;
+            BotGameManager.instance.currentItemToMove = this;
             // CursorChanger.instance.SetMoveCursor();
 
             #region CHARACTER DETAILS
@@ -379,19 +383,19 @@ public class OfflinePlacableItem : MonoBehaviour
                 else
                     chance = "1";
             }
-            Gamemanager.instance.ShowCharacterDetails(nameOfCharacter, attackRange.ToString(), m_AttackRange.ToString(), life.ToString(), attackValue.ToString(), chance);
+            BotGameManager.instance.ShowCharacterDetails(nameOfCharacter, attackRange.ToString(), m_AttackRange.ToString(), life.ToString(), attackValue.ToString(), chance);
             #endregion
         }
         else if (isHighlighted)
         {
-            HexagonManager.instance.HideAllHex();
+            OfflineHexagonManager.instance.HideAllHex();
 
             isHighlighted = false;
             outline.enabled = false;
 
             CursorChanger.instance.SetNormalCursor();
 
-            Gamemanager.instance.currentItemToMove = null;
+            BotGameManager.instance.currentItemToMove = null;
 
             foreach (var item in lines)
             {
@@ -399,7 +403,7 @@ public class OfflinePlacableItem : MonoBehaviour
             }
             lines = new List<GameObject>();
 
-            Gamemanager.instance.HideCharacterDetails();
+            BotGameManager.instance.HideCharacterDetails();
         }
     }
     public bool HasLineOfSight(Vector3 pointA, Transform target)
@@ -428,8 +432,8 @@ public class OfflinePlacableItem : MonoBehaviour
         isHighlighted = false;
 
         CursorChanger.instance.SetNormalCursor();
-        Gamemanager.instance.HideCharacterDetails();
-        Gamemanager.instance.currentItemToMove = null;
+        BotGameManager.instance.HideCharacterDetails();
+        BotGameManager.instance.currentItemToMove = null;
 
         foreach (var item in lines)
         {
@@ -437,12 +441,12 @@ public class OfflinePlacableItem : MonoBehaviour
         }
         lines = new List<GameObject>();
     }
-    public void Attack(HexagonTile tile)
+    public void Attack(OfflineHexagon tile)
     {
-        RPC_Attack(tile.index);
+        Attack(tile.index);
     }
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-    public void RPC_Attack(int hexIndex)
+    // [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void Attack(int hexIndex)
     {
         if (!canAttackMore)
             moveCount--;
@@ -454,46 +458,46 @@ public class OfflinePlacableItem : MonoBehaviour
 
         if (isNearByAttack)
         {
-            HexagonTile tile = HexagonManager.instance.GetHexagon(hexIndex);
+            OfflineHexagon tile = OfflineHexagonManager.instance.GetHexagon(hexIndex);
             startPoint = transform.position;
             Sequence sequence = DOTween.Sequence();
             Vector3 pos = GetStoppingPoint(tile.buildPoint.position);
             sequence.Append(DOTween.To(() => targetPos, x => targetPos = x, pos, timeBtwTiletoTileMovement).SetEase(Ease.Linear).OnComplete(() =>
             {
-                RPC_StartAnimation("move", false);
+                StartAnimation("move", false);
                 RPC_StartTriggerAnimation("attack");
             }).OnStart(() =>
             {
                 canMove = true;
-                RPC_StartAnimation("move", true);
+                StartAnimation("move", true);
                 //textHolder.gameObject.SetActive(false);
-                RPC_HideText(false);
+                HideText(false);
                 Vector3 direction = pos - transform.position;
                 Quaternion targetRot = Quaternion.LookRotation(direction);
-                RPC_SetRotation(targetRot);
+                SetRotation(targetRot);
             }));
 
             sequence.Append(DOTween.To(() => targetPos, x => targetPos = x, startPoint, timeBtwTiletoTileMovement).SetEase(Ease.Linear).SetDelay(goBackDelay).OnComplete(() =>
             {
-                RPC_StartAnimation("move", false);
-                RPC_SetRotation(Quaternion.Euler(0, isLeft ? 90 : 270, 0));
+                StartAnimation("move", false);
+                SetRotation(Quaternion.Euler(0, isBot ? 270 : 90, 0));
                 canMove = false;
 
-                HexagonManager.activeHexagon = null;
+                OfflineHexagonManager.activeHexagon = null;
                 //textHolder.gameObject.SetActive(true);
-                RPC_HideText(true);
+                HideText(true);
 
-                Gamemanager.instance.EnableButtons();
+                BotGameManager.instance.EnableButtons();
 
             }).OnStart(() =>
             {
-                Gamemanager.instance.DisableButtons();
+                BotGameManager.instance.DisableButtons();
 
-                RPC_StartAnimation("move", true);
+                StartAnimation("move", true);
 
                 Vector3 direction = startPoint - transform.position;
                 Quaternion targetRot = Quaternion.LookRotation(direction);
-                RPC_SetRotation(targetRot);
+                SetRotation(targetRot);
             }));
 
             sequence.Play();
@@ -509,26 +513,26 @@ public class OfflinePlacableItem : MonoBehaviour
             //HideOutline();
             RPC_HideOutline();
 
-            HexagonTile tile = HexagonManager.instance.GetHexagon(currentAttackIndex);
+            OfflineHexagon tile = OfflineHexagonManager.instance.GetHexagon(currentAttackIndex);
 
             Vector3 direction = tile.buildPoint.position - transform.position;
             Quaternion targetRot = Quaternion.LookRotation(direction);
-            RPC_SetRotation(targetRot);
+            SetRotation(targetRot);
 
             Invoke("AttackAnimation", 0.5f);
         }
 
     }
-    [Rpc(RpcSources.All, RpcTargets.All)]
+    // [Rpc(RpcSources.All, RpcTargets.All)]
     public void RPC_HideOutline()
     {
-        HexagonManager.instance.HideAllHex();
+        OfflineHexagonManager.instance.HideAllHex();
         HideOutline();
     }
-    [Rpc(RpcSources.All, RpcTargets.All)]
-    public void RPC_HideText(bool flag)
+    // [Rpc(RpcSources.All, RpcTargets.All)]
+    public void HideText(bool isBot)
     {
-        textHolder.gameObject.SetActive(flag);
+        textHolder.gameObject.SetActive(isBot);
     }
     void AttackAnimation()
     {
@@ -538,12 +542,12 @@ public class OfflinePlacableItem : MonoBehaviour
     {
         GameObject gm = Instantiate(projectile, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
 
-        HexagonTile tile = HexagonManager.instance.GetHexagon(currentAttackIndex);
+        OfflineHexagon tile = OfflineHexagonManager.instance.GetHexagon(currentAttackIndex);
         Vector3 pos = tile.buildPoint.position;
 
         pos.y = gm.transform.position.y;
 
-        if (isLeft)
+        if (isBot)
             gm.transform.GetChild(2).gameObject.SetActive(true);
         else
             gm.transform.GetChild(1).gameObject.SetActive(true);
@@ -555,8 +559,7 @@ public class OfflinePlacableItem : MonoBehaviour
         {
             Destroy(gm);
 
-            if (Runner.IsServer)
-                RPC_SetRotation(Quaternion.Euler(0, isLeft ? 90 : 270, 0));
+            SetRotation(Quaternion.Euler(0, isBot ? 270 : 90, 0));
 
             if (projectileHitAudio)
                 projectileHitAudio.Play();
@@ -566,20 +569,20 @@ public class OfflinePlacableItem : MonoBehaviour
     }
     public void DealDamageToEnemy()
     {
-        PlaceableItem item = HexagonManager.instance.GetHexagon(currentAttackIndex).GetPlayer();
-        if (item && Runner.IsServer)
+        OfflinePlacableItem item = OfflineHexagonManager.instance.GetHexagon(currentAttackIndex).GetPlayer();
+        if (item)
         {
             item.Damage(attackValue);
             ShowDamage.instance.ShowDamageValue(attackValue, item.transform.position);
-        }
+        }/*
         else if (item)
         {
             ShowDamage.instance.ShowDamageValue(attackValue, item.transform.position);
-        }
+        }*/
         else
         {
-            PlayerTower playerTower = OfflineHexagon.instance.GetHexagon(currentAttackIndex).GetTower();
-            if (playerTower && Runner.IsServer)
+            OfflinePlayerTower playerTower = OfflineHexagonManager.instance.GetHexagon(currentAttackIndex).GetTower();
+            if (playerTower)
             {
                 playerTower.Damage(attackValue);
                 ShowDamage.instance.ShowDamageValue(attackValue, playerTower.transform.position);
@@ -588,8 +591,8 @@ public class OfflinePlacableItem : MonoBehaviour
             {
                 ShowDamage.instance.ShowDamageValue(attackValue, playerTower.transform.position);
             }
-            DropableCard card = HexagonManager.instance.GetHexagon(currentAttackIndex).GetCard();
-            if (card && Runner.IsServer)
+            OfflineDropableCards card = OfflineHexagonManager.instance.GetHexagon(currentAttackIndex).GetCard();
+            if (card)
             {
                 card.Damage();
                 ShowDamage.instance.ShowDamageValue(attackValue, card.transform.position);
@@ -604,9 +607,9 @@ public class OfflinePlacableItem : MonoBehaviour
     {
         RPC_ShakeCamera();
         RPC_Damage(damage);
-
+        lifeLabel.text = life.ToString();
     }
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    //[Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void RPC_Damage(int damage)
     {
         life -= damage;
@@ -616,21 +619,22 @@ public class OfflinePlacableItem : MonoBehaviour
         if (life <= 0)
         {
             //textHolder.gameObject.SetActive(false);
-            RPC_HideText(false);
-            // RPC_SpawnGhost();
+            HideText(false);
+            RPC_SpawnGhost();
 
-            Runner.Despawn(Object);
+            // Runner.Despawn(Object);
+            Destroy(gameObject);
         }
     }
-    [Rpc(RpcSources.All, RpcTargets.All)]
+    //[Rpc(RpcSources.All, RpcTargets.All)]
     public void RPC_ShakeCamera()
     {
         CameraShake.instance.ShakeCamera(1, 0.5f);
     }
-    [Rpc(RpcSources.All, RpcTargets.All)]
+    //[Rpc(RpcSources.All, RpcTargets.All)]
     public void RPC_SpawnGhost()
     {
-        Instantiate(isLeft ? ghost_red : ghost_blue, transform.position, Quaternion.identity);
+        Instantiate(!isBot ? ghost_red : ghost_blue, transform.position, Quaternion.identity);
     }
 
     public Vector3 GetStoppingPoint(Vector3 targetPoint)
@@ -647,12 +651,12 @@ public class OfflinePlacableItem : MonoBehaviour
         return targetPoint - direction * attackStoppingDistance;
     }
 
-    public void MoveToPosition(Vector3[] pos, int index, bool isLeft, int cIndex)
+    public void MoveToPosition(Vector3[] pos, int index, bool isBot, int cIndex)
     {
-        RPC_MoveTo(pos, index, isLeft, cIndex);
+        MoveTo(pos, index, isBot, cIndex);
     }
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-    public void RPC_MoveTo(Vector3[] pos, int i, bool isLeft, int cIndex)
+    // [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void MoveTo(Vector3[] pos, int i, bool isBot, int cIndex)
     {
         moveCount--;
 
@@ -663,38 +667,37 @@ public class OfflinePlacableItem : MonoBehaviour
             Vector3 direction = pos[j] - pos[j - 1];
 
             Quaternion targetRot = Quaternion.LookRotation(direction);
-
             sequence.Append(
            DOTween.To(() => targetPos, x => targetPos = x, pos[j], timeBtwTiletoTileMovement).SetEase(Ease.Linear).OnStart(() =>
            {
-               RPC_SetRotation(targetRot);
+               SetRotation(targetRot);
            }));
         }
-        RPC_StartAnimation("move", true);
+        StartAnimation("move", true);
         sequence.OnComplete(() =>
         {
             //textHolder.gameObject.SetActive(true);
-            RPC_HideText(true);
+            HideText(true);
             canMove = false;
-            RPC_StartAnimation("move", false);
-            RPC_SetRotation(Quaternion.Euler(0, isLeft ? 90 : 270, 0));
+            StartAnimation("move", false);
+            SetRotation(Quaternion.Euler(0, isBot ? 270 : 90, 0));
             tileIndex = i;
 
-            HexagonTile tile = HexagonManager.instance.GetHexagon(i);
+            OfflineHexagon tile = OfflineHexagonManager.instance.GetHexagon(i);
             tile.isUsed = true;
-            tile = HexagonManager.instance.GetHexagon(cIndex);
+            tile = OfflineHexagonManager.instance.GetHexagon(cIndex);
             tile.isUsed = false;
 
             //CheckForPowerCards();
-            Gamemanager.instance.CheckPlayerPosition?.Invoke();
+            BotGameManager.instance.CheckPlayerPosition?.Invoke();
 
-            HexagonManager.activeHexagon = null;
-            Gamemanager.instance.EnableButtons();
+            OfflineHexagonManager.activeHexagon = null;
+            BotGameManager.instance.EnableButtons();
         }).OnStart(() =>
         {
-            Gamemanager.instance.DisableButtons();
+            BotGameManager.instance.DisableButtons();
             //textHolder.gameObject.SetActive(false);
-            RPC_HideText(false);
+            HideText(false);
             RemoveAllCards();
         });
 
@@ -702,27 +705,27 @@ public class OfflinePlacableItem : MonoBehaviour
         canMove = true;
     }
 
-    [Rpc(RpcSources.All, RpcTargets.All)]
-    public void RPC_StartAnimation(string anim, bool flag)
+    // [Rpc(RpcSources.All, RpcTargets.All)]
+    public void StartAnimation(string anim, bool isBot)
     {
-        animController.SetBool(anim, flag);
+        animController.SetBool(anim, isBot);
 
-        if (anim == "move" && flag)
+        if (anim == "move" && isBot)
             runAudio.Play();
-        else if (anim == "move" && !flag)
+        else if (anim == "move" && !isBot)
             runAudio.Pause();
     }
-    [Rpc(RpcSources.All, RpcTargets.All)]
+    //[Rpc(RpcSources.All, RpcTargets.All)]
     public void RPC_StartTriggerAnimation(string anim)
     {
         animController.SetTrigger(anim);
     }
-    [Rpc(RpcSources.All, RpcTargets.All)]
-    public void RPC_SetRotation(Quaternion rot)
+    // [Rpc(RpcSources.All, RpcTargets.All)]
+    public void SetRotation(Quaternion rot)
     {
         transform.GetChild(0).localRotation = rot;
     }
-    public override void Render()
+    /*public override void Render()
     {
         if (canMove)
         {
@@ -741,7 +744,7 @@ public class OfflinePlacableItem : MonoBehaviour
                     break;
             }
         }
-    }
+    }*/
 
     public void CheckForCards()
     {
@@ -755,7 +758,7 @@ public class OfflinePlacableItem : MonoBehaviour
         int totalAttackValue = realAttackValue;
         for (int i = 0; i < num; i++)
         {
-            if (cardColliders[i].TryGetComponent<DropableCard>(out DropableCard card) && card.isLeft == isLeft)
+            if (cardColliders[i].TryGetComponent<DropableCard>(out DropableCard card) && card.isLeft == isBot)
             {
                 dropableCards.Add(card);
 
@@ -789,14 +792,14 @@ public class OfflinePlacableItem : MonoBehaviour
             canAttackMore = false;
         }
     }
-    public override void Despawned(NetworkRunner runner, bool hasState)
+    /*public override void Despawned(NetworkRunner runner, bool hasState)
     {
         HexagonManager.instance.FreeHexSpace(tileIndex);
 
         RemoveAllCards();
 
         Instantiate(isLeft ? ghost_red : ghost_blue, transform.position, Quaternion.identity);
-    }
+    }*/
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, 5.4f);

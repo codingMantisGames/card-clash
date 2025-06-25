@@ -211,6 +211,7 @@ MonoBehaviour:
   redMaterial: {fileID: 2100000, guid: 3f561083fa42c644ebf20da19d0fc018, type: 2}
   blueMaterial: {fileID: 2100000, guid: decc268bacac0d74b99734a14e0290da, type: 2}
   lifeLabel: {fileID: 72019790085690121}
+  brokenBuilding: {fileID: 7271727725686376042}
   isBot: 0
   life: 0
 --- !u!1 &6254147865305538846
@@ -342,8 +343,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.3
-  m_fontSizeBase: 35.3
+  m_fontSize: 32.1
+  m_fontSizeBase: 32.1
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8096,6 +8097,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &7271727725686376042 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 44f447ac95b40674c9fdfbef280699f2, type: 3}
+  m_PrefabInstance: {fileID: 7506150409634347835}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &7307505815447614767 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 955411651387149844, guid: 44f447ac95b40674c9fdfbef280699f2, type: 3}

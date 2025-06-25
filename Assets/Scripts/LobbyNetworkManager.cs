@@ -48,7 +48,7 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     #endregion
 
     #region LOBBY
-    /* private void OnGUI()
+     private void OnGUI()
      {
          if (_runner == null)
          {
@@ -68,7 +68,7 @@ public class LobbyNetworkManager : MonoBehaviour, INetworkRunnerCallbacks
                  StartGame();
              }
          }
-     }*/
+     }
 
     public void JoinRandomGame()
     {

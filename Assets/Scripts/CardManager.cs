@@ -13,7 +13,7 @@ public class CardManager : MonoBehaviour
     public List<CardInfo> cards;
     public List<CardInfo> discardDeck;
     [SerializeField] private HexagonManager hexagonManager;
-    [SerializeField] private OfflineHexagon offlineHexgonManager;
+    [SerializeField] private OfflineHexagonManager offlineHexgonManager;
     public Camera dragCamera;
     [SerializeField] private Button drawCardButton;
     private TMP_Text buttonTxt;
@@ -52,6 +52,9 @@ public class CardManager : MonoBehaviour
     void Start()
     {
         buttonTxt = drawCardButton.GetComponentInChildren<TMP_Text>();
+
+        Gamemanager.instance.ResetRound += ResetData;
+        BotGameManager.instance.ResetRound += ResetData;
     }
     void Update()
     {/*
@@ -90,8 +93,7 @@ public class CardManager : MonoBehaviour
     }
     private void OnEnable()
     {
-        Gamemanager.instance.ResetRound += ResetData;
-        BotGameManager.instance.ResetRound += ResetData;
+
     }
     private void OnDisable()
     {
@@ -178,27 +180,55 @@ public class CardManager : MonoBehaviour
         }
         else
         {
-
+            if (card.cardType == CardType.BUIDLING)
+                offlineHexgonManager.ToggleHexagon(true);
+            else if (card.cardType == CardType.CHARACTER)
+                offlineHexgonManager.ToggleHexagonForCharacter(true);
+            else if (card.cardType == CardType.ADDON)
+                offlineHexgonManager.ToogleHexagonForCards(true);
+            else if (card.cardType == CardType.HEAL)
+                offlineHexgonManager.ToogleForHealCards(true);
+            else if (card.cardType == CardType.ICE)
+                offlineHexgonManager.ToogleForIceCards(true);
         }
     }
     public void DragEnd(Card card, bool isHit)
     {
-        if (card.cardType == CardType.BUIDLING)
-            hexagonManager.ToggleHexagon(false);
-        else if (card.cardType == CardType.CHARACTER)
-            hexagonManager.ToggleHexagonForCharacter(false);
-        else if (card.cardType == CardType.ADDON)
-            hexagonManager.ToogleHexagonForCards(false);
-        else if (card.cardType == CardType.HEAL)
-            hexagonManager.ToogleForHealCards(false);
-        else if (card.cardType == CardType.ICE)
-            hexagonManager.ToogleForIceCards(false);
+        if (!BotGameManager.instance.isBotGamePlay)
+        {
+            if (card.cardType == CardType.BUIDLING)
+                hexagonManager.ToggleHexagon(false);
+            else if (card.cardType == CardType.CHARACTER)
+                hexagonManager.ToggleHexagonForCharacter(false);
+            else if (card.cardType == CardType.ADDON)
+                hexagonManager.ToogleHexagonForCards(false);
+            else if (card.cardType == CardType.HEAL)
+                hexagonManager.ToogleForHealCards(false);
+            else if (card.cardType == CardType.ICE)
+                hexagonManager.ToogleForIceCards(false);
+        }
+        else
+        {
+            if (card.cardType == CardType.BUIDLING)
+                offlineHexgonManager.ToggleHexagon(false);
+            else if (card.cardType == CardType.CHARACTER)
+                offlineHexgonManager.ToggleHexagonForCharacter(false);
+            else if (card.cardType == CardType.ADDON)
+                offlineHexgonManager.ToogleHexagonForCards(false);
+            else if (card.cardType == CardType.HEAL)
+                offlineHexgonManager.ToogleForHealCards(false);
+            else if (card.cardType == CardType.ICE)
+                offlineHexgonManager.ToogleForIceCards(false);
+        }
 
         if (isHit)
         {
             Invoke("AlignCard", 0.1f);
 
-            hexagonManager.SpawnBuilding(card.cardID);
+            if (!BotGameManager.instance.isBotGamePlay)
+                hexagonManager.SpawnBuilding(card.cardID);
+            else
+                offlineHexgonManager.SpawnBuilding(card.cardID);
         }
 
         //HexagonManager.activeHexagon = null;

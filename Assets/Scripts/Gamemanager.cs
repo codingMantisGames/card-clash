@@ -118,29 +118,29 @@ public class Gamemanager : NetworkBehaviour
 
     private void OnGUI()
     {
-        /* if (GUI.Button(new Rect(0, 0, 200, 40), "Card Mode"))
-         {
-             SwitchToCardMode();
-         }
-         if (GUI.Button(new Rect(210, 0, 200, 40), "Move Mode"))
-         {
-             SwitchToMoveMode();
-         }
-         if (GUI.Button(new Rect(420, 0, 200, 40), "Attack Mode"))
-         {
-             SwitchToAttackMode();
-         }
-         try
-         {
-             if (Runner.IsServer && GUI.Button(new Rect(640, 0, 200, 40), "ResetRound"))
-             {
-                 ResetRound.Invoke();
-             }
-         }
-         catch
-         {
-             Debug.LogWarning("issue");
-         }*/
+        if (GUI.Button(new Rect(0, 0, 200, 40), "Card Mode"))
+        {
+            SwitchToCardMode();
+        }
+        if (GUI.Button(new Rect(210, 0, 200, 40), "Move Mode"))
+        {
+            SwitchToMoveMode();
+        }
+        if (GUI.Button(new Rect(420, 0, 200, 40), "Attack Mode"))
+        {
+            SwitchToAttackMode();
+        }
+        try
+        {
+            if (Runner.IsServer && GUI.Button(new Rect(640, 0, 200, 40), "ResetRound"))
+            {
+                ResetRound.Invoke();
+            }
+        }
+        catch
+        {
+           // Debug.LogWarning("issue");
+        }
     }
     public void SetTargetCamera(float rot)
     {
@@ -237,6 +237,8 @@ public class Gamemanager : NetworkBehaviour
     [SimpleButton]
     public void EndTurn()
     {
+        if (BotGameManager.instance.isBotGamePlay) return;
+
         RPC_ChangeTurn();
         HexagonManager.instance.HideAllHex();
         ResetRound.Invoke();
@@ -261,6 +263,8 @@ public class Gamemanager : NetworkBehaviour
     }
     public void NextRound()
     {
+        if (BotGameManager.instance.isBotGamePlay) return;
+
         drawAndDeployHelp.SetActive(false);
         movementHelp.SetActive(false);
         attackHelp.SetActive(false);

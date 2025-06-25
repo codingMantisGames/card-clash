@@ -1,4 +1,6 @@
+using Fusion;
 using UnityEngine;
+using static Unity.Collections.Unicode;
 
 public class OfflineHexagonManager : MonoBehaviour
 {
@@ -89,21 +91,21 @@ public class OfflineHexagonManager : MonoBehaviour
     }
     public void SpawnBuilding(string id)
     {
-        int index = System.Array.IndexOf(hexagonTiles, activeHexagon.GetComponent<HexagonTile>());
-        HexagonManager.activeHexagon = null;
-        //RPC_SpawnItem(id, index, Gamemanager.instance.isLeft);
+        int index = System.Array.IndexOf(hexagonTiles, activeHexagon.GetComponent<OfflineHexagon>());
+        OfflineHexagonManager.activeHexagon = null;
+        SpawnItem(id, index, BotGameManager.instance.isBotsTurn);
     }
     public void CallOnMouseDown(int index)
     {
         if (hexagonTiles[index].isBuildMode)
             hexagonTiles[index].AttackThisTile();
     }
-    public void SelectHexagon(HexagonTile tile)
+    public void SelectHexagon(OfflineHexagon tile)
     {
         if (!tile.isUsed)
             tile.ToggleHexagon(true);
     }
-    public void SelectHexagonAll(HexagonTile tile)
+    public void SelectHexagonAll(OfflineHexagon tile)
     {
         tile.ToggleHexagon(true);
     }
@@ -118,6 +120,48 @@ public class OfflineHexagonManager : MonoBehaviour
             Debug.Log("Some issue here bro!");
         }
     }
+    public void SpawnItem(string id, int index, bool isBot)
+    {
+        GameObject gm = null;
+        foreach (var item in BotGameManager.instance.cardDatas)
+        {
+            if (item.cardID == id)
+            {
+                gm = item.prefab;
+            }
+        }
+
+        OfflineHexagon tile = hexagonTiles[index];
+        //NetworkObject n = Runner.Spawn(gm, tile.buildPoint.position, tile.buildPoint.localRotation);
+        GameObject n = Instantiate(gm, tile.buildPoint.position, tile.buildPoint.localRotation);
+
+        Transform t = n.transform;
+        t.localScale = Vector3.one * gm.transform.localScale.z;
+        tile.isUsed = true;
+
+        if (t.TryGetComponent<OfflinePlacableItem>(out OfflinePlacableItem placeableItem))
+        {
+            placeableItem.SetBuilding(isBot);
+            placeableItem.tileIndex = index;
+
+            if (isBot)
+                placeableItem.SetInitialRotation();
+        }
+
+        if (t.TryGetComponent<OfflineDropableCards>(out OfflineDropableCards dropableCard))
+        {
+            dropableCard.SetCard(isBot);
+            dropableCard.tileIndex = index;
+        }
+
+        if (t.transform.tag == "Heal")
+        {
+            tile.GetPlayer().Heal();
+        }
+
+        if (t.transform.tag == "Ice")
+            tile.GetPlayer().Freeze();
+    }
     public void HideAllHex()
     {
         foreach (var item in hexagonTiles)
@@ -129,7 +173,7 @@ public class OfflineHexagonManager : MonoBehaviour
 
         isHexMoveOn = false;
     }
-    public int GetIndex(HexagonTile tile)
+    public int GetIndex(OfflineHexagon tile)
     {
         return System.Array.IndexOf(hexagonTiles, tile);
     }

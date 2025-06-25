@@ -4,10 +4,12 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static Unity.Collections.Unicode;
 
 public class BotGameManager : MonoBehaviour
 {
     #region VARIABLES
+    public List<CardData> cardDatas;
     public static BotGameManager instance;
     [Header("UI")]
     [SerializeField] private TMP_Text yourTurnLabel;
@@ -36,8 +38,9 @@ public class BotGameManager : MonoBehaviour
     public Action ChangeTurn;
     public Action ResetRound;
     public Action OnItemSelected;
+    public Action CheckPlayerPosition;
     [HideInInspector] public bool isBotGamePlay = false;
-    [HideInInspector] public OfflinePlacableItem currentItemToMove;
+    public OfflinePlacableItem currentItemToMove;
 
     [SerializeField, Space(20)] private CanvasGroup gameWinPanel;
     [SerializeField] private CanvasGroup gameLosePanel;
@@ -59,7 +62,11 @@ public class BotGameManager : MonoBehaviour
     }
     void Start()
     {
+        _nextRoundButton = nextRoundButton.GetComponent<Button>();
+        _endTurnButton = endTurnButton.GetComponent<Button>();
 
+        canInteract = true;
+        isGameOver = true;
     }
 
     void Update()
@@ -93,7 +100,7 @@ public class BotGameManager : MonoBehaviour
         OfflinePlayerTower tower = Instantiate(offlineTower, playerTowerSpawnPosition.position, Quaternion.identity).GetComponent<OfflinePlayerTower>();
         tower.SetTower(false);
 
-        tower = Instantiate(offlineTower, playerTowerSpawnPosition.position, Quaternion.identity).GetComponent<OfflinePlayerTower>();
+        tower = Instantiate(offlineTower, botTowerSpawnPosition.position, Quaternion.identity).GetComponent<OfflinePlayerTower>();
         tower.SetTower(true);
     }
 
@@ -104,6 +111,11 @@ public class BotGameManager : MonoBehaviour
         if (isBot)
         {
             //Logic for bots is set here
+            nextRoundButton.SetActive(false);
+            endTurnButton.SetActive(false);
+
+            roundMessageLabel.text = "Bot's Turn";
+            helpButton.gameObject.SetActive(false);
         }
         else
         {
@@ -157,22 +169,23 @@ public class BotGameManager : MonoBehaviour
         drawCardsButton.DOAnchorPos3DY(-150, cardAppearTime).SetEase(cardAppearEase);
         uiCamera.DOMoveY(4, cardAppearTime).SetEase(cardAppearEase);
 
-       OnItemSelected?.Invoke();
+        OnItemSelected?.Invoke();
     }
-    public void MoveCuurentItem(HexagonTile target, int index)
+    public void MoveCuurentItem(OfflineHexagon target, int index)
     {
         if (currentItemToMove == null)
             return;
         OfflineHexagon currentTile = OfflineHexagonManager.instance.GetHexagon(currentItemToMove.tileIndex);
 
         List<Vector3> locations = AStarPathFinding.FindPath(currentTile, target);
-
-        currentItemToMove.MoveToPosition(locations.ToArray(), index, isLeft, currentItemToMove.tileIndex);
+        currentItemToMove.MoveToPosition(locations.ToArray(), index, isBotsTurn, currentItemToMove.tileIndex);
     }
     public void EndTurn()
     {
+        if (!isBotGamePlay) return;
+
         RPC_ChangeTurn();
-        HexagonManager.instance.HideAllHex();
+        OfflineHexagonManager.instance.HideAllHex();
         ResetRound.Invoke();
 
         drawAndDeployHelp.SetActive(false);
@@ -180,8 +193,16 @@ public class BotGameManager : MonoBehaviour
         attackHelp.SetActive(false);
         endTurnButton.SetActive(false);
     }
+
+    public void RPC_ChangeTurn()
+    {
+        SetPlayerTurn(!isBotsTurn);
+    }
+
     public void NextRound()
     {
+        if (!isBotGamePlay) return;
+
         drawAndDeployHelp.SetActive(false);
         movementHelp.SetActive(false);
         attackHelp.SetActive(false);
@@ -208,7 +229,7 @@ public class BotGameManager : MonoBehaviour
     }
     private void CheckShowHelpCondition()
     {
-        if (currentRoundStage == RoundStage.USING_CARDS && PlayerPrefs.GetInt("round1") == 0)
+        /*if (currentRoundStage == RoundStage.USING_CARDS && PlayerPrefs.GetInt("round1") == 0)
         {
             ShowHelp();
         }
@@ -219,14 +240,14 @@ public class BotGameManager : MonoBehaviour
         else if (currentRoundStage == RoundStage.ATTACK && PlayerPrefs.GetInt("round3") == 0)
         {
             ShowHelp();
-        }
+        }*/
     }
     public void GameWin(bool flag)
     {
         inGamePanel.SetActive(false);
         isGameOver = true;
 
-        if (isLeft == flag)
+        if (isBotsTurn == flag)
         {
             gameWinPanel.interactable = true;
             gameWinPanel.gameObject.SetActive(true);

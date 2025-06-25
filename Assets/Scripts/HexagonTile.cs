@@ -54,7 +54,7 @@ public class HexagonTile : NetworkBehaviour
 
     private void OnMouseEnter()
     {
-        if (IsMouseOverUI())
+        if (IsMouseOverUI() || Gamemanager.instance.isLeft)
             return;
 
         if (isBuildMode)
@@ -77,7 +77,7 @@ public class HexagonTile : NetworkBehaviour
     }
     private void OnMouseExit()
     {
-        if (IsMouseOverUI())
+        if (IsMouseOverUI() || Gamemanager.instance.isLeft)
             return;
 
         if (isBuildMode)
@@ -129,7 +129,7 @@ public class HexagonTile : NetworkBehaviour
     }
     private void OnMouseDown()
     {
-        if (IsMouseOverUI())
+        if (IsMouseOverUI() || Gamemanager.instance.isLeft)
             return;
 
         if (!Gamemanager.instance.isPlayerTurn || !Gamemanager.instance.canInteract)

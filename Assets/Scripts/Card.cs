@@ -161,7 +161,10 @@ public class Card : MonoBehaviour
     #endregion
     public bool IsthereHit()
     {
-        return HexagonManager.activeHexagon == null ? false : true;
+        if (!BotGameManager.instance.isBotGamePlay)
+            return HexagonManager.activeHexagon == null ? false : true;
+        else
+            return OfflineHexagonManager.activeHexagon == null ? false : true;
     }
     public void SetCardType()
     {
