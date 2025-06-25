@@ -4,11 +4,11 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static Unity.Collections.Unicode;
 
 public class BotGameManager : MonoBehaviour
 {
     #region VARIABLES
+    public CodingMantisGames.UtilityAI.Agent agent;
     public List<CardData> cardDatas;
     public static BotGameManager instance;
     [Header("UI")]
@@ -99,9 +99,15 @@ public class BotGameManager : MonoBehaviour
     {
         OfflinePlayerTower tower = Instantiate(offlineTower, playerTowerSpawnPosition.position, Quaternion.identity).GetComponent<OfflinePlayerTower>();
         tower.SetTower(false);
+        agent.enemyTower = tower;
 
         tower = Instantiate(offlineTower, botTowerSpawnPosition.position, Quaternion.identity).GetComponent<OfflinePlayerTower>();
         tower.SetTower(true);
+        agent.allyTower = tower;
+    }
+    public void HandleAITurnComplete()
+    {
+        RPC_ChangeTurn();
     }
 
     private void SetPlayerTurn(bool isBot)
@@ -116,6 +122,8 @@ public class BotGameManager : MonoBehaviour
 
             roundMessageLabel.text = "Bot's Turn";
             helpButton.gameObject.SetActive(false);
+
+            agent.StartAgentsTurn();//We ask AI to perform his move
         }
         else
         {
