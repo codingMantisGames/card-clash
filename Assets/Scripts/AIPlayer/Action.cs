@@ -6,10 +6,11 @@ namespace CodingMantisGames.UtilityAI
     {
         #region VARIABLES
         public Consideration[] considerations;
-        public float score;
+        [HideInInspector] public float score;
         #endregion
 
         #region FUNCTIONS
+        public abstract float GetValidatedScore(Agent agent, float score);
         public abstract void PerformAction(Agent agent);
         #endregion
     }

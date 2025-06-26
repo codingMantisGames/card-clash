@@ -29,6 +29,8 @@ namespace CodingMantisGames.UtilityAI
                     score += c.Score(agent);
                 }
 
+                score = action.GetValidatedScore(agent,score);
+
                 score /= action.considerations.Length;
                 action.score = score;
             }
@@ -46,6 +48,11 @@ namespace CodingMantisGames.UtilityAI
             }
 
             return bestAction;
+        }
+
+        public override Action DecideActionPlan(ActionPlan[] actionPlans)
+        {
+            throw new System.NotImplementedException();
         }
         #endregion
     }

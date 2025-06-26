@@ -24,9 +24,7 @@ namespace CodingMantisGames.UtilityAI
         #region FUNCTIONS
         public override float Score(Agent agent)
         {
-            if (agent.allyTower == null) return 0;
-
-            float nor = agent.allyTower.life / 7;
+            float nor = agent.allyTower.life / 7.0f;
 
             return response.Evaluate(nor);
         }

@@ -1,11 +1,11 @@
-using System.Collections;
 using UnityEngine;
 
 namespace CodingMantisGames.UtilityAI
 {
-    public class SkipRoundAction : Action
+    public class DrawNewCardAction : Action
     {
         #region VARIABLES
+
         #endregion
 
         #region UNITY FUNCTIONS
@@ -23,17 +23,13 @@ namespace CodingMantisGames.UtilityAI
         #region FUNCTIONS
         public override void PerformAction(Agent agent)
         {
-            StartCoroutine(SkipAfterTime(agent));
-        }
-        IEnumerator SkipAfterTime(Agent agent)
-        {
-            yield return new WaitForSeconds(3);
-
-            agent.SkipRound();
+            agent.GetNewCard();
             agent.HandlePostAction();
         }
         public override float GetValidatedScore(Agent agent, float tempScore)
         {
+            if (agent.cardInHand.Count >= 3 || agent.cardCounter <= 0)
+                return 0f;
             return tempScore;
         }
         #endregion
