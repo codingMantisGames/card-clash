@@ -9,7 +9,7 @@ namespace CodingMantisGames.UtilityAI
         #endregion
 
         #region FUNCTIONS
-        public abstract float Score(Agent agent);
+        public abstract float Score(AIBrain brain);
         #endregion
     }
 }

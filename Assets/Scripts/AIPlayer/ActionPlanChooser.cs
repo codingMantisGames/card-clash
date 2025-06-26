@@ -5,7 +5,7 @@ namespace CodingMantisGames.UtilityAI
     public class ActionPlanChooser : DecisionMaker
     {
         #region VARIABLES
-        private Agent agent;
+        private AIBrain brain;
         #endregion
 
         #region UNITY FUNCTIONS
@@ -26,14 +26,38 @@ namespace CodingMantisGames.UtilityAI
             throw new System.NotImplementedException();
         }
 
-        public override Action DecideActionPlan(ActionPlan[] actionPlans)
+        public override ActionPlan DecideActionPlan(ActionPlan[] actionPlans)
         {
-            throw new System.NotImplementedException();
+            foreach (ActionPlan plan in actionPlans)
+            {
+                float score = 0;
+                foreach (Consideration c in plan.considerations)
+                {
+                    score += c.Score(brain);
+                }
+
+                score /= plan.considerations.Length;
+
+                plan.score = score;
+            }
+
+            float bestScore = 0;
+            ActionPlan bestActionPlan = null;
+            foreach (ActionPlan plan in actionPlans)
+            {
+                if(plan.score > bestScore)
+                {
+                    bestScore = plan.score;
+                    bestActionPlan = plan;
+                }
+            }
+
+            return bestActionPlan;
         }
 
-        public override void Init(Agent agent)
+        public override void Init(AIBrain brain)
         {
-            this.agent = agent;
+            this.brain = brain;
         }
         #endregion
     }

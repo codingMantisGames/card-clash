@@ -9,29 +9,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fb208faae565dc4d96e3e1c3c62d85e, type: 3}
-  m_Name: ALl Tower Health Consideration
+  m_Script: {fileID: 11500000, guid: 9dfa7900370ebac44ab55a8f12b70843, type: 3}
+  m_Name: Number of Ally Characters Consideration
   m_EditorClassIdentifier: 
   response:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.0076065063
-      value: 0.8211899
-      inSlope: -0.47003698
-      outSlope: -0.47003698
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 0
     - serializedVersion: 3
-      time: 0.99157304
-      value: 0.35153854
-      inSlope: -0.48775777
-      outSlope: -0.48775777
-      tangentMode: 0
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 0.13766325
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

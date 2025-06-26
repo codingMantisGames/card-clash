@@ -5,9 +5,9 @@ namespace CodingMantisGames.UtilityAI
     public abstract class DecisionMaker : MonoBehaviour
     {
         #region FUNCTIONS
-        public abstract void Init(Agent agent);
+        public abstract void Init(AIBrain brain);
         public abstract Action DecideAction(Action[] actions);
-        public abstract Action DecideActionPlan(ActionPlan[] actionPlans);
+        public abstract ActionPlan DecideActionPlan(ActionPlan[] actionPlans);
         #endregion
     }
 }

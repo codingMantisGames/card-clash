@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -73,28 +73,28 @@ namespace CodingMantisGames.UtilityAI
         //Call this from SkipRound Action
         public void SkipRound()
         {
-          /*  roundIndex++;
+          *//*  roundIndex++;
 
             if (roundIndex >= 4)
             {
                 //AIs Turn Over
                 SkipTurn();
                 return;
-            }*/
+            }*//*
         }
         //here the reset happens
         private void SkipTurn()
-        {/*
+        {*//*
             Debug.Log("Not its Players Turn!");
             isActive = false;
             OnAIsTurnOver?.Invoke();
 
-            cardCounter = maxCardsPerRound;*/
+            cardCounter = maxCardsPerRound;*//*
         }
 
         public void PerformAction(int roundID)
         {
-           /* //Select one action based on round.
+           *//* //Select one action based on round.
             if (roundID == 1)
                 selectedAction = decisionMaker.DecideAction(roundOneAction);
             else if (roundID == 2)
@@ -103,19 +103,19 @@ namespace CodingMantisGames.UtilityAI
                 selectedAction = decisionMaker.DecideAction(roundThreeAction);
 
             //Perfrom action
-            selectedAction.PerformAction(this);*/
+            selectedAction.PerformAction(this);*//*
         }
 
         public void HandlePostAction()
         {
-            /*selectedAction = null;
+            *//*selectedAction = null;
             Debug.Log("Post Action!");
 
             if (roundIndex <= 3)
             {
                 float delay = Random.Range(minDelayBetweenActions, maxDelayBetweenActions);
                 StartCoroutine(PerformActionAfterTime(delay));
-            }*/
+            }*//*
         }
 
         IEnumerator PerformActionAfterTime(float delay)
@@ -170,4 +170,4 @@ namespace CodingMantisGames.UtilityAI
         #endregion
     }
     public enum ActionPlanType { NORMAL, PROTECT_TOWER, PROTECT_ALLY, ATTACK_ENEMY };
-}
+}*/

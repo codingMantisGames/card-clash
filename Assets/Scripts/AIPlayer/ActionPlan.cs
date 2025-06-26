@@ -2,7 +2,8 @@ using UnityEngine;
 
 namespace CodingMantisGames.UtilityAI
 {
-    public abstract class ActionPlan : ScriptableObject
+    [CreateAssetMenu(menuName = "UtilityAI/New Action Plan", fileName = "Action Plan")]
+    public class ActionPlan : ScriptableObject
     {
         #region VARIABLES
         public Consideration[] considerations;
@@ -10,4 +11,6 @@ namespace CodingMantisGames.UtilityAI
         public float score;
         #endregion
     }
+
+    public enum ActionPlanType { NORMAL, PROTECT_TOWER, PROTECT_ALLY, ATTACK_ENEMY };
 }

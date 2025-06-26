@@ -5,16 +5,16 @@ namespace CodingMantisGames.UtilityAI
     public class UtilityAI : DecisionMaker
     {
         #region VARIABLES
-        private Agent agent;
+        private AIBrain brain;
         #endregion
 
         #region UNITY FUNCTIONS
         #endregion
 
         #region FUNCTIONS
-        public override void Init(Agent agent)
+        public override void Init(AIBrain brain)
         {
-            this.agent = agent;
+            this.brain = brain;
         }
         public override Action DecideAction(Action[] actions)
         {
@@ -26,10 +26,10 @@ namespace CodingMantisGames.UtilityAI
             {
                 foreach (Consideration c in action.considerations)
                 {
-                    score += c.Score(agent);
+                    score += c.Score(brain);
                 }
 
-                score = action.GetValidatedScore(agent,score);
+                score = action.GetValidatedScore(brain,score);
 
                 score /= action.considerations.Length;
                 action.score = score;
@@ -50,7 +50,7 @@ namespace CodingMantisGames.UtilityAI
             return bestAction;
         }
 
-        public override Action DecideActionPlan(ActionPlan[] actionPlans)
+        public override ActionPlan DecideActionPlan(ActionPlan[] actionPlans)
         {
             throw new System.NotImplementedException();
         }
