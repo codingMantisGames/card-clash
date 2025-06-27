@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CodingMantisGames.UtilityAI
 {
@@ -18,20 +18,20 @@ namespace CodingMantisGames.UtilityAI
         }
         public override Action DecideAction(Action[] actions)
         {
-            float score = 0;
 
             //Loop through all actions and score them.
             //Score is the average score of all considerations.
             foreach (Action action in actions)
             {
+                float score = 0;
                 foreach (Consideration c in action.considerations)
                 {
                     score += c.Score(brain);
                 }
 
-                score = action.GetValidatedScore(brain,score);
-
+                score = action.GetValidatedScore(brain, score);
                 score /= action.considerations.Length;
+                Debug.LogWarning("📈 Score for " + action.gameObject.name + " is " + score);
                 action.score = score;
             }
 
@@ -40,7 +40,7 @@ namespace CodingMantisGames.UtilityAI
             Action bestAction = null;
             foreach (Action action in actions)
             {
-                if(action.score >  bestScore)
+                if (action.score > bestScore)
                 {
                     bestAction = action;
                     bestScore = action.score;

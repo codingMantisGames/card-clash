@@ -394,7 +394,7 @@ MonoBehaviour:
   isRangeCardUsed: 0
   isStrikeCardUsed: 0
   canAttackMore: 0
-  m_AttackRange: 1
+  m_AttackRange: 3
   hexagonLayer:
     serializedVersion: 2
     m_Bits: 256

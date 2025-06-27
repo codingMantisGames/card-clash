@@ -6,13 +6,15 @@ namespace CodingMantisGames.UtilityAI
     public class NumberOfAllyCharactersConsideration : Consideration
     {
         #region VARIABLES
-
+        [SerializeField] private int minmunNumberOfAllyCharactersNeeded = 3;
         #endregion
 
         #region FUNCTIONS
         public override float Score(AIBrain brain)
         {
-            return 1;
+            float norm = Mathf.Clamp(brain.allyCharacters.Count, 0, minmunNumberOfAllyCharactersNeeded) / minmunNumberOfAllyCharactersNeeded;
+
+            return response.Evaluate(norm);
         }
         #endregion
     }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace CodingMantisGames.UtilityAI
 {
@@ -6,6 +7,7 @@ namespace CodingMantisGames.UtilityAI
     {
         #region VARIABLES
         public Consideration[] considerations;
+        public UnityEvent OnActionComplete;
         [HideInInspector] public float score;
         #endregion
 

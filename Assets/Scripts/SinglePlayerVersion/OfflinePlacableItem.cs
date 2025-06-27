@@ -20,7 +20,7 @@ public class OfflinePlacableItem : MonoBehaviour
     public bool isRangeCardUsed;
     public bool isStrikeCardUsed;
     public bool canAttackMore;
-    [SerializeField, Range(1, 3)] private int m_AttackRange = 1;
+    [Range(1, 3)] public int m_AttackRange = 1;
     [SerializeField] private LayerMask hexagonLayer;
     [SerializeField] private LayerMask playerLayer;
     public bool isBot;
@@ -66,6 +66,7 @@ public class OfflinePlacableItem : MonoBehaviour
     [SerializeField] private GameObject ghost_blue;
     private AudioSource runAudio;
     public AudioSource projectileHitAudio;
+    public bool isFlaggedCharacter;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -76,7 +77,7 @@ public class OfflinePlacableItem : MonoBehaviour
         yield return new WaitForEndOfFrame();
         if (isBot && textHolder)
         {
-            textHolder.transform.localRotation = Quaternion.Euler(0, 180, 0);
+            textHolder.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
         moveCount = 1;
         lines = new List<GameObject>();
@@ -803,6 +804,12 @@ public class OfflinePlacableItem : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, 5.4f);
+
+        if(isFlaggedCharacter)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(transform.position + new Vector3(0, 1.65f, 0), 0.15f);
+        }
     }
     #endregion
 }

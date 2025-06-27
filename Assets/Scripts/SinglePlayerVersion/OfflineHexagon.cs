@@ -27,6 +27,11 @@ public class OfflineHexagon : MonoBehaviour
     [SerializeField] private Color selectedColor;
     [SerializeField] private Color normalColor;
     [HideInInspector] public bool isBuildMode;
+
+    [Header("Score")]
+    [SerializeField, Range(-1, 1)] public float attack;
+    [SerializeField, Range(-1, 1)] public float defent;
+    [SerializeField, Range(-1, 1)] public float initialMoves;
     #endregion
 
     #region UNITY FUNCTIONS

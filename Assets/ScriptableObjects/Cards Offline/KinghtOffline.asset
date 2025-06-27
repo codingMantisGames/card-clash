@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5616c4f3decebf84597b248a74d0ed98, type: 3}
-  m_Name: Kinght
+  m_Name: KinghtOffline
   m_EditorClassIdentifier: 
   cardID: CC53
   prefab: {fileID: 4481299082730190297, guid: feb167883c8c3334aa28f88103c8810f, type: 3}

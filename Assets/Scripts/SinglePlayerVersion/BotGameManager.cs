@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class BotGameManager : MonoBehaviour
 {
     #region VARIABLES
+    [SerializeField] private CodingMantisGames.UtilityAI.AIBrain brain;
+
     public List<CardData> cardDatas;
     public static BotGameManager instance;
     [Header("UI")]
@@ -123,6 +125,7 @@ public class BotGameManager : MonoBehaviour
             helpButton.gameObject.SetActive(false);
 
             //agent.StartAgentsTurn();//We ask AI to perform his move
+            brain.StartTurn();
         }
         else
         {

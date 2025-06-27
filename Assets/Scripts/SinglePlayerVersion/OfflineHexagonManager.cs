@@ -5,6 +5,8 @@ using static Unity.Collections.Unicode;
 public class OfflineHexagonManager : MonoBehaviour
 {
     #region VARIABLES
+    [SerializeField] private CodingMantisGames.UtilityAI.AIBrain brain;
+
     public static OfflineHexagonManager instance;
     public OfflineHexagon[] hexagonTiles;
     public static Transform activeHexagon;
@@ -120,6 +122,12 @@ public class OfflineHexagonManager : MonoBehaviour
             Debug.Log("Some issue here bro!");
         }
     }
+    public void SpawnItem(string id, OfflineHexagon offlineHexagon)
+    {
+        int index = System.Array.IndexOf(hexagonTiles, offlineHexagon);
+        OfflineHexagonManager.activeHexagon = null;
+        SpawnItem(id, index, BotGameManager.instance.isBotsTurn);
+    }
     public void SpawnItem(string id, int index, bool isBot)
     {
         GameObject gm = null;
@@ -146,6 +154,9 @@ public class OfflineHexagonManager : MonoBehaviour
 
             if (isBot)
                 placeableItem.SetInitialRotation();
+
+            if (BotGameManager.instance.isBotsTurn) brain.allyCharacters.Add(placeableItem);
+            else brain.enemyCharacters.Add(placeableItem);
         }
 
         if (t.TryGetComponent<OfflineDropableCards>(out OfflineDropableCards dropableCard))
