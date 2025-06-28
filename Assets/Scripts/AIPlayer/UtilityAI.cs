@@ -29,7 +29,6 @@ namespace CodingMantisGames.UtilityAI
                     score += c.Score(brain);
                 }
 
-                score = action.GetValidatedScore(brain, score);
                 score /= action.considerations.Length;
                 Debug.LogWarning("📈 Score for " + action.gameObject.name + " is " + score);
                 action.score = score;

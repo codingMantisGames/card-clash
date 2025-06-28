@@ -14890,7 +14890,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 439113984}
-  - component: {fileID: 439113983}
+  - component: {fileID: 439113985}
   m_Layer: 0
   m_Name: Attack Enemy
   m_TagString: Untagged
@@ -14898,24 +14898,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &439113983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 439113982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fa1d355d7d976a44a88371c218453ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  considerations:
-  - {fileID: 11400000, guid: 134921af8973e4e4296278f1aef674d0, type: 2}
-  OnActionComplete:
-    m_PersistentCalls:
-      m_Calls: []
-  score: 0
 --- !u!4 &439113984
 Transform:
   m_ObjectHideFlags: 0
@@ -14931,6 +14913,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1828988564}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &439113985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439113982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 467c2353c87846e4997876ed25aa2c43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  considerations:
+  - {fileID: 11400000, guid: 134921af8973e4e4296278f1aef674d0, type: 2}
+  OnActionComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1702884225}
+        m_TargetAssemblyTypeName: CodingMantisGames.UtilityAI.AIBrain, Assembly-CSharp
+        m_MethodName: AttackEnemey_NormalAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  score: 0
 --- !u!1001 &439397088
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24437,7 +24449,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 704828403}
-  - component: {fileID: 704828402}
+  - component: {fileID: 704828404}
   m_Layer: 0
   m_Name: Move Character
   m_TagString: Untagged
@@ -24445,24 +24457,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &704828402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 704828401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d096afde32847284f81a814b124e681c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  considerations:
-  - {fileID: 11400000, guid: f398faa4b7472b646ba967e10b17cca2, type: 2}
-  OnActionComplete:
-    m_PersistentCalls:
-      m_Calls: []
-  score: 0
 --- !u!4 &704828403
 Transform:
   m_ObjectHideFlags: 0
@@ -24478,6 +24472,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2100709828}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &704828404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704828401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 467c2353c87846e4997876ed25aa2c43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  considerations:
+  - {fileID: 11400000, guid: f398faa4b7472b646ba967e10b17cca2, type: 2}
+  OnActionComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1702884225}
+        m_TargetAssemblyTypeName: CodingMantisGames.UtilityAI.AIBrain, Assembly-CSharp
+        m_MethodName: HandleOnMoveCharacterChoosed_NormalAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  score: 0
 --- !u!1001 &708543316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37572,7 +37596,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1167767548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b335df76c138dc459d04a858676a37c, type: 3}
+  m_Script: {fileID: 11500000, guid: 467c2353c87846e4997876ed25aa2c43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   considerations:
@@ -44195,7 +44219,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1390006945}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b8f8933e0b84554ba6b4051648e83f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 467c2353c87846e4997876ed25aa2c43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   considerations:
@@ -44204,6 +44228,18 @@ MonoBehaviour:
   OnActionComplete:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 937437937}
+        m_TargetAssemblyTypeName: BotCardManager, Assembly-CSharp
+        m_MethodName: GetNewCard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1702884225}
         m_TargetAssemblyTypeName: CodingMantisGames.UtilityAI.AIBrain, Assembly-CSharp
         m_MethodName: HandleOnDrawCardsComplete_NormalAction
@@ -44217,7 +44253,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   score: 0
-  cardManager: {fileID: 937437937}
 --- !u!114 &1391807542 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
@@ -55601,10 +55636,10 @@ MonoBehaviour:
   - {fileID: 1390006947}
   - {fileID: 2078980672}
   normalRoundTwoActions:
-  - {fileID: 704828402}
+  - {fileID: 704828404}
   - {fileID: 1167767550}
   normalRoundThreeActions:
-  - {fileID: 439113983}
+  - {fileID: 439113985}
   - {fileID: 2146950258}
   cardManager: {fileID: 0}
   allyCharacters: []
@@ -70416,7 +70451,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2078980670}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b335df76c138dc459d04a858676a37c, type: 3}
+  m_Script: {fileID: 11500000, guid: 467c2353c87846e4997876ed25aa2c43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   considerations:
@@ -73320,7 +73355,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2146950256}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b335df76c138dc459d04a858676a37c, type: 3}
+  m_Script: {fileID: 11500000, guid: 467c2353c87846e4997876ed25aa2c43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   considerations:

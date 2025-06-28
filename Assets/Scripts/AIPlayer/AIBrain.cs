@@ -126,7 +126,7 @@ namespace CodingMantisGames.UtilityAI
 
             ShowMessage("🎯 " + choosedAction.gameObject.name + " Action is choosed!!");
 
-            if (choosedAction) choosedAction.PerformAction(this);
+            if (choosedAction) choosedAction.PerformAction();
         }
         private void AttackEnemyAction()
         {
@@ -206,7 +206,7 @@ namespace CodingMantisGames.UtilityAI
             //Decision Maker #4
             choosedAction = utilityAI.DecideAction(normalRoundTwoActions);
 
-            choosedAction.PerformAction(this);
+            choosedAction.PerformAction();
         }
 
         public void HandleOnMoveCharacterChoosed_NormalAction()
@@ -265,7 +265,7 @@ namespace CodingMantisGames.UtilityAI
             //Decision Maker #5
             choosedAction = utilityAI.DecideAction(normalRoundThreeActions);
 
-            choosedAction.PerformAction(this);
+            choosedAction.PerformAction();
         }
 
         public void AttackEnemey_NormalAction()
