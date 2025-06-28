@@ -124,6 +124,23 @@ public class OfflinePlacableItem : MonoBehaviour
             freezedCounter++;
         }
     }
+    public int GetEnemyNearByCount()
+    {
+        List<OfflineHexagon> result = new List<OfflineHexagon>();
+        colliders = new Collider[50];
+
+        int num = Physics.OverlapSphereNonAlloc(transform.position, range[2], colliders, hexagonLayer);
+        int count = 0;
+        for (int i = 0; i < num; i++)
+        {
+            if (colliders[i].gameObject.TryGetComponent<OfflineHexagon>(out OfflineHexagon tile))
+            {
+                if (tile.isUsed && !tile.isUsedByEnemy) count++;
+            }
+        }
+
+        return count;
+    }
     public bool AnyTargetInAttackRange(RoundStage stage)
     {
         List<OfflineHexagon> result = new List<OfflineHexagon>();
@@ -527,7 +544,7 @@ public class OfflinePlacableItem : MonoBehaviour
 
                 BotGameManager.instance.EnableButtons();
 
-                if (BotGameManager.instance.isBotsTurn) BotGameManager.instance.brain.AttackEnemyIfAny();
+                //if (BotGameManager.instance.isBotsTurn) BotGameManager.instance.brain.AttackEnemyIfAny();
 
             }).OnStart(() =>
             {
@@ -605,7 +622,7 @@ public class OfflinePlacableItem : MonoBehaviour
                 projectileHitAudio.Play();
 
             DealDamageToEnemy();
-            if (BotGameManager.instance.isBotsTurn) BotGameManager.instance.brain.AttackEnemyIfAny();
+            //if (BotGameManager.instance.isBotsTurn) BotGameManager.instance.brain.AttackEnemyIfAny();
         });
     }
     public void DealDamageToEnemy()
@@ -737,7 +754,7 @@ public class OfflinePlacableItem : MonoBehaviour
             BotGameManager.instance.EnableButtons();
 
 
-            if (BotGameManager.instance.isBotsTurn) BotGameManager.instance.brain.MoveCharacterIfAny();
+            //if (BotGameManager.instance.isBotsTurn) BotGameManager.instance.brain.MoveCharacterIfAny();
         }).OnStart(() =>
         {
             BotGameManager.instance.DisableButtons();

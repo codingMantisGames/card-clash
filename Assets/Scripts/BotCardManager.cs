@@ -14,6 +14,7 @@ public class BotCardManager : MonoBehaviour
     public List<CardInfo> cardInHand;
 
     public int cardCounter;
+    public bool CanDrawMoreCards => cardCounter > 0;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -33,6 +34,14 @@ public class BotCardManager : MonoBehaviour
             cardInHand.Add(data);
             discardDeck.Add(data);
         }
+
+        cardCounter = 2;
+
+        BotGameManager.instance.ChangeTurn += ResetTurn;
+    }
+    private void OnDestroy()
+    {
+        BotGameManager.instance.ChangeTurn -= ResetTurn;
     }
 
     void Update()
@@ -42,12 +51,17 @@ public class BotCardManager : MonoBehaviour
     #endregion
 
     #region FUNCTIONS
+    public void ResetTurn()
+    {
+        cardCounter = 2;
+    }
     public void GetNewCard()
     {
         if (cards.Count == 0)
             ShuffleDeck();
 
         cardCounter--;
+        if (cardCounter < 0) cardCounter = 0;
 
 
         CardInfo data = cards[0];

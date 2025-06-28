@@ -5,7 +5,7 @@ using static Unity.Collections.Unicode;
 public class OfflineHexagonManager : MonoBehaviour
 {
     #region VARIABLES
-    [SerializeField] private CodingMantisGames.UtilityAI.AIBrain brain;
+    [SerializeField] private CodingMantisGames.SimpleAI.AIBrain brain;
 
     public static OfflineHexagonManager instance;
     public OfflineHexagon[] hexagonTiles;

@@ -9,7 +9,7 @@ public class BotGameManager : MonoBehaviour
 {
     #region VARIABLES
     public RoundStage currentRoundStage;
-    public CodingMantisGames.UtilityAI.AIBrain brain;
+    public CodingMantisGames.SimpleAI.AIBrain brain;
 
     public List<CardData> cardDatas;
     public static BotGameManager instance;
@@ -100,11 +100,11 @@ public class BotGameManager : MonoBehaviour
     {
         OfflinePlayerTower tower = Instantiate(offlineTower, playerTowerSpawnPosition.position, Quaternion.identity).GetComponent<OfflinePlayerTower>();
         tower.SetTower(false);
-        //agent.enemyTower = tower;
+        brain.enemyTower = tower;
 
         tower = Instantiate(offlineTower, botTowerSpawnPosition.position, Quaternion.identity).GetComponent<OfflinePlayerTower>();
         tower.SetTower(true);
-        //agent.allyTower = tower;
+        brain.allyTower = tower;
     }
     public void HandleAITurnComplete()
     {
