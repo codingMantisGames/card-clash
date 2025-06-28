@@ -64815,7 +64815,42 @@ MonoBehaviour:
     _life: 1
     _attackRange: 1
     _movementRange: 1
-  characterRankInfos: []
+  characterRankInfos:
+  - name: Mage
+    card: {fileID: 11400000, guid: 0c42f7073161fe3458f2236d702de055, type: 2}
+    attack: 1
+    life: 0.29
+    attackRange: 1
+    moveRange: 1
+    score: 0
+  - name: Knight
+    card: {fileID: 11400000, guid: 0f7fd5d418bb8424fa93eb35d22351e4, type: 2}
+    attack: 0.8
+    life: 1
+    attackRange: 0.33
+    moveRange: 1
+    score: 0
+  - name: Barbarian
+    card: {fileID: 11400000, guid: 30a6564fc855e0c45888404713f14e02, type: 2}
+    attack: 0.6
+    life: 0.72
+    attackRange: 0.33
+    moveRange: 1
+    score: 0
+  - name: Shade
+    card: {fileID: 11400000, guid: 9b00e5658d0e3b24f919014871018a44, type: 2}
+    attack: 0.2
+    life: 0.42
+    attackRange: 0.33
+    moveRange: 1
+    score: 0
+  - name: Rogue
+    card: {fileID: 11400000, guid: 235d475559eab214eaaee5eb0b5315bc, type: 2}
+    attack: 0.4
+    life: 0.58
+    attackRange: 0.66
+    moveRange: 0.5
+    score: 0
 --- !u!114 &1941016692 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}

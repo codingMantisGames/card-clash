@@ -47,7 +47,7 @@ namespace CodingMantisGames.SimpleAI
             bigFontStyle.fontSize = 15;
             bigFontStyle.normal.textColor = Color.white;
 
-            ShowMessage("✅I am all Set!");
+            ShowMessage("✅ I am all Set!");
         }
 
         void Update()

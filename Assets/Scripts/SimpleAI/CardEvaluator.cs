@@ -44,11 +44,11 @@ namespace CodingMantisGames.SimpleAI
         {
             CharacterRankInfo characterRankInfo = characterRankInfos.FirstOrDefault(info => info.card.cardID == id);
 
+            float score = 0;
             foreach (var cardEvaluatorData in cardEvaluatorDatas)
             {
                 if (cardEvaluatorData.actionPlan == plan)
                 {
-                    float score = 0;
                     if (cardEvaluatorData._attack) score += characterRankInfo.attack;
                     if (cardEvaluatorData._life) score += characterRankInfo.life;
                     if (cardEvaluatorData._attackRange) score += characterRankInfo.attackRange;
@@ -56,7 +56,7 @@ namespace CodingMantisGames.SimpleAI
                     break;
                 }
             }
-            return 0;
+            return score;
         }
         #endregion
     }
