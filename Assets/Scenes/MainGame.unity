@@ -5745,6 +5745,7 @@ Transform:
   - {fileID: 1702884224}
   - {fileID: 1091087398}
   - {fileID: 829681297}
+  - {fileID: 1617619397}
   - {fileID: 835704183}
   - {fileID: 272779368}
   - {fileID: 1874112476}
@@ -14879,6 +14880,56 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &439113982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 439113984}
+  - component: {fileID: 439113983}
+  m_Layer: 0
+  m_Name: Attack Enemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &439113983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439113982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fa1d355d7d976a44a88371c218453ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  considerations:
+  - {fileID: 11400000, guid: 134921af8973e4e4296278f1aef674d0, type: 2}
+  OnActionComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  score: 0
+--- !u!4 &439113984
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439113982}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1828988564}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &439397088
 PrefabInstance:
@@ -40595,6 +40646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0962149b899b1544886454e1123a271, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentRoundStage: 0
   brain: {fileID: 1702884225}
   cardDatas:
   - {fileID: 11400000, guid: 30a6564fc855e0c45888404713f14e02, type: 2}
@@ -40620,7 +40672,6 @@ MonoBehaviour:
   attackHelp: {fileID: 197395277}
   helpButton: {fileID: 318996186}
   isBotsTurn: 0
-  currentRoundStage: 0
   offlineTower: {fileID: 2009016812172416, guid: 5d2af198962cfa04a8815648a9ee2366, type: 3}
   playerTowerSpawnPosition: {fileID: 15149339}
   botTowerSpawnPosition: {fileID: 895708092}
@@ -52961,6 +53012,170 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89b2f79ec3e853459cbd65e9be577a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1617619395
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1617619397}
+  - component: {fileID: 1617619396}
+  m_Layer: 0
+  m_Name: TileEvaluator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1617619396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617619395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 260ff1c0bb1039d468b0b657f14ff28d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offlineHexagons:
+  - {fileID: 2093163517}
+  - {fileID: 1518174623}
+  - {fileID: 1568722128}
+  - {fileID: 1201736610}
+  - {fileID: 1694653828}
+  - {fileID: 1615542810}
+  - {fileID: 2049862654}
+  - {fileID: 2139374846}
+  - {fileID: 1094071532}
+  - {fileID: 1907248270}
+  - {fileID: 1872127380}
+  - {fileID: 870026290}
+  - {fileID: 1135840272}
+  - {fileID: 2117557892}
+  - {fileID: 1681586236}
+  - {fileID: 1673498624}
+  - {fileID: 1838271001}
+  - {fileID: 2078123364}
+  - {fileID: 2059070780}
+  - {fileID: 1709533688}
+  - {fileID: 1400162076}
+  - {fileID: 2049788055}
+  - {fileID: 1193280016}
+  - {fileID: 1351631619}
+  - {fileID: 1841910134}
+  - {fileID: 1268856076}
+  - {fileID: 1752817051}
+  - {fileID: 2000409677}
+  - {fileID: 1467656737}
+  - {fileID: 1110282874}
+  - {fileID: 1886134542}
+  - {fileID: 1327209083}
+  - {fileID: 1364449670}
+  - {fileID: 1201014097}
+  - {fileID: 1953597792}
+  - {fileID: 1397490580}
+  - {fileID: 1399635863}
+  - {fileID: 2103978248}
+  - {fileID: 1198508358}
+  - {fileID: 2121669292}
+  - {fileID: 1790041747}
+  - {fileID: 1645594605}
+  - {fileID: 1512591882}
+  - {fileID: 1546607040}
+  - {fileID: 1907266437}
+  - {fileID: 2108253159}
+  - {fileID: 1996411936}
+  - {fileID: 1791544618}
+  - {fileID: 1533606139}
+  - {fileID: 1794654073}
+  - {fileID: 1850851296}
+  - {fileID: 1629411202}
+  - {fileID: 1381432334}
+  - {fileID: 1775646692}
+  - {fileID: 2106745074}
+  - {fileID: 633072577}
+  - {fileID: 1686280388}
+  - {fileID: 2043026315}
+  - {fileID: 1889361157}
+  - {fileID: 1394305486}
+  - {fileID: 1930645017}
+  - {fileID: 2108942693}
+  - {fileID: 1406201390}
+  - {fileID: 1814315720}
+  - {fileID: 2082012993}
+  - {fileID: 2064319584}
+  - {fileID: 1323239298}
+  - {fileID: 1799439280}
+  - {fileID: 1411230078}
+  - {fileID: 1396124145}
+  - {fileID: 1502081423}
+  - {fileID: 815709350}
+  - {fileID: 1105497841}
+  - {fileID: 1056608175}
+  - {fileID: 983516824}
+  - {fileID: 1625898266}
+  - {fileID: 1056493340}
+  - {fileID: 1809299197}
+  - {fileID: 2065393643}
+  - {fileID: 2142712008}
+  - {fileID: 2006043759}
+  - {fileID: 1825239351}
+  - {fileID: 1901274701}
+  - {fileID: 723385677}
+  - {fileID: 1399334924}
+  - {fileID: 2050215468}
+  - {fileID: 2010867237}
+  - {fileID: 1805573118}
+  - {fileID: 2003249746}
+  - {fileID: 1391807543}
+  - {fileID: 1500710477}
+  - {fileID: 749569286}
+  - {fileID: 2025573863}
+  - {fileID: 1949895201}
+  - {fileID: 1613460028}
+  - {fileID: 1654445357}
+  - {fileID: 1874539751}
+  - {fileID: 1097263047}
+  - {fileID: 1133742018}
+  - {fileID: 1738337528}
+  - {fileID: 2016451163}
+  - {fileID: 1920682538}
+  - {fileID: 1709262651}
+  - {fileID: 2105150500}
+  - {fileID: 1920603678}
+  - {fileID: 1907724757}
+  - {fileID: 1996666698}
+  - {fileID: 1941016693}
+  - {fileID: 1011550937}
+  - {fileID: 1548178234}
+  - {fileID: 1734107099}
+  - {fileID: 579493876}
+  - {fileID: 1118094457}
+  - {fileID: 2131283674}
+  - {fileID: 1140735955}
+  - {fileID: 1279654517}
+  hasEnemyAdjacent: 0.35
+  hasAllyAdjacent: 0.25
+  hasTowerAdjacent: 0
+--- !u!4 &1617619397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617619395}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 151583087}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1623548056
 GameObject:
   m_ObjectHideFlags: 0
@@ -55371,10 +55586,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb8a6ba305ec064391a0b2f0d5daa5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roundStage: 3
   showAIsThought: 1
   actionPlanChooser: {fileID: 1091087399}
   utilityAI: {fileID: 272779369}
   characterEvaluator: {fileID: 829681298}
+  tileEvaluator: {fileID: 1617619396}
   botCardManager: {fileID: 937437937}
   spawnLocationChooser: {fileID: 835704184}
   offlineHexagonManager: {fileID: 566912336}
@@ -55386,6 +55603,9 @@ MonoBehaviour:
   normalRoundTwoActions:
   - {fileID: 704828402}
   - {fileID: 1167767550}
+  normalRoundThreeActions:
+  - {fileID: 439113983}
+  - {fileID: 2146950258}
   cardManager: {fileID: 0}
   allyCharacters: []
   enemyCharacters: []
@@ -59431,6 +59651,39 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6875a21912e056b4d84cbf3f1a68ae26, type: 3}
   m_PrefabInstance: {fileID: 2081157196}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1828988563
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1828988564}
+  m_Layer: 0
+  m_Name: Round 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1828988564
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828988563}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 439113984}
+  - {fileID: 2146950257}
+  m_Father: {fileID: 1874112476}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1830265079
 GameObject:
   m_ObjectHideFlags: 0
@@ -61432,6 +61685,7 @@ Transform:
   m_Children:
   - {fileID: 463121151}
   - {fileID: 2100709828}
+  - {fileID: 1828988564}
   m_Father: {fileID: 151583087}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1874539751 stripped
@@ -73025,6 +73279,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2146484965}
   m_CullTransparentMesh: 1
+--- !u!1 &2146950256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2146950257}
+  - component: {fileID: 2146950258}
+  m_Layer: 0
+  m_Name: SkipRound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2146950257
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146950256}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1828988564}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2146950258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146950256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b335df76c138dc459d04a858676a37c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  considerations:
+  - {fileID: 11400000, guid: 73b8079c8212c9b4684eaf4cb689f63d, type: 2}
+  OnActionComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1702884225}
+        m_TargetAssemblyTypeName: CodingMantisGames.UtilityAI.AIBrain, Assembly-CSharp
+        m_MethodName: NextRound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  score: 0
 --- !u!1001 &5795599100775565757
 PrefabInstance:
   m_ObjectHideFlags: 0

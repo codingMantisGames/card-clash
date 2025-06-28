@@ -116,6 +116,7 @@ public class OfflineHexagonManager : MonoBehaviour
         try
         {
             GetHexagon(index).isUsed = false;
+            GetHexagon(index).isUsedByEnemy = false;
         }
         catch
         {
@@ -146,6 +147,7 @@ public class OfflineHexagonManager : MonoBehaviour
         Transform t = n.transform;
         t.localScale = Vector3.one * gm.transform.localScale.z;
         tile.isUsed = true;
+        tile.isUsedByEnemy = !isBot;
 
         if (t.TryGetComponent<OfflinePlacableItem>(out OfflinePlacableItem placeableItem))
         {

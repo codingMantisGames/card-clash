@@ -116,7 +116,7 @@ public class Gamemanager : NetworkBehaviour
         LobbyUI.instance.PlayerExit();
     }
 
-    private void OnGUI()
+   /* private void OnGUI()
     {
         if (GUI.Button(new Rect(0, 0, 200, 40), "Card Mode"))
         {
@@ -141,7 +141,7 @@ public class Gamemanager : NetworkBehaviour
         {
            // Debug.LogWarning("issue");
         }
-    }
+    }*/
     public void SetTargetCamera(float rot)
     {
         cameraHolder.rotation = Quaternion.Euler(0, rot, 0);

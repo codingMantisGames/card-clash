@@ -8,7 +8,8 @@ using UnityEngine.UI;
 public class BotGameManager : MonoBehaviour
 {
     #region VARIABLES
-    [SerializeField] private CodingMantisGames.UtilityAI.AIBrain brain;
+    public RoundStage currentRoundStage;
+    public CodingMantisGames.UtilityAI.AIBrain brain;
 
     public List<CardData> cardDatas;
     public static BotGameManager instance;
@@ -29,7 +30,6 @@ public class BotGameManager : MonoBehaviour
     [SerializeField] private Button helpButton;
 
     public bool isBotsTurn = false;
-    [HideInInspector] public RoundStage currentRoundStage;
     private bool isGameOver = false;
 
     [SerializeField, Space(20)] private GameObject offlineTower;
@@ -190,6 +190,13 @@ public class BotGameManager : MonoBehaviour
         List<Vector3> locations = AStarPathFinding.FindPath(currentTile, target);
         currentItemToMove.MoveToPosition(locations.ToArray(), index, isBotsTurn, currentItemToMove.tileIndex);
     }
+    public void MoveCurentItem(OfflineHexagon target, int index, OfflinePlacableItem offlinePlacableItem)
+    {
+        OfflineHexagon currentTile = OfflineHexagonManager.instance.GetHexagon(offlinePlacableItem.tileIndex);
+
+        List<Vector3> locations = AStarPathFinding.FindPath(currentTile, target);
+        offlinePlacableItem.MoveToPosition(locations.ToArray(), index, isBotsTurn, offlinePlacableItem.tileIndex);
+    }
     public void EndTurn()
     {
         if (!isBotGamePlay) return;
@@ -211,6 +218,18 @@ public class BotGameManager : MonoBehaviour
 
     public void NextRound()
     {
+        if (isBotsTurn)
+        {
+            if (currentRoundStage == RoundStage.USING_CARDS)
+            {
+                currentRoundStage = RoundStage.MOVE_ITEM;
+            }
+            else if (currentRoundStage == RoundStage.MOVE_ITEM)
+            {
+                currentRoundStage = RoundStage.ATTACK;
+            }
+        }
+
         if (!isBotGamePlay) return;
 
         drawAndDeployHelp.SetActive(false);

@@ -15,7 +15,9 @@ public class OfflineHexagon : MonoBehaviour
     public List<OfflineHexagon> adjacentTiles;
 
     public bool isUsed;
+    public bool isUsedByEnemy;
     public bool canAttack;
+    public bool isMarkedByAI;
 
     public float radius;
     public int index;
@@ -154,6 +156,21 @@ public class OfflineHexagon : MonoBehaviour
             }
         }
     }
+    public OfflineHexagon[] GetAllAdjacnetTile()
+    {
+        Collider[] colls = Physics.OverlapSphere(transform.position, radius);
+
+        List<OfflineHexagon> adjacentTiles = new List<OfflineHexagon>();
+        foreach (var item in colls)
+        {
+            if (item.TryGetComponent<OfflineHexagon>(out OfflineHexagon hex) && hex != this)
+            {
+                adjacentTiles.Add(hex);
+            }
+        }
+
+        return adjacentTiles.ToArray();
+    }
     public void ShowHex()
     {
         ToggleHexagon(true);
@@ -173,6 +190,7 @@ public class OfflineHexagon : MonoBehaviour
     {
         itemPlaced = item;
         isUsed = true;
+        isUsedByEnemy = !isBot;
     }
     public void ToggleHexagon(bool flag = true)
     {
@@ -206,6 +224,7 @@ public class OfflineHexagon : MonoBehaviour
     public OfflinePlacableItem GetPlayer()
     {
         playerColliders = new Collider[1];
+        Debug.Log("My name is " + transform.GetInstanceID());
         int k = Physics.OverlapSphereNonAlloc(transform.position, 0.2f, playerColliders, playerLayer);
         if (k != 0)
         {

@@ -67,6 +67,8 @@ public class OfflinePlacableItem : MonoBehaviour
     private AudioSource runAudio;
     public AudioSource projectileHitAudio;
     public bool isFlaggedCharacter;
+    public OfflineHexagon hexagonFlagged;
+    public OfflinePlacableItem enemyToAttack;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -105,6 +107,10 @@ public class OfflinePlacableItem : MonoBehaviour
     #region FUNCTIONS
     public void ChangeTurn()
     {
+        isFlaggedCharacter = false;
+        hexagonFlagged = null;
+        enemyToAttack = null;
+
         if (isFreezed)
         {
             if (freezedCounter > 1)
@@ -117,6 +123,32 @@ public class OfflinePlacableItem : MonoBehaviour
 
             freezedCounter++;
         }
+    }
+    public bool AnyTargetInAttackRange(RoundStage stage)
+    {
+        List<OfflineHexagon> result = new List<OfflineHexagon>();
+        colliders = new Collider[50];
+        int r = 0;
+        if (stage == RoundStage.MOVE_ITEM)
+        {
+            r = m_MovementRange - 1;
+            if (isRangeCardUsed)
+                r = 2;
+        }
+        else
+            r = m_AttackRange - 1;
+
+        int num = Physics.OverlapSphereNonAlloc(transform.position, range[r], colliders, hexagonLayer);
+        int count = 0;
+        for (int i = 0; i < num; i++)
+        {
+            if (colliders[i].gameObject.TryGetComponent<OfflineHexagon>(out OfflineHexagon tile))
+            {
+                if (tile.isUsed && !tile.isUsedByEnemy) count++;
+            }
+        }
+
+        return count > 0 ? true : false;
     }
     public void ResetRound()
     {
@@ -223,6 +255,9 @@ public class OfflinePlacableItem : MonoBehaviour
         BotGameManager.instance.ResetRound -= ResetRound;
         BotGameManager.instance.ChangeTurn -= ChangeTurn;
 
+        if (BotGameManager.instance.brain.allyCharacters.Contains(this)) BotGameManager.instance.brain.allyCharacters.Remove(this);
+        if (BotGameManager.instance.brain.enemyCharacters.Contains(this)) BotGameManager.instance.brain.enemyCharacters.Remove(this);
+
         try
         {
             BotGameManager.instance.CheckPlayerPosition -= CheckForCards;
@@ -231,6 +266,8 @@ public class OfflinePlacableItem : MonoBehaviour
         {
             Debug.LogWarning("Not Added!");
         }
+
+        OfflineHexagonManager.instance.FreeHexSpace(tileIndex);
     }
     public void OnMouseDownFun()
     {
@@ -490,6 +527,8 @@ public class OfflinePlacableItem : MonoBehaviour
 
                 BotGameManager.instance.EnableButtons();
 
+                if (BotGameManager.instance.isBotsTurn) BotGameManager.instance.brain.AttackEnemyIfAny();
+
             }).OnStart(() =>
             {
                 BotGameManager.instance.DisableButtons();
@@ -566,6 +605,7 @@ public class OfflinePlacableItem : MonoBehaviour
                 projectileHitAudio.Play();
 
             DealDamageToEnemy();
+            if (BotGameManager.instance.isBotsTurn) BotGameManager.instance.brain.AttackEnemyIfAny();
         });
     }
     public void DealDamageToEnemy()
@@ -686,6 +726,7 @@ public class OfflinePlacableItem : MonoBehaviour
 
             OfflineHexagon tile = OfflineHexagonManager.instance.GetHexagon(i);
             tile.isUsed = true;
+            tile.isUsedByEnemy = !isBot;
             tile = OfflineHexagonManager.instance.GetHexagon(cIndex);
             tile.isUsed = false;
 
@@ -694,6 +735,9 @@ public class OfflinePlacableItem : MonoBehaviour
 
             OfflineHexagonManager.activeHexagon = null;
             BotGameManager.instance.EnableButtons();
+
+
+            if (BotGameManager.instance.isBotsTurn) BotGameManager.instance.brain.MoveCharacterIfAny();
         }).OnStart(() =>
         {
             BotGameManager.instance.DisableButtons();
@@ -793,6 +837,47 @@ public class OfflinePlacableItem : MonoBehaviour
             canAttackMore = false;
         }
     }
+    public OfflineHexagon[] GetAllTilesInRange(RoundStage stage)
+    {
+        List<OfflineHexagon> result = new List<OfflineHexagon>();
+        colliders = new Collider[50];
+        int r = 0;
+        if (stage == RoundStage.MOVE_ITEM)
+        {
+            r = m_MovementRange - 1;
+            if (isRangeCardUsed)
+                r = 2;
+        }
+        else
+            r = m_AttackRange - 1;
+
+
+        if (stage == RoundStage.MOVE_ITEM)
+        {
+            int num = Physics.OverlapSphereNonAlloc(transform.position, range[r], colliders, hexagonLayer);
+            for (int i = 0; i < num; i++)
+            {
+                if (colliders[i].gameObject.TryGetComponent<OfflineHexagon>(out OfflineHexagon tile))
+                {
+                    if (!tile.isUsed && !tile.isMarkedByAI) result.Add(tile);
+                }
+            }
+        }
+        else
+        {
+            int num = Physics.OverlapSphereNonAlloc(transform.position, range[r], colliders, hexagonLayer);
+            for (int i = 0; i < num; i++)
+            {
+                if (colliders[i].gameObject.TryGetComponent<OfflineHexagon>(out OfflineHexagon tile))
+                {
+                    result.Add(tile);
+                }
+            }
+        }
+
+
+        return result.ToArray();
+    }
     /*public override void Despawned(NetworkRunner runner, bool hasState)
     {
         HexagonManager.instance.FreeHexSpace(tileIndex);
@@ -803,12 +888,23 @@ public class OfflinePlacableItem : MonoBehaviour
     }*/
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, 5.4f);
+        // Gizmos.DrawWireSphere(transform.position, 5.4f);
 
-        if(isFlaggedCharacter)
+        if (isFlaggedCharacter)
         {
             Gizmos.color = Color.red;
             Gizmos.DrawSphere(transform.position + new Vector3(0, 1.65f, 0), 0.15f);
+
+            if (hexagonFlagged)
+            {
+                Gizmos.DrawLine(transform.position, hexagonFlagged.buildPoint.position);
+            }
+        }
+
+        if(enemyToAttack)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(transform.position, enemyToAttack.transform.position);
         }
     }
     #endregion
