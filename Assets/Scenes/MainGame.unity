@@ -5749,6 +5749,7 @@ Transform:
   - {fileID: 835704183}
   - {fileID: 272779368}
   - {fileID: 1874112476}
+  - {fileID: 899509978}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &152580849
@@ -26111,6 +26112,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 771227003}
   m_CullTransparentMesh: 1
+--- !u!1 &774204349
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 774204350}
+  - component: {fileID: 774204351}
+  m_Layer: 0
+  m_Name: DrawCard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &774204350
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774204349}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1978870617}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &774204351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774204349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 467c2353c87846e4997876ed25aa2c43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  considerations:
+  - {fileID: 11400000, guid: db0492ec55435274a9feb4dc4c4e9415, type: 2}
+  OnActionComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 937437937}
+        m_TargetAssemblyTypeName: BotCardManager, Assembly-CSharp
+        m_MethodName: GetNewCard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1702884225}
+        m_TargetAssemblyTypeName: CodingMantisGames.UtilityAI.AIBrain, Assembly-CSharp
+        m_MethodName: AttackEnemyAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  score: 0
 --- !u!1 &777602246
 GameObject:
   m_ObjectHideFlags: 0
@@ -29305,6 +29380,38 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9723dcf9713eb614fb3f4b027887ee02, type: 3}
+--- !u!1 &899509977
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 899509978}
+  m_Layer: 0
+  m_Name: AttackEnemyActionPlan
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &899509978
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899509977}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1978870617}
+  m_Father: {fileID: 151583087}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &903337548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36912,6 +37019,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1f3bfe85746475b40bdf6916a1b411e2, type: 3}
   m_PrefabInstance: {fileID: 1662482740}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1158108028
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1158108029}
+  - component: {fileID: 1158108030}
+  m_Layer: 0
+  m_Name: DropCard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1158108029
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158108028}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1978870617}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1158108030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158108028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 467c2353c87846e4997876ed25aa2c43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  considerations:
+  - {fileID: 11400000, guid: fcc1ba6ec9ffd504e953d3350248f357, type: 2}
+  OnActionComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  score: 0
 --- !u!1001 &1159626082
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53373,6 +53530,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89b2f79ec3e853459cbd65e9be577a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1627661642
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1627661643}
+  - component: {fileID: 1627661644}
+  m_Layer: 0
+  m_Name: SkipRound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1627661643
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627661642}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1978870617}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1627661644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627661642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 467c2353c87846e4997876ed25aa2c43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  considerations:
+  - {fileID: 11400000, guid: 73b8079c8212c9b4684eaf4cb689f63d, type: 2}
+  OnActionComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1702884225}
+        m_TargetAssemblyTypeName: CodingMantisGames.UtilityAI.AIBrain, Assembly-CSharp
+        m_MethodName: NextRound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  score: 0
 --- !u!114 &1629411201 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2060776652520209383, guid: c985555d12a22014980a24542c62ddb5, type: 3}
@@ -55631,7 +55850,7 @@ MonoBehaviour:
   spawnLocationChooser: {fileID: 835704184}
   offlineHexagonManager: {fileID: 566912336}
   actionPlans:
-  - {fileID: 11400000, guid: 2c13279178e94da45b979257befc4d60, type: 2}
+  - {fileID: 11400000, guid: 23ebe75b097e42f468aa649176c02747, type: 2}
   normalRoundOneActions:
   - {fileID: 1390006947}
   - {fileID: 2078980672}
@@ -55641,6 +55860,10 @@ MonoBehaviour:
   normalRoundThreeActions:
   - {fileID: 439113985}
   - {fileID: 2146950258}
+  attackEnemyRoundOneActions:
+  - {fileID: 774204351}
+  - {fileID: 1158108030}
+  - {fileID: 1627661644}
   cardManager: {fileID: 0}
   allyCharacters: []
   enemyCharacters: []
@@ -66895,6 +67118,40 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8768a64d26cada4d8993c5e28d490f2, type: 3}
+--- !u!1 &1978870616
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1978870617}
+  m_Layer: 0
+  m_Name: Round 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1978870617
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978870616}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 774204350}
+  - {fileID: 1158108029}
+  - {fileID: 1627661643}
+  m_Father: {fileID: 899509978}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1985395710
 PrefabInstance:
   m_ObjectHideFlags: 0

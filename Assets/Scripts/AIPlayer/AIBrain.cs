@@ -28,6 +28,9 @@ namespace CodingMantisGames.UtilityAI
         [SerializeField] private Action[] normalRoundTwoActions;
         [SerializeField] private Action[] normalRoundThreeActions;
 
+        [Header("Attack Enemy")]
+        [SerializeField] private Action[] attackEnemyRoundOneActions;
+
         //Private Variables
         [HideInInspector] public BotCardManager cardManager;//Script that manages all cards for Bot Player
         public List<OfflinePlacableItem> allyCharacters;
@@ -128,9 +131,15 @@ namespace CodingMantisGames.UtilityAI
 
             if (choosedAction) choosedAction.PerformAction();
         }
-        private void AttackEnemyAction()
+        public void AttackEnemyAction()
         {
             ShowMessage("🧠 Choosed Attack Enemy Action Plan.");
+
+            choosedAction = utilityAI.DecideAction(attackEnemyRoundOneActions);
+
+            ShowMessage("🎯 " + choosedAction.gameObject.name + " Action is choosed!!");
+
+            if (choosedAction) choosedAction.PerformAction();
         }
         private void ProtectTowerAction()
         {
@@ -162,6 +171,8 @@ namespace CodingMantisGames.UtilityAI
                 BotGameManager.instance.RPC_ChangeTurn();
             }
         }
+
+        #region NORMAL ACTION PLAN
         public void HandleOnDrawCardsComplete_NormalAction()
         {
             ShowMessage("✅ Successfully Card Drawn from the deck!");
@@ -322,6 +333,7 @@ namespace CodingMantisGames.UtilityAI
                 AttackEnemyIfAny();
             }
         }
+        #endregion
 
         private void ShowMessage(string message)
         {

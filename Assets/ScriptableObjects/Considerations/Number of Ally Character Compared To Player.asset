@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68e1c66853637f145bf0e249d922d89a, type: 3}
-  m_Name: AttackEnemyActionPLan
+  m_Script: {fileID: 11500000, guid: 49a55de968c770e4e996ccd815974f6f, type: 3}
+  m_Name: Number of Ally Character Compared To Player
   m_EditorClassIdentifier: 
-  considerations:
-  - {fileID: 11400000, guid: 73b8079c8212c9b4684eaf4cb689f63d, type: 2}
-  planType: 3
-  score: 0
+  response:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
