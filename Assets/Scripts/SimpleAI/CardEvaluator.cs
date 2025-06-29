@@ -43,18 +43,14 @@ namespace CodingMantisGames.SimpleAI
         public float GetScore(ActionPlanTypes plan, string id, bool isTop)
         {
             CharacterRankInfo characterRankInfo = characterRankInfos.FirstOrDefault(info => info.card.cardID == id);
-
+            CardEvaluatorData evaluatorData = cardEvaluatorDatas.FirstOrDefault(info => info.actionPlan == plan);
             float score = 0;
-            foreach (var cardEvaluatorData in cardEvaluatorDatas)
+            if (evaluatorData != null)
             {
-                if (cardEvaluatorData.actionPlan == plan)
-                {
-                    if (cardEvaluatorData._attack) score += characterRankInfo.attack;
-                    if (cardEvaluatorData._life) score += characterRankInfo.life;
-                    if (cardEvaluatorData._attackRange) score += characterRankInfo.attackRange;
-                    if (cardEvaluatorData._movementRange) score += characterRankInfo.moveRange;
-                    break;
-                }
+                if (evaluatorData._attack) score += characterRankInfo.attack;
+                if (evaluatorData._life) score += characterRankInfo.life;
+                if (evaluatorData._attackRange) score += characterRankInfo.attackRange;
+                if (evaluatorData._movementRange) score += characterRankInfo.moveRange;
             }
             return score;
         }

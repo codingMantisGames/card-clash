@@ -4535,6 +4535,69 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7a0a6a2608cf3964aaa2bfbe2401b3bb, type: 3}
   m_PrefabInstance: {fileID: 139122475}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &128894465
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 128894466}
+  - component: {fileID: 128894467}
+  m_Layer: 0
+  m_Name: SpawnLocationChooser
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &128894466
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128894465}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1101220080}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &128894467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128894465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93d82217fa0868145a4026ff8c32ebdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterSpawnLocations:
+  - {fileID: 1500710477}
+  - {fileID: 1949895201}
+  - {fileID: 1613460028}
+  - {fileID: 1654445357}
+  - {fileID: 1874539751}
+  - {fileID: 1133742018}
+  - {fileID: 1738337528}
+  - {fileID: 1709262651}
+  - {fileID: 2105150500}
+  - {fileID: 1920603678}
+  - {fileID: 1996666698}
+  - {fileID: 1011550937}
+  - {fileID: 1140735955}
+  locationChooserData:
+  - actionPlan: {fileID: 11400000, guid: e0a6d210d1e5c7542aaa12db8563003b, type: 2}
+    _attack: 0
+    _defent: 0
+    _initialMoves: 1
 --- !u!1001 &129655819
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34077,6 +34140,7 @@ MonoBehaviour:
     action: {fileID: 0}
   cardManager: {fileID: 0}
   cardEvaluator: {fileID: 0}
+  spawnLocationChooser: {fileID: 0}
 --- !u!4 &1101220080
 Transform:
   m_ObjectHideFlags: 0
@@ -34092,6 +34156,8 @@ Transform:
   m_Children:
   - {fileID: 1701477096}
   - {fileID: 1938499196}
+  - {fileID: 128894466}
+  - {fileID: 1302916464}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1104105446
@@ -41549,6 +41615,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6875a21912e056b4d84cbf3f1a68ae26, type: 3}
   m_PrefabInstance: {fileID: 911733311}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1302916463
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1302916464}
+  - component: {fileID: 1302916465}
+  m_Layer: 0
+  m_Name: TileEvaluator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1302916464
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302916463}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1101220080}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1302916465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302916463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b893654326de89241b98b04c06e0a4ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileEvaluatorData:
+  - actionPlan: {fileID: 11400000, guid: e0a6d210d1e5c7542aaa12db8563003b, type: 2}
+    safeSpot: 1
+    attackSpot: 0
+    towerAttackSpot: 0
+    protectTowerSpot: 0
+  hasEnemyAdjacent: -0.25
+  hasAllyAdjacent: 0.25
+  hasTowerAdjacent: 0.5
 --- !u!4 &1306717802 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6875a21912e056b4d84cbf3f1a68ae26, type: 3}

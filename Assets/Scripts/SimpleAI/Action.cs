@@ -10,6 +10,8 @@ namespace CodingMantisGames.SimpleAI
 
         #region FUNCTIONS
         public abstract void PerformAction(AIBrain ai);
+        public abstract void MoveIfAnyFlagged(AIBrain ai);
+        public abstract void AttackIfAnyFlagged(AIBrain ai);
         #endregion
     }
 }

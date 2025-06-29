@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c62f0550ebad2b845a86bae5e1f6a307, type: 3}
   m_Name: Normal Action
   m_EditorClassIdentifier: 
+  randomWaitTimeMin: 1
+  randomWaitTimeMax: 3
+  plan: {fileID: 11400000, guid: e0a6d210d1e5c7542aaa12db8563003b, type: 2}

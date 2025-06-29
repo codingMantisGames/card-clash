@@ -27,6 +27,8 @@ namespace CodingMantisGames.SimpleAI
         //Hidden
         [HideInInspector] public BotCardManager cardManager;
         [HideInInspector] public CardEvaluator cardEvaluator;
+        [HideInInspector] public SpawnLocationChooser spawnLocationChooser;
+        [HideInInspector] public TilesEvaluator tileEvaluator;
         private GUIStyle bigFontStyle;
         #endregion
 
@@ -39,6 +41,8 @@ namespace CodingMantisGames.SimpleAI
 
             cardManager = GetComponentInChildren<BotCardManager>();
             cardEvaluator = GetComponentInChildren<CardEvaluator>();
+            spawnLocationChooser = GetComponentInChildren<SpawnLocationChooser>();
+            tileEvaluator = GetComponentInChildren<TilesEvaluator>();
 
             allyCharacters = new List<OfflinePlacableItem>();
             enemyCharacters = new List<OfflinePlacableItem>();
@@ -95,6 +99,24 @@ namespace CodingMantisGames.SimpleAI
             ShowMessage("🎯 Lets choose " + choosedActionPlan.name + " this turn!");
             choosedActionPlan.action.PerformAction(this);
         }
+        public void UpdateRound()
+        {
+            if (roundStage == RoundStage.USING_CARDS) roundStage = RoundStage.MOVE_ITEM;
+            else if (roundStage == RoundStage.MOVE_ITEM) roundStage = RoundStage.ATTACK;
+            else if (roundStage == RoundStage.ATTACK)
+            {
+                StartCoroutine(SkipTurnProcedure());
+            }
+        }
+
+        IEnumerator SkipTurnProcedure()
+        {
+            yield return new WaitForSeconds(Random.Range(1, 2));
+
+            ShowMessage("🔁 My Turn Over");
+            roundStage = RoundStage.WAITING;
+            BotGameManager.instance.RPC_ChangeTurn();
+        }
 
         public Coroutine StartRoutine(IEnumerator routine)
         {
@@ -108,7 +130,14 @@ namespace CodingMantisGames.SimpleAI
             if (messages.Count > 10)
                 messages.RemoveAt(0);
         }
-
+        public void ContinueMovement()
+        {
+            if (choosedActionPlan != null) choosedActionPlan.action.MoveIfAnyFlagged(this);
+        }
+        public void ContinueAttack()
+        {
+            if (choosedActionPlan != null) choosedActionPlan.action.AttackIfAnyFlagged(this);
+        }
         #endregion
     }
 

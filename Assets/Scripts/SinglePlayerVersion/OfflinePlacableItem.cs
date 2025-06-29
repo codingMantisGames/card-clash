@@ -544,7 +544,7 @@ public class OfflinePlacableItem : MonoBehaviour
 
                 BotGameManager.instance.EnableButtons();
 
-                //if (BotGameManager.instance.isBotsTurn) BotGameManager.instance.brain.AttackEnemyIfAny();
+                if (BotGameManager.instance.isBotsTurn) BotGameManager.instance.brain.ContinueAttack();
 
             }).OnStart(() =>
             {
@@ -622,7 +622,7 @@ public class OfflinePlacableItem : MonoBehaviour
                 projectileHitAudio.Play();
 
             DealDamageToEnemy();
-            //if (BotGameManager.instance.isBotsTurn) BotGameManager.instance.brain.AttackEnemyIfAny();
+            if (BotGameManager.instance.isBotsTurn) BotGameManager.instance.brain.ContinueAttack();
         });
     }
     public void DealDamageToEnemy()
@@ -754,7 +754,7 @@ public class OfflinePlacableItem : MonoBehaviour
             BotGameManager.instance.EnableButtons();
 
 
-            //if (BotGameManager.instance.isBotsTurn) BotGameManager.instance.brain.MoveCharacterIfAny();
+            if (BotGameManager.instance.isBotsTurn) BotGameManager.instance.brain.ContinueMovement();
         }).OnStart(() =>
         {
             BotGameManager.instance.DisableButtons();

@@ -224,7 +224,6 @@ public class OfflineHexagon : MonoBehaviour
     public OfflinePlacableItem GetPlayer()
     {
         playerColliders = new Collider[1];
-        Debug.Log("My name is " + transform.GetInstanceID());
         int k = Physics.OverlapSphereNonAlloc(transform.position, 0.2f, playerColliders, playerLayer);
         if (k != 0)
         {
