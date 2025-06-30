@@ -30,10 +30,9 @@ namespace CodingMantisGames.SimpleAI
             float bestScore = 0;
             OfflineHexagon seletedHexagon = null;
             LocationChooserData data = locationChooserData.FirstOrDefault(info => info.actionPlan == plan);
-
             foreach (var location in characterSpawnLocations)
             {
-                if(!location.isUsed)
+                if (!location.isUsed)
                 {
                     float score = 0;
                     if (data._attack) score += location.attack;

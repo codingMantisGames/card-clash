@@ -44,6 +44,10 @@ namespace CodingMantisGames.SimpleAI
                         if (a.isUsed && a.isUsedByEnemy) score += -hasEnemyAdjacent;
                         else if (a.isUsed && !a.isUsedByEnemy) score += hasAllyAdjacent;
                     }
+                    else if(tileEvaluator.attackSpot)
+                    {
+                        if (a.isUsed && a.isUsedByEnemy) score += hasEnemyAdjacent;
+                    }
                 }
 
                 score += GetInFrontFactor(tile.buildPoint, pos);

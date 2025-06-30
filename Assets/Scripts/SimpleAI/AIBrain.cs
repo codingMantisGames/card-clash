@@ -14,15 +14,14 @@ namespace CodingMantisGames.SimpleAI
 
         private List<string> messages;
 
-        [Header("In Game Data")]
-        public List<OfflinePlacableItem> allyCharacters;
-        public List<OfflinePlacableItem> enemyCharacters;
-        public OfflinePlayerTower allyTower;
-        public OfflinePlayerTower enemyTower;
+        [HideInInspector] public List<OfflinePlacableItem> allyCharacters;
+        [HideInInspector] public List<OfflinePlacableItem> enemyCharacters;
+        [HideInInspector] public OfflinePlayerTower allyTower;
+        [HideInInspector] public OfflinePlayerTower enemyTower;
 
         [Header("Info")]
         [SerializeField] private RoundStage roundStage;
-        [SerializeField] private ActionPlanData choosedActionPlan;
+        private ActionPlanData choosedActionPlan;
 
         //Hidden
         [HideInInspector] public BotCardManager cardManager;
@@ -51,13 +50,20 @@ namespace CodingMantisGames.SimpleAI
             bigFontStyle.fontSize = 15;
             bigFontStyle.normal.textColor = Color.white;
 
+            BotGameManager.instance.ChangeTurn += HandleGameTurnReset;
+
             ShowMessage("✅ I am all Set!");
+        }
+        private void OnDestroy()
+        {
+            BotGameManager.instance.ChangeTurn -= HandleGameTurnReset;
         }
 
         void Update()
         {
 
         }
+
         void OnGUI()
         {
             string m = "";
@@ -88,6 +94,12 @@ namespace CodingMantisGames.SimpleAI
             choosedActionPlan = null;
             foreach (ActionPlanData plan in actionPlans)
             {
+                if (plan.chooseThisOne)
+                {
+                    choosedActionPlan = plan;
+                    break;
+                }
+
                 if (plan.scoreCalculator.score > bestScore)
                 {
                     bestScore = plan.scoreCalculator.score;
@@ -138,6 +150,10 @@ namespace CodingMantisGames.SimpleAI
         {
             if (choosedActionPlan != null) choosedActionPlan.action.AttackIfAnyFlagged(this);
         }
+        private void HandleGameTurnReset()
+        {
+
+        }
         #endregion
     }
 
@@ -148,6 +164,7 @@ namespace CodingMantisGames.SimpleAI
         public ActionPlanTypes planType;
         public ScoreCalculator scoreCalculator;
         public Action action;
+        public bool chooseThisOne;
     }
 }
 

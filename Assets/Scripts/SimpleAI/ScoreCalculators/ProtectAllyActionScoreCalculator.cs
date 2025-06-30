@@ -1,0 +1,30 @@
+using UnityEngine;
+
+namespace CodingMantisGames.SimpleAI 
+{
+    [CreateAssetMenu(menuName = "Simple AI/Score Calculator/Protect Ally Action Score Calculator", fileName = "Protect Ally Action Score Calculator")]
+    public class ProtectAllyActionScoreCalculator : ScoreCalculator
+    {
+        #region VARIABLES
+
+        #endregion
+
+        #region UNITY FUNCTIONS
+        void Start()
+        {
+        
+        }
+
+        void Update()
+        {
+        
+        }
+        #endregion
+
+        #region FUNCTIONS
+        public override void CalculateScore(AIBrain ai)
+        {
+        }
+        #endregion
+    }
+}

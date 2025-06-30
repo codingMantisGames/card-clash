@@ -139,6 +139,7 @@ public class OfflineHexagonManager : MonoBehaviour
                 gm = item.prefab;
             }
         }
+        //Debug.LogError("Index " + index);
 
         OfflineHexagon tile = hexagonTiles[index];
         //NetworkObject n = Runner.Spawn(gm, tile.buildPoint.position, tile.buildPoint.localRotation);

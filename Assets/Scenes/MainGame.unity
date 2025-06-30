@@ -216,6 +216,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
       objectReference: {fileID: 0}
@@ -640,6 +644,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -4561,7 +4569,7 @@ Transform:
   m_GameObject: {fileID: 128894465}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.918, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4598,6 +4606,10 @@ MonoBehaviour:
     _attack: 0
     _defent: 0
     _initialMoves: 1
+  - actionPlan: {fileID: 11400000, guid: 68b9767a5f78f6c4dbbe91e62c6b2cf5, type: 2}
+    _attack: 1
+    _defent: 0
+    _initialMoves: 0
 --- !u!1001 &129655819
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7041,6 +7053,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
       objectReference: {fileID: 0}
@@ -7957,6 +7973,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -11509,6 +11529,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
       objectReference: {fileID: 0}
@@ -11648,6 +11672,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -11873,6 +11901,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -12454,6 +12486,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -14959,6 +14995,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
       objectReference: {fileID: 0}
@@ -17029,6 +17069,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
       objectReference: {fileID: 0}
@@ -17553,6 +17597,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
       objectReference: {fileID: 0}
@@ -18052,6 +18100,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -19450,6 +19502,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
       objectReference: {fileID: 0}
@@ -20526,6 +20582,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
       objectReference: {fileID: 0}
@@ -21091,6 +21151,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
       objectReference: {fileID: 0}
@@ -21223,6 +21287,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -21624,6 +21692,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -22071,6 +22143,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
       objectReference: {fileID: 0}
@@ -22407,6 +22483,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -24835,6 +24915,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
       objectReference: {fileID: 0}
@@ -25134,6 +25218,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -26972,6 +27060,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
       objectReference: {fileID: 0}
@@ -27197,6 +27289,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -28159,6 +28255,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
       objectReference: {fileID: 0}
@@ -28308,6 +28408,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -30436,6 +30540,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
       objectReference: {fileID: 0}
@@ -30717,6 +30825,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -31385,6 +31497,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
       objectReference: {fileID: 0}
@@ -31756,6 +31872,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -32811,6 +32931,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -34124,23 +34248,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionPlans:
+  - name: Attack Enemy Action
+    planType: {fileID: 11400000, guid: 68b9767a5f78f6c4dbbe91e62c6b2cf5, type: 2}
+    scoreCalculator: {fileID: 11400000, guid: 878e33e3972923547a9a74cf090b18b0, type: 2}
+    action: {fileID: 11400000, guid: ffe40c4456cf8ab40a54eca9d58bc925, type: 2}
+    chooseThisOne: 1
   - name: Normal Action
     planType: {fileID: 11400000, guid: e0a6d210d1e5c7542aaa12db8563003b, type: 2}
     scoreCalculator: {fileID: 11400000, guid: 58819d0271406f74f9f6c6ba6fc3aca4, type: 2}
     action: {fileID: 11400000, guid: d56d869fad01bfb4b823bcadd1b63e9a, type: 2}
+    chooseThisOne: 0
+  - name: Protect Ally Action
+    planType: {fileID: 11400000, guid: fb9c28c89bb05fd458e2e5262647d4f9, type: 2}
+    scoreCalculator: {fileID: 11400000, guid: 6356a6050b8df0b4fbf153658a90115d, type: 2}
+    action: {fileID: 11400000, guid: 285dd7b7499a6384781f0e116f5d6d37, type: 2}
+    chooseThisOne: 0
+  - name: Protect Ally TOwer Action
+    planType: {fileID: 11400000, guid: bbb179bf5f1299148addfa87a7f16c4f, type: 2}
+    scoreCalculator: {fileID: 11400000, guid: bcb68dde21ecbea48a762d1b1ef81478, type: 2}
+    action: {fileID: 11400000, guid: 8ba2bfca06b78fa469dc93939f7d7c35, type: 2}
+    chooseThisOne: 0
+  - name: Attack Enemy Tower Action
+    planType: {fileID: 11400000, guid: 7b568044b9bef9745ad3b22c297e2c50, type: 2}
+    scoreCalculator: {fileID: 11400000, guid: 5998554bc4b576e4088d0e7d8471eb44, type: 2}
+    action: {fileID: 11400000, guid: ca869bfd15a647d48a97ab8ebc1c54e3, type: 2}
+    chooseThisOne: 0
   allyCharacters: []
   enemyCharacters: []
   allyTower: {fileID: 0}
   enemyTower: {fileID: 0}
-  roundStage: 0
-  choosedActionPlan:
-    name: 
-    planType: {fileID: 0}
-    scoreCalculator: {fileID: 0}
-    action: {fileID: 0}
+  roundStage: 3
   cardManager: {fileID: 0}
   cardEvaluator: {fileID: 0}
   spawnLocationChooser: {fileID: 0}
+  tileEvaluator: {fileID: 0}
 --- !u!4 &1101220080
 Transform:
   m_ObjectHideFlags: 0
@@ -34659,6 +34800,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
       objectReference: {fileID: 0}
@@ -35079,6 +35224,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -36729,6 +36878,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
       objectReference: {fileID: 0}
@@ -37158,6 +37311,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -41063,6 +41220,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
       objectReference: {fileID: 0}
@@ -41212,6 +41373,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
       objectReference: {fileID: 0}
@@ -41352,6 +41517,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -41641,7 +41810,7 @@ Transform:
   m_GameObject: {fileID: 1302916463}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.648, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -41664,6 +41833,11 @@ MonoBehaviour:
     safeSpot: 1
     attackSpot: 0
     towerAttackSpot: 0
+    protectTowerSpot: 0
+  - actionPlan: {fileID: 11400000, guid: 68b9767a5f78f6c4dbbe91e62c6b2cf5, type: 2}
+    safeSpot: 0
+    attackSpot: 1
+    towerAttackSpot: 1
     protectTowerSpot: 0
   hasEnemyAdjacent: -0.25
   hasAllyAdjacent: 0.25
@@ -42027,6 +42201,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -44403,6 +44581,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
       objectReference: {fileID: 0}
@@ -44551,6 +44733,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -44848,6 +45034,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
       objectReference: {fileID: 0}
@@ -45097,6 +45287,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -45437,6 +45631,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -46688,6 +46886,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
       objectReference: {fileID: 0}
@@ -47562,6 +47764,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
       objectReference: {fileID: 0}
@@ -47722,6 +47928,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -47907,6 +48117,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -51182,6 +51396,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
       objectReference: {fileID: 0}
@@ -51321,6 +51539,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -51621,6 +51843,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isUsed
       value: 1
       objectReference: {fileID: 0}
@@ -51777,6 +52003,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -56551,6 +56781,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
       objectReference: {fileID: 0}
@@ -60388,6 +60622,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
       objectReference: {fileID: 0}
@@ -62297,6 +62535,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
       value: 1.62
       objectReference: {fileID: 0}
@@ -62943,6 +63185,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -64909,7 +65155,7 @@ Transform:
   m_GameObject: {fileID: 1938499195}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.886, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -64934,6 +65180,12 @@ MonoBehaviour:
     _life: 1
     _attackRange: 1
     _movementRange: 1
+  - name: Attack Action
+    actionPlan: {fileID: 11400000, guid: 68b9767a5f78f6c4dbbe91e62c6b2cf5, type: 2}
+    _attack: 1
+    _life: 0
+    _attackRange: 1
+    _movementRange: 0
   characterRankInfos:
   - name: Mage
     card: {fileID: 11400000, guid: 0c42f7073161fe3458f2236d702de055, type: 2}
@@ -66183,6 +66435,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -68569,6 +68825,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
@@ -71614,6 +71874,10 @@ PrefabInstance:
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: attack
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: radius
