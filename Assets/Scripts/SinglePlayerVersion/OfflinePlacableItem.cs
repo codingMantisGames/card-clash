@@ -69,7 +69,7 @@ public class OfflinePlacableItem : MonoBehaviour
     public bool isFlaggedCharacter;
     public OfflineHexagon hexagonFlagged;
     public OfflinePlacableItem enemyToAttack;
-    public float temp;
+    public float treatLevel;
     #endregion
 
     #region UNITY FUNCTIONS

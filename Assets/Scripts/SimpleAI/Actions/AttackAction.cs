@@ -92,10 +92,10 @@ namespace CodingMantisGames.SimpleAI
 
             foreach (var item in ai.enemyCharacters)
             {
-                item.temp = item.life + item.attackValue;
+                item.treatLevel = item.life + item.attackValue; //also we need to change this score so that it will be treat level score. based on factors
             }
 
-            ai.enemyCharacters = ai.enemyCharacters.OrderByDescending(x => x.temp).ToList();
+            ai.enemyCharacters = ai.enemyCharacters.OrderByDescending(x => x.treatLevel).ToList(); 
             allyCharacters = new List<OfflinePlacableItem>();
 
             foreach (var item in ai.allyCharacters) allyCharacters.Add(item);
