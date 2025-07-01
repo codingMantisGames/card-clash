@@ -20,7 +20,7 @@ namespace CodingMantisGames.SimpleAI
         [HideInInspector] public OfflinePlayerTower enemyTower;
 
         [Header("Info")]
-        [SerializeField] private RoundStage roundStage;
+        public RoundStage roundStage;
         private ActionPlanData choosedActionPlan;
 
         //Hidden
@@ -136,7 +136,7 @@ namespace CodingMantisGames.SimpleAI
         }
         public void ShowMessage(string message)
         {
-            Debug.Log(message);
+            //Debug.Log(message);
 
             messages.Add(message);
             if (messages.Count > 10)

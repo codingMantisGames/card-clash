@@ -27,10 +27,10 @@ namespace CodingMantisGames.UtilityAI
             float treatLevel = 0;
             foreach (var item in brain.enemyCharacters)
             {
-                if (item.AnyTargetInAttackRange(RoundStage.ATTACK))
+                /*if (item.AnyTargetInAttackRange(RoundStage.ATTACK))
                 {
                     treatLevel++;
-                }
+                }*/
             }
 
             float nor = treatLevel / brain.enemyCharacters.Count;

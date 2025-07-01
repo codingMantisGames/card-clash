@@ -48,7 +48,7 @@ public class OfflinePlacableItem : MonoBehaviour
     [SerializeField] private LayerMask cardLayer;
     public List<DropableCard> dropableCards;
     //private ChangeDetector _changeDetector;
-    [SerializeField] private int totalLife;
+    public int totalLife;
     [SerializeField] private int realAttackValue;
     public int life;
     public int attackValue;
@@ -127,7 +127,6 @@ public class OfflinePlacableItem : MonoBehaviour
     }
     public int GetEnemyNearByCount()
     {
-        List<OfflineHexagon> result = new List<OfflineHexagon>();
         colliders = new Collider[50];
 
         int num = Physics.OverlapSphereNonAlloc(transform.position, range[2], colliders, hexagonLayer);
@@ -142,9 +141,8 @@ public class OfflinePlacableItem : MonoBehaviour
 
         return count;
     }
-    public bool AnyTargetInAttackRange(RoundStage stage)
+    public int AnyTargetInAttackRange(RoundStage stage)
     {
-        List<OfflineHexagon> result = new List<OfflineHexagon>();
         colliders = new Collider[50];
         int r = 0;
         if (stage == RoundStage.MOVE_ITEM)
@@ -162,11 +160,91 @@ public class OfflinePlacableItem : MonoBehaviour
         {
             if (colliders[i].gameObject.TryGetComponent<OfflineHexagon>(out OfflineHexagon tile))
             {
-                if (tile.isUsed && !tile.isUsedByEnemy) count++;
+                //There is small chance we get a issue here
+                if (tile.isUsed && tile.isUsedByEnemy != isBot && tile.isTowerRegion) count++;
+                else if (tile.isUsed && tile.isUsedByEnemy != isBot) count++;
             }
         }
 
-        return count > 0 ? true : false;
+        return count;
+    }
+    public bool CanAttack(OfflineHexagon offlineHexagon)
+    {
+        colliders = new Collider[50];
+        int r = 0;
+        r = m_AttackRange - 1;
+
+        int num = Physics.OverlapSphereNonAlloc(transform.position, range[r], colliders, hexagonLayer);
+        bool flag = false;
+        for (int i = 0; i < num; i++)
+        {
+            if (colliders[i].gameObject.TryGetComponent<OfflineHexagon>(out OfflineHexagon tile) && tile == offlineHexagon)
+            {
+                flag = true; break;
+            }
+        }
+
+        return flag;
+    }
+    private bool CanAttackFromPoint(OfflineHexagon offlineHexagon, Vector3 pos)
+    {
+        int r = 0;
+        r = m_AttackRange - 1;
+
+        var result = Physics.OverlapSphere(pos, range[r], hexagonLayer);
+        foreach (var item in result)
+        {
+            if(item.gameObject.TryGetComponent<OfflineHexagon>(out OfflineHexagon tile) && item == offlineHexagon)
+                return true;
+        }
+
+        return false;
+    }
+
+    public OfflineHexagon CanMoveAndAttack(OfflineHexagon offlineHexagon, bool useCard = false)
+    {
+        colliders = new Collider[50];
+        int r = 0;
+        r = m_MovementRange - 1;
+
+        if (useCard) r = 2;
+
+        int num = Physics.OverlapSphereNonAlloc(transform.position, range[r], colliders, hexagonLayer);
+        for (int i = 0; i < num; i++)
+        {
+            if (colliders[i].gameObject.TryGetComponent<OfflineHexagon>(out OfflineHexagon tile))
+            {
+                if (CanAttackFromPoint(offlineHexagon, tile.buildPoint.position))
+                    return tile;
+            }
+        }
+
+        return null;
+    }
+
+    public bool CanAttackAIsTower(RoundStage stage)
+    {
+        colliders = new Collider[50];
+        int r = 0;
+        if (stage == RoundStage.MOVE_ITEM)
+        {
+            r = m_MovementRange - 1;
+            if (isRangeCardUsed)
+                r = 2;
+        }
+        else
+            r = m_AttackRange - 1;
+
+        int num = Physics.OverlapSphereNonAlloc(transform.position, range[r], colliders, hexagonLayer);
+        for (int i = 0; i < num; i++)
+        {
+            if (colliders[i].gameObject.TryGetComponent<OfflineHexagon>(out OfflineHexagon tile))
+            {
+                if (tile.isTowerRegion) return true;
+            }
+        }
+
+        return false;
     }
     public void ResetRound()
     {
@@ -181,7 +259,7 @@ public class OfflinePlacableItem : MonoBehaviour
     }
     public void ResetMoveCounter()
     {
-        moveCount = 1;
+        moveCount = 10; //Changed here for testing
     }
     public void SetBuilding(bool flag = false)
     {
@@ -919,7 +997,7 @@ public class OfflinePlacableItem : MonoBehaviour
             }
         }
 
-        if(enemyToAttack)
+        if (enemyToAttack)
         {
             Gizmos.color = Color.red;
             Gizmos.DrawLine(transform.position, enemyToAttack.transform.position);

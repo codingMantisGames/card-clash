@@ -10,6 +10,7 @@ public class OfflineHexagon : MonoBehaviour
     public bool isCardNeutral = false;
     public bool isNoBuildZone;
     public bool isBotZone;
+    public bool isTowerRegion;
     [SerializeField] private MeshRenderer hexRenderer;
     public Transform buildPoint;
     public List<OfflineHexagon> adjacentTiles;

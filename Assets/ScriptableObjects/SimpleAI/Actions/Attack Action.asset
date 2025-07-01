@@ -16,3 +16,7 @@ MonoBehaviour:
   minAllyNeeded: 2
   randomWaitTimeMin: 2
   randomWaitTimeMax: 3
+  nearTowerScore: 0.5
+  nearEnemyScore: 0.15
+  moreAttackScore: 0.1
+  moreLifeScore: 0.1
