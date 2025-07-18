@@ -68,6 +68,7 @@ public class OfflinePlacableItem : MonoBehaviour
     public AudioSource projectileHitAudio;
     public bool isFlaggedCharacter;
     public OfflineHexagon hexagonFlagged;
+    public OfflineHexagon hexagonToAttack;
     public OfflinePlacableItem enemyToAttack;
     public float treatLevel;
     #endregion
@@ -75,6 +76,8 @@ public class OfflinePlacableItem : MonoBehaviour
     #region UNITY FUNCTIONS
     IEnumerator Start()
     {
+        timeBtwTiletoTileMovement = 0.1f;//THis is only for testing
+
         targetPos = transform.position;
 
         yield return new WaitForEndOfFrame();
@@ -168,8 +171,10 @@ public class OfflinePlacableItem : MonoBehaviour
 
         return count;
     }
-    public bool CanAttack(OfflineHexagon offlineHexagon)
+    public bool CanAttack(OfflineHexagon offlineHexagon, Transform enemy)
     {
+        if (!HasLineOfSight(transform.position, enemy)) return false;
+
         colliders = new Collider[50];
         int r = 0;
         r = m_AttackRange - 1;
@@ -194,15 +199,17 @@ public class OfflinePlacableItem : MonoBehaviour
         var result = Physics.OverlapSphere(pos, range[r], hexagonLayer);
         foreach (var item in result)
         {
-            if(item.gameObject.TryGetComponent<OfflineHexagon>(out OfflineHexagon tile) && item == offlineHexagon)
+            if (item.gameObject.TryGetComponent<OfflineHexagon>(out OfflineHexagon tile) && item == offlineHexagon)
                 return true;
         }
 
         return false;
     }
 
-    public OfflineHexagon CanMoveAndAttack(OfflineHexagon offlineHexagon, bool useCard = false)
+    public OfflineHexagon CanMoveAndAttack(OfflineHexagon offlineHexagon, bool useCard = false, Transform enemy = null)
     {
+        if (!HasLineOfSight(transform.position, enemy)) return null;
+
         colliders = new Collider[50];
         int r = 0;
         r = m_MovementRange - 1;

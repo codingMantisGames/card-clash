@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f179ffb42daba4a93093eea613b12d, type: 3}
   m_Name: Protect Ally Action
   m_EditorClassIdentifier: 
+  minimumNumberOfCharacterNeeded: 2
+  randomWaitTimeMin: 2
+  randomWaitTimeMax: 3
+  plan: {fileID: 11400000, guid: fb9c28c89bb05fd458e2e5262647d4f9, type: 2}

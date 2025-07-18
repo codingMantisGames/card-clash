@@ -9,6 +9,7 @@ public class BotGameManager : MonoBehaviour
 {
     #region VARIABLES
     public RoundStage currentRoundStage;
+    public bool isBotsTurn = false;
     public CodingMantisGames.SimpleAI.AIBrain brain;
 
     public List<CardData> cardDatas;
@@ -29,7 +30,6 @@ public class BotGameManager : MonoBehaviour
     [SerializeField] private GameObject attackHelp;
     [SerializeField] private Button helpButton;
 
-    public bool isBotsTurn = false;
     private bool isGameOver = false;
 
     [SerializeField, Space(20)] private GameObject offlineTower;

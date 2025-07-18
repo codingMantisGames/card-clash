@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c482cf797ad2f940998a2c39e7807a9, type: 3}
   m_Name: Attack Action
   m_EditorClassIdentifier: 
+  spawnCount: 4
   plan: {fileID: 11400000, guid: 68b9767a5f78f6c4dbbe91e62c6b2cf5, type: 2}
   minAllyNeeded: 2
   randomWaitTimeMin: 2

@@ -150,6 +150,7 @@ namespace CodingMantisGames.SimpleAI
                 ai.ShowMessage("⚠️ No Enemy to attack lets Skip attack round.");
 
                 HandleOnAttackComplete(ai);
+                return;
             }
 
             AttackIfAnyFlagged(ai);

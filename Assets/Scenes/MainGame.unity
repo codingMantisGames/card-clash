@@ -34252,7 +34252,7 @@ MonoBehaviour:
     planType: {fileID: 11400000, guid: 68b9767a5f78f6c4dbbe91e62c6b2cf5, type: 2}
     scoreCalculator: {fileID: 11400000, guid: 878e33e3972923547a9a74cf090b18b0, type: 2}
     action: {fileID: 11400000, guid: ffe40c4456cf8ab40a54eca9d58bc925, type: 2}
-    chooseThisOne: 0
+    chooseThisOne: 1
   - name: Normal Action
     planType: {fileID: 11400000, guid: e0a6d210d1e5c7542aaa12db8563003b, type: 2}
     scoreCalculator: {fileID: 11400000, guid: 58819d0271406f74f9f6c6ba6fc3aca4, type: 2}
@@ -40424,6 +40424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentRoundStage: 0
+  isBotsTurn: 0
   brain: {fileID: 1101220079}
   cardDatas:
   - {fileID: 11400000, guid: 30a6564fc855e0c45888404713f14e02, type: 2}
@@ -40448,7 +40449,6 @@ MonoBehaviour:
   movementHelp: {fileID: 1895458016}
   attackHelp: {fileID: 197395277}
   helpButton: {fileID: 318996186}
-  isBotsTurn: 0
   offlineTower: {fileID: 2009016812172416, guid: 5d2af198962cfa04a8815648a9ee2366, type: 3}
   playerTowerSpawnPosition: {fileID: 15149339}
   botTowerSpawnPosition: {fileID: 895708092}

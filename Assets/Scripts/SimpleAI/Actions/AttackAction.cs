@@ -10,6 +10,7 @@ namespace CodingMantisGames.SimpleAI
     public class AttackAction : Action
     {
         #region VARIABLES
+        public int spawnCount = 2; //this is only for testing
         [SerializeField] private ActionPlanTypes plan;
         [SerializeField] private int minAllyNeeded = 2;
         [SerializeField] private float randomWaitTimeMin;
@@ -22,9 +23,13 @@ namespace CodingMantisGames.SimpleAI
         [SerializeField] private float moreLifeScore;
 
         private List<OfflinePlacableItem> allyCharacters;
-        private List<AttackPlanData> attackPlanDatas;
-        private List<MovementPlanData> movementPlanDatas;
-        private List<CardSpawnData> cardSpawnDatas;
+        [Space(30)] public List<AttackPlanData> attackPlanDatas;
+        public List<MovementPlanData> movementPlanDatas;
+        public List<CardSpawnData> cardSpawnDatas;
+        public List<OfflinePlacableItem> allyUsedToAttack;
+
+        int attackIndex;
+        int moveIndex;
         #endregion
 
         #region UNITY FUNCTIONS
@@ -40,19 +45,12 @@ namespace CodingMantisGames.SimpleAI
         #endregion
 
         #region FUNCTIONS
-        public override void AttackIfAnyFlagged(AIBrain ai)
-        {
-
-        }
-
-        public override void MoveIfAnyFlagged(AIBrain ai)
-        {
-
-        }
-
         public override void PerformAction(AIBrain ai)
         {
             ai.ShowMessage("💭 We have to kill some enemy this round!");
+
+            attackIndex = 0;
+            moveIndex = 0;
 
             if (ai.allyCharacters.Count < minAllyNeeded)
             {
@@ -61,7 +59,6 @@ namespace CodingMantisGames.SimpleAI
                 int totalWeCanSpawn = ai.cardManager.cardInHand.Count + ai.cardManager.cardCounter;
 
                 //int spawnCount = Random.Range(1, Mathf.Clamp(actualMoreNeeded, 0, totalWeCanSpawn));
-                int spawnCount = 2;
 
                 ai.ShowMessage("💭 Enemy has " + ai.enemyCharacters.Count + ". So we have to spawn atleast " + spawnCount + " charaters!");
 
@@ -95,7 +92,7 @@ namespace CodingMantisGames.SimpleAI
             HandleOnSpawnComplete(ai);
         }
 
-        public void HandleOnSpawnComplete(AIBrain ai) //the first round is not complete. still we have to make plan for attack ussing cards in hand. if we need more ally we have to spawn 
+        public void HandleOnSpawnComplete(AIBrain ai)
         {
             ai.ShowMessage("💭 Now we need a attack plan...");
 
@@ -131,10 +128,10 @@ namespace CodingMantisGames.SimpleAI
                 float life = item.life;
                 attackPlan.enemyToAttack = item;
                 attackPlan.tileToAttack = OfflineHexagonManager.instance.GetHexagon(item.tileIndex);
-
                 foreach (var ally in allyCharacters)
                 {
-                    if (!ally.isFlaggedCharacter && ally.CanAttack(attackPlan.tileToAttack)) //Player can attack using his attack range no movement needed.
+                    bool canAttackWithoutMovement = ally.CanAttack(attackPlan.tileToAttack, item.transform);
+                    if (!ally.isFlaggedCharacter && canAttackWithoutMovement) //Player can attack using his attack range no movement needed.
                     {
                         OfflineHexagon hex = OfflineHexagonManager.instance.GetHexagon(ally.tileIndex);
                         CardSpawnData res = CanUsePowerBoost(hex, ai); //This is because we plan to spawn near ally
@@ -179,20 +176,23 @@ namespace CodingMantisGames.SimpleAI
                             else
                             {
                                 life -= ally.attackValue;
+                                Debug.Log(ally.transform.name + " attacks (" + ally.attackValue + ") --> " + item.name + " life from " + (life + ally.attackValue) + " to " + life);
                                 attackPlan.allyUsed.Add(ally);
 
                                 ally.isFlaggedCharacter = true;
                                 ally.enemyToAttack = item;
-
-                                if (life <= 0) break;
+                                if (life <= 0)
+                                {
+                                    break;
+                                }
                             }
                         }
                     }
-                    else
+                    else if (!ally.isFlaggedCharacter && !canAttackWithoutMovement)
                     {
                         OfflineHexagon tile = OfflineHexagonManager.instance.GetHexagon(ally.tileIndex);
                         CardSpawnData res = CanUseRangeSurge(tile, ai);
-                        OfflineHexagon hex = ally.CanMoveAndAttack(attackPlan.tileToAttack, res == null ? false : true);
+                        OfflineHexagon hex = ally.CanMoveAndAttack(attackPlan.tileToAttack, res == null ? false : true, item.transform);
                         if (hex != null)
                         {
                             if (res != null) //that means we can use card
@@ -206,6 +206,7 @@ namespace CodingMantisGames.SimpleAI
                             MovementPlanData data = new MovementPlanData();
                             data.ally = ally;
                             data.hexagonToMove = hex;
+                            movementPlanDatas.Add(data);
 
                             ai.cardManager.cardInHand.Remove(res.card);
 
@@ -232,7 +233,7 @@ namespace CodingMantisGames.SimpleAI
                     break;
             }
 
-            foreach (var attack in attackPlanDatas)
+            /*foreach (var attack in attackPlanDatas)
             {
                 attack.enemyToAttack.isFlaggedCharacter = true;
 
@@ -241,16 +242,153 @@ namespace CodingMantisGames.SimpleAI
                     item.enemyToAttack = attack.enemyToAttack;
                     item.isFlaggedCharacter = true;
                 }
-            }
+            }*/
 
             if (attackPlanDatas.Count > 0)
+            {
                 ai.ShowMessage("💭 Now we have a attack plan. Let's start attack! ");
+                HandleOnAttackPlanComplete(ai);
+            }
             else
             {
                 ai.ShowMessage("💭 Oooh no!. Cant attack now. We have to plan Normal");
             }
 
             //make a small movement only if attack is not found
+        }
+
+        public void HandleOnAttackPlanComplete(AIBrain ai)
+        {
+            if (cardSpawnDatas.Count > 0)
+            {
+                ai.ShowMessage("💭 We need to spawn some cards!");
+
+                ai.StartRoutine(DropNeededCardsProcedure(ai));
+            }
+            else
+            {
+                MoveCharactersAsNeeded(ai);
+            }
+        }
+
+        IEnumerator DropNeededCardsProcedure(AIBrain ai)
+        {
+            yield return null;
+
+            foreach (var item in cardSpawnDatas)
+            {
+                yield return new WaitForSeconds(Random.Range(randomWaitTimeMin, randomWaitTimeMax));
+                OfflineHexagonManager.instance.SpawnItem(item.card.bottomCard.cardID, item.hexToSpawn);
+
+                ai.ShowMessage("🧙 " + item.card.bottomCard.name + " Card Spawned");
+            }
+
+            MoveCharactersAsNeeded(ai);
+        }
+
+        private void MoveCharactersAsNeeded(AIBrain ai)
+        {
+            ai.UpdateRound();
+            if (movementPlanDatas.Count > 0)
+            {
+                ai.ShowMessage("💭 OK!! Lets move come characters.");
+
+                MoveIfAnyFlagged(ai);
+            }
+            else
+            {
+                AttackEnemy(ai);
+            }
+        }
+
+        IEnumerator MoveProcedure(AIBrain ai)
+        {
+            yield return null;
+            if (moveIndex >= movementPlanDatas.Count)
+            {
+                AttackEnemy(ai);
+            }
+            else
+            {
+                yield return new WaitForSeconds(Random.Range(randomWaitTimeMin, randomWaitTimeMax));
+
+                MovementPlanData item = movementPlanDatas[moveIndex];
+
+                BotGameManager.instance.MoveCurentItem(item.hexagonToMove, OfflineHexagonManager.instance.GetIndex(item.hexagonToMove), item.ally);
+                item.ally.isFlaggedCharacter = false;
+                ai.ShowMessage("🧙 Started Moving " + item.ally.gameObject.name);
+
+                moveIndex++;
+            }
+        }
+
+        private void AttackEnemy(AIBrain ai)
+        {
+            ai.ShowMessage("💭 Oh yaaa...Not Lets Kill some enemy.");
+
+            ai.UpdateRound();
+
+            allyUsedToAttack = new List<OfflinePlacableItem>();
+
+            foreach (var item in attackPlanDatas)
+            {
+                foreach (var ally in item.allyUsed)
+                {
+                    ally.enemyToAttack = item.enemyToAttack;
+                    ally.hexagonToAttack = item.tileToAttack;
+
+                    allyUsedToAttack.Add(ally); 
+                }
+            }
+
+            AttackIfAnyFlagged(ai);
+        }
+
+        IEnumerator AttackProcedure(AIBrain ai)
+        {
+            yield return null;
+            if(attackIndex >= allyUsedToAttack.Count)
+            {
+                ai.UpdateRound();
+            }
+            else
+            {
+                yield return new WaitForSeconds(Random.Range(randomWaitTimeMin, randomWaitTimeMax));
+
+                OfflinePlacableItem item = allyUsedToAttack[attackIndex];
+
+                item.Attack(item.enemyToAttack.tileIndex);
+                ai.ShowMessage("🗡️ Let's attack " + item.enemyToAttack.name);
+
+                attackIndex++;  
+            }
+        }
+
+        IEnumerator AttackNeeededProcedure(AIBrain ai)
+        {
+            yield return null;
+            foreach (var item in attackPlanDatas)
+            {
+                foreach (var item2 in item.allyUsed)
+                {
+                    yield return new WaitForSeconds(Random.Range(randomWaitTimeMin, randomWaitTimeMax));
+
+                    item2.Attack(item.enemyToAttack.tileIndex);
+                    ai.ShowMessage("🗡️ Let's attack " + item.enemyToAttack.name);
+                }
+            }
+
+            ai.UpdateRound();
+        }
+
+        public override void AttackIfAnyFlagged(AIBrain ai)
+        {
+            ai.StartRoutine(AttackProcedure(ai));
+        }
+
+        public override void MoveIfAnyFlagged(AIBrain ai)
+        {
+            ai.StartRoutine(MoveProcedure(ai));
         }
 
         //if we have 3 card then check consition or draw cards as needed. if cant draw more card check this cards in hand
