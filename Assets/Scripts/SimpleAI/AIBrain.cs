@@ -10,6 +10,8 @@ namespace CodingMantisGames.SimpleAI
     public class AIBrain : MonoBehaviour
     {
         #region VARIABLES
+        public OfflineHexagon testPosition;
+        public static AIBrain instance;
         [SerializeField] private ActionPlanData[] actionPlans;
 
         private List<string> messages;
@@ -32,6 +34,10 @@ namespace CodingMantisGames.SimpleAI
         #endregion
 
         #region UNITY FUNCTIONS
+        private void Awake()
+        {
+            instance = this;
+        }
         void Start()
         {
             messages = new List<string>();
@@ -119,6 +125,10 @@ namespace CodingMantisGames.SimpleAI
             {
                 StartCoroutine(SkipTurnProcedure());
             }
+        }
+        public void EndRound()
+        {
+            StartCoroutine(SkipTurnProcedure());
         }
 
         IEnumerator SkipTurnProcedure()

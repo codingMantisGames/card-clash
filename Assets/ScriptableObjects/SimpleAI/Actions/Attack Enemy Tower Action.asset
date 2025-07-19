@@ -12,3 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73e19f15a31ae584681495ef8fc31194, type: 3}
   m_Name: Attack Enemy Tower Action
   m_EditorClassIdentifier: 
+  spawnCount: 1
+  plan: {fileID: 11400000, guid: 7b568044b9bef9745ad3b22c297e2c50, type: 2}
+  minAllyNeeded: 2
+  randomWaitTimeMin: 2
+  randomWaitTimeMax: 3
+  attackPlanDatas: []
+  movementPlanDatas: []

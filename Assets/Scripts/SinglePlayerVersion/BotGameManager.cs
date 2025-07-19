@@ -54,6 +54,7 @@ public class BotGameManager : MonoBehaviour
 
     Button _nextRoundButton;
     Button _endTurnButton;
+    public int index;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -68,6 +69,8 @@ public class BotGameManager : MonoBehaviour
 
         canInteract = true;
         isGameOver = true;
+
+        index = 0;
     }
 
     void Update()
@@ -195,7 +198,12 @@ public class BotGameManager : MonoBehaviour
         OfflineHexagon currentTile = OfflineHexagonManager.instance.GetHexagon(offlinePlacableItem.tileIndex);
 
         List<Vector3> locations = AStarPathFinding.FindPath(currentTile, target);
-        offlinePlacableItem.MoveToPosition(locations.ToArray(), index, isBotsTurn, offlinePlacableItem.tileIndex);
+        if (offlinePlacableItem != null && locations != null)
+            offlinePlacableItem.MoveToPosition(locations.ToArray(), index, isBotsTurn, offlinePlacableItem.tileIndex);
+        else
+        {
+            Debug.LogWarning("Null Reference Issue Here! --> " + offlinePlacableItem.gameObject.name);
+        }
     }
     public void EndTurn()
     {

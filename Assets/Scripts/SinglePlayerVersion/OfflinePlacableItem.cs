@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using CodingMantisGames.SimpleAI;
 
 public class OfflinePlacableItem : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class OfflinePlacableItem : MonoBehaviour
     [SerializeField, Range(1, 3)] private int m_MovementRange = 1;
     public bool isRangeCardUsed;
     public bool isStrikeCardUsed;
+    public bool isPowerboostCardUsed;
     public bool canAttackMore;
     [Range(1, 3)] public int m_AttackRange = 1;
     [SerializeField] private LayerMask hexagonLayer;
@@ -46,7 +48,7 @@ public class OfflinePlacableItem : MonoBehaviour
     Vector3 startPoint;
     [SerializeField, Space(20)] private Collider[] cardColliders;
     [SerializeField] private LayerMask cardLayer;
-    public List<DropableCard> dropableCards;
+    public List<OfflineDropableCards> dropableCards;
     //private ChangeDetector _changeDetector;
     public int totalLife;
     [SerializeField] private int realAttackValue;
@@ -69,8 +71,10 @@ public class OfflinePlacableItem : MonoBehaviour
     public bool isFlaggedCharacter;
     public OfflineHexagon hexagonFlagged;
     public OfflineHexagon hexagonToAttack;
+    public OfflineHexagon hexagonToMove;
     public OfflinePlacableItem enemyToAttack;
     public float treatLevel;
+    public bool planToAtttackTower;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -87,7 +91,7 @@ public class OfflinePlacableItem : MonoBehaviour
         }
         moveCount = 1;
         lines = new List<GameObject>();
-        dropableCards = new List<DropableCard>();
+        dropableCards = new List<OfflineDropableCards>();
 
         BotGameManager.instance.ResetRound += ResetRound;
         BotGameManager.instance.ChangeTurn += ChangeTurn;
@@ -95,6 +99,10 @@ public class OfflinePlacableItem : MonoBehaviour
         runAudio = GetComponent<AudioSource>();
 
         Spawned();
+    }
+    private void Awake()
+    {
+        transform.name = nameOfCharacter + "_" + BotGameManager.instance.index++;
     }
     void Update()
     {
@@ -171,6 +179,10 @@ public class OfflinePlacableItem : MonoBehaviour
 
         return count;
     }
+    public bool AnythingBlocking(Transform enemy)
+    {
+        return !HasLineOfSight(transform.position, enemy);
+    }
     public bool CanAttack(OfflineHexagon offlineHexagon, Transform enemy)
     {
         if (!HasLineOfSight(transform.position, enemy)) return false;
@@ -191,15 +203,21 @@ public class OfflinePlacableItem : MonoBehaviour
 
         return flag;
     }
-    private bool CanAttackFromPoint(OfflineHexagon offlineHexagon, Vector3 pos)
+    private bool CanAttackFromPoint(OfflineHexagon offlineHexagon, Vector3 pos, Transform enemy = null)
     {
+       /* if (!HasLineOfSight(pos, enemy))
+        {
+            Debug.Log("not in line of site!");
+            return false;
+        }*/
+
         int r = 0;
         r = m_AttackRange - 1;
 
         var result = Physics.OverlapSphere(pos, range[r], hexagonLayer);
         foreach (var item in result)
         {
-            if (item.gameObject.TryGetComponent<OfflineHexagon>(out OfflineHexagon tile) && item == offlineHexagon)
+            if (item.gameObject.TryGetComponent<OfflineHexagon>(out OfflineHexagon tile) && tile == offlineHexagon)
                 return true;
         }
 
@@ -208,8 +226,6 @@ public class OfflinePlacableItem : MonoBehaviour
 
     public OfflineHexagon CanMoveAndAttack(OfflineHexagon offlineHexagon, bool useCard = false, Transform enemy = null)
     {
-        if (!HasLineOfSight(transform.position, enemy)) return null;
-
         colliders = new Collider[50];
         int r = 0;
         r = m_MovementRange - 1;
@@ -219,9 +235,9 @@ public class OfflinePlacableItem : MonoBehaviour
         int num = Physics.OverlapSphereNonAlloc(transform.position, range[r], colliders, hexagonLayer);
         for (int i = 0; i < num; i++)
         {
-            if (colliders[i].gameObject.TryGetComponent<OfflineHexagon>(out OfflineHexagon tile))
+            if (colliders[i].gameObject.TryGetComponent<OfflineHexagon>(out OfflineHexagon tile) && !tile.isUsed && !tile.isMarkedByAI)//this is addded to fix bug not locations 
             {
-                if (CanAttackFromPoint(offlineHexagon, tile.buildPoint.position))
+                if (CanAttackFromPoint(offlineHexagon, tile.buildPoint.position, enemy))
                     return tile;
             }
         }
@@ -371,6 +387,13 @@ public class OfflinePlacableItem : MonoBehaviour
         }
 
         OfflineHexagonManager.instance.FreeHexSpace(tileIndex);
+        if (AIBrain.instance.allyCharacters.Contains(this))
+            AIBrain.instance.allyCharacters.Remove(this);
+
+        if (AIBrain.instance.enemyCharacters.Contains(this))
+            AIBrain.instance.enemyCharacters.Remove(this);
+
+        RemoveAllCards();
     }
     public void OnMouseDownFun()
     {
@@ -900,13 +923,18 @@ public class OfflinePlacableItem : MonoBehaviour
     }
     public void CheckForPowerCards()
     {
+        isPowerboostCardUsed = false;
+        isRangeCardUsed = false;
+        isStrikeCardUsed = false;
+        canAttackMore = false;
+
         cardColliders = new Collider[6];
-        dropableCards = new List<DropableCard>();
+        dropableCards = new List<OfflineDropableCards>();
         int num = Physics.OverlapSphereNonAlloc(transform.position, 2f, cardColliders, cardLayer);
         int totalAttackValue = realAttackValue;
         for (int i = 0; i < num; i++)
         {
-            if (cardColliders[i].TryGetComponent<DropableCard>(out DropableCard card) && card.isLeft == isBot)
+            if (cardColliders[i].TryGetComponent<OfflineDropableCards>(out OfflineDropableCards card) && card.isBot == isBot)
             {
                 dropableCards.Add(card);
 
@@ -915,6 +943,7 @@ public class OfflinePlacableItem : MonoBehaviour
                 if (card.dropCardType == DropCardType.POWER_BOOST)
                 {
                     totalAttackValue++;
+                    isPowerboostCardUsed = true;
                 }
                 else if (card.dropCardType == DropCardType.RANGE_SURGE)
                 {
@@ -933,9 +962,14 @@ public class OfflinePlacableItem : MonoBehaviour
     {
         foreach (var item in dropableCards)
         {
-            item.HideItem(transform);
+            try
+            {
+                item.HideItem(transform);
+            }
+            catch { }
             attackValue = realAttackValue;
             isRangeCardUsed = false;
+            isPowerboostCardUsed = false;
             isStrikeCardUsed = false;
             canAttackMore = false;
         }
@@ -1003,11 +1037,20 @@ public class OfflinePlacableItem : MonoBehaviour
                 Gizmos.DrawLine(transform.position, hexagonFlagged.buildPoint.position);
             }
         }
+        if (hexagonToMove)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(transform.position, hexagonToMove.buildPoint.position);
+            Gizmos.DrawSphere(hexagonToMove.buildPoint.position, 0.1f);
+            Gizmos.DrawRay(hexagonToMove.buildPoint.position, Vector3.up * 2);
+        }
 
         if (enemyToAttack)
         {
             Gizmos.color = Color.red;
             Gizmos.DrawLine(transform.position, enemyToAttack.transform.position);
+            Gizmos.DrawSphere(enemyToAttack.transform.position, 0.1f);
+            Gizmos.DrawRay(enemyToAttack.transform.position, Vector3.up * 2);
         }
     }
     #endregion

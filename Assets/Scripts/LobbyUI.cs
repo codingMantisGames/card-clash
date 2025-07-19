@@ -65,7 +65,7 @@ public class LobbyUI : MonoBehaviour
     {
         mainOptionPanel.DOFade(0, uiEaseTime2).SetEase(ease).OnComplete(() =>
         {
-            
+            mainOptionPanel.gameObject.SetActive(false);
         });
     }
     public void PlayerExit()

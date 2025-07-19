@@ -17,6 +17,12 @@ public class OfflineHexagonManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
+        int c = 1;
+        foreach (var hexagonTile in hexagonTiles)
+        {
+            hexagonTile.transform.name += "-->" + c++;
+        }
     }
     void Start()
     {

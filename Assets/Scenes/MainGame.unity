@@ -4610,6 +4610,10 @@ MonoBehaviour:
     _attack: 1
     _defent: 0
     _initialMoves: 0
+  - actionPlan: {fileID: 11400000, guid: 7b568044b9bef9745ad3b22c297e2c50, type: 2}
+    _attack: 1
+    _defent: 1
+    _initialMoves: 1
 --- !u!1001 &129655819
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34247,12 +34251,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca92a4ab8b2bb24db04ea14ce4675b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testPosition: {fileID: 2049788055}
   actionPlans:
   - name: Attack Enemy Action
     planType: {fileID: 11400000, guid: 68b9767a5f78f6c4dbbe91e62c6b2cf5, type: 2}
     scoreCalculator: {fileID: 11400000, guid: 878e33e3972923547a9a74cf090b18b0, type: 2}
     action: {fileID: 11400000, guid: ffe40c4456cf8ab40a54eca9d58bc925, type: 2}
-    chooseThisOne: 1
+    chooseThisOne: 0
   - name: Normal Action
     planType: {fileID: 11400000, guid: e0a6d210d1e5c7542aaa12db8563003b, type: 2}
     scoreCalculator: {fileID: 11400000, guid: 58819d0271406f74f9f6c6ba6fc3aca4, type: 2}
@@ -34272,7 +34277,7 @@ MonoBehaviour:
     planType: {fileID: 11400000, guid: 7b568044b9bef9745ad3b22c297e2c50, type: 2}
     scoreCalculator: {fileID: 11400000, guid: 5998554bc4b576e4088d0e7d8471eb44, type: 2}
     action: {fileID: 11400000, guid: ca869bfd15a647d48a97ab8ebc1c54e3, type: 2}
-    chooseThisOne: 0
+    chooseThisOne: 1
   allyCharacters: []
   enemyCharacters: []
   allyTower: {fileID: 0}
@@ -40461,6 +40466,7 @@ MonoBehaviour:
   canInteract: 0
   characterInfo: {fileID: 1784009109}
   noMovesPending: {fileID: 1300324459}
+  index: 0
 --- !u!1001 &1262867904
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65186,6 +65192,12 @@ MonoBehaviour:
     _life: 0
     _attackRange: 1
     _movementRange: 0
+  - name: Attack Enemy Tower Action
+    actionPlan: {fileID: 11400000, guid: 7b568044b9bef9745ad3b22c297e2c50, type: 2}
+    _attack: 1
+    _life: 0
+    _attackRange: 1
+    _movementRange: 1
   characterRankInfos:
   - name: Mage
     card: {fileID: 11400000, guid: 0c42f7073161fe3458f2236d702de055, type: 2}
@@ -68602,7 +68614,7 @@ PrefabInstance:
       objectReference: {fileID: 1193280015}
     - target: {fileID: 3869173700027451039, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_Name
-      value: HexGround
+      value: HexGround - T1
       objectReference: {fileID: 0}
     - target: {fileID: 4537869576877890597, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: m_LocalPosition.x

@@ -58,11 +58,16 @@ namespace CodingMantisGames.SimpleAI
 
                 int totalWeCanSpawn = ai.cardManager.cardInHand.Count + ai.cardManager.cardCounter;
 
-                //int spawnCount = Random.Range(1, Mathf.Clamp(actualMoreNeeded, 0, totalWeCanSpawn));
+                int spawnCount = Random.Range(1, Mathf.Clamp(actualMoreNeeded, 0, totalWeCanSpawn));
 
                 ai.ShowMessage("💭 Enemy has " + ai.enemyCharacters.Count + ". So we have to spawn atleast " + spawnCount + " charaters!");
 
                 ai.StartRoutine(CardDropProcedure(spawnCount, ai));
+            }
+            else
+            {
+                ai.ShowMessage("💭 We have minimum ally!");
+                HandleOnSpawnComplete(ai);
             }
         }
 
@@ -133,16 +138,17 @@ namespace CodingMantisGames.SimpleAI
                     bool canAttackWithoutMovement = ally.CanAttack(attackPlan.tileToAttack, item.transform);
                     if (!ally.isFlaggedCharacter && canAttackWithoutMovement) //Player can attack using his attack range no movement needed.
                     {
+                        Debug.Log(ally.name + " Can attack without movement");
                         OfflineHexagon hex = OfflineHexagonManager.instance.GetHexagon(ally.tileIndex);
-                        CardSpawnData res = CanUsePowerBoost(hex, ai); //This is because we plan to spawn near ally
+                        CardSpawnData res = CanUsePowerBoost(hex, ai, ally); //This is because we plan to spawn near ally
                         if (res != null)
                         {
                             life -= ally.attackValue + 1;
-
                             CardSpawnData spawnData = new CardSpawnData();
                             spawnData.hexToSpawn = res.hexToSpawn;
                             spawnData.card = res.card;
                             cardSpawnDatas.Add(spawnData);
+                            spawnData.hexToSpawn.isUsed = true;
 
 
                             ai.cardManager.cardInHand.Remove(res.card);
@@ -155,18 +161,25 @@ namespace CodingMantisGames.SimpleAI
                         }
                         else
                         {
-                            CardSpawnData res2 = CanUseStrikeFlow(hex, ai); //This is also we plan to spawn near ally
+                            CardSpawnData res2 = CanUseStrikeFlow(hex, ai, ally); //This is also we plan to spawn near ally
                             if (res2 != null)
                             {
                                 CardSpawnData spawnData = new CardSpawnData();
                                 spawnData.hexToSpawn = res2.hexToSpawn;
                                 spawnData.card = res2.card;
                                 cardSpawnDatas.Add(spawnData);
+                                spawnData.hexToSpawn.isUsed = true;
 
-                                life -= ally.attackValue * 2;
+                                life -= ally.attackValue;
                                 ai.cardManager.cardInHand.Remove(res2.card);
                                 attackPlan.allyUsed.Add(ally);
-                                attackPlan.allyUsed.Add(ally);
+
+                                if (life > 0)
+                                {
+                                    life -= ally.attackValue;
+                                    attackPlan.allyUsed.Add(ally);
+                                }
+
 
                                 ally.isFlaggedCharacter = true;
                                 ally.enemyToAttack = item;
@@ -176,7 +189,7 @@ namespace CodingMantisGames.SimpleAI
                             else
                             {
                                 life -= ally.attackValue;
-                                Debug.Log(ally.transform.name + " attacks (" + ally.attackValue + ") --> " + item.name + " life from " + (life + ally.attackValue) + " to " + life);
+                                //Debug.Log(ally.transform.name + " attacks (" + ally.attackValue + ") --> " + item.name + " life from " + (life + ally.attackValue) + " to " + life);
                                 attackPlan.allyUsed.Add(ally);
 
                                 ally.isFlaggedCharacter = true;
@@ -191,8 +204,8 @@ namespace CodingMantisGames.SimpleAI
                     else if (!ally.isFlaggedCharacter && !canAttackWithoutMovement)
                     {
                         OfflineHexagon tile = OfflineHexagonManager.instance.GetHexagon(ally.tileIndex);
-                        CardSpawnData res = CanUseRangeSurge(tile, ai);
-                        OfflineHexagon hex = ally.CanMoveAndAttack(attackPlan.tileToAttack, res == null ? false : true, item.transform);
+                        CardSpawnData res = CanUseRangeSurge(tile, ai, ally);
+                        OfflineHexagon hex = ally.CanMoveAndAttack(attackPlan.tileToAttack, res == null ? false : true, item.transform);//some issue here
                         if (hex != null)
                         {
                             if (res != null) //that means we can use card
@@ -201,18 +214,24 @@ namespace CodingMantisGames.SimpleAI
                                 spawnData.hexToSpawn = res.hexToSpawn;
                                 spawnData.card = res.card;
                                 cardSpawnDatas.Add(spawnData);
+
+                                spawnData.hexToSpawn.isUsed = true;
                             }
 
                             MovementPlanData data = new MovementPlanData();
                             data.ally = ally;
                             data.hexagonToMove = hex;
+                            ally.hexagonToMove = hex;
+                            //hex.isUsed = true;
+                            hex.isMarkedByAI = true;
                             movementPlanDatas.Add(data);
+                            data.data = ally.name + " moves to " + hex.transform.name;
 
-                            ai.cardManager.cardInHand.Remove(res.card);
+                            if (res != null)
+                                ai.cardManager.cardInHand.Remove(res.card);
 
                             life -= ally.attackValue;
                             attackPlan.allyUsed.Add(ally);
-                            allyCharacters.Remove(ally);
 
                             ally.isFlaggedCharacter = true;
                             ally.enemyToAttack = item;
@@ -227,7 +246,14 @@ namespace CodingMantisGames.SimpleAI
                 }
 
                 if (attackPlan.allyUsed.Count > 0)
+                {
                     attackPlanDatas.Add(attackPlan);
+                    attackPlan.data = attackPlan.enemyToAttack.gameObject.name + " is attacked by ";
+                    foreach (var ally in attackPlan.allyUsed)
+                    {
+                        attackPlan.data += (ally.transform.name + " & ");
+                    }
+                }
 
                 if (allyCharacters.Count == 0)
                     break;
@@ -252,6 +278,7 @@ namespace CodingMantisGames.SimpleAI
             else
             {
                 ai.ShowMessage("💭 Oooh no!. Cant attack now. We have to plan Normal");
+                ai.EndRound();
             }
 
             //make a small movement only if attack is not found
@@ -267,6 +294,11 @@ namespace CodingMantisGames.SimpleAI
             }
             else
             {
+                foreach (var item in ai.allyCharacters)
+                {
+                    item.CheckForCards();
+                }
+
                 MoveCharactersAsNeeded(ai);
             }
         }
@@ -337,7 +369,7 @@ namespace CodingMantisGames.SimpleAI
                     ally.enemyToAttack = item.enemyToAttack;
                     ally.hexagonToAttack = item.tileToAttack;
 
-                    allyUsedToAttack.Add(ally); 
+                    allyUsedToAttack.Add(ally);
                 }
             }
 
@@ -347,7 +379,7 @@ namespace CodingMantisGames.SimpleAI
         IEnumerator AttackProcedure(AIBrain ai)
         {
             yield return null;
-            if(attackIndex >= allyUsedToAttack.Count)
+            if (attackIndex >= allyUsedToAttack.Count)
             {
                 ai.UpdateRound();
             }
@@ -356,11 +388,18 @@ namespace CodingMantisGames.SimpleAI
                 yield return new WaitForSeconds(Random.Range(randomWaitTimeMin, randomWaitTimeMax));
 
                 OfflinePlacableItem item = allyUsedToAttack[attackIndex];
+                if (item.enemyToAttack == null || (item.enemyToAttack != null && item.AnythingBlocking(item.enemyToAttack.transform)))
+                {
+                    AttackIfAnyFlagged(ai);
+                    attackIndex++;
+                }
+                else
+                {
+                    item.Attack(item.enemyToAttack.tileIndex);
+                    ai.ShowMessage("🗡️ Let's attack " + item.enemyToAttack.name);
+                    attackIndex++;
+                }
 
-                item.Attack(item.enemyToAttack.tileIndex);
-                ai.ShowMessage("🗡️ Let's attack " + item.enemyToAttack.name);
-
-                attackIndex++;  
             }
         }
 
@@ -393,18 +432,24 @@ namespace CodingMantisGames.SimpleAI
 
         //if we have 3 card then check consition or draw cards as needed. if cant draw more card check this cards in hand
         //Also check can we spawn this tile near posaition we need 
-        private CardSpawnData CanUsePowerBoost(OfflineHexagon tile, AIBrain ai) //Attack value  +1
+        private CardSpawnData CanUsePowerBoost(OfflineHexagon tile, AIBrain ai, OfflinePlacableItem ally) //Attack value  +1
         {
+            if (ally.isPowerboostCardUsed) return null;
+
+            return CanUseCard(tile, ai, "PC31");
+        }
+
+        private CardSpawnData CanUseRangeSurge(OfflineHexagon tile, AIBrain ai, OfflinePlacableItem ally) //Movement range = 3
+        {
+            if (ally.isRangeCardUsed) return null;
+
             return CanUseCard(tile, ai, "PC32");
         }
 
-        private CardSpawnData CanUseRangeSurge(OfflineHexagon tile, AIBrain ai) //Movement range = 3
+        private CardSpawnData CanUseStrikeFlow(OfflineHexagon tile, AIBrain ai, OfflinePlacableItem ally) //Attck per round = 2. ie damage * 2
         {
-            return CanUseCard(tile, ai, "PC32");
-        }
+            if (ally.isStrikeCardUsed) return null;
 
-        private CardSpawnData CanUseStrikeFlow(OfflineHexagon tile, AIBrain ai) //Attck per round = 2. ie damage * 2
-        {
             return CanUseCard(tile, ai, "PC33");
         }
 
@@ -450,6 +495,7 @@ namespace CodingMantisGames.SimpleAI
 [System.Serializable]
 public class AttackPlanData
 {
+    public string data;
     public OfflinePlacableItem enemyToAttack;
     public OfflineHexagon tileToAttack;
     public List<OfflinePlacableItem> allyUsed;
@@ -458,6 +504,7 @@ public class AttackPlanData
 [System.Serializable]
 public class MovementPlanData
 {
+    public string data;
     public OfflinePlacableItem ally;
     public OfflineHexagon hexagonToMove;
 }
@@ -465,6 +512,7 @@ public class MovementPlanData
 [System.Serializable]
 public class CardSpawnData
 {
+    public string data;
     public CardInfo card;
     public OfflineHexagon hexToSpawn;
 }

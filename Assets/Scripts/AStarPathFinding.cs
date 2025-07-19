@@ -152,6 +152,7 @@ public class AStarPathFinding : MonoBehaviour
         }
 
         // No path found
+        Debug.LogWarning("No path Found!!!!");
         return null;
     }
 

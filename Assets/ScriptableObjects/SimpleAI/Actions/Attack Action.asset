@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c482cf797ad2f940998a2c39e7807a9, type: 3}
   m_Name: Attack Action
   m_EditorClassIdentifier: 
-  spawnCount: 4
+  spawnCount: 2
   plan: {fileID: 11400000, guid: 68b9767a5f78f6c4dbbe91e62c6b2cf5, type: 2}
   minAllyNeeded: 2
   randomWaitTimeMin: 2
@@ -21,3 +21,28 @@ MonoBehaviour:
   nearEnemyScore: 0.15
   moreAttackScore: 0.1
   moreLifeScore: 0.1
+  attackPlanDatas:
+  - data: 'Barbarian_6 is attacked by Knight_3 & '
+    enemyToAttack: {fileID: 0}
+    tileToAttack: {fileID: 0}
+    allyUsed:
+    - {fileID: 0}
+  - data: 'Shade_8 is attacked by Rogue_5 & '
+    enemyToAttack: {fileID: 0}
+    tileToAttack: {fileID: 0}
+    allyUsed:
+    - {fileID: 0}
+  movementPlanDatas:
+  - data: Knight_3 moves to HexGround-->78
+    ally: {fileID: 0}
+    hexagonToMove: {fileID: 0}
+  cardSpawnDatas:
+  - data: 
+    card:
+      name: Barbarian X Power Boost
+      topCard: {fileID: 11400000, guid: 939b65f805a82c34f801a146ecbf3c0f, type: 2}
+      bottomCard: {fileID: 11400000, guid: a964ec952802ebc49b3559e3be9de248, type: 2}
+    hexToSpawn: {fileID: 0}
+  allyUsedToAttack:
+  - {fileID: 0}
+  - {fileID: 0}

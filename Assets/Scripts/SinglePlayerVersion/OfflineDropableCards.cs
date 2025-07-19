@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using CodingMantisGames.SimpleAI;
 
 public class OfflineDropableCards : MonoBehaviour
 {
