@@ -23,6 +23,13 @@ public class OfflineHexagonManager : MonoBehaviour
         {
             hexagonTile.transform.name += "-->" + c++;
         }
+
+      /*  foreach (var hexagonTile in hexagonTiles)
+        {
+           if(hexagonTile.isCardNeutral && !hexagonTile.isBot) hexagonTile.gameObject.SetActive(false);
+
+           if(hexagonTile.isBot && !hexagonTile.isNoBuildZone) hexagonTile.gameObject.SetActive(false);
+        }*/
     }
     void Start()
     {

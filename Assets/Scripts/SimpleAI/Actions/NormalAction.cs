@@ -61,8 +61,99 @@ namespace CodingMantisGames.SimpleAI
                 ai.ShowMessage("🧙 " + selectedCard.topCard.name + " Character Spawned");
             }
 
+            int r = Random.Range(1, 100);
+            bool isHealed = false;
+            if (r >= 50)
+            {
+                Debug.LogWarning("Extra Power Card");
+                ai.ShowMessage("💭 I think we can spawn a power card");
+                if (ai.cardManager.cardInHand.Count == 0 && ai.cardManager.CanDrawMoreCards)
+                {
+                    ai.cardManager.GetNewCard();
+                }
+                else
+                {
+                    Debug.LogWarning("Cant draw card");
+                }
+                if (ai.cardManager.cardInHand.Count > 0)
+                {
+                    foreach (var item in ai.cardManager.cardInHand)
+                    {
+                        if (item.bottomCard.cardID == "PC31" || item.bottomCard.cardID == "PC32" || item.bottomCard.cardID == "PC33")
+                        {
+                            ai.cardManager.cardInHand.Remove(item);
+
+                            OfflineHexagon spawnLocation = ai.spawnLocationChooser.GetACardSpawnLocationRandom();
+                            OfflineHexagonManager.instance.SpawnItem(item.bottomCard.cardID, spawnLocation);
+
+                            foreach (var ally in ai.allyCharacters)
+                            {
+                                ally.CheckForCards();
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Debug.LogWarning("Heal");
+                isHealed = true;
+
+                Heal(ai);
+            }
+
+            
+            if(!isHealed)
+            {
+                bool isAllyFound = false;
+                foreach (var item in ai.allyCharacters)
+                {
+                    if(item.life < item.totalLife)
+                    {
+                        isAllyFound = true;
+                        break;
+                    }
+                }
+
+                if(isAllyFound)
+                {
+                    Debug.LogWarning("Heal");
+                    Heal(ai);
+                }
+            }
+
             ai.ShowMessage("✅ Successfully Dropped Cards as needed!");
             HandleOnSpawnComplete(ai);
+        }
+
+        private void Heal(AIBrain ai)
+        {
+            ai.ShowMessage("💭 I think we can heal someone");
+            if (ai.cardManager.cardInHand.Count == 0 && ai.cardManager.CanDrawMoreCards)
+            {
+                ai.cardManager.GetNewCard();
+            }
+            else
+            {
+                Debug.LogWarning("Cant draw card");
+            }
+
+            if (ai.cardManager.cardCounter != 0)
+            {
+                foreach (var item in ai.cardManager.cardInHand)
+                {
+                    if (item.bottomCard.cardID == "HHHH")
+                    {
+                        var res = ai.allyCharacters.OrderBy(c => c.life).FirstOrDefault();
+
+                        OfflineHexagon spawnLocation = OfflineHexagonManager.instance.GetHexagon(res.tileIndex);
+                        OfflineHexagonManager.instance.SpawnItem(item.bottomCard.cardID, spawnLocation);
+
+                        break;
+                    }
+                }
+            }
         }
 
         private void HandleOnSpawnComplete(AIBrain ai)
@@ -135,12 +226,39 @@ namespace CodingMantisGames.SimpleAI
                 {
                     if (tile.isUsed && tile.isUsedByEnemy)
                     {
-                        OfflinePlacableItem enemy = tile.GetPlayer();
-                        enemy.isFlaggedCharacter = true;
-                        item.enemyToAttack = enemy;
-                        item.isFlaggedCharacter = true;
+                        OfflinePlayerTower offlinePlayerTower = tile.GetTower();
+                        if (offlinePlayerTower != null)
+                        {
+                            item.planToAtttackTower = true;
+                            item.isFlaggedCharacter = true;
 
-                        flag = true;
+                            flag = true;
+                        }
+                        else
+                        {
+                            OfflinePlacableItem enemy = tile.GetPlayer();
+
+                            if (enemy)
+                            {
+                                enemy.isFlaggedCharacter = true;
+                                item.enemyToAttack = enemy;
+                                item.isFlaggedCharacter = true;
+
+                                flag = true;
+                            }
+                            else
+                            {
+                                OfflineDropableCards card = tile.GetCard();
+
+                                if (card)
+                                {
+                                    item.cardToAttack = card;
+                                    item.isFlaggedCharacter = true;
+
+                                    flag = true;
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -164,12 +282,28 @@ namespace CodingMantisGames.SimpleAI
         {
             OfflinePlacableItem item = ai.allyCharacters.FirstOrDefault(info => info.isFlaggedCharacter);
 
-            if (item != null && item.isFlaggedCharacter && item.enemyToAttack != null)
+            if (item != null && item.planToAtttackTower)
+            {
+                yield return new WaitForSeconds(Random.Range(randomWaitTimeMin, randomWaitTimeMax));
+                ai.ShowMessage("🗡️ Let's attack Tower!");
+                item.Attack(OfflineHexagonManager.instance.GetHexagon(52));
+                item.planToAtttackTower = false;
+                item.isFlaggedCharacter = false;
+            }
+            else if (item != null && item.isFlaggedCharacter && item.enemyToAttack != null)
             {
                 yield return new WaitForSeconds(Random.Range(randomWaitTimeMin, randomWaitTimeMax));
                 ai.ShowMessage("🗡️ Let's attack " + item.enemyToAttack.name);
                 item.Attack(item.enemyToAttack.tileIndex);
                 item.enemyToAttack = null;
+                item.isFlaggedCharacter = false;
+            }
+            else if (item != null && item.isFlaggedCharacter && item.cardToAttack != null)//we plan to attack cards
+            {
+                yield return new WaitForSeconds(Random.Range(randomWaitTimeMin, randomWaitTimeMax));
+                ai.ShowMessage("🗡️ Let's attack " + item.cardToAttack.name);
+                item.Attack(item.cardToAttack.tileIndex);
+                item.cardToAttack = null;
                 item.isFlaggedCharacter = false;
             }
             else if (item != null && item.isFlaggedCharacter && item.enemyToAttack == null) //This is means enemy died by ally
@@ -189,6 +323,8 @@ namespace CodingMantisGames.SimpleAI
         {
             ai.UpdateRound();
         }
+
+
         #endregion
     }
 }

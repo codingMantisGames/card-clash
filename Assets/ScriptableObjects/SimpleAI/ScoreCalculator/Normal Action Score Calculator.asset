@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04a1b9afa41cce4288f549f2075919f, type: 3}
   m_Name: Normal Action Score Calculator
   m_EditorClassIdentifier: 
+  score: 0
+  noAllyCharatersScore: 0.25
+  noEnemyNearScore: 0.25
+  towerHealthScore: 0.25

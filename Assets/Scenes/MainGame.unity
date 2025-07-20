@@ -4601,6 +4601,67 @@ MonoBehaviour:
   - {fileID: 1996666698}
   - {fileID: 1011550937}
   - {fileID: 1140735955}
+  cardSpawnLocations:
+  - {fileID: 749569286}
+  - {fileID: 2025573863}
+  - {fileID: 1097263047}
+  - {fileID: 2016451163}
+  - {fileID: 1907724757}
+  - {fileID: 1941016693}
+  - {fileID: 1548178234}
+  - {fileID: 1734107099}
+  - {fileID: 579493876}
+  - {fileID: 1118094457}
+  - {fileID: 2131283674}
+  - {fileID: 1279654517}
+  - {fileID: 1889361157}
+  - {fileID: 1394305486}
+  - {fileID: 1930645017}
+  - {fileID: 2108942693}
+  - {fileID: 1406201390}
+  - {fileID: 1814315720}
+  - {fileID: 2082012993}
+  - {fileID: 2064319584}
+  - {fileID: 1323239298}
+  - {fileID: 1799439280}
+  - {fileID: 1411230078}
+  - {fileID: 1396124145}
+  - {fileID: 1502081423}
+  - {fileID: 815709350}
+  - {fileID: 1105497841}
+  - {fileID: 1056608175}
+  - {fileID: 983516824}
+  - {fileID: 1625898266}
+  - {fileID: 1056493340}
+  - {fileID: 1809299197}
+  - {fileID: 2065393643}
+  - {fileID: 2142712008}
+  - {fileID: 2006043759}
+  - {fileID: 1825239351}
+  - {fileID: 1901274701}
+  - {fileID: 723385677}
+  - {fileID: 1399334924}
+  - {fileID: 2050215468}
+  - {fileID: 2010867237}
+  - {fileID: 1805573118}
+  - {fileID: 2003249746}
+  - {fileID: 1391807543}
+  - {fileID: 1775646692}
+  - {fileID: 2106745074}
+  - {fileID: 633072577}
+  - {fileID: 1686280388}
+  - {fileID: 2043026315}
+  - {fileID: 2093163517}
+  - {fileID: 1518174623}
+  - {fileID: 1568722128}
+  - {fileID: 1201736610}
+  - {fileID: 1694653828}
+  - {fileID: 1615542810}
+  - {fileID: 2139374846}
+  - {fileID: 1907248270}
+  - {fileID: 2117557892}
+  - {fileID: 1681586236}
+  - {fileID: 2078123364}
   locationChooserData:
   - actionPlan: {fileID: 11400000, guid: e0a6d210d1e5c7542aaa12db8563003b, type: 2}
     _attack: 0
@@ -8841,6 +8902,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
       propertyPath: isNoBuildZone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
+      propertyPath: isUsedByEnemy
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339525982863417223, guid: c985555d12a22014980a24542c62ddb5, type: 3}
@@ -34263,21 +34328,11 @@ MonoBehaviour:
     scoreCalculator: {fileID: 11400000, guid: 58819d0271406f74f9f6c6ba6fc3aca4, type: 2}
     action: {fileID: 11400000, guid: d56d869fad01bfb4b823bcadd1b63e9a, type: 2}
     chooseThisOne: 0
-  - name: Protect Ally Action
-    planType: {fileID: 11400000, guid: fb9c28c89bb05fd458e2e5262647d4f9, type: 2}
-    scoreCalculator: {fileID: 11400000, guid: 6356a6050b8df0b4fbf153658a90115d, type: 2}
-    action: {fileID: 11400000, guid: 285dd7b7499a6384781f0e116f5d6d37, type: 2}
-    chooseThisOne: 0
-  - name: Protect Ally TOwer Action
-    planType: {fileID: 11400000, guid: bbb179bf5f1299148addfa87a7f16c4f, type: 2}
-    scoreCalculator: {fileID: 11400000, guid: bcb68dde21ecbea48a762d1b1ef81478, type: 2}
-    action: {fileID: 11400000, guid: 8ba2bfca06b78fa469dc93939f7d7c35, type: 2}
-    chooseThisOne: 0
   - name: Attack Enemy Tower Action
     planType: {fileID: 11400000, guid: 7b568044b9bef9745ad3b22c297e2c50, type: 2}
     scoreCalculator: {fileID: 11400000, guid: 5998554bc4b576e4088d0e7d8471eb44, type: 2}
     action: {fileID: 11400000, guid: ca869bfd15a647d48a97ab8ebc1c54e3, type: 2}
-    chooseThisOne: 1
+    chooseThisOne: 0
   allyCharacters: []
   enemyCharacters: []
   allyTower: {fileID: 0}
@@ -41843,6 +41898,11 @@ MonoBehaviour:
   - actionPlan: {fileID: 11400000, guid: 68b9767a5f78f6c4dbbe91e62c6b2cf5, type: 2}
     safeSpot: 0
     attackSpot: 1
+    towerAttackSpot: 1
+    protectTowerSpot: 0
+  - actionPlan: {fileID: 11400000, guid: 7b568044b9bef9745ad3b22c297e2c50, type: 2}
+    safeSpot: 0
+    attackSpot: 0
     towerAttackSpot: 1
     protectTowerSpot: 0
   hasEnemyAdjacent: -0.25

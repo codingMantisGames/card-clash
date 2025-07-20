@@ -8,7 +8,6 @@ namespace CodingMantisGames.SimpleAI
     public class AttackEnemyTowerAction : Action
     {
         #region VARIABLES
-        public int spawnCount;
         [SerializeField] private ActionPlanTypes plan;
         [SerializeField] private int minAllyNeeded = 2;
 
@@ -47,7 +46,7 @@ namespace CodingMantisGames.SimpleAI
 
                 int totalWeCanSpawn = ai.cardManager.cardInHand.Count + ai.cardManager.cardCounter;
 
-                //int spawnCount = Random.Range(1, Mathf.Clamp(actualMoreNeeded, 0, totalWeCanSpawn));
+                int spawnCount = Random.Range(1, Mathf.Clamp(actualMoreNeeded, 0, totalWeCanSpawn));
 
                 ai.ShowMessage("💭 Enemy has " + ai.enemyCharacters.Count + ". So we have to spawn atleast " + spawnCount + " charaters!");
 
@@ -97,6 +96,7 @@ namespace CodingMantisGames.SimpleAI
                 bool canAttackWithoutMovement = ally.CanAttack(tileToAttack, ai.enemyTower.transform);
                 if (!ally.planToAtttackTower && canAttackWithoutMovement)
                 {
+                    Debug.Log(ally.gameObject.name + " can attack without movement!");
                     ally.planToAtttackTower = true;
                     life -= ally.attackValue + (ally.isPowerboostCardUsed ? 1 : 0);
                     flag = true;
@@ -107,6 +107,7 @@ namespace CodingMantisGames.SimpleAI
                     OfflineHexagon hex = ally.CanMoveAndAttack(tileToAttack, ally.isRangeCardUsed, ai.enemyTower.transform);
                     if (hex != null)
                     {
+                        Debug.Log(ally.gameObject.name + " have to move");
                         MovementPlanData data = new MovementPlanData();
                         data.ally = ally;
                         data.hexagonToMove = hex;
@@ -122,6 +123,23 @@ namespace CodingMantisGames.SimpleAI
                         flag = true;
                         if (life <= 0) break;
                     }
+                }
+                else
+                {
+                    OfflineHexagon[] result = ally.GetAllTilesInRange(RoundStage.MOVE_ITEM);
+                    OfflineHexagon hexgonToMove = ai.tileEvaluator.ChooseBestTileToMove(plan, result, ally.transform);
+
+                    ally.hexagonFlagged = hexgonToMove;
+
+                    MovementPlanData data = new MovementPlanData();
+                    data.ally = ally;
+                    data.hexagonToMove = hexgonToMove;
+                    ally.hexagonToMove = hexgonToMove;
+                    hexgonToMove.isMarkedByAI = true;
+                    movementPlanDatas.Add(data);
+                    data.data = ally.name + " moves to " + hexgonToMove.transform.name;
+
+                    flag = true;
                 }
             }
 
@@ -162,14 +180,16 @@ namespace CodingMantisGames.SimpleAI
         {
             yield return new WaitForSeconds(Random.Range(randomWaitTimeMin, randomWaitTimeMax));
 
-            if (item.enemyToAttack == null || (item.enemyToAttack != null && item.AnythingBlocking(ai.enemyTower.transform)))
+            if (item.AnythingBlocking(ai.enemyTower.transform))
             {
+                Debug.Log("block!");
+                item.planToAtttackTower = false;
                 AttackIfAnyFlagged(ai);
             }
             else
             {
-                item.Attack(item.enemyToAttack.tileIndex);
-                ai.ShowMessage("🗡️ Let's attack " + item.enemyToAttack.name);
+                item.Attack(OfflineHexagonManager.instance.GetHexagon(52));
+                ai.ShowMessage("🗡️ Let's attack the Tower!");
             }
         }
 

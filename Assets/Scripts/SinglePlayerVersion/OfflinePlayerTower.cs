@@ -19,7 +19,7 @@ public class OfflinePlayerTower : MonoBehaviour
     #region UNITY FUNCTIONS
     void Start()
     {
-
+        lifeLabel.gameObject.SetActive(true);
     }
 
     void Update()
@@ -59,6 +59,8 @@ public class OfflinePlayerTower : MonoBehaviour
         if (life <= 0)
         {
             RPC_ShowBrokenBuilding();
+
+            lifeLabel.text = life.ToString();
 
             BotGameManager.instance.GameWin(!isBot);
         }

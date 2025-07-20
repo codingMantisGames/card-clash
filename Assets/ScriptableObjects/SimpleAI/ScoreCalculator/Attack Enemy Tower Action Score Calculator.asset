@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: Attack Enemy Tower Action Score Calculator
   m_EditorClassIdentifier: 
   score: 0
+  distanceFromTower: 3.7
+  minCount: 3
+  scoreMul: 0.1

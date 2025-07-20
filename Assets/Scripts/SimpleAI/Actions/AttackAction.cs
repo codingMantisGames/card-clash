@@ -480,7 +480,11 @@ namespace CodingMantisGames.SimpleAI
             if (result != null)
             {
                 OfflineHexagon[] hexs = tile.GetAllAdjacnetTile();
-                result.hexToSpawn = hexs.FirstOrDefault(info => !info.isUsed);
+                var res = hexs.FirstOrDefault(info => !info.isUsed && !info.isNoBuildZone && info.isBot);
+                if (res == null)
+                    res = hexs.FirstOrDefault(info => !info.isUsed && !info.isNoBuildZone && !info.isBot && info.isCardNeutral);
+
+                result.hexToSpawn = res;
 
                 if (result.hexToSpawn == null)
                     return null;

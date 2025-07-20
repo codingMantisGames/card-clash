@@ -73,6 +73,7 @@ public class OfflinePlacableItem : MonoBehaviour
     public OfflineHexagon hexagonToAttack;
     public OfflineHexagon hexagonToMove;
     public OfflinePlacableItem enemyToAttack;
+    public OfflineDropableCards cardToAttack;
     public float treatLevel;
     public bool planToAtttackTower;
     #endregion
@@ -349,6 +350,7 @@ public class OfflinePlacableItem : MonoBehaviour
     //[Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void RPC_ChangeLife(int val)
     {
+        Debug.Log("Healed ---> " + transform.name);
         life = val;
     }
     public void Spawned()

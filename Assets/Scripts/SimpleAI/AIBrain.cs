@@ -10,6 +10,7 @@ namespace CodingMantisGames.SimpleAI
     public class AIBrain : MonoBehaviour
     {
         #region VARIABLES
+        string m_name;
         public OfflineHexagon testPosition;
         public static AIBrain instance;
         [SerializeField] private ActionPlanData[] actionPlans;
@@ -37,6 +38,8 @@ namespace CodingMantisGames.SimpleAI
         private void Awake()
         {
             instance = this;
+
+            m_name = gameObject.name;
         }
         void Start()
         {
@@ -112,6 +115,8 @@ namespace CodingMantisGames.SimpleAI
                     choosedActionPlan = plan;
                 }
             }
+
+            gameObject.name = m_name + " ---> " + choosedActionPlan.name;
 
             //Perform choosed Action
             ShowMessage("🎯 Lets choose " + choosedActionPlan.name + " this turn!");
