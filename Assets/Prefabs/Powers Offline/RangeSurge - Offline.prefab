@@ -5007,7 +5007,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a36a6de84d4754e419a17b40d982d523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderers: []
+  meshRenderers:
+  - {fileID: 8891806034332849816}
+  - {fileID: 7590616660481864617}
+  - {fileID: 4578609822311616976}
+  - {fileID: 4593797983577697397}
+  - {fileID: 6843488304840385877}
+  - {fileID: 7366340165599018603}
+  - {fileID: 7616096343045968345}
   red: {fileID: 2100000, guid: 9228412b911d25a41af45370c68246da, type: 2}
   blue: {fileID: 2100000, guid: c99963794ad22d24b813c19ddd7a5011, type: 2}
   adjacentHexagons:

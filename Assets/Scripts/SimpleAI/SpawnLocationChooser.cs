@@ -9,7 +9,7 @@ namespace CodingMantisGames.SimpleAI
     {
         #region VARIABLES
         [SerializeField] private OfflineHexagon[] characterSpawnLocations;
-        [SerializeField] private OfflineHexagon[] cardSpawnLocations;
+        public OfflineHexagon[] cardSpawnLocations;
         [SerializeField] private LocationChooserData[] locationChooserData;
         #endregion
 
@@ -52,7 +52,13 @@ namespace CodingMantisGames.SimpleAI
 
         public OfflineHexagon GetACardSpawnLocationRandom()
         {
-            return cardSpawnLocations[Random.Range(0, cardSpawnLocations.Length)];
+            OfflineHexagon hex = cardSpawnLocations[Random.Range(0, cardSpawnLocations.Length)];
+            while(hex.isUsed)
+            {
+                hex = cardSpawnLocations[Random.Range(0, cardSpawnLocations.Length)];
+            }
+
+            return hex;
         }
         #endregion
     }

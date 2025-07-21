@@ -392,6 +392,7 @@ MonoBehaviour:
   m_MovementRange: 2
   isRangeCardUsed: 0
   isStrikeCardUsed: 0
+  isPowerboostCardUsed: 0
   canAttackMore: 0
   m_AttackRange: 1
   hexagonLayer:
@@ -412,7 +413,7 @@ MonoBehaviour:
   isNearByAttack: 1
   attackStoppingDistance: 0.8
   goBackDelay: 1
-  timeBtwTiletoTileMovement: 1
+  timeBtwTiletoTileMovement: 0.5
   currentAttackIndex: 0
   cardColliders: []
   cardLayer:
@@ -435,6 +436,14 @@ MonoBehaviour:
   ghost_red: {fileID: 100004, guid: aa2bdca99bc601340a216282d774a978, type: 3}
   ghost_blue: {fileID: 100004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
   projectileHitAudio: {fileID: 0}
+  isFlaggedCharacter: 0
+  hexagonFlagged: {fileID: 0}
+  hexagonToAttack: {fileID: 0}
+  hexagonToMove: {fileID: 0}
+  enemyToAttack: {fileID: 0}
+  cardToAttack: {fileID: 0}
+  treatLevel: 0
+  planToAtttackTower: 0
 --- !u!1 &5783947870204285385
 GameObject:
   m_ObjectHideFlags: 0

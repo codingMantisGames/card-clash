@@ -7,6 +7,8 @@ namespace CodingMantisGames.SimpleAI
     {
         #region VARIABLES
         [SerializeField] private int minAllyNeeded = 4;
+        [SerializeField]
+        int c;
         [SerializeField] private int minEnemyNeeded = 4;
         [SerializeField] private float scorePerExtraAlly = 0.2f;
         [SerializeField] private float scorePerEnemy = 0.2f;
@@ -27,13 +29,16 @@ namespace CodingMantisGames.SimpleAI
         #region FUNCTIONS
         public override void CalculateScore(AIBrain ai)
         {
+            score = 0;
             score += scorePerEnemy * ai.enemyCharacters.Count;
 
 
             if (ai.allyCharacters.Count == 0)
             {
-                int c = ai.allyCharacters.Count;
-                c -= minAllyNeeded;
+                c = ai.allyCharacters.Count;
+
+                if (c > minAllyNeeded)
+                    c -= minAllyNeeded;
 
                 score += scorePerExtraAlly * c;
             }

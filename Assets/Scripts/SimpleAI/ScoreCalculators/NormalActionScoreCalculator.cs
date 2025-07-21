@@ -14,6 +14,8 @@ namespace CodingMantisGames.SimpleAI
         #region FUNCTIONS
         public override void CalculateScore(AIBrain ai)
         {
+            score = 0;
+
             if (ai.allyCharacters.Count == 0) score += noAllyCharatersScore;
 
             //check any enemy near any ally if no add score

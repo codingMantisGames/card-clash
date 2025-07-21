@@ -63,9 +63,8 @@ namespace CodingMantisGames.SimpleAI
 
             int r = Random.Range(1, 100);
             bool isHealed = false;
-            if (r >= 50)
+            if (r >= 70)
             {
-                Debug.LogWarning("Extra Power Card");
                 ai.ShowMessage("💭 I think we can spawn a power card");
                 if (ai.cardManager.cardInHand.Count == 0 && ai.cardManager.CanDrawMoreCards)
                 {
@@ -73,7 +72,6 @@ namespace CodingMantisGames.SimpleAI
                 }
                 else
                 {
-                    Debug.LogWarning("Cant draw card");
                 }
                 if (ai.cardManager.cardInHand.Count > 0)
                 {
@@ -82,8 +80,9 @@ namespace CodingMantisGames.SimpleAI
                         if (item.bottomCard.cardID == "PC31" || item.bottomCard.cardID == "PC32" || item.bottomCard.cardID == "PC33")
                         {
                             ai.cardManager.cardInHand.Remove(item);
+                            OfflinePlacableItem all = ai.allyCharacters.OrderBy(c => c.life).FirstOrDefault();
 
-                            OfflineHexagon spawnLocation = ai.spawnLocationChooser.GetACardSpawnLocationRandom();
+                            OfflineHexagon spawnLocation = GetSpawnLocation(all, ai);
                             OfflineHexagonManager.instance.SpawnItem(item.bottomCard.cardID, spawnLocation);
 
                             foreach (var ally in ai.allyCharacters)
@@ -97,29 +96,27 @@ namespace CodingMantisGames.SimpleAI
             }
             else
             {
-                Debug.LogWarning("Heal");
                 isHealed = true;
 
-                Heal(ai);
+                ai.StartRoutine(Heal(ai));
             }
 
-            
-            if(!isHealed)
+
+            if (!isHealed)
             {
                 bool isAllyFound = false;
                 foreach (var item in ai.allyCharacters)
                 {
-                    if(item.life < item.totalLife)
+                    if (item.life < item.totalLife)
                     {
                         isAllyFound = true;
                         break;
                     }
                 }
 
-                if(isAllyFound)
+                if (isAllyFound)
                 {
-                    Debug.LogWarning("Heal");
-                    Heal(ai);
+                    ai.StartRoutine(Heal(ai));
                 }
             }
 
@@ -127,7 +124,18 @@ namespace CodingMantisGames.SimpleAI
             HandleOnSpawnComplete(ai);
         }
 
-        private void Heal(AIBrain ai)
+        public OfflineHexagon GetSpawnLocation(OfflinePlacableItem item, AIBrain ai)
+        {
+            foreach (var h in item.GetAllTilesInRange(RoundStage.MOVE_ITEM))
+            {
+                if (!h.isUsed && ai.spawnLocationChooser.cardSpawnLocations.Contains(h))
+                    return h;
+            }
+
+            return null;
+        }
+
+        private IEnumerator Heal(AIBrain ai)
         {
             ai.ShowMessage("💭 I think we can heal someone");
             if (ai.cardManager.cardInHand.Count == 0 && ai.cardManager.CanDrawMoreCards)
@@ -136,7 +144,6 @@ namespace CodingMantisGames.SimpleAI
             }
             else
             {
-                Debug.LogWarning("Cant draw card");
             }
 
             if (ai.cardManager.cardCounter != 0)
@@ -145,11 +152,12 @@ namespace CodingMantisGames.SimpleAI
                 {
                     if (item.bottomCard.cardID == "HHHH")
                     {
+                        Debug.Log("Heal!");
                         var res = ai.allyCharacters.OrderBy(c => c.life).FirstOrDefault();
 
                         OfflineHexagon spawnLocation = OfflineHexagonManager.instance.GetHexagon(res.tileIndex);
                         OfflineHexagonManager.instance.SpawnItem(item.bottomCard.cardID, spawnLocation);
-
+                        yield return new WaitForSeconds(3.2f);
                         break;
                     }
                 }
@@ -293,18 +301,36 @@ namespace CodingMantisGames.SimpleAI
             else if (item != null && item.isFlaggedCharacter && item.enemyToAttack != null)
             {
                 yield return new WaitForSeconds(Random.Range(randomWaitTimeMin, randomWaitTimeMax));
-                ai.ShowMessage("🗡️ Let's attack " + item.enemyToAttack.name);
-                item.Attack(item.enemyToAttack.tileIndex);
-                item.enemyToAttack = null;
-                item.isFlaggedCharacter = false;
+                try
+                {
+                    ai.ShowMessage("🗡️ Let's attack " + item.enemyToAttack.name);
+                    item.Attack(item.enemyToAttack.tileIndex);
+                    item.enemyToAttack = null;
+                    item.isFlaggedCharacter = false;
+                }
+                catch
+                {
+                    ai.ShowMessage("⚠️ I think enemy is already dead! Sad..!");
+                    item.isFlaggedCharacter = false;
+                    AttackIfAnyFlagged(ai);
+                }
             }
             else if (item != null && item.isFlaggedCharacter && item.cardToAttack != null)//we plan to attack cards
             {
                 yield return new WaitForSeconds(Random.Range(randomWaitTimeMin, randomWaitTimeMax));
-                ai.ShowMessage("🗡️ Let's attack " + item.cardToAttack.name);
-                item.Attack(item.cardToAttack.tileIndex);
-                item.cardToAttack = null;
-                item.isFlaggedCharacter = false;
+                try
+                {
+                    ai.ShowMessage("🗡️ Let's attack " + item.cardToAttack.name);
+                    item.Attack(item.cardToAttack.tileIndex);
+                    item.cardToAttack = null;
+                    item.isFlaggedCharacter = false;
+                }
+                catch
+                {
+                    ai.ShowMessage("⚠️ I think enemy is already dead! Sad..!");
+                    item.isFlaggedCharacter = false;
+                    AttackIfAnyFlagged(ai);
+                }
             }
             else if (item != null && item.isFlaggedCharacter && item.enemyToAttack == null) //This is means enemy died by ally
             {

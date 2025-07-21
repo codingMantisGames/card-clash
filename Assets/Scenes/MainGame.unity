@@ -10997,7 +10997,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 318996184}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -11053,7 +11053,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 318996184}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -28990,7 +28990,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -40, y: 29.599976}
+  m_AnchoredPosition: {x: -40, y: 29.600098}
   m_SizeDelta: {x: 350.3286, y: 115.0282}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &896706527
@@ -34316,7 +34316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca92a4ab8b2bb24db04ea14ce4675b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testPosition: {fileID: 2049788055}
   actionPlans:
   - name: Attack Enemy Action
     planType: {fileID: 11400000, guid: 68b9767a5f78f6c4dbbe91e62c6b2cf5, type: 2}
@@ -37171,7 +37170,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -40, y: 29.599976}
+  m_AnchoredPosition: {x: -40, y: 29.600098}
   m_SizeDelta: {x: 350.3286, y: 115.0282}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1163347013
@@ -40514,7 +40513,7 @@ MonoBehaviour:
   botTowerSpawnPosition: {fileID: 895708092}
   isBotGamePlay: 0
   currentItemToMove: {fileID: 0}
-  gameWinPanel: {fileID: 777602253}
+  gameWinPanel: {fileID: 2020504792}
   gameLosePanel: {fileID: 777602253}
   connectionIssuePanel: {fileID: 2057928073}
   inGamePanel: {fileID: 771227003}
@@ -40522,6 +40521,7 @@ MonoBehaviour:
   characterInfo: {fileID: 1784009109}
   noMovesPending: {fileID: 1300324459}
   index: 0
+  canCanvas: {fileID: 541395763}
 --- !u!1001 &1262867904
 PrefabInstance:
   m_ObjectHideFlags: 0

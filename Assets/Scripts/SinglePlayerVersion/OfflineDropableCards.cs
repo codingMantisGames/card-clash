@@ -48,7 +48,9 @@ public class OfflineDropableCards : MonoBehaviour
             if (isBot)
                 item.material = blue;
             else
+            {
                 item.material = red;
+            }
         }
     }
 

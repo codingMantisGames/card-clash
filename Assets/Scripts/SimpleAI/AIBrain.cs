@@ -11,14 +11,13 @@ namespace CodingMantisGames.SimpleAI
     {
         #region VARIABLES
         string m_name;
-        public OfflineHexagon testPosition;
         public static AIBrain instance;
         [SerializeField] private ActionPlanData[] actionPlans;
 
         private List<string> messages;
 
-        [HideInInspector] public List<OfflinePlacableItem> allyCharacters;
-        [HideInInspector] public List<OfflinePlacableItem> enemyCharacters;
+        public List<OfflinePlacableItem> allyCharacters;
+        public List<OfflinePlacableItem> enemyCharacters;
         [HideInInspector] public OfflinePlayerTower allyTower;
         [HideInInspector] public OfflinePlayerTower enemyTower;
 
@@ -153,9 +152,9 @@ namespace CodingMantisGames.SimpleAI
         {
             //Debug.Log(message);
 
-            messages.Add(message);
-            if (messages.Count > 10)
-                messages.RemoveAt(0);
+            //messages.Add(message);
+            //if (messages.Count > 10)
+              //  messages.RemoveAt(0);
         }
         public void ContinueMovement()
         {
@@ -168,6 +167,11 @@ namespace CodingMantisGames.SimpleAI
         private void HandleGameTurnReset()
         {
 
+        }
+        public  void GameWin()
+        {
+            StopAllCoroutines();
+            this.enabled = false;
         }
         #endregion
     }

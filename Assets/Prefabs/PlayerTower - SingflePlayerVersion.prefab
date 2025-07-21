@@ -204,10 +204,6 @@ MonoBehaviour:
   - {fileID: 3972588977253732049}
   - {fileID: 3294914509843541011}
   - {fileID: 8366151944463703620}
-  - {fileID: 4452165265679135280}
-  - {fileID: 4452165265833011482}
-  - {fileID: 4452165265586401815}
-  - {fileID: 5465163343143019742}
   redMaterial: {fileID: 2100000, guid: 3f561083fa42c644ebf20da19d0fc018, type: 2}
   blueMaterial: {fileID: 2100000, guid: decc268bacac0d74b99734a14e0290da, type: 2}
   lifeLabel: {fileID: 72019790085690121}
@@ -507,29 +503,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7632c229fd9c01a45a5182545e9040d6, type: 3}
---- !u!199 &4452165265586401815 stripped
-ParticleSystemRenderer:
-  m_CorrespondingSourceObject: {fileID: 2339616375333194546, guid: 7632c229fd9c01a45a5182545e9040d6, type: 3}
-  m_PrefabInstance: {fileID: 2143352829571512613}
-  m_PrefabAsset: {fileID: 0}
---- !u!199 &4452165265679135280 stripped
-ParticleSystemRenderer:
-  m_CorrespondingSourceObject: {fileID: 2339616375373499157, guid: 7632c229fd9c01a45a5182545e9040d6, type: 3}
-  m_PrefabInstance: {fileID: 2143352829571512613}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4452165265679135283 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2339616375373499158, guid: 7632c229fd9c01a45a5182545e9040d6, type: 3}
-  m_PrefabInstance: {fileID: 2143352829571512613}
-  m_PrefabAsset: {fileID: 0}
---- !u!199 &4452165265833011482 stripped
-ParticleSystemRenderer:
-  m_CorrespondingSourceObject: {fileID: 2339616375523184703, guid: 7632c229fd9c01a45a5182545e9040d6, type: 3}
-  m_PrefabInstance: {fileID: 2143352829571512613}
-  m_PrefabAsset: {fileID: 0}
---- !u!199 &5465163343143019742 stripped
-ParticleSystemRenderer:
-  m_CorrespondingSourceObject: {fileID: 6225823033755868667, guid: 7632c229fd9c01a45a5182545e9040d6, type: 3}
   m_PrefabInstance: {fileID: 2143352829571512613}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2521965306872867457

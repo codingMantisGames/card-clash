@@ -26,15 +26,7 @@ namespace CodingMantisGames.SimpleAI
 
         public override void PerformAction(AIBrain ai)
         {
-            if (ai.allyCharacters.Count < minimumNumberOfCharacterNeeded)
-            {
-                //Here we need to spawn cally chatacters
-                int spawnCount = Mathf.Clamp(ai.allyCharacters.Count - minimumNumberOfCharacterNeeded, 1, 3);
-
-                ai.ShowMessage("💭 Enemy has " + ai.enemyCharacters.Count + ". So we have to spawn atleast " + spawnCount + " charaters!##");
-
-                ai.StartRoutine(CardDropProcedure(spawnCount, ai));
-            }
+            ai.EndRound();
         }
 
         IEnumerator CardDropProcedure(int spawnCount, AIBrain ai)

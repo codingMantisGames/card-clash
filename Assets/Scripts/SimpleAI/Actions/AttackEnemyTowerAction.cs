@@ -76,7 +76,7 @@ namespace CodingMantisGames.SimpleAI
                 }
 
                 OfflineHexagon spawnLocation = ai.spawnLocationChooser.GetASpawnLocation(plan);
-                OfflineHexagonManager.instance.SpawnItem(selectedCard.topCard.cardID, ai.testPosition);
+                OfflineHexagonManager.instance.SpawnItem(selectedCard.topCard.cardID, spawnLocation);
 
                 ai.ShowMessage("🧙 " + selectedCard.topCard.name + " Character Spawned");
             }

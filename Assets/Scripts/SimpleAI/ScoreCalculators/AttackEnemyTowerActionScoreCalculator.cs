@@ -26,6 +26,7 @@ namespace CodingMantisGames.SimpleAI
         #region FUNCTIONS
         public override void CalculateScore(AIBrain ai)
         {
+            score = 0;
             int count = 0;
             foreach (var item in ai.allyCharacters)
             {

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8a8a63837846242abff5e56beaf61c, type: 3}
   m_Name: Attack Enemy Action Score Calculator
   m_EditorClassIdentifier: 
-  score: 0.6
-  minAllyNeeded: 4
-  minEnemyNeeded: 4
+  score: 0.25
+  minAllyNeeded: 5
+  c: 0
+  minEnemyNeeded: 5
   scorePerExtraAlly: 0.2
   scorePerEnemy: 0.05

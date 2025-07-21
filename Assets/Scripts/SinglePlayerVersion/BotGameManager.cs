@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using CodingMantisGames.UtilityAI;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -36,10 +37,10 @@ public class BotGameManager : MonoBehaviour
     [SerializeField] private Transform playerTowerSpawnPosition;
     [SerializeField] private Transform botTowerSpawnPosition;
 
-    public Action ChangeTurn;
-    public Action ResetRound;
-    public Action OnItemSelected;
-    public Action CheckPlayerPosition;
+    public System.Action ChangeTurn;
+    public System.Action ResetRound;
+    public System.Action OnItemSelected;
+    public System.Action CheckPlayerPosition;
     [HideInInspector] public bool isBotGamePlay = false;
     public OfflinePlacableItem currentItemToMove;
 
@@ -55,6 +56,7 @@ public class BotGameManager : MonoBehaviour
     Button _nextRoundButton;
     Button _endTurnButton;
     public int index;
+    public GameObject canCanvas;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -125,6 +127,8 @@ public class BotGameManager : MonoBehaviour
             endTurnButton.SetActive(false);
 
             roundMessageLabel.text = "Bot's Turn";
+
+            ShowMessage("Bot's Turn!");
             helpButton.gameObject.SetActive(false);
 
             //agent.StartAgentsTurn();//We ask AI to perform his move
@@ -137,7 +141,7 @@ public class BotGameManager : MonoBehaviour
 
             nextRoundButton.SetActive(true);
             endTurnButton.SetActive(false);
-
+            ShowMessage("Your Turn!");
             roundMessageLabel.text = "</b>Round 1</b>\nDraw & Deploy";
 
             CheckShowHelpCondition();
@@ -146,7 +150,6 @@ public class BotGameManager : MonoBehaviour
 
         ChangeTurn?.Invoke();
     }
-
 
 
     //Other usefull functions
@@ -279,12 +282,12 @@ public class BotGameManager : MonoBehaviour
             ShowHelp();
         }*/
     }
-    public void GameWin(bool flag)
+    public void GameWin(bool flag)//true - player false - bot
     {
         inGamePanel.SetActive(false);
         isGameOver = true;
 
-        if (isBotsTurn == flag)
+        if (!flag)
         {
             gameWinPanel.interactable = true;
             gameWinPanel.gameObject.SetActive(true);
@@ -296,6 +299,8 @@ public class BotGameManager : MonoBehaviour
             gameLosePanel.gameObject.SetActive(true);
             gameLosePanel.DOFade(1, 0.5f).SetEase(Ease.Linear);
         }
+        canCanvas.SetActive(false);
+        brain.GameWin();
     }
     public void ShowNoMovesPending(Vector3 pos, string txt)
     {

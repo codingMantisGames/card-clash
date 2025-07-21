@@ -56,14 +56,22 @@ public class OfflinePlayerTower : MonoBehaviour
     {
         life -= damage;
 
+        lifeLabel.text = life.ToString();
         if (life <= 0)
         {
             RPC_ShowBrokenBuilding();
 
-            lifeLabel.text = life.ToString();
 
             BotGameManager.instance.GameWin(!isBot);
         }
+    }
+    [SimpleButton]
+    public  void Kill()
+    {
+        RPC_ShowBrokenBuilding();
+
+
+        BotGameManager.instance.GameWin(!isBot);
     }
     public void RPC_ShakeCamera()
     {

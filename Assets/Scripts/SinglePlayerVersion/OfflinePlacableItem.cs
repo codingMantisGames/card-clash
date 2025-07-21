@@ -81,8 +81,6 @@ public class OfflinePlacableItem : MonoBehaviour
     #region UNITY FUNCTIONS
     IEnumerator Start()
     {
-        timeBtwTiletoTileMovement = 0.1f;//THis is only for testing
-
         targetPos = transform.position;
 
         yield return new WaitForEndOfFrame();
@@ -283,7 +281,7 @@ public class OfflinePlacableItem : MonoBehaviour
     }
     public void ResetMoveCounter()
     {
-        moveCount = 10; //Changed here for testing
+        moveCount = 1; 
     }
     public void SetBuilding(bool flag = false)
     {
@@ -296,6 +294,7 @@ public class OfflinePlacableItem : MonoBehaviour
         BotGameManager.instance.CheckPlayerPosition += CheckForCards;
 
         life = totalLife;
+        lifeLabel.text = life.ToString();
         attackValue = realAttackValue;
     }
     //[Rpc(RpcSources.All, RpcTargets.All)]
@@ -352,6 +351,7 @@ public class OfflinePlacableItem : MonoBehaviour
     {
         Debug.Log("Healed ---> " + transform.name);
         life = val;
+        lifeLabel.text = life.ToString();
     }
     public void Spawned()
     {
