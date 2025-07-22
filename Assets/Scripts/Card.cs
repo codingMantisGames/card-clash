@@ -38,7 +38,11 @@ public class Card : MonoBehaviour
     }
     void Start()
     {
-
+        cardManager.RotateCardsAction += RotateCard;
+    }
+    private void OnDestroy()
+    {
+        cardManager.RotateCardsAction -= RotateCard;
     }
     void Update()
     {

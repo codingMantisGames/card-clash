@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class CardManager : MonoBehaviour
 {
@@ -42,6 +43,7 @@ public class CardManager : MonoBehaviour
     private int cardCounter;
     private bool isStarted = false;
     [SerializeField] private GameObject drawMoreCardLabel;
+    public Action RotateCardsAction;
     #endregion
 
     #region UNITY FUNCTIONS
@@ -74,6 +76,10 @@ public class CardManager : MonoBehaviour
     #endregion
 
     #region FUNCTIONS
+    public void RotateCards()
+    {
+        RotateCardsAction?.Invoke();
+    }
     public void StartGame()
     {
         if (isStarted)
@@ -292,7 +298,7 @@ public class CardManager : MonoBehaviour
         }
         for (int i = cards.Count - 1; i > 0; i--)
         {
-            int randomIndex = Random.Range(0, i + 1);
+            int randomIndex = UnityEngine.Random.Range(0, i + 1);
             CardInfo temp = cards[i];
             cards[i] = cards[randomIndex];
             cards[randomIndex] = temp;

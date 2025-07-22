@@ -150,6 +150,7 @@ MonoBehaviour:
   topCardID: 535e
   bottomCardID: 535e
   cardFlipAudio: {fileID: 7082351165468129147}
+  minSwipeDistance: 30
 --- !u!61 &8765613211870107580
 BoxCollider2D:
   m_ObjectHideFlags: 0
