@@ -157,7 +157,7 @@ public class Gamemanager : NetworkBehaviour
     {
         currentRoundStage = RoundStage.MOVE_ITEM;
 
-        drawCardsButton.DOAnchorPos3DY(-150, cardAppearTime).SetEase(cardAppearEase);
+        drawCardsButton.DOAnchorPos3DY(-250, cardAppearTime).SetEase(cardAppearEase);
         uiCamera.DOMoveY(4, cardAppearTime).SetEase(cardAppearEase);
 
         Gamemanager.instance.OnItemSelected?.Invoke();
@@ -166,7 +166,7 @@ public class Gamemanager : NetworkBehaviour
     {
         currentRoundStage = RoundStage.ATTACK;
 
-        drawCardsButton.DOAnchorPos3DY(-150, cardAppearTime).SetEase(cardAppearEase);
+        drawCardsButton.DOAnchorPos3DY(-250, cardAppearTime).SetEase(cardAppearEase);
         uiCamera.DOMoveY(4, cardAppearTime).SetEase(cardAppearEase);
 
         Gamemanager.instance.OnItemSelected?.Invoke();

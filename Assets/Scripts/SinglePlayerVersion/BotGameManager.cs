@@ -175,7 +175,7 @@ public class BotGameManager : MonoBehaviour
     {
         currentRoundStage = RoundStage.MOVE_ITEM;
 
-        drawCardsButton.DOAnchorPos3DY(-150, cardAppearTime).SetEase(cardAppearEase);
+        drawCardsButton.DOAnchorPos3DY(-250, cardAppearTime).SetEase(cardAppearEase);
         uiCamera.DOMoveY(4, cardAppearTime).SetEase(cardAppearEase);
 
         OnItemSelected?.Invoke();
@@ -184,7 +184,7 @@ public class BotGameManager : MonoBehaviour
     {
         currentRoundStage = RoundStage.ATTACK;
 
-        drawCardsButton.DOAnchorPos3DY(-150, cardAppearTime).SetEase(cardAppearEase);
+        drawCardsButton.DOAnchorPos3DY(-250, cardAppearTime).SetEase(cardAppearEase);
         uiCamera.DOMoveY(4, cardAppearTime).SetEase(cardAppearEase);
 
         OnItemSelected?.Invoke();

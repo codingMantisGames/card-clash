@@ -5,6 +5,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class LobbyUI : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class LobbyUI : MonoBehaviour
     [SerializeField] private float uiEaseTime;
     [SerializeField] private float uiEaseTime2;
     [SerializeField] private Ease ease;
+    public UnityEvent OnGameStartClick;
 
     #endregion
 
@@ -48,8 +50,9 @@ public class LobbyUI : MonoBehaviour
                 mainLogo.DOScale(0.7f, uiEaseTime).SetEase(ease);
                 mainLogo.DOAnchorPos3DY(165, uiEaseTime).SetEase(ease).OnComplete(() =>
                 {
-                    mainOptionPanel.gameObject.SetActive(true);
-                    mainOptionPanel.DOFade(1, uiEaseTime).SetEase(ease);
+                   // mainOptionPanel.gameObject.SetActive(true);
+                    //mainOptionPanel.DOFade(1, uiEaseTime).SetEase(ease);
+                    OnGameStartClick.Invoke();
                 });
             }
         }

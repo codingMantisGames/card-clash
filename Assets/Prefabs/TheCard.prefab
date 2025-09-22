@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4219191801925739660}
   - component: {fileID: 1447737767143651629}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PowerCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 1235123547121499362}
   - component: {fileID: 1873955051343594242}
   - component: {fileID: 8765613211870107580}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TheCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1407431002216049287}
   - component: {fileID: 4403980712656420924}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ItemCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -346,6 +346,10 @@ PrefabInstance:
     - target: {fileID: 8677536271550455774, guid: a79fb81841b5d1c44b70e2669621d0bf, type: 3}
       propertyPath: m_Name
       value: CardFlipAudio
+      objectReference: {fileID: 0}
+    - target: {fileID: 8677536271550455774, guid: a79fb81841b5d1c44b70e2669621d0bf, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
