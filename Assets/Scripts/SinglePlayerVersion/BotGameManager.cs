@@ -84,6 +84,8 @@ public class BotGameManager : MonoBehaviour
     #region FUNCTIONS
     public void StartBotGame()
     {
+        Application.targetFrameRate = 60;
+
         isBotGamePlay = true;
 
         currentRoundStage = RoundStage.USING_CARDS;

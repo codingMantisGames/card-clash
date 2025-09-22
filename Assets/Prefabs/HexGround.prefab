@@ -216,7 +216,9 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -5754084199372789682, guid: da01eb4f22d2d8a44a0bfef71c016550, type: 3}
+    - {fileID: -7511558181221131132, guid: da01eb4f22d2d8a44a0bfef71c016550, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: da01eb4f22d2d8a44a0bfef71c016550, type: 3}
@@ -305,15 +307,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPlaced: {fileID: 0}
-  isLeft: 0
+  isBot: 0
   isCardNeutral: 0
   isNoBuildZone: 0
-  isPlayerZone: 0
+  isBotZone: 0
+  isTowerRegion: 0
   hexRenderer: {fileID: 4676753371733212650}
   buildPoint: {fileID: 5386691376589344010}
   adjacentTiles: []
   isUsed: 0
+  isUsedByEnemy: 0
   canAttack: 0
+  isMarkedByAI: 0
   radius: 0
   index: 0
   playerLayer:
@@ -322,6 +327,9 @@ MonoBehaviour:
   selectedColor: {r: 1, g: 0.4392157, b: 0.4392157, a: 0.5019608}
   normalColor: {r: 1, g: 1, b: 1, a: 0.29803923}
   isBuildMode: 0
+  attack: 0
+  defent: 0
+  initialMoves: 0
 --- !u!4 &4537869576877890597 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: da01eb4f22d2d8a44a0bfef71c016550, type: 3}

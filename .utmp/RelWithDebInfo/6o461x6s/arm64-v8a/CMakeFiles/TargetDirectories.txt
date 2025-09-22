@@ -1,0 +1,5 @@
+E:/UnityProjects/card-clash/.utmp/RelWithDebInfo/6o461x6s/arm64-v8a/CMakeFiles/edit_cache.dir
+E:/UnityProjects/card-clash/.utmp/RelWithDebInfo/6o461x6s/arm64-v8a/CMakeFiles/rebuild_cache.dir
+E:/UnityProjects/card-clash/.utmp/RelWithDebInfo/6o461x6s/arm64-v8a/GameActivity/CMakeFiles/game.dir
+E:/UnityProjects/card-clash/.utmp/RelWithDebInfo/6o461x6s/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+E:/UnityProjects/card-clash/.utmp/RelWithDebInfo/6o461x6s/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir
